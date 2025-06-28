@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ALEX VALENTINE</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+  <div class="container">
+    <h1 class="logo">ALEX VALENTINE EVDOKIMOV</h1>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link" id="home-link">Home</a></li>
+        <li><a href="projects.html" class="nav-link" id="projects-link">Projects</a></li>
+        <li><a href="drawings.html" class="nav-link">Drawings</a></li>
+        <li><a href="about.html" class="nav-link" id="about-link">About</a></li>
+        <li><a href="contact.html" class="nav-link" id="contact-link">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="header-divider"></div>
+</header>
+  
+<main class="projects-page">
+  <!-- Project content -->
+</main>
+
+<main class="projects-page">
+  <div class="project-grid">
+
+    <a href="#" class="project-card">
+      <img src="img/E5.jpg" alt="Project 1">
+      <div class="overlay-black"></div>
+      <div class="overlay-text">FROM FOREST TO FRAMEWORK</div>
+    </a>
+
+    <a href="#" class="project-card">
+      <img src="img/E6.jpg" alt="Project 2">
+      <div class="overlay-black"></div>
+      <div class="overlay-text">ANGLO-BELARUSIAN LIBRARY</div>
+    </a>
+
+    <a href="#" class="project-card">
+      <img src="img/E12.jpg" alt="Project 3">
+      <div class="overlay-black"></div>
+      <div class="overlay-text">WONDERLAND</div>
+    </a>
+
+        <a href="#" class="project-card">
+      <img src="img/E1.jpg" alt="Project 1">
+      <div class="overlay-black"></div>
+      <div class="overlay-text">DAMAGE</div>
+    </a>
+
+    <a href="#" class="project-card">
+      <img src="img/E7.jpg" alt="Project 2">
+      <div class="overlay-black"></div>
+      <div class="overlay-text">CULTIVATING CREATIVE RESILIENCE</div>
+    </a>
+
+    <a href="#" class="project-card">
+      <img src="img/E4.jpg" alt="Project 3">
+      <div class="overlay-black"></div>
+      <div class="overlay-text">THROW COLLECTION</div>
+    </a>
+ 
+    <a href="#" class="project-card">
+      <img src="img/E11.jpg" alt="Project 2">
+      <div class="overlay-black"></div>
+      <div class="overlay-text">Project 2</div>
+    </a>
+
+    <a href="#" class="project-card">
+      <img src="img/E2.jpg" alt="Project 3">
+      <div class="overlay-black"></div>
+      <div class="overlay-text">Project 3</div>
+    </a>
+    <!-- Add more as needed -->
+  
+  </main>
+
+<footer>
+ <p>© ALEX VALENTINE EVDOKIMOV 2025</p>
+</footer>
+
+<script>
+  const path = window.location.pathname;
+
+  if (path.includes("index")) {
+    document.getElementById("home-link").classList.add("active");
+  } else if (path.includes("projects")) {
+    document.getElementById("projects-link").classList.add("active");
+  } else if (path.includes("about")) {
+    document.getElementById("about-link").classList.add("active");
+  } else if (path.includes("contact")) {
+    document.getElementById("contact-link").classList.add("active");
+  }
+</script>
+</html>

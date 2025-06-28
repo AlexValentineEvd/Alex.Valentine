@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ALEX VALENTINE</title>
+  <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+  <div class="container">
+    <h1 class="logo">ALEX VALENTINE EVDOKIMOV</h1>
+    <nav>
+      <ul class="nav-links">
+         <li><a href="index.html" class="nav-link" id="home-link">Home</a></li>
+        <li><a href="projects.html" class="nav-link" id="projects-link">Projects</a></li>
+        <li><a href="drawings.html" class="nav-link">Drawings</a></li>
+        <li><a href="about.html" class="nav-link" id="about-link">About</a></li>
+        <li><a href="contact.html" class="nav-link" id="contact-link">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="header-divider"></div>
+</header>
+  
+<main>
+    <main class="contact-page">
+  <div class="contact-container">
+    <h2>Contact Me</h2>
+    <p>Feel free to reach out through any of the platforms below:</p>
+
+    <div class="contact-info">
+      <p><strong>Name:</strong> Alex Valentine Evdokimov</p>
+      <p><strong>Email:</strong> <a href="Alexevd.123@gmail.com">Alexevd.123@gmail.com</a></p>
+      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/alex-evdokimov-112797248?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BPrgFZkhUTDSd%2FoUSOSJAKw%3D%3D" target="_blank">linkedin.com/in/Alex Valentine</a></p>
+      <p><strong>Instagram:</strong> <a href="https://www.instagram.com/alex_val_evd" target="_blank">@alex_val_evd</a></p>
+      <p><strong>Other socials:</strong> <a href="#">Link here</a></p>
+    </div>
+  </div>
+</main>
+  
+  <footer>
+    <p>© ALEX VALENTINE EVDOKIMOV 2025</p>
+  </footer>
+
+<script>
+  const path = window.location.pathname;
+
+  if (path.includes("index")) {
+    document.getElementById("home-link").classList.add("active");
+  } else if (path.includes("projects")) {
+    document.getElementById("projects-link").classList.add("active");
+  } else if (path.includes("about")) {
+    document.getElementById("about-link").classList.add("active");
+  } else if (path.includes("contact")) {
+    document.getElementById("contact-link").classList.add("active");
+  }
+</script>
+</html>

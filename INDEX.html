@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ALEX VALENTINE</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+  <div class="container">
+    <h1 class="logo">ALEX VALENTINE EVDOKIMOV</h1>
+    <nav>
+      <ul class="nav-links">
+         <li><a href="index.html" class="nav-link" id="home-link">Home</a></li>
+        <li><a href="projects.html" class="nav-link" id="projects-link">Projects</a></li>
+        <li><a href="drawings.html" class="nav-link">Drawings</a></li>
+        <li><a href="about.html" class="nav-link" id="about-link">About</a></li>
+        <li><a href="contact.html" class="nav-link" id="contact-link">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="header-divider"></div>
+</header>
+
+  <main class="hero">
+    
+    <p>arb / RIBA Part 2 Architectural Assistant</p>
+  </main>
+
+
+  <footer>
+    <p>© ALEX VALENTINE EVDOKIMOV 2025</p>
+  </footer>
+
+<script>
+  const path = window.location.pathname;
+
+  if (path.includes("index")) {
+    document.getElementById("home-link").classList.add("active");
+  } else if (path.includes("projects")) {
+    document.getElementById("projects-link").classList.add("active");
+  } else if (path.includes("about")) {
+    document.getElementById("about-link").classList.add("active");
+  } else if (path.includes("contact")) {
+    document.getElementById("contact-link").classList.add("active");
+  }
+</script>
+</div>
+
+
+
+
+</body>
+</html>
