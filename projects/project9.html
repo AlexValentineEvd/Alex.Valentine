@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SEARCH FOR A NEW HOME</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+  
+  <style>
+    .lightboxOverlay {
+      background: rgba(255, 255, 255, 0.6) !important; /* Light fade */
+      backdrop-filter: blur(4px);
+      transition: background 0.3s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <h1 class="logo"><a href="../index.html">ALEX VALENTINE EVDOKIMOV</a></h1>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../projects.html" class="active">Projects</a></li>
+        <li><a href="../drawings.html">Drawings</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="header-divider"></div>
+</header>
+
+<a href="javascript:history.back()" class="back-button" aria-label="Go back">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="15 18 9 12 15 6" />
+  </svg>
+</a>
+
+<main class="project-container">
+  <div class="project-info">
+    <h2>SEARCH FOR A NEW HOME</h2>
+
+    <p>Second year, Unit 16 No ball games 2019-2020. Slavutych, Kyiv Oblast, Ukraine </p>
+
+    <p><strong>Description:</strong></p>
+
+    <!-- Short description preview -->
+    <p class="project-description short">
+      After the 1986 powerplant disaster in Chernobyl, 40,000 of the residents in near by Pripyat were forced to
+evacuate. This nuclear city was home to 9000 of the plant workers. For the next two years these people lived
+temporarily across the soviet union. Construction commenced immediately on a new town built for the residents
+who lost their homes and for the plant workers. This town is called Slavutych The town is located 50km
+from Chernobyl in the north of Ukraine, consisting of a direct train ideal, for the plant workers. Designed by 8
+different institutions, all from different soviet republics within the soviet union, designed in the styles of the
+respective states and cities. Inspired by soviet propaganda posters i decided to create a collection of posters,
+as a time line starting from its initial planning stage and ending in the current year. A change in the style and
+language is used as a reaction to the collapse of the soviet union.
+
+    </p>
+        
+</div>
+
+
+
+  <div class="project-images">
+    <a href="../img/U1.jpg" class="glightbox" data-gallery="project-gallery" data-title="SITE PLAN">
+      <img src="../img/U1.jpg" alt="Artwork 1" class="project-img a3-landscape" />
+    </a>
+    <a href="../img/U3.jpg" class="glightbox" data-gallery="project-gallery" data-title="Artwork 3">
+      <img src="../img/U3.jpg" alt="Artwork 3" class="project-img a3-landscape" />
+    </a>
+  </div>
+
+<div class="under-construction-overlay">
+  <div class="under-construction-message">
+    <h2>Page Under Construction</h2>
+    <p>This page is currently being updated. Please check back soon!</p>
+  </div>
+</div>
+  
+</main>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <script>
+    
+
+    // Read More toggle logic
+    const readMoreBtn = document.querySelector('.read-more-btn');
+    const shortDesc = document.querySelector('.project-description.short');
+    const fullDesc = document.querySelector('.project-description.full');
+
+    readMoreBtn.addEventListener('click', () => {
+      if (fullDesc.style.display === 'block') {
+        fullDesc.style.display = 'none';
+        shortDesc.style.display = 'block';
+        readMoreBtn.textContent = 'Read More';
+      } else {
+        fullDesc.style.display = 'block';
+        shortDesc.style.display = 'none';
+        readMoreBtn.textContent = 'Read Less';
+      }
+    });
+  </script>
+<!-- Left Arrow -->
+<a href="project8.html" class="project-nav left" aria-label="Previous project">
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="15 18 9 12 15 6" />
+  </svg>
+</a>
+
+<!-- Right Arrow -->
+<a href="project10.html" class="project-nav right" aria-label="Next project">
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="9 18 15 12 9 6" />
+  </svg>
+</a>
+
+<script>
+  const lightbox = GLightbox({ selector: '.glightbox' });
+
+  document.addEventListener('keydown', function (e) {
+    // Only navigate projects if GLightbox is NOT open
+    if (!document.body.classList.contains('glightbox-open')) {
+      if (e.key === 'ArrowLeft') {
+        window.location.href = "project8.html"; // or your previous project
+      } else if (e.key === 'ArrowRight') {
+        window.location.href = "project10.html"; // or your next project
+      }
+    }
+  });
+</script>
+
+<footer>
+  <p>ALEX VALENTINE EVDOKIMOV 2025</p>
+</footer>
+
+</body>
+</html>

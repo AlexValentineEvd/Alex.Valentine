@@ -7,9 +7,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+
+<div class="background-slideshow">
+  <div class="slide" style="background-image: url('/img/A1.png');"></div>
+  <div class="slide" style="background-image: url('/img/A5.png');"></div>
+  <div class="slide" style="background-image: url('/img/A2.png');"></div>
+  <div class="slide" style="background-image: url('/img/A4.png');"></div>
+  <div class="slide" style="background-image: url('/img/A6.png');"></div>
+  <div class="slide" style="background-image: url('/img/A3.png');"></div>
+</div>
+
 <header>
   <div class="container">
-    <h1 class="logo">ALEX VALENTINE EVDOKIMOV</h1>
+    <h1 class="logo"><a href="index.html">ALEX VALENTINE EVDOKIMOV</a></h1>
     <nav>
       <ul class="nav-links">
          <li><a href="index.html" class="nav-link" id="home-link">Home</a></li>
@@ -23,29 +33,85 @@
   <div class="header-divider"></div>
 </header>
 
-  <main class="hero">
-    
+
+
+
+
+<main class="hero">
+  <!-- No content here, leave empty for visual space if needed -->
+</main>
+
+<section class="about-preview">
+  <div class="container">
+    <h2>About Me</h2>
+    <p>
+      I’m an artist and designer interested in the relationship between material, scale, and memory.
+      My work includes drawing, spatial design, and architectural study.
+      <a href="about.html">Read more →</a>
+    </p>
     <p>arb / RIBA Part 2 Architectural Assistant</p>
-  </main>
+  </div>
+</section>
 
-
-  <footer>
-    <p>© ALEX VALENTINE EVDOKIMOV 2025</p>
-  </footer>
-
+<footer>
+  <p> ALEX VALENTINE EVDOKIMOV 2025</p>
+</footer>
 <script>
-  const path = window.location.pathname;
+  const path = window.location.pathname.toLowerCase();
 
   if (path.includes("index")) {
     document.getElementById("home-link").classList.add("active");
   } else if (path.includes("projects")) {
     document.getElementById("projects-link").classList.add("active");
+  } else if (path.includes("drawings")) {
+    document.getElementById("drawings-link").classList.add("active");
   } else if (path.includes("about")) {
     document.getElementById("about-link").classList.add("active");
   } else if (path.includes("contact")) {
     document.getElementById("contact-link").classList.add("active");
   }
 </script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const slideshow = document.querySelector('.background-slideshow');
+
+    // Clear anything inside the slideshow
+    slideshow.innerHTML = '';
+
+    // List of your image file paths
+    const images = [
+      '/img/A1.png',
+      '/img/A5.png',
+      '/img/A2.png',
+      '/img/A4.png',
+      '/img/A6.png',
+      '/img/A3.png'
+    ];
+
+    // Loop through each image and create a slide
+    images.forEach(function (image, index) {
+      const slide = document.createElement('div');
+      slide.className = 'slide';
+      slide.style.backgroundImage = `url('${image}')`;
+      slide.style.animationDelay = `${index * 8}s`; // delay each slide
+      slideshow.appendChild(slide);
+    // Make first image fully visible right away
+  if (index === 0) {
+    slide.style.opacity = '1';
+  }
+
+  slideshow.appendChild(slide);
+    });
+  });
+
+  
+
+  
+</script>
+
+
+</body>
 </div>
 
 

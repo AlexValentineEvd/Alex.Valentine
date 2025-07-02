@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Project Title</title>
+  <link rel="stylesheet" href="../styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+  
+ <style>
+    .lightboxOverlay {
+      background: rgba(255, 255, 255, 0.6) !important; /* Light fade */
+      backdrop-filter: blur(4px);
+      transition: background 0.3s ease-in-out;
+    }
+  </style>
+
+ 
+  
+</head>
+<body>
+<header>
+  <div class="container">
+    <h1 class="logo"><a href="../index.html">ALEX VALENTINE EVDOKIMOV</a></h1>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../projects.html" class="active">Projects</a></li>
+        <li><a href="../drawings.html">Drawings</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="header-divider"></div>
+</header>
+
+<a href="javascript:history.back()" class="back-button" aria-label="Go back">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="15 18 9 12 15 6" />
+  </svg>
+</a>
+
+<main class="project-container">
+  <div class="project-sidebar">
+    <div class="project-info">
+      <h2>DAMAGE</h2>
+      
+      
+      <p><strong>Description:</strong> </p>
+      <p>PAGE UNDER CONSTRUCTION
+</p>
+
+    </div>
+  </div>
+
+<div class="project-images">
+      <a href="../img/Z1.jpg" class="glightbox" data-gallery="project-gallery" data-title="SITE PLAN">
+      <img src="../img/Z1.jpg" alt="Artwork 1" class="project-img a4-portrait" />
+    </a>
+    <a href="../img/Z2.jpg" class="glightbox" data-gallery="project-gallery" data-title="Artwork 3">
+      <img src="../img/Z2.jpg" alt="Artwork 3" class="project-img a4-portrait" />
+    </a>
+    <a href="../img/Z3.jpg" class="glightbox" data-gallery="project-gallery" data-title="SITE PLAN">
+      <img src="../img/Z3.jpg" alt="Artwork 1" class="project-img a4-portrait" />
+    </a>
+    <a href="../img/Z4.jpg" class="glightbox" data-gallery="project-gallery" data-title="Artwork 3">
+      <img src="../img/Z4.jpg" alt="Artwork 3" class="project-img a4-portrait" />
+  
+  
+</div>
+
+<div class="under-construction-overlay">
+  <div class="under-construction-message">
+    <h2>Page Under Construction</h2>
+    <p>This page is currently being updated. Please check back soon!</p>
+  </div>
+</div>
+
+</main>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+
+<!-- Left Arrow -->
+<a href="project10.html" class="project-nav left" aria-label="Previous project">
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="15 18 9 12 15 6" />
+  </svg>
+</a>
+
+<!-- Right Arrow -->
+<a href="project1.html" class="project-nav right" aria-label="Next project">
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="9 18 15 12 9 6" />
+  </svg>
+</a>
+
+<script>
+  const lightbox = GLightbox({ selector: '.glightbox' });
+
+  document.addEventListener('keydown', function (e) {
+    // Only navigate projects if GLightbox is NOT open
+    if (!document.body.classList.contains('glightbox-open')) {
+      if (e.key === 'ArrowLeft') {
+        window.location.href = "project10.html"; // or your previous project
+      } else if (e.key === 'ArrowRight') {
+        window.location.href = "project1.html"; // or your next project
+      }
+    }
+  });
+</script>
+
+<footer>
+  <p> ALEX VALENTINE EVDOKIMOV 2025</p>
+</footer>
+
+</body>
+
+</html>

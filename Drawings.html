@@ -5,52 +5,159 @@
   <title>Drawings</title>
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
 </head>
 <body>
+
 <header>
   <div class="container">
-    <h1 class="logo">ALEX VALENTINE EVDOKIMOV</h1>
+    <h1 class="logo"><a href="index.html">ALEX VALENTINE EVDOKIMOV</a></h1>
     <nav>
-      <ul class="nav-links">
-         <li><a href="index.html" class="nav-link" id="home-link">Home</a></li>
-        <li><a href="projects.html" class="nav-link" id="projects-link">Projects</a></li>
-        <li><a href="drawings.html" class="nav-link">Drawings</a></li>
-        <li><a href="about.html" class="nav-link" id="about-link">About</a></li>
-        <li><a href="contact.html" class="nav-link" id="contact-link">Contact</a></li>
-      </ul>
+     <ul class="nav-links">
+      <li><a href="index.html" class="nav-link" id="home-link">Home</a></li>
+      <li><a href="projects.html" class="nav-link" id="projects-link">Projects</a></li>
+      <li><a href="drawings.html" class="nav-link" id="drawings-link">Drawings</a></li>
+      <li><a href="about.html" class="nav-link" id="about-link">About</a></li>
+      <li><a href="contact.html" class="nav-link" id="contact-link">Contact</a></li>
+     </ul>
     </nav>
   </div>
   <div class="header-divider"></div>
 </header>
 
-<main class="drawings-page">
-  <div class="drawings-grid">
+<main class="drawings-gallery">
+  <div class="gallery-wall">
+
+    <div class="drawing-piece">
+      <img src="img/T12.png" alt="A5 Portrait"
+           class="drawing-img"
+           style="width: calc(14.8 * var(--cm)); height: calc(21 * var(--cm));">
+      <div class="drawing-meta">A5 – Portrait – Pen – 2020</div>
+    </div>
+
+    <!-- A3 Portrait -->
+    <div class="drawing-piece">
+      <img src="img/T2.png" alt="A3 Portrait"
+           class="drawing-img"
+           style="width: calc(29.7 * var(--cm)); height: calc(42 * var(--cm));">
+      <div class="drawing-meta">A3 – Portrait – Pen & Airbrush – 2021</div>
+    </div>
+
+    <!-- A3 Landscape -->
+    <div class="drawing-piece">
+      <img src="img/T5.png" alt="A3 Landscape"
+           class="drawing-img"
+           style="width: calc(42 * var(--cm)); height: calc(29.7 * var(--cm));">
+      <div class="drawing-meta">A3 – Landscape – Pen – 2022</div>
+    </div>
+
+    <!-- A4 Landscape -->
+    <div class="drawing-piece">
+      <img src="img/T7.png" alt="A4 Landscape"
+           class="drawing-img"
+           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
+      <div class="drawing-meta">A4 – Landscape – Pen – 2021</div>
+    </div>
+
+    <!-- A4 Portrait -->
+     <div class="drawing-piece">
+      <img src="img/T9.png" alt="A4 Portrait"
+           class="drawing-img"
+           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
+       <div class="drawing-meta">A4 – Portrait – Pen – 2024</div>
+    </div>
+
+<!-- A3 Landscape -->
+    <div class="drawing-piece">
+      <img src="img/T1.png" alt="A3 Landscape"
+           class="drawing-img"
+           style="width: calc(42 * var(--cm)); height: calc(29.7 * var(--cm));">
+      <div class="drawing-meta">A3 – Landscape – Pen – 2023</div>
+    </div>
+
+<!-- A4 Portrait -->
+     <div class="drawing-piece">
+      <img src="img/T10.png" alt="A4 Portrait"
+           class="drawing-img"
+           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
+       <div class="drawing-meta">A4 – Portrait – Pen – 2020</div>
+    </div>
+
+    <!-- A4 Portrait -->
+     <div class="drawing-piece">
+      <img src="img/T8.png" alt="A4 Portrait"
+           class="drawing-img"
+           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
+       <div class="drawing-meta">A4 – Portrait – Pen – 2021</div>
+    </div>
+
+    <!-- A4 Landscape -->
+    <div class="drawing-piece">
+      <img src="img/T13.png" alt="A4 Landscape"
+           class="drawing-img"
+           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
+      <div class="drawing-meta">A4 – Landscape – Pen – 2021</div>
+    </div>
     
-    <div class="drawing-card">
-      <img src="img/E4.jpg" alt="Drawing 1">
-      <div class="drawing-info">
-        <h3>Untitled Portrait</h3>
-        <p>Medium: Graphite on paper</p>
-        <p>Dimensions: 21cm x 29.7cm</p>
-      </div>
+    <!-- A3 Landscape -->
+    <div class="drawing-piece">
+      <img src="img/T6.png" alt="A3 Landscape"
+           class="drawing-img"
+           style="width: calc(42 * var(--cm)); height: calc(29.7 * var(--cm));">
+      <div class="drawing-meta">A3 – Landscape – Pen – 2022</div>
     </div>
 
-    <div class="drawing-card">
-      <img src="img/E12.jpg" alt="Drawing 2">
-      <div class="drawing-info">
-        <h3>Study of a Hand</h3>
-        <p>Medium: Charcoal</p>
-        <p>Dimensions: 30cm x 42cm</p>
-      </div>
+    <!-- A4 Portrait -->
+     <div class="drawing-piece">
+      <img src="img/T11.png" alt="A4 Portrait"
+           class="drawing-img"
+           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
+       <div class="drawing-meta">A4 – Portrait – Pen & stamp – 2024</div>
     </div>
 
-    <!-- Add more drawings here -->
+     <!-- A3 Landscape -->
+    <div class="drawing-piece">
+      <img src="img/T4.png" alt="A3 Landscape"
+           class="drawing-img"
+           style="width: calc(42 * var(--cm)); height: calc(29.7 * var(--cm));">
+      <div class="drawing-meta">A3 – Landscape – Pen – 2022</div>
+    </div>
+
+     <!-- A3 Landscape -->
+    <div class="drawing-piece">
+      <img src="img/T3.png" alt="A3 Landscape"
+           class="drawing-img"
+           style="width: calc(42 * var(--cm)); height: calc(29.7 * var(--cm));">
+      <div class="drawing-meta">A3 – Landscape – Pen – 2023</div>
+    </div>
 
   </div>
 </main>
 
+
+
 <footer>
-  <p>© ALEX VALENTINE EVDOKIMOV 2025</p>
+  <p> ALEX VALENTINE EVDOKIMOV 2025</p>
 </footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+
+<script>
+  const path = window.location.pathname.toLowerCase();
+
+  if (path.includes("index")) {
+    document.getElementById("home-link").classList.add("active");
+  } else if (path.includes("projects")) {
+    document.getElementById("projects-link").classList.add("active");
+  } else if (path.includes("drawings")) {
+    document.getElementById("drawings-link").classList.add("active");
+  } else if (path.includes("about")) {
+    document.getElementById("about-link").classList.add("active");
+  } else if (path.includes("contact")) {
+    document.getElementById("contact-link").classList.add("active");
+  }
+</script>
+
+
 </body>
 </html>

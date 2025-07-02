@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home Renovations — Project 4</title>
+  <link rel="stylesheet" href="../styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+
+  <style>
+    .lightboxOverlay {
+      background: rgba(255, 255, 255, 0.6) !important;
+      backdrop-filter: blur(4px);
+      transition: background 0.3s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1 class="logo"><a href="../index.html">ALEX VALENTINE EVDOKIMOV</a></h1>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../projects.html" class="active">Projects</a></li>
+        <li><a href="../drawings.html">Drawings</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="header-divider"></div>
+</header>
+
+<a href="javascript:history.back()" class="back-button" aria-label="Go back">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="15 18 9 12 15 6" />
+  </svg>
+</a>
+
+<main class="project-container">
+  <div class="project-sidebar">
+    <div class="project-info">
+      <h2>HOME RENOVATIONS</h2>
+      <p>House renovations, 2022–23. Pimlico, London, United Kingdom.</p>
+      <p><strong>Description:</strong></p>
+      <p>
+        Since the property is a basement flat, it was important to carefully consider shadow, colour, and lighting to make
+        each room feel distinct and purposeful. As the space evolved, we produced architectural drawings initially for our
+        own DIY efforts and later for use by contractors. These drawings proved essential, especially since none of the
+        contractors were native English speakers — the clarity of the visuals helped minimize misunderstandings and
+        ensured smoother construction.
+      </p>
+    </div>
+  </div>
+
+  <div class="project-images">
+    <a href="../img/R11.jpg" class="glightbox" data-gallery="project-gallery" data-title="Interior Perspective">
+      <img src="../img/R11.jpg" alt="Interior perspective of renovated space" class="project-img a3-landscape">
+    </a>
+    <a href="../img/R5.jpg" class="glightbox" data-gallery="project-gallery" data-title="Site Plan">
+      <img src="../img/R5.jpg" alt="Site plan" class="project-img a4-portrait">
+    </a>
+    <a href="../img/R6.jpg" class="glightbox" data-gallery="project-gallery" data-title="Lighting Diagram">
+      <img src="../img/R6.jpg" alt="Lighting design diagram" class="project-img a4-portrait">
+    </a>
+    <a href="../img/R9.jpg" class="glightbox" data-gallery="project-gallery" data-title="Room Elevation">
+      <img src="../img/R9.jpg" alt="Room elevation drawing" class="project-img a4-portrait">
+    </a>
+    <a href="../img/R1.jpg" class="glightbox" data-gallery="project-gallery" data-title="Construction Detail">
+      <img src="../img/R1.jpg" alt="Construction detail drawing" class="project-img a4-portrait">
+    </a>
+    <a href="../img/R8.jpg" class="glightbox" data-gallery="project-gallery" data-title="Material Study">
+      <img src="../img/R8.jpg" alt="Material study photo" class="project-img a4-portrait">
+    </a>
+    <a href="../img/R4.jpg" class="glightbox" data-gallery="project-gallery" data-title="Finishing Touches">
+      <img src="../img/R4.jpg" alt="Interior finishing touches" class="project-img a4-portrait">
+    </a>
+    <a href="../img/R2.jpg" class="glightbox" data-gallery="project-gallery" data-title="Floor Plan">
+      <img src="../img/R2.jpg" alt="Floor plan" class="project-img a4-portrait">
+    </a>
+  </div>
+</main>
+
+<footer>
+  <p>ALEX VALENTINE EVDOKIMOV 2025</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+
+
+<!-- Navigation Arrows -->
+<a href="project3.html" class="project-nav left" aria-label="Previous project">
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="15 18 9 12 15 6" />
+  </svg>
+</a>
+
+<a href="project5.html" class="project-nav right" aria-label="Next project">
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="9 18 15 12 9 6" />
+  </svg>
+</a>
+
+<script>
+  const lightbox = GLightbox({ selector: '.glightbox' });
+
+  document.addEventListener('keydown', function (e) {
+    // Only navigate projects if GLightbox is NOT open
+    if (!document.body.classList.contains('glightbox-open')) {
+      if (e.key === 'ArrowLeft') {
+        window.location.href = "project3.html"; // or your previous project
+      } else if (e.key === 'ArrowRight') {
+        window.location.href = "project5.html"; // or your next project
+      }
+    }
+  });
+</script>
+
+
+</body>
+</html>

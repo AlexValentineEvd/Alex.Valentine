@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Belarusian Library — Project 3</title>
+  <link rel="stylesheet" href="../styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+  <style>
+    .lightboxOverlay {
+      background: rgba(255, 255, 255, 0.6) !important;
+      backdrop-filter: blur(4px);
+      transition: background 0.3s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1 class="logo"><a href="../index.html">ALEX VALENTINE EVDOKIMOV</a></h1>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../projects.html" class="active">Projects</a></li>
+        <li><a href="../drawings.html">Drawings</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="header-divider"></div>
+</header>
+
+<a href="javascript:history.back()" class="back-button" aria-label="Go back">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="15 18 9 12 15 6" />
+  </svg>
+</a>
+
+<main class="project-container">
+  <div class="project-sidebar">
+    <div class="project-info">
+      <h2>BELARUSIAN LIBRARY</h2>
+      <p>Loft renovation, The Anglo-Belarusian Society, 2023–24. Woodside Park, London, United Kingdom.</p>
+      
+      <p><strong>Description:</strong></p>
+      <p>
+        In north London, in the borough of Barnet, is the Church of St Cyril of Turau & All the Patron Saints of the Belarusian People. 
+        Opposite stands the Francis Skaryna Belarusian Library & Museum. These spaces serve as the main gathering locations for the 
+        Anglo-Belarusian Society—the oldest Belarus-related organization in the UK. Rich with artifacts and books relating to 
+        Belarusian history, the organization sought a new way to showcase these historical objects. I was invited to join the 
+        project as a consultant and advisor. The attic of the library was chosen for renovation; the project is currently in its 
+        construction phase.
+      </p>
+    </div>
+  </div>
+
+  <div class="project-images">
+    <a href="../img/B1.jpg" class="glightbox" data-gallery="project-gallery" data-title="Site Plan">
+      <img src="../img/B1.jpg" alt="Site Plan" class="project-img a3-portrait">
+    </a>
+    <a href="../img/B4.jpg" class="glightbox" data-gallery="project-gallery" data-title="Interior Visualization 1">
+      <img src="../img/B4.jpg" alt="Interior visualization 1" class="project-img a4-portrait">
+    </a>
+    <a href="../img/B2.jpg" class="glightbox" data-gallery="project-gallery" data-title="Sketch">
+      <img src="../img/B2.jpg" alt="Sketch of the library interior" class="project-img square">
+    </a>
+  </div>
+
+  <div class="project-images">
+    <a href="../img/B5.jpg" class="glightbox" data-gallery="project-gallery" data-title="Interior Visualization 2">
+      <img src="../img/B5.jpg" alt="Interior visualization 2" class="project-img a4-portrait">
+    </a>
+    <a href="../img/B6.jpg" class="glightbox" data-gallery="project-gallery" data-title="Model Photo">
+      <img src="../img/B6.jpg" alt="Model photo" class="project-img a4-portrait">
+    </a>
+    <a href="../img/B7.jpg" class="glightbox" data-gallery="project-gallery" data-title="Material Detail">
+      <img src="../img/B7.jpg" alt="Material detail" class="project-img a4-landscape">
+    </a>
+  </div>
+
+ 
+</main>
+
+<footer>
+  <p>ALEX VALENTINE EVDOKIMOV 2025</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+
+
+
+<!-- Navigation Arrows -->
+<a href="project2.html" class="project-nav left" aria-label="Previous project">
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="15 18 9 12 15 6" />
+  </svg>
+</a>
+
+<a href="project4.html" class="project-nav right" aria-label="Next project">
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="9 18 15 12 9 6" />
+  </svg>
+</a>
+
+<script>
+  const lightbox = GLightbox({ selector: '.glightbox' });
+
+  document.addEventListener('keydown', function (e) {
+    // Only navigate projects if GLightbox is NOT open
+    if (!document.body.classList.contains('glightbox-open')) {
+      if (e.key === 'ArrowLeft') {
+        window.location.href = "project2.html"; // or your previous project
+      } else if (e.key === 'ArrowRight') {
+        window.location.href = "project4.html"; // or your next project
+      }
+    }
+  });
+</script>
+
+</body>
+</html>

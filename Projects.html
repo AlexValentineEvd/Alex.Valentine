@@ -9,8 +9,8 @@
 <body>
 <header>
   <div class="container">
-    <h1 class="logo">ALEX VALENTINE EVDOKIMOV</h1>
-    <nav>
+    <h1 class="logo"><a href="index.html">ALEX VALENTINE EVDOKIMOV</a></h1>
+        <nav>
       <ul class="nav-links">
         <li><a href="index.html" class="nav-link" id="home-link">Home</a></li>
         <li><a href="projects.html" class="nav-link" id="projects-link">Projects</a></li>
@@ -30,72 +30,94 @@
 <main class="projects-page">
   <div class="project-grid">
 
-    <a href="#" class="project-card">
-      <img src="img/E5.jpg" alt="Project 1">
-      <div class="overlay-black"></div>
-      <div class="overlay-text">FROM FOREST TO FRAMEWORK</div>
+    <a class="project-card" href="projects/project1.html">
+     <img src="img/S1.jpg" alt="Project 1">
+     <div class="overlay-black"></div>
+     <div class="overlay-text">FROM FOREST TO FRAMEWORK <P>2024-2025</P></div>
     </a>
 
-    <a href="#" class="project-card">
-      <img src="img/E6.jpg" alt="Project 2">
+    <a href="projects/project2.html" class="project-card">
+      <img src="img/S2.jpg" alt="Project 2">
       <div class="overlay-black"></div>
-      <div class="overlay-text">ANGLO-BELARUSIAN LIBRARY</div>
+      <div class="overlay-text">CULTIVATING CREATIVE RESILIENCE<P>2023-2024</P></div>
     </a>
 
-    <a href="#" class="project-card">
-      <img src="img/E12.jpg" alt="Project 3">
+    <a href="projects/project3.html" class="project-card">
+      <img src="img/S3.jpg" alt="Project 3">
       <div class="overlay-black"></div>
-      <div class="overlay-text">WONDERLAND</div>
+      <div class="overlay-text">BELARUSIAN LIBRARY<P>2023-2024</P></div>
     </a>
 
-        <a href="#" class="project-card">
-      <img src="img/E1.jpg" alt="Project 1">
+        <a href="projects/project4.html" class="project-card">
+      <img src="img/S9.jpg" alt="Project 4">
       <div class="overlay-black"></div>
-      <div class="overlay-text">DAMAGE</div>
+      <div class="overlay-text">HOUSE RENOVATIONS<P>2022-2023</P></div>
     </a>
 
-    <a href="#" class="project-card">
-      <img src="img/E7.jpg" alt="Project 2">
+    <a href="projects/project5.html" class="project-card">
+      <img src="img/S11.jpg" alt="Project 5">
       <div class="overlay-black"></div>
-      <div class="overlay-text">CULTIVATING CREATIVE RESILIENCE</div>
+      <div class="overlay-text">POTRAITS<P>2022-2023</P></div>
     </a>
 
-    <a href="#" class="project-card">
-      <img src="img/E4.jpg" alt="Project 3">
+    <a href="projects/project6.html" class="project-card">
+      <img src="img/S5.jpg" alt="Project 6">
       <div class="overlay-black"></div>
-      <div class="overlay-text">THROW COLLECTION</div>
+      <div class="overlay-text">SCREENING REALITIES<P>2022</P></div>
     </a>
  
-    <a href="#" class="project-card">
-      <img src="img/E11.jpg" alt="Project 2">
+    <a href="projects/project7.html" class="project-card">
+      <img src="img/S8.jpg" alt="Project 7">
       <div class="overlay-black"></div>
-      <div class="overlay-text">Project 2</div>
+      <div class="overlay-text">BONE FURNITURE<P>2022-2023</P></div>
     </a>
 
-    <a href="#" class="project-card">
-      <img src="img/E2.jpg" alt="Project 3">
+    <a href="projects/project8.html" class="project-card">
+      <img src="img/S4.jpg" alt="Project 8">
       <div class="overlay-black"></div>
-      <div class="overlay-text">Project 3</div>
+      <div class="overlay-text">CULTURAL HUB OF UPTON PARK<P>2021-2022</P></div>
     </a>
-    <!-- Add more as needed -->
+
+    <a href="projects/project9.html" class="project-card">
+      <img src="img/F3.jpg" alt="Project 9">
+      <div class="overlay-black"></div>
+      <div class="overlay-text">SEARCH FOR A NEW HOME<P>2020-2021</P></div>
+    </a>
+    
+    <a href="projects/project10.html" class="project-card">
+      <img src="img/S7.jpg" alt="Project 9">
+      <div class="overlay-black"></div>
+      <div class="overlay-text">CUBE<P>2019-2020</P></div>
+    </a>
+
+     <a href="projects/project11.html" class="project-card">
+      <img src="img/S10.jpg" alt="Project 9">
+      <div class="overlay-black"></div>
+      <div class="overlay-text">DAMAGE<P>2022-2023</P></div>
+    </a>
+    <!--
+     Add more as needed -->
   
   </main>
 
 <footer>
- <p>© ALEX VALENTINE EVDOKIMOV 2025</p>
+ <p>ALEX VALENTINE EVDOKIMOV 2025</p>
 </footer>
 
 <script>
-  const path = window.location.pathname;
+  const path = window.location.pathname.toLowerCase();
 
   if (path.includes("index")) {
     document.getElementById("home-link").classList.add("active");
   } else if (path.includes("projects")) {
     document.getElementById("projects-link").classList.add("active");
+  } else if (path.includes("drawings")) {
+    document.getElementById("drawings-link").classList.add("active");
   } else if (path.includes("about")) {
     document.getElementById("about-link").classList.add("active");
   } else if (path.includes("contact")) {
     document.getElementById("contact-link").classList.add("active");
   }
 </script>
+</body>
 </html>

@@ -9,7 +9,7 @@
 <body>
 <header>
   <div class="container">
-    <h1 class="logo">ALEX VALENTINE EVDOKIMOV</h1>
+    <h1 class="logo"><a href="index.html">ALEX VALENTINE EVDOKIMOV</a></h1>
     <nav>
       <ul class="nav-links">
        <li><a href="index.html" class="nav-link" id="home-link">Home</a></li>
@@ -98,21 +98,23 @@ Assisted a local builder on a house extension project, working full-time on site
 </main>
 
 <footer>
-   <p>© ALEX VALENTINE EVDOKIMOV 2025</p>
+   <p> ALEX VALENTINE EVDOKIMOV 2025</p>
 </footer>
 
 <script>
-    const path = window.location.pathname;
+  const path = window.location.pathname.toLowerCase();
 
-    if (path.includes("index")) {
-      document.getElementById("home-link").classList.add("active");
-    } else if (path.includes("projects")) {
-      document.getElementById("projects-link").classList.add("active");
-    } else if (path.includes("about")) {
-      document.getElementById("about-link").classList.add("active");
-    } else if (path.includes("contact")) {
-      document.getElementById("contact-link").classList.add("active");
-    }
-  </script>
+  if (path.includes("index")) {
+    document.getElementById("home-link").classList.add("active");
+  } else if (path.includes("projects")) {
+    document.getElementById("projects-link").classList.add("active");
+  } else if (path.includes("drawings")) {
+    document.getElementById("drawings-link").classList.add("active");
+  } else if (path.includes("about")) {
+    document.getElementById("about-link").classList.add("active");
+  } else if (path.includes("contact")) {
+    document.getElementById("contact-link").classList.add("active");
+  }
+</script>
 </body>
 </html>

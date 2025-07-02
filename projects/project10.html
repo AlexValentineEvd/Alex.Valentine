@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CUBE</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+  
+  <style>
+    .lightboxOverlay {
+      background: rgba(255, 255, 255, 0.6) !important; /* Light fade */
+      backdrop-filter: blur(4px);
+      transition: background 0.3s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <h1 class="logo"><a href="../index.html">ALEX VALENTINE EVDOKIMOV</a></h1>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../projects.html" class="active">Projects</a></li>
+        <li><a href="../drawings.html">Drawings</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="header-divider"></div>
+</header>
+
+<a href="javascript:history.back()" class="back-button" aria-label="Go back">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="15 18 9 12 15 6" />
+  </svg>
+</a>
+
+<main class="project-container">
+  <div class="project-info">
+    <h2>CUBE</h2>
+
+    <p>Architectural Association 2019-20. London, United kingdom</p>
+
+    <p><strong>Description:</strong></p>
+
+    <!-- Short description preview -->
+    <p class="project-description short">
+      In order to achieve making a cube, i look at using only the corners, taking inspiration from the geometric shape within a cube, combined with the aesthetic combination of pyramids and cubes. The cube is made of 16 identical triangular steel sheets, bent and spot welded together.
+    </p>
+        
+</div>
+
+
+
+  <div class="project-images">
+    <a href="../img/I6.jpg" class="glightbox" data-gallery="project-gallery" data-title="SITE PLAN">
+      <img src="../img/I6.jpg" alt="Artwork 1" class="project-img a4-portrait" />
+    </a>
+    <a href="../img/I5.jpg" class="glightbox" data-gallery="project-gallery" data-title="Artwork 3">
+      <img src="../img/I5.jpg" alt="Artwork 3" class="project-img a4-portrait" />
+    </a>
+    <a href="../img/I4.jpg" class="glightbox" data-gallery="project-gallery" data-title="SITE PLAN">
+      <img src="../img/I4.jpg" alt="Artwork 1" class="project-img a4-portrait" />
+    </a>
+    <a href="../img/I3.jpg" class="glightbox" data-gallery="project-gallery" data-title="Artwork 3">
+      <img src="../img/I3.jpg" alt="Artwork 3" class="project-img a4-portrait" />
+    </a>
+    <a href="../img/I2.jpg" class="glightbox" data-gallery="project-gallery" data-title="SITE PLAN">
+      <img src="../img/I2.jpg" alt="Artwork 1" class="project-img a4-portrait" />
+    </a>
+    <a href="../img/I1.jpg" class="glightbox" data-gallery="project-gallery" data-title="Artwork 3">
+      <img src="../img/I1.jpg" alt="Artwork 3" class="project-img a4-portrait" />
+    </a>
+  </div>
+  
+</main>
+
+<footer>
+  <p>ALEX VALENTINE EVDOKIMOV 2025</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <script>
+    
+
+    // Read More toggle logic
+    const readMoreBtn = document.querySelector('.read-more-btn');
+    const shortDesc = document.querySelector('.project-description.short');
+    const fullDesc = document.querySelector('.project-description.full');
+
+    readMoreBtn.addEventListener('click', () => {
+      if (fullDesc.style.display === 'block') {
+        fullDesc.style.display = 'none';
+        shortDesc.style.display = 'block';
+        readMoreBtn.textContent = 'Read More';
+      } else {
+        fullDesc.style.display = 'block';
+        shortDesc.style.display = 'none';
+        readMoreBtn.textContent = 'Read Less';
+      }
+    });
+  </script>
+<!-- Left Arrow -->
+<a href="project9.html" class="project-nav left" aria-label="Previous project">
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="15 18 9 12 15 6" />
+  </svg>
+</a>
+
+<!-- Right Arrow -->
+<a href="project11.html" class="project-nav right" aria-label="Next project">
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="9 18 15 12 9 6" />
+  </svg>
+</a>
+
+<script>
+  const lightbox = GLightbox({ selector: '.glightbox' });
+
+  document.addEventListener('keydown', function (e) {
+    // Only navigate projects if GLightbox is NOT open
+    if (!document.body.classList.contains('glightbox-open')) {
+      if (e.key === 'ArrowLeft') {
+        window.location.href = "project9.html"; // or your previous project
+      } else if (e.key === 'ArrowRight') {
+        window.location.href = "project11.html"; // or your next project
+      }
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BONE FURNITURE</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+  <style>
+    .lightboxOverlay {
+      background: rgba(255, 255, 255, 0.6) !important;
+      backdrop-filter: blur(4px);
+      transition: background 0.3s ease-in-out;
+    }
+    
+    /* Example styles for A4 portrait images, tweak in your main CSS */
+    .a4-portrait {
+      width: 100%;
+      height: auto;
+      max-width: 210mm; /* approximate A4 width */
+      aspect-ratio: 210 / 297; /* A4 ratio portrait */
+      object-fit: contain;
+      display: block;
+    }
+
+    /* Grid layout for project images - can adjust or remove if in your main CSS */
+    .project-images {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      padding: 40px 60px;
+      justify-content: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1 class="logo"><a href="../index.html">ALEX VALENTINE EVDOKIMOV</a></h1>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../projects.html" class="active">Projects</a></li>
+          <li><a href="../drawings.html">Drawings</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="header-divider"></div>
+  </header>
+
+  <a href="javascript:history.back()" class="back-button" aria-label="Go back">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="15 18 9 12 15 6" />
+  </svg>
+</a>
+
+  <main class="project-container">
+    <div class="project-sidebar">
+      <div class="project-info">
+        <h2>BONE FURNITURE</h2>
+        <p>Spencer Fung Architects 2023. Kensal rise, London, United Kingdom</p>
+        <p><strong>Description:</strong></p>
+        <p>
+          Renders showing the various designs of furniture and lights all using nature to determine the form, specifically that of twigs and bones.
+          Using existing branches to create unique forms for both lights and tables, finished in a dark bronze.
+          These renders and 3d models have been created based on pencil sketches provided by boss; I was set to imagine these 2d drawings as 3d objects.
+        </p>
+      </div>
+    </div>
+
+    <div class="project-images">
+      <a href="../img/Y1.jpg" class="glightbox" data-gallery="project-gallery" data-title="Artwork 1">
+        <img src="../img/Y1.jpg" alt="Artwork 1" class="project-img a3-portrait" />
+      </a>
+      <a href="../img/Y2.jpg" class="glightbox" data-gallery="project-gallery" data-title="Artwork 2">
+        <img src="../img/Y2.jpg" alt="Artwork 2" class="project-img a3-portrait" />
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <p>ALEX VALENTINE EVDOKIMOV 2025</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+ 
+
+  <!-- Left Arrow -->
+  <a href="project6.html" class="project-nav left" aria-label="Previous project">
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 18 9 12 15 6" />
+    </svg>
+  </a>
+
+  <!-- Right Arrow -->
+  <a href="project8.html" class="project-nav right" aria-label="Next project">
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="9 18 15 12 9 6" />
+    </svg>
+  </a>
+
+ <script>
+  const lightbox = GLightbox({ selector: '.glightbox' });
+
+  document.addEventListener('keydown', function (e) {
+    // Only navigate projects if GLightbox is NOT open
+    if (!document.body.classList.contains('glightbox-open')) {
+      if (e.key === 'ArrowLeft') {
+        window.location.href = "project6.html"; // or your previous project
+      } else if (e.key === 'ArrowRight') {
+        window.location.href = "project8.html"; // or your next project
+      }
+    }
+  });
+</script>
+</body>
+</html>

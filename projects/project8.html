@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CULTIVATING CREATIVE RESILIENCE</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+  
+  <style>
+    .lightboxOverlay {
+      background: rgba(255, 255, 255, 0.6) !important; /* Light fade */
+      backdrop-filter: blur(4px);
+      transition: background 0.3s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <h1 class="logo"><a href="../index.html">ALEX VALENTINE EVDOKIMOV</a></h1>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../projects.html" class="active">Projects</a></li>
+        <li><a href="../drawings.html">Drawings</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="header-divider"></div>
+</header>
+
+<a href="javascript:history.back()" class="back-button" aria-label="Go back">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="15 18 9 12 15 6" />
+  </svg>
+</a>
+
+<main class="project-container">
+  <div class="project-info">
+    <h2>CULTIVATING CREATIVE RESILIENCE</h2>
+
+    <p>Third year, Unit 2, Demonstration Neighbourhood 2021-2022. Upton park, London, United Kingdom </p>
+
+    <p><strong>Description:</strong></p>
+
+    <!-- Short description preview -->
+    <p class="project-description short">
+      Security is often found in informal ways. I explored infrastructure of care specifically focusing on security as
+a form of care. an object of study that I examined specifically from a planning perspective. By activating the
+night-time economy of the area, a crucial sticky space is introduced: one which encourages natural surveillance
+as the most effective and reliable form of security. Additionally, involving a number of other informal
+security measures: a powerful light source, an ideal location to stop and feel assured as well as a good light
+source and importantly without enforcing artificial surveillance or changing the existing landscape of successful
+daytime trade. Caring by providing a source of security through design. 
+
+    </p>
+
+    <!-- Full description hidden initially -->
+<div class="project-description full">
+<p>Security is often found in informal ways. I explored infrastructure of care specifically focusing on security as
+a form of care. an object of study that I examined specifically from a planning perspective. By activating the
+night-time economy of the area, a crucial sticky space is introduced: one which encourages natural surveillance
+as the most effective and reliable form of security. Additionally, involving a number of other informal
+security measures: a powerful light source, an ideal location to stop and feel assured as well as a good light
+source and importantly without enforcing artificial surveillance or changing the existing landscape of successful
+daytime trade. Caring by providing a source of security through design. 
+</p>
+<p>
+Through extensive site visits, i explore the difference between the market, espessically the front of the market
+consisting of the two canopies, i find that during the day the market espesically these front canopies are thriving
+with plenty of people from various cultures, shopping and serving. however during the evening this space
+completly transforms to an empty dark space. (far right) the building of shutters shows a response to my initial
+reaction to the area of upton park, i felt that the are was littered with shutters especially consisting of graffiti
+tagging.
+</p>
+<p>
+Separating the canopys into two zones, blue for food while red signifies the activity area. The encouragement and implementation of natural surveillance is key in ensuring the most effective and
+low-maintenance form of security, since traditional surveillance methods risk imposing a menacing impression. By providing light, specifically lights shining various colours, it becomes a multi purpose device, lights can
+change depending on the situation, but importantly by choice.</p>
+    
+</div>
+
+<button class="read-more-btn">Read More</button>
+</div>
+
+  <div class="project-images">
+    <a href="../img/U1.jpg" class="glightbox" data-gallery="project-gallery" data-title="SITE PLAN">
+      <img src="../img/U1.jpg" alt="Artwork 1" class="project-img a3-landscape" />
+    </a>
+    <a href="../img/U3.jpg" class="glightbox" data-gallery="project-gallery" data-title="Artwork 3">
+      <img src="../img/U3.jpg" alt="Artwork 3" class="project-img a3-landscape" />
+    </a>
+  </div>
+  
+  <div class="project-images">
+    <a href="../img/U2.jpg" class="glightbox" data-gallery="project-gallery" data-title="Artwork 4">
+      <img src="../img/U2.jpg" alt="Artwork 4" class="project-img a4-landscape" />
+    </a>
+    <a href="../img/U5.jpg" class="glightbox" data-gallery="project-gallery" data-title="Artwork 5">
+      <img src="../img/U5.jpg" alt="Artwork 5" class="project-img a3-portrait" />
+    </a>
+    <a href="../img/U6.jpg" class="glightbox" data-gallery="project-gallery" data-title="Artwork 6">
+      <img src="../img/U6.jpg" alt="Artwork 6" class="project-img a3-landscape" />
+    </a>
+    <a href="../img/U7.jpg" class="glightbox" data-gallery="project-gallery" data-title="Artwork 7">
+      <img src="../img/U7.jpg" alt="Artwork 7" class="project-img a3-landscape" />
+    </a>
+  </div>
+</main>
+
+<footer>
+  <p>ALEX VALENTINE EVDOKIMOV 2025</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <script>
+   
+
+    // Read More toggle logic
+    const readMoreBtn = document.querySelector('.read-more-btn');
+    const shortDesc = document.querySelector('.project-description.short');
+    const fullDesc = document.querySelector('.project-description.full');
+
+    readMoreBtn.addEventListener('click', () => {
+      if (fullDesc.style.display === 'block') {
+        fullDesc.style.display = 'none';
+        shortDesc.style.display = 'block';
+        readMoreBtn.textContent = 'Read More';
+      } else {
+        fullDesc.style.display = 'block';
+        shortDesc.style.display = 'none';
+        readMoreBtn.textContent = 'Read Less';
+      }
+    });
+  </script>
+<!-- Left Arrow -->
+<a href="project7.html" class="project-nav left" aria-label="Previous project">
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="15 18 9 12 15 6" />
+  </svg>
+</a>
+
+<!-- Right Arrow -->
+<a href="project9.html" class="project-nav right" aria-label="Next project">
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="9 18 15 12 9 6" />
+  </svg>
+</a>
+
+<script>
+  const lightbox = GLightbox({ selector: '.glightbox' });
+
+  document.addEventListener('keydown', function (e) {
+    // Only navigate projects if GLightbox is NOT open
+    if (!document.body.classList.contains('glightbox-open')) {
+      if (e.key === 'ArrowLeft') {
+        window.location.href = "project7.html"; // or your previous project
+      } else if (e.key === 'ArrowRight') {
+        window.location.href = "project9.html"; // or your next project
+      }
+    }
+  });
+</script>
+
+</body>
+</html>

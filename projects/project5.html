@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Project Title</title>
+  <link rel="stylesheet" href="../styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+
+  <style>
+    .lightboxOverlay {
+      background: rgba(255, 255, 255, 0.6) !important;
+      backdrop-filter: blur(4px);
+      transition: background 0.3s ease-in-out;
+    }
+
+    .project-text-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .project-images {
+      display: grid;
+      grid-template-columns: repeat(4, auto);
+      gap: 32px;
+      padding: 40px 60px;
+      justify-content: center;
+    }
+
+    .project-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <h1 class="logo"><a href="../index.html">ALEX VALENTINE EVDOKIMOV</a></h1>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../projects.html" class="active">Projects</a></li>
+        <li><a href="../drawings.html">Drawings</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="header-divider"></div>
+</header>
+
+<a href="javascript:history.back()" class="back-button" aria-label="Go back">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="15 18 9 12 15 6" />
+  </svg>
+</a>
+
+<main>
+  <!-- TEXT SECTION -->
+  <div class="project-text-container">
+    <div class="project-info">
+      <h2>POTRAITS</h2>
+      <p>2023-24. London, United Kingdom</p>
+      <p><strong>Description:</strong></p>
+      <p>PAGE UNDER CONSTRUCTION</p>
+    </div>
+  </div>
+
+  <!-- IMAGE GRID SECTION -->
+  <div class="project-images">
+    <a href="../img/Z5.jpg" class="glightbox" data-gallery="project-gallery" data-title="SITE PLAN">
+      <img src="../img/Z5.jpg" alt="Artwork 1" class="project-img a4-portrait">
+    </a>
+    <a href="../img/Z6.jpg" class="glightbox" data-gallery="project-gallery" data-title="Artwork 2">
+      <img src="../img/Z6.jpg" alt="Artwork 2" class="project-img a4-portrait">
+    </a>
+    <a href="../img/Z7.jpg" class="glightbox" data-gallery="project-gallery" data-title="Artwork 3">
+      <img src="../img/Z7.jpg" alt="Artwork 3" class="project-img a4-portrait">
+    </a>
+    <a href="../img/Z8.jpg" class="glightbox" data-gallery="project-gallery" data-title="Artwork 4">
+      <img src="../img/Z8.jpg" alt="Artwork 4" class="project-img a4-portrait">
+    </a>
+  </div>
+
+<div class="under-construction-overlay">
+  <div class="under-construction-message">
+    <h2>Page Under Construction</h2>
+    <p>This page is currently being updated. Please check back soon!</p>
+  </div>
+</div>
+
+</main>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+
+
+<!-- Navigation Arrows -->
+<a href="project4.html" class="project-nav left" aria-label="Previous project">
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="15 18 9 12 15 6" />
+  </svg>
+</a>
+
+<a href="project6.html" class="project-nav right" aria-label="Next project">
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="9 18 15 12 9 6" />
+  </svg>
+</a>
+
+<script>
+  const lightbox = GLightbox({ selector: '.glightbox' });
+
+  document.addEventListener('keydown', function (e) {
+    // Only navigate projects if GLightbox is NOT open
+    if (!document.body.classList.contains('glightbox-open')) {
+      if (e.key === 'ArrowLeft') {
+        window.location.href = "project4.html"; // or your previous project
+      } else if (e.key === 'ArrowRight') {
+        window.location.href = "project6.html"; // or your next project
+      }
+    }
+  });
+</script>
+
+<footer>
+  <p>ALEX VALENTINE EVDOKIMOV 2025</p>
+</footer>
+
+</body>
+</html>
