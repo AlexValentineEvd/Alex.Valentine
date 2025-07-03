@@ -337,18 +337,13 @@ main, .about-section, .contact-page {
   font-weight: 500;
 }
 
-@media (max-width: 900px) {
-  .gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 @media (max-width: 600px) {
   .gallery-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
+    gap: 20px 8px; /* tighter gap if you want */
   }
   .drawings-gallery {
-    padding: 40px 20px;
+    padding: 20px 8px; /* less side padding */
   }
 }
 
@@ -756,5 +751,12 @@ body {
   .nav-links a {
     font-size: 1.2rem;
     /* You can increase this value as needed */
+  }
+}
+
+@media (max-width: 600px) {
+  .about-section {
+    padding-left: 18px;
+    padding-right: 18px;
   }
 }
