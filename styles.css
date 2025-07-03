@@ -751,3 +751,10 @@ body {
   50% { opacity: 0; }
   100% { opacity: 0; }
 }
+
+@media (max-width: 600px) {
+  .nav-links a {
+    font-size: 1.2rem;
+    /* You can increase this value as needed */
+  }
+}
