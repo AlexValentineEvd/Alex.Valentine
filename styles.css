@@ -747,9 +747,11 @@ footer {
   justify-content: center;
   align-items: stretch;
   gap: 32px;
-  margin: 200px auto 70px auto;
+  margin: 280px auto 70px auto;
   max-width: 1200px;
 }
+
+
 
 .preview-box {
   flex: 1 1 0;
@@ -826,3 +828,8 @@ footer {
   }
 }
 
+@media (max-width: 768px) {
+  body {
+    padding-top: 150px; /* match or slightly exceed your header height */
+  }
+}
