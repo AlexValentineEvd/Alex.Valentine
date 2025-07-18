@@ -26,7 +26,14 @@
 </header>
 
 <main class="drawings-gallery">
-  <div class="gallery-wall">
+  <div class="sort-sidebar">
+  <button class="sort-btn" data-type="year" data-state="none">Year</button>
+  <button class="sort-btn" data-type="size" data-state="none">Size</button>
+  <button class="sort-btn" data-type="orientation" data-state="none">Orientation</button>
+  <button class="sort-btn" data-type="medium" data-state="none">Medium</button>
+</div>
+
+  <div class="gallery-wall" id="gallery">
 
     <!-- A5 portrait -->
     <div class="drawing-piece">
@@ -743,6 +750,138 @@
   } else if (path.includes("contact")) {
     document.getElementById("contact-link").classList.add("active");
   }
+</script>
+
+<script>
+const allDrawings = Array.from(document.querySelectorAll('.drawing-piece')).map((el, index) => {
+  const img = el.querySelector('img');
+  const title = el.querySelector('h3')?.innerText.trim() || '';
+  const metaMedium = el.querySelector('.meta-medium')?.innerText.trim() || '';
+  const metaSize = el.querySelector('.meta-size')?.innerText.trim() || '';
+
+  // Extract year from metaMedium like "2024 – Pen on paper"
+  const yearMatch = metaMedium.match(/\d{4}/);
+  const year = yearMatch ? parseInt(yearMatch[0], 10) : 0;
+  // Extract medium by removing year and dash
+  const medium = metaMedium.replace(yearMatch ? yearMatch[0] : '', '').replace(/–|-/, '').trim();
+
+  // Extract width and height from metaSize, expected like "420 x 297mm"
+  let width = 0, height = 0;
+  const sizeMatch = metaSize.match(/(\d+)\s*x\s*(\d+)/i);
+  if (sizeMatch) {
+    width = parseInt(sizeMatch[1], 10) / 10;  // convert mm to cm
+    height = parseInt(sizeMatch[2], 10) / 10; // convert mm to cm
+  }
+
+  const orientation = width >= height ? 'landscape' : 'portrait';
+
+  return {
+    element: el,
+    title,
+    year,
+    medium,
+    size: metaSize,
+    width,
+    height,
+    orientation,
+    originalIndex: index
+  };
+});
+
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+document.querySelectorAll('.sort-btn').forEach(button => {
+  button.addEventListener('click', () => {
+    let state = button.dataset.state || 'none';
+    const type = button.dataset.type;
+
+    // Reset other buttons
+    document.querySelectorAll('.sort-btn').forEach(btn => {
+      if (btn !== button) {
+        btn.dataset.state = 'none';
+        btn.classList.remove('active');
+        btn.innerText = capitalize(btn.dataset.type);
+      }
+    });
+
+   // Custom toggle logic to always show both asc and desc options in sequence for size/year:
+if (state === 'none') {
+  // On first click for year or size, start with descending (newest/largest first)
+  if (type === 'year' || type === 'size' || type === 'orientation'|| type === 'medium') {
+    state = 'desc';
+  } else {
+    state = 'asc'; // others start ascending
+  }
+} else if (state === 'desc') {
+  // second click: toggle to ascending (oldest/smallest first)
+  state = 'asc';
+} else {
+  // third click: reset to none (original order)
+  state = 'none';
+}
+
+    button.dataset.state = state;
+    button.classList.toggle('active', state !== 'none');
+
+    let sorted = [...allDrawings];
+
+    if (state === 'none') {
+      // Restore original order
+      sorted.sort((a, b) => a.originalIndex - b.originalIndex);
+      button.innerText = capitalize(type);
+    } else {
+      if (type === 'year') {
+        sorted.sort((a, b) => state === 'asc' ? a.year - b.year : b.year - a.year);
+      } else if (type === 'size') {
+        sorted.sort((a, b) => {
+          const areaA = a.width * a.height;
+          const areaB = b.width * b.height;
+          return state === 'asc' ? areaA - areaB : areaB - areaA;
+        });
+      } else if (type === 'orientation') {
+        sorted.sort((a, b) => {
+          const comp = a.orientation.localeCompare(b.orientation);
+          return state === 'asc' ? comp : -comp;
+        });
+      } else if (type === 'medium') {
+        sorted.sort((a, b) => {
+          const comp = a.medium.localeCompare(b.medium);
+          return state === 'asc' ? comp : -comp;
+        });
+      }
+
+      button.innerText = `${capitalize(type)} ${state === 'asc' ? '▲' : '▼'}`;
+    }
+
+    renderSortedDrawings(sorted);
+  });
+});
+
+function renderSortedDrawings(sorted) {
+  const container = document.querySelector('.gallery-wall');  // Make sure this matches your gallery container class!
+  container.innerHTML = '';  // Clear existing content
+  sorted.forEach(item => container.appendChild(item.element));
+}
+</script>
+
+<button id="backToTop" title="Back to top">&#x203A;</button>
+
+<script>
+  const backToTop = document.getElementById("backToTop");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      backToTop.style.display = "block";
+    } else {
+      backToTop.style.display = "none";
+    }
+  });
+
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 </script>
 
 
