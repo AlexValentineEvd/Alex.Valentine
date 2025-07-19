@@ -830,56 +830,97 @@ footer {
 
 .sorting-bar {
   position: fixed;
-  top: 90px; /* exactly the header height */
+  top: 90px;
   left: 0;
   width: 100vw;
-  height: 30px;
+  height: 28px;
   background-color: black;
   border-bottom: 1px solid #444;
   display: flex;
   align-items: center;
-  padding: 0 5px;
+  padding: 0;
   box-sizing: border-box;
-  margin-top: 0; /* prevent gap */
   z-index: 999;
 }
 
-.sorting-bar .sort-btn {
-  flex: 1 1 auto;
-  min-width: 70px;
-  height: 18px;          /* made it thinner */
-  padding: 0 6px;
-  margin: 0 4px;
+.sort-btn {
+  flex: 1;
+  height: 100%;
   background-color: black;
   color: white;
-  border: none;          /* removed the white border */
-  font-size: 0.65rem;    /* smaller text */
+  border: none;
+  font-size: 0.65rem;
   font-weight: 600;
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  border-radius: 0;
   transition: background-color 0.3s, color 0.3s;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-sizing: border-box;
 }
 
-.sorting-bar .sort-btn:hover,
-.sorting-bar .sort-btn.active,
-.sorting-bar .sort-btn:focus {
+.sort-btn:hover,
+.sort-btn.active {
   background-color: white;
   color: black;
-  outline: none;
-  border: none; /* ensure no border appears on hover/focus */
 }
 
-/* Push down main content so it doesn't get covered by header + sorting bar */
-.gallery-wall {
-  padding-top: calc(60px + 36px); /* height of header + sorting bar */
+.sort-buttons {
+  display: flex;
+  justify-content: space-between; /* evenly spaces items across the container */
+  align-items: center; /* vertically center buttons */
+  gap: 10px; /* optional: space between buttons */
+  width: 100%; /* full width of container */
 }
 
+/* If buttons have a class, e.g. 'sort-btn', ensure consistent sizing */
+.sort-buttons button {
+  flex: 1; /* make all buttons grow equally */
+  max-width: 150px; /* optional: prevent buttons from getting too wide */
+}
+
+/* === Collection Dropdown === */
+.collection-menu {
+  flex: 1;
+  position: relative;
+  height: 100%;
+  display: flex;
+}
+
+
+
+.collection-options {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: black;
+  border: 1px solid white;
+  border-top: none;
+  min-width: 140px;
+  z-index: 1000;
+  border-radius: 0 0 4px 4px;
+}
+
+.collection-options.show {
+  display: block;
+}
+
+.collection-option {
+  padding: 6px 10px;
+  font-size: 0.65rem;
+  color: white;
+  cursor: pointer;
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 1px solid #333;
+}
+
+.collection-option:hover {
+  background-color: white;
+  color: black;
+}
 
 #backToTop {
   position: fixed;
@@ -895,7 +936,7 @@ footer {
   padding: 0 10px;
   z-index: 2000;
   transform: rotate(-90deg);
-  display: none; /* keep this to control visibility */
+  display: none;
   transition: color 0.3s ease, transform 0.2s ease;
 }
 
@@ -903,4 +944,3 @@ footer {
   color: gray;
   transform: rotate(-90deg) scale(1.1);
 }
-

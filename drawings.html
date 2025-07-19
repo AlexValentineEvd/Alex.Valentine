@@ -28,14 +28,25 @@
 <div class="sorting-bar">
   <button class="sort-btn" data-type="year" data-state="none">Year</button>
   <button class="sort-btn" data-type="size" data-state="none">Size</button>
-  <button class="sort-btn" data-type="orientation" data-state="none">Orientation</button>
   <button class="sort-btn" data-type="medium" data-state="none">Medium</button>
+ <div class="collection-dropdown">
+    <label for="collectionSelect">Collection:</label>
+    <select id="collectionSelect">
+      <option value="all">All</option>
+      <option value="house">House Drawings</option>
+      <option value="Wonderland">Wonderland</option>
+      <option value="Throw">Throw</option>
+      <option value="animals">Animal Drawings</option>
+      <option value="CANOE">Canoe Collection</option>
+      <!-- Add more options as needed -->
+    </select>
+  </div>
 </div>
 
   <div class="gallery-wall" id="gallery">
 
     <!-- A5 portrait -->
-    <div class="drawing-piece">
+    <div class="drawing-piece" data-collection="house">
       <img src="img/T12.png" alt="A5 Portrait"
            class="drawing-img"
            style="width: calc(14.8 * var(--cm)); height: calc(21 * var(--cm));">
@@ -47,7 +58,7 @@
 </div>
     
     <!-- A3 Landscape -->
-    <div class="drawing-piece">
+    <div class="drawing-piece" data-collection="Wonderland">
       <img src="img/T5.png" alt="A3 Landscape"
            class="drawing-img"
            style="width: calc(42 * var(--cm)); height: calc(29.7 * var(--cm));">
@@ -59,7 +70,7 @@
 </div>
 
     <!-- A4 Landscape -->
-    <div class="drawing-piece">
+    <div class="drawing-piece" data-collection="house">
       <img src="img/T7.png" alt="A4 Landscape"
            class="drawing-img"
            style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
@@ -71,7 +82,7 @@
 </div>
 
     <!-- A4 Portrait -->
-     <div class="drawing-piece">
+     <div class="drawing-piece" data-collection="Throw">
       <img src="img/t17.png" alt="A4 Portrait"
            class="drawing-img"
            style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
@@ -83,7 +94,7 @@
 </div>
 
 <!-- A3 Landscape -->
-    <div class="drawing-piece">
+    <div class="drawing-piece" data-collection="Wonderland">
       <img src="img/T6.png" alt="A3 Landscape"
            class="drawing-img"
            style="width: calc(42 * var(--cm)); height: calc(29.7 * var(--cm));">
@@ -95,7 +106,7 @@
 </div>
 
 <!-- A4 Portrait -->
-     <div class="drawing-piece">
+     <div class="drawing-piece" data-collection="house">
       <img src="img/T10.png" alt="A4 Portrait"
            class="drawing-img"
            style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
@@ -119,7 +130,7 @@
 </div>
 
     <!-- A4 Landscape -->
-    <div class="drawing-piece">
+    <div class="drawing-piece" data-collection="CANOE">
       <img src="img/t56.png" alt="A4 Landscape"
            class="drawing-img"
            style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
@@ -131,7 +142,7 @@
 </div>
 
 <!-- A3 Landscape -->
-    <div class="drawing-piece">
+    <div class="drawing-piece" data-collection="Wonderland">
       <img src="img/t62.png" alt="A3 Landscape"
            class="drawing-img"
            style="width: calc(42 * var(--cm)); height: calc(29.7 * var(--cm));">
@@ -143,7 +154,7 @@
 </div>
 
     <!-- A4 Portrait -->
-     <div class="drawing-piece">
+     <div class="drawing-piece" data-collection="Throw">
       <img src="img/T9.png" alt="A4 Portrait"
            class="drawing-img"
            style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
@@ -155,7 +166,7 @@
 </div>
 
     <!-- A4 Portrait -->
-     <div class="drawing-piece">
+     <div class="drawing-piece" data-collection="house">
       <img src="img/T8.png" alt="A4 Portrait"
            class="drawing-img"
            style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
@@ -167,7 +178,7 @@
 </div>
 
     <!-- A4 Landscape -->
-<div class="drawing-piece">
+<div class="drawing-piece" data-collection="house">
   <img src="img/T13.png" alt="A4 Landscape"
        class="drawing-img"
        style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
@@ -179,7 +190,7 @@
 </div>
 
 <!-- A3 Landscape -->
-<div class="drawing-piece">
+<div class="drawing-piece" data-collection="Wonderland">
   <img src="img/T1.png" alt="A3 Landscape"
        class="drawing-img"
        style="width: calc(42 * var(--cm)); height: calc(29.7 * var(--cm));">
@@ -191,7 +202,7 @@
 </div>
 
 <!-- A4 Portrait -->
-<div class="drawing-piece">
+<div class="drawing-piece" data-collection="animals">
   <img src="img/T11.png" alt="A4 Portrait"
        class="drawing-img"
        style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
@@ -203,7 +214,7 @@
 </div>
 
 <!-- A4 Portrait -->
-<div class="drawing-piece">
+<div class="drawing-piece" data-collection="animals">
   <img src="img/t19.png" alt="A4 Portrait"
        class="drawing-img"
        style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
@@ -215,7 +226,7 @@
 </div>
 
 <!-- A3 Landscape -->
-<div class="drawing-piece">
+<div class="drawing-piece" data-collection="animals">
   <img src="img/T4.png" alt="A3 Landscape"
        class="drawing-img"
        style="width: calc(42 * var(--cm)); height: calc(29.7 * var(--cm));">
@@ -228,7 +239,7 @@
 
 
     <!-- A4 Portrait -->
-     <div class="drawing-piece">
+     <div class="drawing-piece" data-collection="CANOE">
       <img src="img/t55.png" alt="A4 Portrait"
            class="drawing-img"
            style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
@@ -251,7 +262,7 @@
 </div>
 
     <!-- A4 Landscape -->
-    <div class="drawing-piece">
+    <div class="drawing-piece" data-collection="animals">
       <img src="img/t41.png" alt="A4 Landscape"
            class="drawing-img"
            style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
@@ -263,7 +274,7 @@
 </div>
 
     <!-- A4 Portrait -->
-     <div class="drawing-piece">
+     <div class="drawing-piece" data-collection="house">
       <img src="img/t16.png" alt="A4 Portrait"
            class="drawing-img"
            style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
@@ -274,7 +285,7 @@
   </div>
 </div>
 
-<div class="drawing-piece">
+<div class="drawing-piece" data-collection="CANOE">
       <img src="img/t78.png" alt="E6 Portrait"
            class="drawing-img"
            style="width: calc(9 * var(--cm)); height: calc(14 * var(--cm));">
@@ -381,7 +392,7 @@
 </div>
 
     <!-- A4 Landscape -->
-    <div class="drawing-piece">
+    <div class="drawing-piece" data-collection="house">
       <img src="img/t43.png" alt="A4 Landscape"
            class="drawing-img"
            style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
@@ -405,7 +416,7 @@
 </div>
 
     <!-- A4 Portrait -->
-     <div class="drawing-piece">
+     <div class="drawing-piece" data-collection="Throw">
       <img src="img/t18.png" alt="A4 Portrait"
            class="drawing-img"
            style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
@@ -513,7 +524,7 @@
 </div>
 
     <!-- A4 Landscape -->
-    <div class="drawing-piece">
+    <div class="drawing-piece" data-collection="CANOE">
       <img src="img/t44.png" alt="A4 Landscape"
            class="drawing-img"
            style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
@@ -999,7 +1010,7 @@
 </div>
 
 <!-- A4 Portrait -->
-     <div class="drawing-piece">
+     <div class="drawing-piece" data-collection="Throw">
       <img src="img/t66.png" alt="A4 Portrait"
            class="drawing-img"
            style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
@@ -1012,7 +1023,7 @@
 
 
     <!-- A4 Landscape -->
-    <div class="drawing-piece">
+    <div class="drawing-piece" data-collection="house">
       <img src="img/t59.png" alt="A4 Landscape"
            class="drawing-img"
            style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
@@ -1253,6 +1264,23 @@ function renderSortedDrawings(sorted) {
 
   backToTop.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+<script>
+  document.getElementById('collectionSelect').addEventListener('change', function () {
+    const selected = this.value;
+    const drawings = document.querySelectorAll('.drawing-piece');
+
+    drawings.forEach(drawing => {
+      const collection = drawing.dataset.collection;
+
+      if (selected === "all" || collection === selected) {
+        drawing.style.display = "";
+      } else {
+        drawing.style.display = "none";
+      }
+    });
   });
 </script>
 
