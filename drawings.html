@@ -17,9 +17,12 @@
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+  <div id="drawingTooltip" class="drawing-tooltip"></div>
 </head>
 
 <body>
+
+
 
 <header>
   <div class="container">
@@ -735,6 +738,18 @@
   </div>
 </div>
 
+<!-- A4 Portrait -->
+     <div class="drawing-piece" data-collection="stairs">
+      <img src="img/t179.png" alt="A4 Portrait"
+           class="drawing-img"
+           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
+       <div class="drawing-meta">
+    <h3>No.144</h3>
+    <div class="meta-medium">2019 – Pen on paper</div>
+    <div class="meta-size">210 x 297mm</div>
+  </div>
+</div>
+
  <!-- A4 Portrait -->
      <div class="drawing-piece" data-collection="sketch book">
       <img src="img/t68.png" alt="A4 Portrait"
@@ -1428,6 +1443,18 @@
       <div class="drawing-meta">
     <h3>No.245</h3>
     <div class="meta-medium">2021 – Pen on paper</div>
+    <div class="meta-size">297 x 210mm</div>
+  </div>
+</div>
+
+<!-- A4 Landscape -->
+    <div class="drawing-piece" data-collection="house">
+      <img src="img/t178.png" alt="A4 Landscape"
+           class="drawing-img"
+           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
+      <div class="drawing-meta">
+    <h3>No.169</h3>
+    <div class="meta-medium">2020 – Pen on paper</div>
     <div class="meta-size">297 x 210mm</div>
   </div>
 </div>
@@ -2289,6 +2316,45 @@ function renderSortedDrawings(sorted) {
       }
     });
   });
+</script>
+
+<script>
+const tooltip = document.getElementById('drawingTooltip');
+
+document.querySelectorAll('.drawing-piece').forEach(function(entry) {
+  const meta = entry.querySelector('.drawing-meta');
+  entry.addEventListener('mousemove', function(e) {
+    if (meta) {
+      tooltip.innerHTML = meta.innerHTML;
+      tooltip.style.display = 'block';
+      tooltip.style.opacity = '1';
+      tooltip.style.left = (e.clientX + 16) + 'px';
+      tooltip.style.top = (e.clientY + 16) + 'px';
+    }
+  });
+  entry.addEventListener('mouseleave', function() {
+    tooltip.style.display = 'none';
+    tooltip.style.opacity = '0';
+  });
+  entry.addEventListener('click', function(e) {
+    // Optional: also show on click for touch devices
+    if (meta) {
+      tooltip.innerHTML = meta.innerHTML;
+      tooltip.style.display = 'block';
+      tooltip.style.opacity = '1';
+      tooltip.style.left = (e.clientX + 16) + 'px';
+      tooltip.style.top = (e.clientY + 16) + 'px';
+    }
+  });
+});
+
+document.body.addEventListener('mousemove', function(e) {
+  // Hide tooltip if not hovering a drawing
+  if (!e.target.closest('.drawing-piece')) {
+    tooltip.style.display = 'none';
+    tooltip.style.opacity = '0';
+  }
+});
 </script>
 
 
