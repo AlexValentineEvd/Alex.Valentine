@@ -295,6 +295,12 @@ header .container {
   text-decoration: underline;
 }
 
+.drawings-gallery {
+  padding: 60px 10px 0 10px;    /* Even padding on left/right */
+  margin: 0;
+  max-width: 100vw;
+  width: 100vw;
+}
 
 .drawing-entry {
   display: flex;
@@ -510,14 +516,17 @@ footer {
 }
 
 
-.gallery-wall {
-  display: flex;
+.gallery-wall,
+.gallery-grid {
+  display: flex;                /* Ensure flex layout */
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 40px;
-  padding: 60px 10px;
-  max-width: 1400px;
+  justify-content: center;      /* Center items horizontally */
+  gap: 40px 20px;               /* Adjust gap as needed */
+  width: 100vw;
+  max-width: 1400px;            /* Or your preferred max width */
   margin: 0 auto;
+  padding: 60px 10px;           /* Remove large left padding */
+  box-sizing: border-box;
 }
 
 .drawing-piece {
@@ -1088,27 +1097,40 @@ footer {
   width: 100vw;
 }
 
+
+
+@media (max-width: 600px) {
+  .gallery-wall,
+  .gallery-grid {
+    justify-content: center !important; /* Center flex/grid items */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .drawing-piece {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 @media (max-width: 600px) {
   .sorting-bar {
+    display: flex !important;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
     position: static;
-    top: auto;
     width: 100vw;
-    height: auto;
     padding: 8px 4px;
     background: #fff;
-    border-bottom: 1px solid #eee;
     z-index: 1000;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .sort-btn {
-    font-size: 0.8rem;
-    padding: 6px 8px;
-    min-width: 70px;
   }
   .collection-dropdown {
+    display: block !important;
     width: 100%;
     margin-top: 8px;
+    font-size: 1.1em;
+    min-width: 120px;
   }
 }
