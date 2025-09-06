@@ -1127,8 +1127,8 @@ footer {
     flex-direction: column;
     align-items: stretch;
     gap: 8px;
-    position: sticky !important;
-    top: 70px !important; /* Adjust to match your header height */
+    position: static !important;      /* Not fixed or sticky */
+    top: auto !important;
     width: 100vw !important;
     min-height: 40px;
     height: auto !important;
@@ -1136,6 +1136,24 @@ footer {
     background: #fff;
     z-index: 1000;
     margin-top: 0 !important;
+    border-bottom: 1px solid #444;
+  }
+  .sort-btn {
+    font-size: 1em;
+    min-width: 80px;
+    padding: 8px 0;
+    color: #000;
+    background: #fff;
+    border: 1px solid #ccc;
+    margin-bottom: 4px;
+  }
+  .collection-dropdown {
+    display: block !important;
+    width: 100% !important;
+    margin-top: 8px;
+    font-size: 1.1em;
+    min-width: 120px;
+    background: #fff;
+    color: #000;
   }
 }
- 
