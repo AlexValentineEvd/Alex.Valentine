@@ -17,27 +17,38 @@
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="home-page">
 
-<section class="hero-section">
-  <div class="slideshow">
-    <div class="slide active" style="background-image: url('img/A1.png');"></div>
-    <div class="slide" style="background-image: url('img/A5.png');"></div>
-    <div class="slide" style="background-image: url('img/A2.png');"></div>
-    <div class="slide" style="background-image: url('img/A6.png');"></div>
-    <div class="slide" style="background-image: url('img/A3.png');"></div>
+<div class="split-screen-wrapper">
+  <!-- Left Fixed Name Panel -->
+  <div class="name-panel">
+    <div class="name-content">
+      <h1 class="full-name">
+        <span class="name-line">ALEX</span>
+        <span class="name-line">VALENTINE</span>
+        <span class="name-line">EVDOKIMOV</span>
+      </h1>
+    </div>
   </div>
+
+  <!-- Right Scrollable Image Panel (stacked images) -->
+  <div class="image-panel">
+    <div class="image-slide" style="background-image: url('img/A5.png');"></div>
+    <div class="image-slide" style="background-image: url('img/A1.png');"></div>
+    <div class="image-slide" style="background-image: url('img/A2.png');"></div>
+    <div class="image-slide" style="background-image: url('img/A6.png');"></div>
+    <div class="image-slide" style="background-image: url('img/A3.png');"></div>
+  </div>
+</div>
 
 <header>
   <div class="container">
-    <h1 class="logo"><a href="index.html">ALEX VALENTINE EVDOKIMOV</a></h1>
     <nav>
       <ul class="nav-links">
-         <li><a href="index.html" class="nav-link" id="home-link">Home</a></li>
-        <li><a href="projects.html" class="nav-link" id="projects-link">Projects</a></li>
-        <li><a href="drawings.html" class="nav-link">Drawings</a></li>
-        <li><a href="about.html" class="nav-link" id="about-link">About</a></li>
-        <li><a href="contact.html" class="nav-link" id="contact-link">Contact</a></li>
+        <li><a href="index.html" class="nav-link" id="home-link">HOME</a></li>
+        <li><a href="drawings.html" class="nav-link" id="works-link">WORK</a></li>
+        <li><a href="about.html" class="nav-link" id="about-link">ABOUT</a></li>
+        <li><a href="contact.html" class="nav-link" id="contact-link">CONTACTS</a></li>
       </ul>
     </nav>
   </div>
@@ -70,21 +81,6 @@
   } else if (path.includes("contact")) {
     document.getElementById("contact-link").classList.add("active");
   }
-</script>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const slides = document.querySelectorAll(".slide");
-    let current = 0;
-
-    function showNextSlide() {
-      slides[current].classList.remove("active");
-      current = (current + 1) % slides.length;
-      slides[current].classList.add("active");
-    }
-
-    setInterval(showNextSlide, 9000);
-  });
 </script>
 
 

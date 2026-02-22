@@ -13,7 +13,7 @@
 </script>
 
   <meta charset="UTF-8">
-  <title>Drawings</title>
+  <title>Works</title>
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
@@ -26,26 +26,32 @@
 
 <header>
   <div class="container">
-    <h1 class="logo"><a href="index.html">ALEX VALENTINE EVDOKIMOV</a></h1>
     <nav>
      <ul class="nav-links">
-      <li><a href="index.html" class="nav-link" id="home-link">Home</a></li>
-      <li><a href="projects.html" class="nav-link" id="projects-link">Projects</a></li>
-      <li><a href="drawings.html" class="nav-link" id="drawings-link">Drawings</a></li>
-      <li><a href="about.html" class="nav-link" id="about-link">About</a></li>
-      <li><a href="contact.html" class="nav-link" id="contact-link">Contact</a></li>
+      <li><a href="index.html" class="nav-link" id="home-link">HOME</a></li>
+      <li><a href="drawings.html" class="nav-link" id="works-link">WORK</a></li>
+      <li><a href="about.html" class="nav-link" id="about-link">ABOUT</a></li>
+      <li><a href="contact.html" class="nav-link" id="contact-link">CONTACTS</a></li>
      </ul>
     </nav>
   </div>
   <div class="header-divider"></div>
 </header>
 
-<div class="sorting-bar">
-  <button class="sort-btn" data-type="year" data-state="none">Year</button>
-  <button class="sort-btn" data-type="size" data-state="none">Size</button>
-  <button class="sort-btn" data-type="medium" data-state="none">Medium</button>
- <div class="collection-dropdown">
-    <label for="collectionSelect">Collection:</label>
+<div id="controlBox" class="control-box-solid">
+  <div class="drag-handle" id="dragHandle">
+  </div>
+  <div class="control-option">
+    <button class="sort-btn" data-type="year" data-state="none">YEAR</button>
+  </div>
+  <div class="control-option">
+    <button class="sort-btn" data-type="size" data-state="none">SIZE</button>
+  </div>
+  <div class="control-option">
+    <button class="sort-btn" data-type="medium" data-state="none">MEDIUM</button>
+  </div>
+  <div class="control-option">
+    <label for="collectionSelect">COLLECTION</label>
     <select id="collectionSelect">
       <option value="all">All</option>
       <option value="house">House Drawings</option>
@@ -57,7 +63,6 @@
       <option value="CANOE">Canoe Collection</option>
       <option value="stairs">stairs</option>
       <option value="dragon">dragon drawings</option>
-      <!-- Add more options as needed -->
     </select>
   </div>
 </div>
@@ -75,6 +80,8 @@
   <div class="meta-size">148 x 210mm </div>
 </div>
 </div>
+
+
     
     <!-- A3 Landscape -->
     <div class="drawing-piece" data-collection="Wonderland">
@@ -353,7 +360,14 @@
 </div>
 
 
-
+<!-- Additional project thumbnails (clickable links to project pages) -->
+<a href="projects/project1.html" class="project-thumb drawing-piece" data-collection="project">
+  <img src="../img/F1.jpg" style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));" alt="Project 1" class="drawing-img">
+  <div class="drawing-meta">
+    <h3>PROJECT — FROM FOREST TO FRAMEWORK</h3>
+    <div class="meta-medium">2024 – Project overview</div>
+  </div>
+</a>
 
 <!-- A4 Portrait -->
      <div class="drawing-piece" data-collection="sketch book">
@@ -1129,7 +1143,7 @@
 </div>
 
 <!-- A3 Landscape -->
-    <div class="drawing-piece">
+    <div class="drawing-piece" data-collection="house">
       <img src="img/t61.png" alt="A3 Landscape"
            class="drawing-img"
            style="width: calc(42 * var(--cm)); height: calc(29.7 * var(--cm));">
@@ -1196,18 +1210,6 @@
        <div class="drawing-meta">
     <h3>No.076</h3>
     <div class="meta-medium">2018 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t175.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.127</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
     <div class="meta-size">210 x 297mm</div>
   </div>
 </div>
@@ -1393,764 +1395,39 @@
   </div>
 </div>
 
-<!-- A5 Portrait -->
-<div class="drawing-piece">
-  <img src="img/t133.png" alt="A5 Portrait"
-       class="drawing-img"
-       style="width: calc(14.8 * var(--cm)); height: calc(21 * var(--cm));">
+
+
+<a href="projects/project2.html" class="project-thumb drawing-piece" data-collection="project">
+  <img src="img/project2-thumb.jpg" alt="Project 2" class="drawing-img">
   <div class="drawing-meta">
-    <h3>No.076</h3>
-    <div class="meta-medium">2018 – Pen on paper</div>
-    <div class="meta-size">148 x 210mm</div>
+    <h3>PROJECT — CULTIVATING CREATIVE RESILIENCE</h3>
+    <div class="meta-medium">2023 – Project overview</div>
   </div>
-</div>
+</a>
 
- <!-- A4 Landscape -->
-    <div class="drawing-piece">
-      <img src="img/t65.png" alt="A4 Landscape"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.337</h3>
-    <div class="meta-medium">2023 – Pen on paper</div>
-    <div class="meta-size">297 x 210mm</div>
-  </div>
-</div>
-
-<div class="drawing-piece" data-collection="stairs">
-      <img src="img/t76.png" alt="A5 Portrait"
-           class="drawing-img"
-           style="width: calc(14.8 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.243</h3>
-    <div class="meta-medium">2021 – Pen on paper</div>
-    <div class="meta-size">148 x 210mm</div>
-  </div>
-</div>
-
-    <div class="drawing-piece">
-      <img src="img/z32.png" alt="E1 Landscape"
-           class="drawing-img"
-           style="width: calc(14.5 * var(--cm)); height: calc(12 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.020</h3>
-    <div class="meta-medium">2017 – Biro on paper</div>
-    <div class="meta-size">145 x 120mm</div>
-  </div>
-</div>
-
-<!-- A4 Landscape -->
-    <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t99.png" alt="A4 Landscape"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.245</h3>
-    <div class="meta-medium">2021 – Pen on paper</div>
-    <div class="meta-size">297 x 210mm</div>
-  </div>
-</div>
-
-<!-- A4 Landscape -->
-    <div class="drawing-piece" data-collection="house">
-      <img src="img/t178.png" alt="A4 Landscape"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.169</h3>
-    <div class="meta-medium">2020 – Pen on paper</div>
-    <div class="meta-size">297 x 210mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t165.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.128</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Landscape -->
-    <div class="drawing-piece" data-collection="house">
-      <img src="img/t184.png" alt="A4 Landscape"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.185</h3>
-    <div class="meta-medium">2020 – Pen on paper</div>
-    <div class="meta-size">297 x 210mm</div>
-  </div>
-</div>
-
-    <!-- A4 Landscape -->
-    <div class="drawing-piece" data-collection="house">
-      <img src="img/t47.png" alt="A4 Landscape"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.149</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">297 x 210mm</div>
-  </div>
-</div>
-
-<div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t95.png" alt="A5 Landscape"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(14.8 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.152</h3>
-    <div class="meta-medium">2020 – Pen on paper</div>
-    <div class="meta-size">210 x 148mm</div>
-  </div>
-</div>
-
-    <div class="drawing-piece">
-      <img src="img/z34.png" alt="E1 Landscape"
-           class="drawing-img"
-           style="width: calc(14.5 * var(--cm)); height: calc(12 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.170</h3>
-    <div class="meta-medium">2020 – Pen on paper</div>
-    <div class="meta-size">145 x 120mm</div>
-  </div>
-</div>
-
-<!-- A5 Portrait -->
-<div class="drawing-piece">
-  <img src="img/t134.png" alt="A5 Portrait"
-       class="drawing-img"
-       style="width: calc(14.8 * var(--cm)); height: calc(21 * var(--cm));">
+<a href="projects/project3.html" class="project-thumb drawing-piece" data-collection="project">
+  <img src="img/project3-thumb.jpg" alt="Project 3" class="drawing-img">
   <div class="drawing-meta">
-    <h3>No.198</h3>
-    <div class="meta-medium">2020 – Pen on paper</div>
-    <div class="meta-size">148 x 210mm</div>
+    <h3>PROJECT — BELARUSIAN LIBRARY</h3>
+    <div class="meta-medium">2023 – Project overview</div>
   </div>
-</div>
+</a>
 
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="dragon">
-      <img src="img/t117.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.202</h3>
-    <div class="meta-medium">2021 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-
-
- <!-- A4 Portrait -->
-     <div class="drawing-piece">
-      <img src="img/t180.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-  <h3>No.086 </h3>
-  <div class="meta-medium">2018 – Pen on paper</div>
-  <div class="meta-size">210 x 297mm </div>
- </div>
-</div>
-
-    <!-- A3 Landscape -->
-    <div class="drawing-piece">
-      <img src="img/t49.png" alt="A3 Landscape"
-           class="drawing-img"
-           style="width: calc(42 * var(--cm)); height: calc(29.7 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.381</h3>
-    <div class="meta-medium">2024 – Pen on paper</div>
-    <div class="meta-size">420 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t170.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.101</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Landscape -->
-    <div class="drawing-piece" data-collection="house">
-      <img src="img/t113.png" alt="A4 Landscape"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.095</h3>
-    <div class="meta-medium">2018 – Pen & marker on paper</div>
-    <div class="meta-size">297 x 210mm</div>
-  </div>
-</div>
-
-
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t171.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.106</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A3 Landscape -->
-    <div class="drawing-piece">
-      <img src="img/t63.png" alt="A3 Landscape"
-           class="drawing-img"
-           style="width: calc(42 * var(--cm)); height: calc(29.7 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.078</h3>
-    <div class="meta-medium">2018 – watercolour on paper</div>
-    <div class="meta-size">420 x 297mm</div>
-  </div>
-</div>
-
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t162.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.138</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A5 Landscape -->
-<div class="drawing-piece" data-collection="house">
-  <img src="img/t185.png " alt="A5 Landscape"
-       class="drawing-img"
-       style="width: calc(21 * var(--cm)); height: calc(14.8 * var(--cm));">
+<a href="projects/project4.html" class="project-thumb drawing-piece" data-collection="project">
+  <img src="img/project4-thumb.jpg" alt="Project 4" class="drawing-img">
   <div class="drawing-meta">
-    <h3>No.182</h3>
-    <div class="meta-medium">2020 – Pen on paper</div>
-    <div class="meta-size">210 x 148mm</div>
+    <h3>PROJECT — HOUSE RENOVATIONS</h3>
+    <div class="meta-medium">2022 – Project overview</div>
   </div>
-</div>
+</a>
 
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t152.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.139</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-
-<!-- A4 Landscape -->
-    <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t169.png" alt="A4 Landscape"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.119</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">297 x 210mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t163.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.108</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t141.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.111</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Landscape -->
-    <div class="drawing-piece" data-collection="house">
-      <img src="img/t43.png" alt="A4 Landscape"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.188</h3>
-    <div class="meta-medium">2020 – Pen on paper</div>
-    <div class="meta-size">297 x 210mm</div>
-  </div>
-</div>
-    
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="dragon">
-      <img src="img/t91.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.204</h3>
-    <div class="meta-medium">2021 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="house">
-      <img src="img/t183.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.198</h3>
-    <div class="meta-medium">2020 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A5 Portrait -->
-<div class="drawing-piece">
-  <img src="img/t135.png" alt="A5 Portrait"
-       class="drawing-img"
-       style="width: calc(14.8 * var(--cm)); height: calc(21 * var(--cm));">
+<a href="projects/project5.html" class="project-thumb drawing-piece" data-collection="project">
+  <img src="img/project5-thumb.jpg" alt="Project 5" class="drawing-img">
   <div class="drawing-meta">
-    <h3>No.049</h3>
-    <div class="meta-medium">2017 – Pen on paper</div>
-    <div class="meta-size">148 x 210mm</div>
+    <h3>PROJECT — OTHER WORK</h3>
+    <div class="meta-medium">2021 – Project overview</div>
   </div>
-</div>
-
-<!-- A4 Landscape -->
-    <div class="drawing-piece" data-collection="house">
-      <img src="img/t44.png" alt="A4 Landscape"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.147</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">297 x 210mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t153.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.135</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A3 Portrait -->
-    <div class="drawing-piece" data-collection="art">
-      <img src="img/t87.png" alt="A3 Portrait"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(42 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.027</h3>
-    <div class="meta-medium">2017 – Pencil on paper</div>
-    <div class="meta-size">297 x 420mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t168.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.109</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
- <!-- A4 Portrait -->
-     <div class="drawing-piece">
-      <img src="img/t27.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.244</h3>
-    <div class="meta-medium">2021 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Landscape -->
-    <div class="drawing-piece" data-collection="house">
-      <img src="img/t109.png" alt="A4 Landscape"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.067</h3>
-    <div class="meta-medium">2018 – Pen on paper</div>
-    <div class="meta-size">297 x 210mm</div>
-  </div>
-</div>
-
-<!-- A3 Portrait -->
-    <div class="drawing-piece">
-      <img src="img/t121.png" alt="A3 Portrait"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(42 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.334</h3>
-    <div class="meta-medium">2023 – Pen on paper</div>
-    <div class="meta-size">297 x 420mm</div>
-  </div>
-</div>
-
-<!-- A4 Landscape -->
-    <div class="drawing-piece">
-      <img src="img/t115.png" alt="A4 Landscape"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.280</h3>
-    <div class="meta-medium">2022 – Pen on paper</div>
-    <div class="meta-size">297 x 210mm</div>
-  </div>
-</div>
-
-<!-- A4 Landscape -->
-    <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t105.png" alt="A4 Landscape"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.189</h3>
-    <div class="meta-medium">2020 – Pen on paper</div>
-    <div class="meta-size">297 x 210mm</div>
-  </div>
-</div>
-
-    <div class="drawing-piece">
-      <img src="img/z33.png" alt="E1 Portrait"
-           class="drawing-img"
-           style="width: calc(12 * var(--cm)); height: calc(14.5 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.077</h3>
-    <div class="meta-medium">2018 – Pen on paper</div>
-    <div class="meta-size">120 x 145mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="dragon">
-      <img src="img/t120.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.203</h3>
-    <div class="meta-medium">2021 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t164.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.148</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Landscape -->
-    <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t106.png" alt="A4 Landscape"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.191</h3>
-    <div class="meta-medium">2020 – Pen on paper</div>
-    <div class="meta-size">297 x 210mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t155.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.140</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t142.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.099</h3>
-    <div class="meta-medium">2018 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A3 Landscape -->
-    <div class="drawing-piece">
-      <img src="img/t93.png" alt="A3 Landscape"
-           class="drawing-img"
-           style="width: calc(42 * var(--cm)); height: calc(29.7 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.246</h3>
-    <div class="meta-medium">2021 – Pen on trace paper</div>
-    <div class="meta-size">420 x 297mm</div>
-  </div>
-</div>
-
-<!-- A3 Portrait -->
-    <div class="drawing-piece" data-collection="art">
-      <img src="img/t124.png" alt="A3 Portrait"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(42 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.028</h3>
-    <div class="meta-medium">2017 – Pen on paper</div>
-    <div class="meta-size">297 x 420mm</div>
-  </div>
-</div>
-
-<!-- A5 Portrait -->
-<div class="drawing-piece">
-  <img src="img/t132.png" alt="A5 Portrait"
-       class="drawing-img"
-       style="width: calc(14.8 * var(--cm)); height: calc(21 * var(--cm));">
-  <div class="drawing-meta">
-    <h3>No.045</h3>
-    <div class="meta-medium">2017 – Biro on paper</div>
-    <div class="meta-size">148 x 210mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t97.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.153</h3>
-    <div class="meta-medium">2020 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t166.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.118</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Landscape -->
-    <div class="drawing-piece" data-collection="house">
-      <img src="img/t42.png" alt="A4 Landscape"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.187</h3>
-    <div class="meta-medium">2020 – Pen on paper</div>
-    <div class="meta-size">297 x 210mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t144.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.097</h3>
-    <div class="meta-medium">2018 – Pen & crayon on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t165.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.114</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A3 Landscape -->
-    <div class="drawing-piece">
-      <img src="img/t128.png" alt="A3 Landscape"
-           class="drawing-img"
-           style="width: calc(42 * var(--cm)); height: calc(29.7 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.046</h3>
-    <div class="meta-medium">2018 – watercolour on paper</div>
-    <div class="meta-size">420 x 297mm</div>
-  </div>
-</div>
-
-<!-- A3 Landscape -->
-    <div class="drawing-piece">
-      <img src="img/t122.png" alt="A3 Landscape"
-           class="drawing-img"
-           style="width: calc(42 * var(--cm)); height: calc(29.7 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.247</h3>
-    <div class="meta-medium">2021 – Pen on tracing paper</div>
-    <div class="meta-size">420 x 297mm</div>
-  </div>
-</div>
-
-<!-- A5 Landscape -->
-<div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t96.png" alt="A5 Landscape"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(14.8 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.153</h3>
-    <div class="meta-medium">2020 – Pen on paper</div>
-    <div class="meta-size">210 x 148mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t147.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.119</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Landscape -->
-    <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t102.png" alt="A4 Landscape"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.156</h3>
-    <div class="meta-medium">2018 – Pen on paper</div>
-    <div class="meta-size">297 x 210mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="house">
-      <img src="img/t143.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.099</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-    
-<!-- A2 Landscape -->
-    <div class="drawing-piece">
-      <img src="img/t85.png" alt="A2 Landscape"
-           class="drawing-img"
-           style="width: calc(59.4 * var(--cm)); height: calc(42 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.097</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">594 x 420mm</div>
-  </div>
-</div>
-
-<!-- A5 Portrait -->
-<div class="drawing-piece">
-  <img src="img/z28.png" alt="A5 Portrait"
-       class="drawing-img"
-       style="width: calc(14.8 * var(--cm)); height: calc(21 * var(--cm));">
-  <div class="drawing-meta">
-    <h3>No.040</h3>
-    <div class="meta-medium">2017 – Pen & Paint on paper</div>
-    <div class="meta-size">148 x 210mm</div>
-  </div>
-</div>
-
-<!-- A4 Landscape -->
-    <div class="drawing-piece" data-collection="house">
-      <img src="img/t110.png" alt="A4 Landscape"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.085</h3>
-    <div class="meta-medium">2018 – Pen on paper</div>
-    <div class="meta-size">297 x 210mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t167.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.096</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Landscape -->
-    <div class="drawing-piece" data-collection="house">
-      <img src="img/t111.png" alt="A4 Landscape"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.088</h3>
-    <div class="meta-medium">2018 – Pen on paper</div>
-    <div class="meta-size">297 x 210mm</div>
-  </div>
-</div>
-
-
+</a>
 
   </div>
 </main>
@@ -2168,10 +1445,10 @@
 
   if (path.includes("index")) {
     document.getElementById("home-link").classList.add("active");
-  } else if (path.includes("projects")) {
-    document.getElementById("projects-link").classList.add("active");
-  } else if (path.includes("drawings")) {
-    document.getElementById("drawings-link").classList.add("active");
+  } else if (path.includes("projects") || path.includes("drawings") || path.includes("works")) {
+    // mark Works active for either project detail pages or drawings
+    const worksLink = document.getElementById("works-link");
+    if (worksLink) worksLink.classList.add("active");
   } else if (path.includes("about")) {
     document.getElementById("about-link").classList.add("active");
   } else if (path.includes("contact")) {
@@ -2293,6 +1570,60 @@ function renderSortedDrawings(sorted) {
 }
 </script>
 
+<script>
+  // Draggable functionality for floating control box with movement constraints
+  const controlBox = document.getElementById('controlBox');
+  const dragHandle = document.getElementById('dragHandle');
+  const gallery = document.querySelector('.gallery-wall');
+  
+  let isDragging = false;
+  let offsetX = 0;
+  let offsetY = 0;
+
+  // Start dragging ONLY from the drag handle
+  dragHandle.addEventListener('mousedown', (e) => {
+    e.preventDefault();
+    isDragging = true;
+    const rect = controlBox.getBoundingClientRect();
+    offsetX = e.clientX - rect.left;
+    offsetY = e.clientY - rect.top;
+    dragHandle.style.cursor = 'grabbing';
+  });
+
+  // Handle dragging with boundary constraints
+  document.addEventListener('mousemove', (e) => {
+    if (isDragging && gallery) {
+      const newX = e.clientX - offsetX;
+      const newY = e.clientY - offsetY;
+      
+      // Get gallery bounds
+      const galleryRect = gallery.getBoundingClientRect();
+      const headerHeight = 110; // approximate header + navigation height
+      
+      // Calculate constraints
+      const minX = 10; // 10px margin from left edge
+      const maxX = window.innerWidth - controlBox.offsetWidth - 10; // 10px margin from right edge
+      const minY = headerHeight + 10; // Below header with 10px margin
+      const maxY = window.innerHeight - controlBox.offsetHeight - 10; // 10px margin from bottom
+      
+      // Constrain movement
+      const constrainedX = Math.max(minX, Math.min(newX, maxX));
+      const constrainedY = Math.max(minY, Math.min(newY, maxY));
+      
+      controlBox.style.right = 'auto';
+      controlBox.style.bottom = 'auto';
+      controlBox.style.left = constrainedX + 'px';
+      controlBox.style.top = constrainedY + 'px';
+    }
+  });
+
+  // Stop dragging
+  document.addEventListener('mouseup', () => {
+    isDragging = false;
+    dragHandle.style.cursor = 'grab';
+  });
+</script>
+
 <button id="backToTop" title="Back to top">&#x203A;</button>
 
 <script>
@@ -2368,6 +1699,48 @@ document.body.addEventListener('mousemove', function(e) {
   }
 });
 </script>
+
+<script>
+  // Draggable functionality for floating control box
+  const controlBox = document.getElementById('controlBox');
+  const closeBtn = document.querySelector('.control-box-close');
+  const header = document.querySelector('.control-box-header');
+  
+  let isDragging = false;
+  let offsetX = 0;
+  let offsetY = 0;
+
+  // Start dragging from header
+  header.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    const rect = controlBox.getBoundingClientRect();
+    offsetX = e.clientX - rect.left;
+    offsetY = e.clientY - rect.top;
+    controlBox.style.cursor = 'grabbing';
+  });
+
+  // Handle dragging
+  document.addEventListener('mousemove', (e) => {
+    if (isDragging) {
+      const newX = e.clientX - offsetX;
+      const newY = e.clientY - offsetY;
+      
+      // Constrain to viewport
+      const maxX = window.innerWidth - controlBox.offsetWidth;
+      const maxY = window.innerHeight - controlBox.offsetHeight;
+      
+      controlBox.style.right = 'auto';
+      controlBox.style.bottom = 'auto';
+      controlBox.style.left = Math.max(0, Math.min(newX, maxX)) + 'px';
+      controlBox.style.top = Math.max(0, Math.min(newY, maxY)) + 'px';
+    }
+  });
+
+  // Stop dragging
+  document.addEventListener('mouseup', () => {
+    isDragging = false;
+    controlBox.style.cursor = 'grab';
+  });
 
 
 </body>

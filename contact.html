@@ -20,15 +20,13 @@
 <body>
 <header>
   <div class="container">
-    <h1 class="logo"><a href="index.html">ALEX VALENTINE EVDOKIMOV</a></h1>
     <nav>
-      <ul class="nav-links">
-         <li><a href="index.html" class="nav-link" id="home-link">Home</a></li>
-        <li><a href="projects.html" class="nav-link" id="projects-link">Projects</a></li>
-        <li><a href="drawings.html" class="nav-link">Drawings</a></li>
-        <li><a href="about.html" class="nav-link" id="about-link">About</a></li>
-        <li><a href="contact.html" class="nav-link" id="contact-link">Contact</a></li>
-      </ul>
+     <ul class="nav-links">
+      <li><a href="index.html" class="nav-link" id="home-link">HOME</a></li>
+      <li><a href="drawings.html" class="nav-link" id="works-link">WORK</a></li>
+      <li><a href="about.html" class="nav-link" id="about-link">ABOUT</a></li>
+      <li><a href="contact.html" class="nav-link" id="contact-link">CONTACTS</a></li>
+     </ul>
     </nav>
   </div>
   <div class="header-divider"></div>
@@ -58,10 +56,9 @@
 
   if (path.includes("index")) {
     document.getElementById("home-link").classList.add("active");
-  } else if (path.includes("projects")) {
-    document.getElementById("projects-link").classList.add("active");
-  } else if (path.includes("drawings")) {
-    document.getElementById("drawings-link").classList.add("active");
+  } else if (path.includes("projects") || path.includes("drawings") || path.includes("works")) {
+    const worksLink = document.getElementById("works-link");
+    if (worksLink) worksLink.classList.add("active");
   } else if (path.includes("about")) {
     document.getElementById("about-link").classList.add("active");
   } else if (path.includes("contact")) {

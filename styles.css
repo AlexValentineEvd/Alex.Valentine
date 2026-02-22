@@ -1,5 +1,3 @@
-
-
 /* ========== BASE STYLES ========== */
 html, body {
   margin: 0;
@@ -22,16 +20,94 @@ main {
   flex: 1;
 }
 
+/* ========== SPLIT SCREEN LAYOUT ========== */
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.split-screen-wrapper {
+  display: block;
+  width: 100%;
+  position: relative;
+  margin-top: -110px;
+  padding-top: 110px;
+}
+
+/* Left Fixed Name Panel */
+.name-panel {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 50%;
+  height: 100vh;
+  background-color: #000;
+  display: flex;
+  justify-content: right;
+  align-items: right;
+  z-index: 10;
+  padding-top: 110px;
+  box-sizing: border-box;
+}
+
+.name-content {
+  text-align: right; /* right-align the stacked name */
+  display: flex;
+  justify-content: flex-end; /* push the block toward the center divide */
+  padding-right: 40px;
+  width: 100%;
+  transform: translateY(8vh); /* nudge the text block lower on the screen */
+}
+
+.full-name {
+  color: white;
+  font-weight: 700;
+  font-size: clamp(3rem, 8vw, 8rem);
+  line-height: 1.1;
+  margin: 0;
+  padding: 0;
+  letter-spacing: -0.02em;
+}
+
+.name-line {
+  display: block;
+}
+
+/* Right Scrollable Image Panel */
+.image-panel {
+  position: relative;
+  width: 50%;
+  height: auto;
+  overflow: visible;
+  display: block;
+  margin-left: 50%;
+}
+
 /* ========== HEADER ========== */
+
+
 header {
   position: fixed;
   top: 0;
   width: 100%;
-  background: #fff;
+  background: #000;
   box-shadow: 0 2px 4px #0001;
   z-index: 1000;
 }
 
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;  /* spreads items edge to edge */
+    align-items: center;
+    padding: 0 60px;  /* increased padding to account for scrollbar */
+    box-sizing: border-box;
+}
+
+nav a {
+    text-decoration: none;
+    color: inherit;
+}
 
 /* Default spacing for most pages */
 main, .about-section, .contact-page {
@@ -45,11 +121,13 @@ main, .about-section, .contact-page {
 
 header .container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 30px 32px 20px 32px;   /* More space on left/right */
+  padding: 12px 40px;   /* Reduced vertical padding */
   max-width: 100vw;
   margin: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .header-divider {
@@ -63,44 +141,37 @@ header .container {
 }
 
 .logo {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #111;
-  margin: 0;
-  padding: 0;
-  line-height: 1;
-}
-
-.logo a {
-  text-decoration: none;
-  color: inherit;
+  display: none;
 }
 
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0;
   margin: 0;
   padding: 0;
+  width: 100%;
 }
 
 .nav-links a {
   text-decoration: none;
-  color: #999;
-  font-weight: 500;
+  color: white;
+  font-weight: 700;
   transition: color 0.3s ease;
   position: relative;
 }
 
 
 .nav-links a:hover {
-  color: #333;
+  color: #3a5ad7;
 }
 
 
 .nav-links a.active {
-  color: #000;
-  font-weight: 600;
+  color: white;
+  font-weight: 700;
 }
 
 
@@ -686,31 +757,27 @@ footer {
 /* Fullscreen hero section */
 .hero-section {
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   overflow: hidden;
 }
 
-
-
 .slideshow {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw;
+  position: relative;
+  width: 100%;
   height: 100vh;
-  z-index: -1;
   overflow: hidden;
 }
 
 /* Each Slide */
 .slide {
-  position: absolute;
+  position: relative;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-size: cover;
   background-position: center;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
+  opacity: 1;
+  transition: none;
 }
 
 /* Active Slide */
@@ -725,7 +792,8 @@ footer {
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
-    z-index: 1;
+  z-index: 1;
+  display: none;
 }
 
 /* Text content */
@@ -738,6 +806,26 @@ footer {
   transform: translateY(-50%);
   width: 100%;
   padding: 0 20px;
+}
+
+/* Adjust body padding-top for homepage only */
+body.home-page {
+  padding-top: 0;
+  scroll-snap-type: y mandatory;
+}
+
+/* Stacked image slides on homepage */
+.image-panel {
+  margin-left: 50%;
+  width: 50%;
+}
+
+.image-slide {
+  height: calc(100vh - 110px);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  scroll-snap-align: start;
 }
 
 @keyframes fade {
@@ -849,18 +937,141 @@ footer {
 }
 
 .sorting-bar {
+  display: none;
+}
+
+.collection-dropdown {
+  display: none;
+}
+
+.collection-dropdown label {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  letter-spacing: 0.05em;
+}
+
+#controlBox .collection-dropdown label {
+  display: block !important;
+}
+#controlBox {
   position: fixed;
-  top: 90px;
-  left: 0;
-  width: 100vw;
-  height: 28px;
-  background-color: black;
-  border-bottom: 1px solid #444;
+  bottom: 40px;
+  right: 40px;
+  background-color: #000;
+  color: white;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  z-index: 2000;
+  min-width: 220px;
+  cursor: grab;
+  user-select: none;
+  overflow: hidden;
+}
+
+#controlBox:active {
+  cursor: grabbing;
+}
+
+.drag-handle {
+  width: 100%;
+  padding: 12px 14px;
+  background-color: #000;
+  color: white;
+  border-bottom: 1px solid white;
   display: flex;
   align-items: center;
+  justify-content: center;
+  cursor: grab;
+  user-select: none;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.drag-handle:active {
+  cursor: grabbing;
+}
+
+.drag-indicator {
+  color: white;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  font-size: 0.9rem;
+  opacity: 0.6;
+}
+
+.control-option {
+  border-bottom: 1px solid white;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: #000;
+}
+
+.control-option:last-child {
+  border-bottom: none;
+}
+
+.control-option button,
+.control-option label,
+.control-option select {
+  width: 100%;
+  padding: 12px 14px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: left;
+  background-color: #000;
+  color: white;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin: 0;
+}
+
+.control-option button {
+  display: block;
+  text-align: left;
+}
+
+.control-option button:hover {
+  background-color: #222;
+}
+
+.control-option button.active {
+  background-color: white;
+  color: black;
+}
+
+.control-option label {
+  display: none;
   padding: 0;
-  box-sizing: border-box;
-  z-index: 999;
+  cursor: default;
+}
+
+.control-option select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: none;
+  padding-right: 14px;
+}
+
+.control-option select:hover {
+  background-color: #222;
+}
+
+.control-option select option {
+  background-color: #000;
+  color: white;
+  padding: 8px 14px;
 }
 
 .sort-btn {
@@ -994,53 +1205,32 @@ footer {
   transform: rotate(-90deg) scale(1.1);
 }
 
-.collection-dropdown {
-  flex: 1;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: black;
-  color: white;
-  font-size: 0.65rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
-  border-left: 1px solid #444;
-  border-right: 1px solid #444;
-}
-
-.collection-dropdown:hover {
-  background-color: white;
-  color: black;
-}
-
-.collection-dropdown label {
-  display: none; /* hide the label text */
-}
-
 #collectionSelect {
-  background-color: black;
+  background-color: #000;
   color: white;
   border: none;
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  padding: 0;
+  padding: 12px 14px;
   margin: 0;
   cursor: pointer;
   width: 100%;
-  text-align: center;
+  text-align: left;
+  border-radius: 0;
 }
 
 #collectionSelect:hover {
-  background-color: white;
-  color: black;
+  background-color: #222;
+}
+
+#collectionSelect option {
+  background-color: #000;
+  color: white;
+  padding: 8px 14px;
 }
 
 .drawing-meta {
@@ -1122,38 +1312,131 @@ footer {
 }
 
 @media (max-width: 600px) {
-  .sorting-bar {
-    display: flex !important;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 8px;
-    position: static !important;      /* Not fixed or sticky */
-    top: auto !important;
-    width: 100vw !important;
-    min-height: 40px;
-    height: auto !important;
-    padding: 8px 4px !important;
-    background: #fff;
-    z-index: 1000;
-    margin-top: 0 !important;
-    border-bottom: 1px solid #444;
+  #controlBox {
+    bottom: 20px;
+    right: 20px;
+    min-width: auto;
+    width: calc(100% - 40px);
+    max-width: calc(100vw - 40px);
   }
-  .sort-btn {
-    font-size: 1em;
-    min-width: 80px;
-    padding: 8px 0;
-    color: #000;
-    background: #fff;
-    border: 1px solid #ccc;
-    margin-bottom: 4px;
+
+  .control-option {
+    padding: 0;
   }
-  .collection-dropdown {
-    display: block !important;
-    width: 100% !important;
+
+  .control-option button,
+  .control-option label,
+  .control-option select {
+    padding: 10px 12px;
+    font-size: 0.7rem;
+  }
+
+  #collectionSelect {
+    font-size: 0.7rem;
+  }
+}
     margin-top: 8px;
     font-size: 1.1em;
     min-width: 120px;
     background: #fff;
     color: #000;
+  }
+}
+
+/* Project thumbnail sizing — keep real proportions and align with drawing scales */
+.project-thumb {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  /* allow flexbox to size consistently with other items */
+  flex: 0 1 auto;
+}
+.project-thumb .drawing-img {
+  width: auto;              /* respect intrinsic width */
+  height: auto;             /* respect intrinsic height */
+  max-width: calc(42 * var(--cm));   /* cap at A3 width */
+  max-height: calc(42 * var(--cm));  /* cap height to keep proportions */
+  object-fit: contain;
+  display: block;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease;
+}
+.project-thumb:hover .drawing-img,
+.project-thumb:focus .drawing-img {
+  transform: scale(1.02);
+}
+
+/* On desktop keep thumbnails reasonably large but not exceed gallery sizing */
+@media (min-width: 900px) {
+  .project-thumb .drawing-img {
+    max-width: calc(36 * var(--cm));
+    max-height: calc(36 * var(--cm));
+  }
+}
+
+/* On small screens make thumbnails fit the column width */
+@media (max-width: 600px) {
+  .project-thumb .drawing-img {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 95vw;
+    max-height: none;
+  }
+}
+
+/* Ensure project-thumb elements align with drawing-piece spacing */
+.project-thumb .drawing-meta {
+  margin-top: 8px;
+}
+
+/* ========== RESPONSIVE SPLIT SCREEN ========== */
+@media (max-width: 900px) {
+  .split-screen-wrapper {
+    display: block;
+    height: auto;
+  }
+
+  .name-panel {
+    position: static;
+    width: 100%;
+    height: 100vh;
+    padding-top: 110px;
+  }
+
+  /* On smaller screens keep the name centered and remove the downward nudge */
+  .name-content {
+    text-align: center;
+    justify-content: center;
+    padding-right: 0;
+    transform: none;
+  }
+
+  .image-panel {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin-left: 0;
+  }
+
+  .full-name {
+    font-size: clamp(2rem, 6vw, 4rem);
+  }
+}
+
+@media (max-width: 600px) {
+  .name-panel {
+    padding-top: 110px;
+    height: 100vh;
+  }
+
+  .full-name {
+    font-size: clamp(1.5rem, 5vw, 3rem);
+  }
+
+  .image-panel {
+    width: 100%;
+    margin-left: 0;
   }
 }
