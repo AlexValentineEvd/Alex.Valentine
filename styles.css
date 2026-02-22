@@ -1440,3 +1440,94 @@ footer {
     margin-left: 0;
   }
 }
+
+/* ===== Additional responsiveness for phones / tablets ===== */
+@media (max-width: 900px) {
+  /* Make the name-panel behave like a regular stacked block */
+  .name-panel {
+    position: static;
+    width: 100%;
+    height: auto;
+    padding: 48px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+  }
+
+  .name-content {
+    text-align: center;
+    justify-content: center;
+    padding-right: 0;
+    transform: none;
+  }
+
+  /* Reduce slide height so slides fit viewport with header + name block */
+  .image-slide {
+    height: calc(100vh - 160px);
+    background-position: center;
+  }
+
+  /* Make header/nav more compact and centered */
+  header .container {
+    padding: 8px 18px;
+  }
+
+  .nav-links {
+    gap: 12px;
+    padding: 0;
+  }
+
+  body.home-page {
+    scroll-padding-top: 140px; /* ensure snaps account for header/name height */
+  }
+
+  /* Ensure control box is accessible on tablet / small laptop widths */
+  #controlBox {
+    right: 20px;
+    bottom: 20px;
+    min-width: 180px;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Smaller devices: tighten spacing, larger tap targets */
+  .name-panel {
+    padding: 34px 14px;
+  }
+
+  .full-name {
+    font-size: clamp(1.5rem, 7vw, 2.8rem);
+    line-height: 1.05;
+  }
+
+  .image-slide {
+    height: calc(100vh - 130px);
+    background-position: center top;
+  }
+
+  .nav-links {
+    gap: 8px;
+    font-size: 1rem;
+    justify-content: center;
+  }
+
+  header .container {
+    padding: 8px 12px;
+  }
+
+  /* Make control box span most of the width on phones for easier tapping */
+  #controlBox {
+    left: 12px;
+    right: 12px;
+    bottom: 16px;
+    width: auto;
+    min-width: 0;
+    max-width: calc(100% - 24px);
+  }
+
+  /* Ensure page scroll snaps don't place content under fixed header */
+  body.home-page {
+    scroll-padding-top: 120px;
+  }
+}
