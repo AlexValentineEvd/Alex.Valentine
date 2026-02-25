@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
-  <div id="drawingTooltip" class="drawing-tooltip"></div>
 </head>
 
 <body>
@@ -362,12 +361,14 @@
 
 <!-- Additional project thumbnails (clickable links to project pages) -->
 <a href="projects/project1.html" class="project-thumb drawing-piece" data-collection="project">
-  <img src="../img/F1.jpg" style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));" alt="Project 1" class="drawing-img">
+  <img src="../img/F1.jpg" alt="Project 1" class="drawing-img">
   <div class="drawing-meta">
     <h3>PROJECT — FROM FOREST TO FRAMEWORK</h3>
-    <div class="meta-medium">2024 – Project overview</div>
+    <div class="meta-date">2024</div>
+    <div class="meta-location">Project overview</div>
   </div>
 </a>
+
 
 <!-- A4 Portrait -->
      <div class="drawing-piece" data-collection="sketch book">
@@ -620,6 +621,16 @@
   </div>
 </div>
 
+<!-- Project 2 thumbnail to scatter the link further down -->
+<a href="projects/project2.html" class="project-thumb drawing-piece" data-collection="project">
+  <img src="img/C1.jpg" alt="Project 2" class="drawing-img">
+  <div class="drawing-meta">
+    <h3>PROJECT — CULTIVATING CREATIVE RESILIENCE</h3>
+    <div class="meta-date">2024</div>
+    <div class="meta-location">HARINGEY</div>
+  </div>
+</a>
+
 <!-- A4 Landscape -->
     <div class="drawing-piece" data-collection="house">
       <img src="img/t114.png" alt="A4 Landscape"
@@ -763,6 +774,16 @@
     <div class="meta-size">210 x 297mm</div>
   </div>
 </div>
+
+<!-- duplicate of project 1 thumbnail to scatter the link further down -->
+<a href="projects/project1.html" class="project-thumb drawing-piece" data-collection="project">
+  <img src="../img/F2.jpg" alt="Project 1" class="drawing-img">
+  <div class="drawing-meta">
+    <h3>PROJECT — FROM FOREST TO FRAMEWORK</h3>
+    <div class="meta-date">2024</div>
+    <div class="meta-location">Project overview</div>
+  </div>
+</a>
 
 <!-- A4 Portrait -->
      <div class="drawing-piece" data-collection="stairs">
@@ -1043,6 +1064,16 @@
     <div class="meta-size">210 x 297mm</div>
   </div>
 </div>
+
+<!-- Project 2 thumbnail to scatter the link further down -->
+<a href="projects/project2.html" class="project-thumb drawing-piece" data-collection="project">
+  <img src="img/C5.jpg" alt="Project 2" class="drawing-img">
+  <div class="drawing-meta">
+    <h3>PROJECT — CULTIVATING CREATIVE RESILIENCE</h3>
+    <div class="meta-date">2024</div>
+    <div class="meta-location">HARINGEY</div>
+  </div>
+</a>
 
 
 <!-- A3 Portrait -->
@@ -1397,11 +1428,15 @@
 
 
 
+
+
+<!-- duplicate project 2 thumbnail -->
 <a href="projects/project2.html" class="project-thumb drawing-piece" data-collection="project">
   <img src="img/project2-thumb.jpg" alt="Project 2" class="drawing-img">
   <div class="drawing-meta">
     <h3>PROJECT — CULTIVATING CREATIVE RESILIENCE</h3>
-    <div class="meta-medium">2023 – Project overview</div>
+    <div class="meta-date">2023</div>
+    <div class="meta-location">Project overview</div>
   </div>
 </a>
 
@@ -1413,6 +1448,16 @@
   </div>
 </a>
 
+<!-- duplicate project 3 thumbnail -->
+<a href="projects/project3.html" class="project-thumb drawing-piece" data-collection="project">
+  <img src="img/project3-thumb.jpg" alt="Project 3" class="drawing-img">
+  <div class="drawing-meta">
+    <h3>PROJECT — BELARUSIAN LIBRARY</h3>
+    <div class="meta-date">2023</div>
+    <div class="meta-location">Project overview</div>
+  </div>
+</a>
+
 <a href="projects/project4.html" class="project-thumb drawing-piece" data-collection="project">
   <img src="img/project4-thumb.jpg" alt="Project 4" class="drawing-img">
   <div class="drawing-meta">
@@ -1421,11 +1466,31 @@
   </div>
 </a>
 
+<!-- duplicate project 4 thumbnail -->
+<a href="projects/project4.html" class="project-thumb drawing-piece" data-collection="project">
+  <img src="img/project4-thumb.jpg" alt="Project 4" class="drawing-img">
+  <div class="drawing-meta">
+    <h3>PROJECT — HOUSE RENOVATIONS</h3>
+    <div class="meta-date">2022</div>
+    <div class="meta-location">Project overview</div>
+  </div>
+</a>
+
 <a href="projects/project5.html" class="project-thumb drawing-piece" data-collection="project">
   <img src="img/project5-thumb.jpg" alt="Project 5" class="drawing-img">
   <div class="drawing-meta">
     <h3>PROJECT — OTHER WORK</h3>
     <div class="meta-medium">2021 – Project overview</div>
+  </div>
+</a>
+
+<!-- duplicate project 5 thumbnail -->
+<a href="projects/project5.html" class="project-thumb drawing-piece" data-collection="project">
+  <img src="img/project5-thumb.jpg" alt="Project 5" class="drawing-img">
+  <div class="drawing-meta">
+    <h3>PROJECT — OTHER WORK</h3>
+    <div class="meta-date">2021</div>
+    <div class="meta-location">Project overview</div>
   </div>
 </a>
 
@@ -1661,44 +1726,6 @@ function renderSortedDrawings(sorted) {
   });
 </script>
 
-<script>
-const tooltip = document.getElementById('drawingTooltip');
-
-document.querySelectorAll('.drawing-piece').forEach(function(entry) {
-  const meta = entry.querySelector('.drawing-meta');
-  entry.addEventListener('mousemove', function(e) {
-    if (meta) {
-      tooltip.innerHTML = meta.innerHTML;
-      tooltip.style.display = 'block';
-      tooltip.style.opacity = '1';
-      tooltip.style.left = (e.clientX + 16) + 'px';
-      tooltip.style.top = (e.clientY + 16) + 'px';
-    }
-  });
-  entry.addEventListener('mouseleave', function() {
-    tooltip.style.display = 'none';
-    tooltip.style.opacity = '0';
-  });
-  entry.addEventListener('click', function(e) {
-    // Optional: also show on click for touch devices
-    if (meta) {
-      tooltip.innerHTML = meta.innerHTML;
-      tooltip.style.display = 'block';
-      tooltip.style.opacity = '1';
-      tooltip.style.left = (e.clientX + 16) + 'px';
-      tooltip.style.top = (e.clientY + 16) + 'px';
-    }
-  });
-});
-
-document.body.addEventListener('mousemove', function(e) {
-  // Hide tooltip if not hovering a drawing
-  if (!e.target.closest('.drawing-piece')) {
-    tooltip.style.display = 'none';
-    tooltip.style.opacity = '0';
-  }
-});
-</script>
 
 <script>
   // Draggable functionality for floating control box
