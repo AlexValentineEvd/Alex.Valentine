@@ -126,6 +126,57 @@
   
   </main>
 
+  <!-- Expanded Detail Panel (same as drawings) -->
+  <div id="expandedPanel" class="expanded-panel">
+    <div class="expanded-content">
+      <!-- Tab Navigation -->
+      <div class="expanded-tabs">
+        <div class="tabs-left">
+          <button class="tab-btn tab-image first-tab active" data-tab="image" id="tabImage">IMAGE</button>
+          <button class="tab-btn tab-readmore mid-tab" data-tab="readmore" id="tabReadMore">READ MORE</button>
+          <button class="tab-btn tab-category mid-tab" data-tab="category" id="tabCategory"></button>
+        </div>
+        <div class="window-controls">
+          <button class="win-btn win-min" id="minBtn" aria-label="Minimize">–</button>
+          <button class="win-btn win-imageonly" id="imageOnlyBtn" aria-label="Image-only">□</button>
+          <button class="win-btn win-close" id="closeBtn" aria-label="Close">×</button>
+        </div>
+      </div>
+
+      <div class="expanded-image-container" id="imageContainer">
+        <img id="expandedImage" src="" alt="" class="expanded-image">
+      </div>
+
+      <div class="expanded-readmore-container" id="readmoreContainer" style="display: none;">
+        <div id="expandedReadMore" class="expanded-readmore"></div>
+      </div>
+
+      <div class="expanded-category-container" id="categoryContainer" style="display: none;">
+        <div id="expandedCategoryGallery" class="expanded-category-gallery"></div>
+      </div>
+
+      <!-- Bottom inverted section: details + navigation -->
+      <div class="expanded-bottom">
+        <div class="expanded-details">
+          <div id="expandedMeta" class="expanded-meta"></div>
+
+          <!-- Additional details (collapsed by default) -->
+          <div id="expandedDescription" class="expanded-description">
+            <p id="expandedDescriptionText"></p>
+            <a id="expandedLink" href="" class="see-more-link">See More</a>
+          </div>
+        </div>
+
+        <!-- Navigation controls placed below text -->
+        <div class="expanded-nav">
+          <button class="nav-btn prev-btn" id="prevBtn" aria-label="Previous">◀ PREVIOUS</button>
+          <div class="nav-separator"></div>
+          <button class="nav-btn next-btn" id="nextBtn" aria-label="Next">NEXT ▶</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <footer>
  <p>ALEX VALENTINE EVDOKIMOV 2025</p>
 </footer>
@@ -144,6 +195,433 @@
   } else if (path.includes("contact")) {
     document.getElementById("contact-link").classList.add("active");
   }
+
+  // Apply random rotation to project cards
+  const projectCards = document.querySelectorAll('.project-card');
+  projectCards.forEach((card, index) => {
+    // Apply rotation to some cards randomly
+    if (Math.random() > 0.5) {
+      const rotation = (Math.random() - 0.5) * 4; // Random rotation between -2 and +2 degrees
+      card.style.transform = `rotate(${rotation}deg)`;
+    }
+  });
+
+  // Apply random rotation to images within cards
+  const projectImages = document.querySelectorAll('.project-card img');
+  projectImages.forEach((img) => {
+    if (Math.random() > 0.5) {
+      const rotation = (Math.random() - 0.5) * 4;
+      img.style.transform = `rotate(${rotation}deg)`;
+    }
+  });
+
+  
+  // gallery functionality for project thumbnails
+  {
+    const galleryItems = [];
+    let currentExpandedIndex = -1;
+    let currentVisibleIndices = [];
+    let currentVisiblePosition = -1;
+    let panelDragCleanup = null;  // tracks cleanup for draggable panel
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initializeGalleryItems();
+    });
+
+    function initializeGalleryItems() {
+      const pieces = document.querySelectorAll('.project-card');
+      pieces.forEach((element, index) => {
+        const img = element.querySelector('img');
+        // overlay-text contains title and maybe year on new line
+        const overlay = element.querySelector('.overlay-text');
+        let title = overlay ? overlay.innerText.trim().split('\n')[0] : '';
+        let metaMedium = '';
+        let yearMatch = overlay ? overlay.innerText.match(/(\d{4}(?:-\d{4})?)/) : null;
+        if (yearMatch) metaMedium = yearMatch[0];
+        const sizeText = '';
+        const collection = element.dataset.collection || 'projects';
+
+        galleryItems.push({
+          element: element,
+          index: index,
+          imageSrc: img.src,
+          imageAlt: img.alt,
+          title: title,
+          medium: metaMedium,
+          size: sizeText,
+          collection: collection
+        });
+
+        element.addEventListener('click', (e) => {
+          e.preventDefault();
+          expandItem(index);
+        });
+      });
+    }
+
+    function expandItem(index) {
+      currentExpandedIndex = index;
+      const item = galleryItems[index];
+      document.getElementById('expandedImage').src = item.imageSrc;
+      document.getElementById('expandedImage').alt = item.imageAlt;
+
+      const categoryTab = document.getElementById('tabCategory');
+      categoryTab.textContent = item.collection.toUpperCase();
+      categoryTab.dataset.collection = item.collection;
+      updateCategoryGallery(item.collection);
+      showTab('image');
+
+      // Replace the static "IMAGE" tab label with the item title
+      const imageTabBtn = document.getElementById('tabImage');
+      if (imageTabBtn) imageTabBtn.textContent = item.title;
+
+      // build metadata
+      const year = item.medium || '';
+      const metaHTML = `
+        <span class="meta-name">${item.title}</span>
+        <span class="meta-year">${year}</span>
+        <span class="meta-medium"></span>
+        <span class="meta-size"></span>
+      `;
+      document.getElementById('expandedMeta').innerHTML = metaHTML;
+
+      currentVisibleIndices = galleryItems
+        .map((g, i) => ({ i, el: g.element }))
+        .filter(obj => window.getComputedStyle(obj.el).display !== 'none')
+        .map(obj => obj.i);
+      currentVisiblePosition = currentVisibleIndices.indexOf(index);
+      updateNavButtons();
+      const panel = document.getElementById('expandedPanel');
+      adjustPanelPosition(panel);
+      panel.classList.add('active');
+      document.body.classList.add('gallery-expanded');
+    }
+
+    function updateCategoryGallery(collection) {
+      const categoryItems = galleryItems.filter(item => item.collection === collection);
+      const gallery = document.getElementById('expandedCategoryGallery');
+      gallery.innerHTML = '';
+      categoryItems.forEach((item) => {
+        const img = document.createElement('img');
+        img.src = item.imageSrc;
+        img.alt = item.imageAlt;
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', () => expandItem(item.index));
+        gallery.appendChild(img);
+      });
+    }
+
+    function showTab(tabName) {
+      document.getElementById('imageContainer').style.display = 'none';
+      document.getElementById('readmoreContainer').style.display = 'none';
+      document.getElementById('categoryContainer').style.display = 'none';
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      if (tabName === 'image') {
+        document.getElementById('imageContainer').style.display = 'flex';
+        document.getElementById('tabImage').classList.add('active');
+      } else if (tabName === 'readmore') {
+        document.getElementById('readmoreContainer').style.display = 'block';
+        document.getElementById('tabReadMore').classList.add('active');
+      } else if (tabName === 'category') {
+        document.getElementById('categoryContainer').style.display = 'block';
+        document.getElementById('tabCategory').classList.add('active');
+      }
+    }
+
+    function updateNavButtons() {
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      if (currentVisibleIndices && currentVisibleIndices.length > 0 && currentVisiblePosition !== -1) {
+        prevBtn.disabled = currentVisiblePosition <= 0;
+        nextBtn.disabled = currentVisiblePosition >= currentVisibleIndices.length - 1;
+      } else {
+        prevBtn.disabled = currentExpandedIndex <= 0;
+        nextBtn.disabled = currentExpandedIndex >= galleryItems.length - 1;
+      }
+    }
+
+    function closePanel() {
+      const panel = document.getElementById('expandedPanel');
+      panel.classList.remove('active');
+      panel.classList.remove('image-only');
+      panel.style.top = '';
+      panel.style.height = '';
+      const img = panel.querySelector('.expanded-image');
+      if (img) img.style.maxHeight = '';
+      document.body.classList.remove('gallery-expanded');
+      currentExpandedIndex = -1;
+    }
+
+    function navigateTo(index) {
+      if (index >= 0 && index < galleryItems.length) {
+        expandItem(index);
+        galleryItems[index].element.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+
+    // reused adjustPanelPosition and resize listener from drawings
+    function adjustPanelPosition(panel) {
+      const header = document.querySelector('header');
+      const headerHeight = header ? Math.ceil(header.getBoundingClientRect().height) : 0;
+      panel.style.top = headerHeight + 'px';
+      panel.style.height = `calc(100vh - ${headerHeight}px)`;
+    }
+
+    window.addEventListener('resize', () => {
+      const panel = document.getElementById('expandedPanel');
+      if (panel.classList.contains('active')) adjustPanelPosition(panel);
+    });
+
+    // hook up buttons & keyboard
+    document.getElementById('closeBtn').addEventListener('click', closePanel);
+    document.getElementById('prevBtn').addEventListener('click', () => {
+      if (currentVisibleIndices && currentVisiblePosition > 0) {
+        const prevIndex = currentVisibleIndices[currentVisiblePosition - 1];
+        navigateTo(prevIndex);
+      } else if (currentExpandedIndex > 0) {
+        navigateTo(currentExpandedIndex - 1);
+      }
+    });
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      if (currentVisibleIndices && currentVisiblePosition < currentVisibleIndices.length - 1) {
+        const nextIndex = currentVisibleIndices[currentVisiblePosition + 1];
+        navigateTo(nextIndex);
+      } else if (currentExpandedIndex < galleryItems.length - 1) {
+        navigateTo(currentExpandedIndex + 1);
+      }
+    });
+    document.getElementById('tabImage').addEventListener('click', () => showTab('image'));
+    document.getElementById('tabReadMore').addEventListener('click', () => showTab('readmore'));
+    document.getElementById('tabCategory').addEventListener('click', () => showTab('category'));
+    document.getElementById('expandedPanel').addEventListener('click', (e) => {
+      if (e.target.id === 'expandedPanel') closePanel();
+    });
+
+    // Window controls
+    document.getElementById('minBtn').addEventListener('click', minimizePanel);
+    // Square button creates a detached floating image window
+    document.getElementById('imageOnlyBtn').addEventListener('click', () => {
+      createFloatingFromPanel();
+    });
+
+
+    document.addEventListener('keydown', (e) => {
+      if (!document.body.classList.contains('gallery-expanded')) return;
+      if (e.key === 'Escape') closePanel();
+      if (e.key === 'ArrowLeft') {
+        if (currentVisibleIndices && currentVisiblePosition > 0) {
+          navigateTo(currentVisibleIndices[currentVisiblePosition - 1]);
+        } else if (currentExpandedIndex > 0) {
+          navigateTo(currentExpandedIndex - 1);
+        }
+      }
+      if (e.key === 'ArrowRight') {
+        if (currentVisibleIndices && currentVisiblePosition < currentVisibleIndices.length - 1) {
+          navigateTo(currentVisibleIndices[currentVisiblePosition + 1]);
+        } else if (currentExpandedIndex < galleryItems.length - 1) {
+          navigateTo(currentExpandedIndex + 1);
+        }
+      }
+    });
+
+    // Helper draggable function and window control behaviors
+    function makeDraggable(el, handle) {
+      handle = handle || el;
+      let dragging = false;
+      let offsetX = 0, offsetY = 0;
+      handle.addEventListener('mousedown', (e) => {
+        dragging = true;
+        const rect = el.getBoundingClientRect();
+        offsetX = e.clientX - rect.left;
+        offsetY = e.clientY - rect.top;
+        handle.style.cursor = 'grabbing';
+        e.preventDefault();
+      });
+      document.addEventListener('mousemove', (e) => {
+        if (dragging) {
+          el.style.left = (e.clientX - offsetX) + 'px';
+          el.style.top = (e.clientY - offsetY) + 'px';
+          el.style.right = 'auto';
+        }
+      });
+      document.addEventListener('mouseup', () => {
+        dragging = false;
+        handle.style.cursor = 'grab';
+      });
+    }
+
+    function minimizePanel() {
+      if (currentExpandedIndex === -1) return;
+      const item = galleryItems[currentExpandedIndex];
+      const panel = document.getElementById('expandedPanel');
+      const rect = panel.getBoundingClientRect();
+      panel.classList.add('minimized-temp');
+      setTimeout(() => {
+        const box = document.createElement('div');
+        box.className = 'minimized-window';
+        box.dataset.left = rect.left;
+        box.dataset.top = rect.top;
+        box.dataset.right = panel.style.right || '';
+        box.dataset.index = currentExpandedIndex;
+        const minusBtn = document.createElement('button');
+        minusBtn.className = 'min-btn';
+        minusBtn.textContent = '–';
+        const squareBtn = document.createElement('button');
+        squareBtn.className = 'min-btn';
+        squareBtn.textContent = '□';
+        const closeBtn = document.createElement('button');
+        closeBtn.className = 'min-btn';
+        closeBtn.textContent = '×';
+        box.appendChild(minusBtn);
+        box.appendChild(squareBtn);
+        box.appendChild(closeBtn);
+        box.style.left = rect.left + 'px';
+        box.style.top = rect.top + 'px';
+        // use constrained minimized draggable with snapping
+        makeMinimizedDraggable(box);
+        minusBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          box.remove();
+        });
+        squareBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          createFloatingWindow(item, currentExpandedIndex);
+          box.remove();
+        });
+        closeBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          box.remove();
+        });
+        document.body.appendChild(box);
+        panel.classList.remove('minimized-temp');
+        closePanel();
+      }, 300);
+    }
+
+    function restoreFromMinimized(box) {
+      const idx = parseInt(box.dataset.index, 10);
+      if (!isNaN(idx)) {
+        expandItem(idx);
+        const panel = document.getElementById('expandedPanel');
+        if (box.dataset.left) {
+          panel.style.left = box.dataset.left + 'px';
+          panel.style.top = box.dataset.top + 'px';
+          panel.style.right = box.dataset.right || '0';
+        }
+      }
+      box.remove();
+    }
+
+    function toggleImageOnly() {
+      // legacy toggle preserved but simplified
+      const panel = document.getElementById('expandedPanel');
+      if (!panel) return;
+      panel.classList.toggle('image-only');
+      showTab('image');
+    }
+
+    function createFloatingFromPanel() {
+      if (currentExpandedIndex === -1) return;
+      const item = galleryItems[currentExpandedIndex];
+      const thumbRect = item.element.getBoundingClientRect();
+      closePanel();
+      createFloatingWindow(item, currentExpandedIndex, thumbRect);
+    }
+
+    function createFloatingWindow(item, index, referenceRect) {
+      const header = document.querySelector('header');
+      const headerHeight = header ? Math.ceil(header.getBoundingClientRect().height) : 0;
+      const win = document.createElement('div');
+      win.className = 'floating-window';
+      win.dataset.index = index;
+      if (referenceRect) {
+        win.style.width = referenceRect.width + 'px';
+      }
+      const bar = document.createElement('div');
+      bar.className = 'floating-handle drag-handle';
+      const hole = document.createElement('span'); hole.className = 'control-hole';
+      const btns = document.createElement('div'); btns.className = 'control-buttons';
+      const min = document.createElement('button'); min.className = 'win-btn win-min'; min.textContent = '–';
+      const square = document.createElement('button'); square.className = 'win-btn win-imageonly'; square.textContent = '□';
+      const close = document.createElement('button'); close.className = 'win-btn win-close'; close.textContent = '×';
+      btns.appendChild(min); btns.appendChild(square); btns.appendChild(close);
+      bar.appendChild(hole); bar.appendChild(btns);
+      const imgWrap = document.createElement('div'); imgWrap.className = 'floating-image-wrap';
+      const img = document.createElement('img'); img.src = item.imageSrc; img.alt = item.imageAlt || item.title || ''; img.className = 'floating-image'; imgWrap.appendChild(img);
+    img.addEventListener('load', () => {
+      const naturalW = img.naturalWidth;
+      const naturalH = img.naturalHeight;
+      win.style.aspectRatio = naturalW + '/' + naturalH;
+      const pad = 20;
+      const availW = window.innerWidth * 0.8;
+      const availH = window.innerHeight * 0.8;
+      if (!referenceRect) {
+        const desiredW = Math.min(naturalW + pad, availW);
+        const desiredH = Math.min(naturalH + bar.offsetHeight + pad, availH);
+        win.style.width = desiredW + 'px';
+        win.style.height = desiredH + 'px';
+      } else {
+        const refW = Math.min(referenceRect.width, availW);
+        win.style.width = refW + 'px';
+      }
+    });
+      win.appendChild(bar); win.appendChild(imgWrap); document.body.appendChild(win);
+      win.style.left = Math.min(80, window.innerWidth * 0.3) + 'px'; win.style.top = (headerHeight + 40) + 'px';
+      const cleanup = makeDraggable(win, bar);
+      min.addEventListener('click', (e) => { e.stopPropagation(); minimizeFloatingWindow(win, item); });
+      close.addEventListener('click', (e) => { e.stopPropagation(); win.remove(); cleanup && cleanup(); });
+      square.addEventListener('click', (e) => { e.stopPropagation(); const idx = parseInt(win.dataset.index,10); if (!isNaN(idx)) expandItem(idx); win.remove(); cleanup && cleanup(); });
+      return win;
+    }
+
+    function minimizeFloatingWindow(win, item) {
+      const rect = win.getBoundingClientRect();
+      const box = document.createElement('div'); box.className = 'minimized-window'; box.dataset.index = win.dataset.index || '';
+      const minusBtn = document.createElement('button'); minusBtn.className = 'min-btn'; minusBtn.textContent = '–';
+      const squareBtn = document.createElement('button'); squareBtn.className = 'min-btn'; squareBtn.textContent = '□';
+      const closeBtn = document.createElement('button'); closeBtn.className = 'min-btn'; closeBtn.textContent = '×';
+      box.appendChild(minusBtn); box.appendChild(squareBtn); box.appendChild(closeBtn);
+      box.style.left = Math.max(10, Math.min(rect.left, window.innerWidth - 200)) + 'px';
+      const header = document.querySelector('header'); const headerHeight = header ? Math.ceil(header.getBoundingClientRect().height) : 0;
+      const topPos = Math.max(headerHeight + 8, Math.min(rect.top, window.innerHeight - 40)); box.style.top = topPos + 'px'; document.body.appendChild(box);
+      win.remove(); makeMinimizedDraggable(box);
+      minusBtn.addEventListener('click', (e) => { e.stopPropagation(); box.remove(); alignMinimizedStacks(); });
+      squareBtn.addEventListener('click', (e) => { e.stopPropagation(); createFloatingWindow(item, parseInt(box.dataset.index,10)); box.remove(); alignMinimizedStacks(); });
+      closeBtn.addEventListener('click', (e) => { e.stopPropagation(); box.remove(); alignMinimizedStacks(); });
+      alignMinimizedStacks();
+    }
+
+    function makeMinimizedDraggable(el) {
+      let dragging = false; let offsetX = 0; let offsetY = 0;
+      const header = document.querySelector('header'); const headerHeight = header ? Math.ceil(header.getBoundingClientRect().height) : 0;
+      const onMouseDown = (e) => { dragging = true; const rect = el.getBoundingClientRect(); offsetX = e.clientX - rect.left; offsetY = e.clientY - rect.top; el.style.cursor = 'grabbing'; e.preventDefault(); };
+      el.addEventListener('mousedown', onMouseDown);
+      const onMouseMove = (e) => { if (!dragging) return; const newX = e.clientX - offsetX; const newY = e.clientY - offsetY; const minX = 6; const maxX = window.innerWidth - el.offsetWidth - 6; const minY = headerHeight + 6; const maxY = window.innerHeight - el.offsetHeight - 6; el.style.left = Math.max(minX, Math.min(newX, maxX)) + 'px'; el.style.top = Math.max(minY, Math.min(newY, maxY)) + 'px'; };
+      const onMouseUp = () => { if (!dragging) return; dragging = false; el.style.cursor = 'grab'; snapMinimizedBars(el); };
+      document.addEventListener('mousemove', onMouseMove); document.addEventListener('mouseup', onMouseUp);
+      return () => { el.removeEventListener('mousedown', onMouseDown); document.removeEventListener('mousemove', onMouseMove); document.removeEventListener('mouseup', onMouseUp); };
+    }
+
+    function snapMinimizedBars(el) {
+      const bars = Array.from(document.querySelectorAll('.minimized-window')).filter(b => b !== el);
+      const rect = el.getBoundingClientRect();
+      for (const b of bars) {
+        const r = b.getBoundingClientRect();
+        const horizOverlap = rect.left < r.right && rect.right > r.left;
+        const vertDist = Math.abs(rect.top - r.top);
+        if (horizOverlap && vertDist < 80) { el.style.left = r.left + 'px'; el.style.top = (r.top + b.offsetHeight + 8) + 'px'; break; }
+      }
+      alignMinimizedStacks();
+    }
+
+    function alignMinimizedStacks() {
+      const bars = Array.from(document.querySelectorAll('.minimized-window'));
+      const groups = [];
+      bars.forEach(b => { const left = Math.round(parseFloat(b.style.left || b.getBoundingClientRect().left)); const g = groups.find(gr => Math.abs(gr.left - left) < 24); if (g) g.items.push(b); else groups.push({ left, items: [b] }); });
+      groups.forEach(gr => { gr.items.sort((a,b) => parseFloat(a.style.top || a.getBoundingClientRect().top) - parseFloat(b.style.top || b.getBoundingClientRect().top)); const startTop = parseFloat(gr.items[0].style.top || gr.items[0].getBoundingClientRect().top); gr.items.forEach((b,i) => b.style.top = (startTop + i * (b.offsetHeight + 8)) + 'px'); });
+    }
+  }
+
 </script>
 </body>
 </html>
