@@ -20,12 +20,15 @@
 <body>
 <!-- navigation columns common to all pages -->
 <div class="landing-name">ALEX VALENTINE EVDOKIMOV</div>
-<div class="landing-grid">
+<div class="nav-left">
   <div class="landing-cell home-cell" data-page="index.html" data-label="HOME"></div>
   <div class="landing-cell work-cell" data-page="drawings.html" data-label="MY WORK"></div>
+</div>
+<div class="nav-right">
   <div class="landing-cell about-cell" data-page="about.html" data-label="ABOUT ME"></div>
   <div class="landing-cell contact-cell" data-page="contact.html" data-label="CONTACTS"></div>
 </div>
+<div class="content-area">
 <div class="page-content">
 <main>
     <main class="contact-page">
@@ -69,14 +72,12 @@
     else if (path.includes('about')) activeCell = document.querySelector('.about-cell');
     else if (path.includes('contact')) activeCell = document.querySelector('.contact-cell');
     activeCell.classList.add('active');
-    const pageContent = document.querySelector('.page-content');
-    if (pageContent) activeCell.appendChild(pageContent);
     cells.forEach(cell => {
       cell.addEventListener('click', function() {
         const page = this.dataset.page;
         cells.forEach(c => c.classList.remove('active'));
         this.classList.add('active');
-        setTimeout(() => { window.location.href = page; }, 300);
+        setTimeout(() => { window.location.href = page; }, 500);
       });
     });
   });

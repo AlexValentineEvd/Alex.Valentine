@@ -23,12 +23,15 @@
 
 <!-- navigation columns common to all pages -->
 <div class="landing-name">ALEX VALENTINE EVDOKIMOV</div>
-<div class="landing-grid">
+<div class="nav-left">
   <div class="landing-cell home-cell" data-page="index.html" data-label="HOME"></div>
   <div class="landing-cell work-cell" data-page="drawings.html" data-label="MY WORK"></div>
+</div>
+<div class="nav-right">
   <div class="landing-cell about-cell" data-page="about.html" data-label="ABOUT ME"></div>
   <div class="landing-cell contact-cell" data-page="contact.html" data-label="CONTACTS"></div>
 </div>
+<div class="content-area">
 <div class="page-content">
 <script>
   document.addEventListener('DOMContentLoaded', function() {
@@ -51,34 +54,6 @@
     });
   });
 </script>
-
-<div id="controlBox" class="control-box-solid">
-  <div class="drag-handle" id="dragHandle"></div>
-  <div class="control-option">
-    <button class="sort-btn" data-type="year" data-state="none">YEAR</button>
-  </div>
-  <div class="control-option">
-    <button class="sort-btn" data-type="size" data-state="none">SIZE</button>
-  </div>
-  <div class="control-option">
-    <button class="sort-btn" data-type="medium" data-state="none">MEDIUM</button>
-  </div>
-  <div class="control-option">
-    <label for="collectionSelect">COLLECTION</label>
-    <select id="collectionSelect">
-      <option value="all">All</option>
-      <option value="house">House Drawings</option>
-      <option value="sketch book">sketch book</option>
-      <option value="Wonderland">Wonderland</option>
-      <option value="Throw">Throw</option>
-      <option value="animals">Animal Drawings</option>
-      <option value="art">Art book</option>
-      <option value="CANOE">Canoe Collection</option>
-      <option value="stairs">stairs</option>
-      <option value="dragon">dragon drawings</option>
-    </select>
-  </div>
-</div>
 
   <div class="gallery-wall" id="gallery">
 
