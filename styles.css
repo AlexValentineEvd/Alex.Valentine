@@ -54,11 +54,20 @@ body.home-page .landing-name {
   display: none; /* hide top name on home, use bottom */
 }
 
+/* landing-name hidden by default; JS will show when home active */
+.landing-name {
+  display: none;
+}
+
 .landing-grid {
   display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+  z-index: 1000;
 }
 
 .landing-cell {
@@ -66,12 +75,21 @@ body.home-page .landing-name {
   position: relative;
   cursor: pointer;
   flex: 1;
+  min-width: 3rem;              /* allow slightly wider than text */
   border-right: 1px solid #000;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   overflow: hidden;
-  transition: flex 0.5s ease-in-out; /* smoother transition */
+  transition: flex 0.5s ease-in-out;
+}
+.landing-cell.active {
+  flex: 8;                     /* expanded column takes most space */
+  min-width: 0;
+}
+.landing-cell:not(.active) {
+  flex: 0.5;                   /* make thin when inactive */
+  min-width: 2.5rem;           /* ensure label visible */
 }
 /* container for page-specific content when active */
 .landing-cell .page-content {
