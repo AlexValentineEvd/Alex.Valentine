@@ -8,7 +8,7 @@ html, body {
 body {
   font-family: 'Outfit', sans-serif;
   background: transparent;
-  color: #333;
+  color: #000000;
   padding-top: 110px;
   min-height: 100vh;
   display: flex;
@@ -17,7 +17,7 @@ body {
 }
 
 /* ========== HOME LANDING GRID ========== */
-/* overrides to remove header spacing and set up the four-column map */
+/* Dynamic expanding columns layout for home page */
 body.home-page {
   padding-top: 0;
   margin: 0;
@@ -31,44 +31,66 @@ body.home-page {
   font-size: clamp(1.5rem, 4vw, 3rem);
   font-weight: 700;
   z-index: 5;
+  white-space: nowrap;
 }
 
 .landing-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
   height: 100vh;
   width: 100vw;
+  overflow: hidden;
 }
 
 .landing-cell {
   background: #fff;
   position: relative;
-}
-
-.landing-cell:not(:first-child) {
-  border-left: 1px solid #000;
-}
-
-.landing-cell a {
+  cursor: pointer;
+  flex: 1;
+  border-right: 1px solid #000;
   display: flex;
-  align-items: flex-end;
-  height: 100%;
-  width: 100%;
-  text-decoration: none;
+  align-items: flex-start;
+  justify-content: flex-start;
+  overflow: hidden;
+  transition: flex 0.3s ease-in-out;
 }
 
-.landing-cell .label {
-  padding: 1rem;
+.landing-cell:last-child {
+  border-right: none;
+}
+
+/* vertical text label positioned at top-left */
+.landing-cell::before {
+  content: attr(data-label);
+  position: absolute;
+  top: 20px;
+  left: 20px;
   font-weight: 700;
+  font-size: 1rem;
   color: #000;
-  text-align: left;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  white-space: nowrap;
+  line-height: 1.2;
+  transition: color 0.3s ease;
 }
 
-/* hover backgrounds – replace image URLs with appropriate assets */
-.home-cell:hover { background: url('img/home-bg.jpg') center/cover no-repeat; }
-.work-cell:hover { background: url('img/work-bg.jpg') center/cover no-repeat; }
-.about-cell:hover { background: url('img/about-bg.jpg') center/cover no-repeat; }
-.contact-cell:hover { background: url('img/contact-bg.jpg') center/cover no-repeat; }
+/* hover state: invert colors */
+.landing-cell:not(.active):hover {
+  background: #000;
+}
+
+.landing-cell:not(.active):hover::before {
+  color: #fff;
+}
+
+/* active state: expand to 4x size */
+.landing-cell.active {
+  flex: 4;
+}
+
+.landing-cell.active::before {
+  color: #000;
+}
 
 main {
   flex: 1;
