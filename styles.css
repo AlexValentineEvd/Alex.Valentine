@@ -16,12 +16,28 @@ body {
   overflow-x: hidden;
 }
 
-/* ========== HOME LANDING GRID ========== */
-/* Dynamic expanding columns layout for home page */
-body.home-page {
-  padding-top: 0;
+/* ========== NAVIGATION GRID (all pages) ========== */
+/* Column‑based navigation that replaces the header/site nav */
+body {
+  padding-top: 0; /* remove header padding globally */
   margin: 0;
-  overflow: hidden;
+}
+
+/* optional home-specific name at bottom-left */
+.home-name {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-weight: 700;
+  font-size: clamp(1rem, 3vw, 2rem);
+  line-height: 1.2;
+  text-align: left;
+  white-space: pre;
+  z-index: 5;
+  display: none;
+}
+body.home-page .home-name {
+  display: block;
 }
 
 .landing-name {
@@ -52,6 +68,22 @@ body.home-page {
   justify-content: flex-start;
   overflow: hidden;
   transition: flex 0.3s ease-in-out;
+}
+/* container for page-specific content when active */
+.landing-cell .page-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background: #fff;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+/* ensure only active cell shows its content */
+.landing-cell:not(.active) .page-content {
+  display: none;
 }
 
 .landing-cell:last-child {

@@ -18,20 +18,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-<header>
-  <div class="container">
-    <nav>
-     <ul class="nav-links">
-      <li><a href="index.html" class="nav-link" id="home-link">HOME</a></li>
-      <li><a href="drawings.html" class="nav-link" id="works-link">WORK</a></li>
-      <li><a href="about.html" class="nav-link" id="about-link">ABOUT</a></li>
-      <li><a href="contact.html" class="nav-link" id="contact-link">CONTACTS</a></li>
-     </ul>
-    </nav>
-  </div>
-  <div class="header-divider"></div>
-</header>
-  
+<!-- navigation columns common to all pages -->
+<div class="landing-name">ALEX VALENTINE EVDOKIMOV</div>
+<div class="landing-grid">
+  <div class="landing-cell home-cell" data-page="index.html" data-label="HOME"></div>
+  <div class="landing-cell work-cell" data-page="drawings.html" data-label="MY WORK"></div>
+  <div class="landing-cell about-cell" data-page="about.html" data-label="ABOUT ME"></div>
+  <div class="landing-cell contact-cell" data-page="contact.html" data-label="CONTACTS"></div>
+</div>
+<div class="page-content">
   <main>
     <div class="about-container">
     <div class="about-text">
@@ -138,6 +133,27 @@ MArch ARB / RIBA Part 2 - Scholarship recipient  </p>
   } else if (path.includes("contact")) {
     document.getElementById("contact-link").classList.add("active");
   }
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const cells = document.querySelectorAll('.landing-cell');
+    const path = window.location.pathname.toLowerCase();
+    let activeCell = cells[0];
+    if (path.includes('drawings')) activeCell = document.querySelector('.work-cell');
+    else if (path.includes('about')) activeCell = document.querySelector('.about-cell');
+    else if (path.includes('contact')) activeCell = document.querySelector('.contact-cell');
+    activeCell.classList.add('active');
+    const pageContent = document.querySelector('.page-content');
+    if (pageContent) activeCell.appendChild(pageContent);
+    cells.forEach(cell => {
+      cell.addEventListener('click', function() {
+        const page = this.dataset.page;
+        cells.forEach(c => c.classList.remove('active'));
+        this.classList.add('active');
+        setTimeout(() => { window.location.href = page; }, 300);
+      });
+    });
+  });
 </script>
 </body>
 </html>
