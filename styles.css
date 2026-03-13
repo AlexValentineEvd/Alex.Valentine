@@ -17,7 +17,7 @@ body {
 }
 
 /* ========== NAVIGATION GRID (all pages) ========== */
-/* Column‑based navigation that replaces the header/site nav */
+/* Four persistent vertical columns as global navigation/header */
 body {
   padding-top: 0; /* remove header padding globally */
   margin: 0;
@@ -54,55 +54,45 @@ body.home-page .landing-name {
   display: none; /* hide top name on home, use bottom */
 }
 
-.nav-left {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 15%; /* thinner for more content space */
-  height: 100vh;
+.landing-grid {
   display: flex;
-  flex-direction: column;
-  z-index: 10;
-}
-
-.nav-right {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 15%;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  z-index: 10;
-}
-
-.content-area {
-  margin-left: 15%;
-  margin-right: 15%;
-  height: 100vh;
-  overflow-y: auto;
-  overflow-x: hidden;
-  background: #fff;
-  z-index: 5;
-  position: relative;
+  width: 100vw;
+  overflow: hidden;
 }
 
 .landing-cell {
-  flex: 1;
   background: #fff;
   position: relative;
   cursor: pointer;
-  border-bottom: 1px solid #000; /* horizontal dividers since stacked vertically */
+  flex: 1;
+  border-right: 1px solid #000;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   overflow: hidden;
   transition: flex 0.5s ease-in-out; /* smoother transition */
 }
+/* container for page-specific content when active */
+.landing-cell .page-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #fff;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+/* ensure only active cell shows its content */
+.landing-cell:not(.active) .page-content {
+  display: none;
+}
 
-.nav-left .landing-cell:last-child,
-.nav-right .landing-cell:last-child {
-  border-bottom: none;
+.landing-cell:last-child {
+  border-right: none;
 }
 
 /* vertical text label positioned at top-left */
@@ -119,6 +109,7 @@ body.home-page .landing-name {
   white-space: nowrap;
   line-height: 1.2;
   transition: color 0.3s ease;
+  z-index: 1;
 }
 
 /* hover state: invert colors */
