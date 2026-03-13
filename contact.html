@@ -46,34 +46,45 @@
     <p> ALEX VALENTINE EVDOKIMOV 2025</p>
   </footer>
 
-<script>
-  const path = window.location.pathname.toLowerCase();
-
-  if (path.includes("index")) {
-    document.getElementById("home-link").classList.add("active");
-  } else if (path.includes("projects") || path.includes("drawings") || path.includes("works")) {
-    const worksLink = document.getElementById("works-link");
-    if (worksLink) worksLink.classList.add("active");
-  } else if (path.includes("about")) {
-    document.getElementById("about-link").classList.add("active");
-  } else if (path.includes("contact")) {
-    document.getElementById("contact-link").classList.add("active");
-  }
+</div> <!-- .page-content -->
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const cells = document.querySelectorAll('.landing-cell');
+    const landingName = document.querySelector('.landing-name');
     const path = window.location.pathname.toLowerCase();
     let activeCell = cells[0];
     if (path.includes('drawings')) activeCell = document.querySelector('.work-cell');
     else if (path.includes('about')) activeCell = document.querySelector('.about-cell');
     else if (path.includes('contact')) activeCell = document.querySelector('.contact-cell');
     activeCell.classList.add('active');
+    if (landingName) landingName.style.display = activeCell.classList.contains('home-cell') ? 'block' : 'none';
     cells.forEach(cell => {
       cell.addEventListener('click', function() {
         const page = this.dataset.page;
         cells.forEach(c => c.classList.remove('active'));
         this.classList.add('active');
+        if (landingName) landingName.style.display = this.classList.contains('home-cell') ? 'block' : 'none';
+        setTimeout(() => { window.location.href = page; }, 500);
+      });
+    });
+  });
+</script>  document.addEventListener('DOMContentLoaded', function() {
+    const cells = document.querySelectorAll('.landing-cell');
+    const landingName = document.querySelector('.landing-name');
+    const path = window.location.pathname.toLowerCase();
+    let activeCell = cells[0];
+    if (path.includes('drawings')) activeCell = document.querySelector('.work-cell');
+    else if (path.includes('about')) activeCell = document.querySelector('.about-cell');
+    else if (path.includes('contact')) activeCell = document.querySelector('.contact-cell');
+    activeCell.classList.add('active');
+    if (landingName) landingName.style.display = activeCell.classList.contains('home-cell') ? 'block' : 'none';
+    cells.forEach(cell => {
+      cell.addEventListener('click', function() {
+        const page = this.dataset.page;
+        cells.forEach(c => c.classList.remove('active'));
+        this.classList.add('active');
+        if (landingName) landingName.style.display = this.classList.contains('home-cell') ? 'block' : 'none';
         setTimeout(() => { window.location.href = page; }, 500);
       });
     });
