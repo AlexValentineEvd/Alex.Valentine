@@ -1,2161 +1,516 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HBJP6CFGNQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-HBJP6CFGNQ');
-</script>
-
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HBJP6CFGNQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HBJP6CFGNQ');
+  </script>
   <meta charset="UTF-8">
-  <title>Works</title>
+  <title>Works — Alex Valentine Evdokimov</title>
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
 </head>
-
 <body>
 
-<!-- navigation columns common to all pages -->
-<div class="landing-name">ALEX VALENTINE EVDOKIMOV</div>
 <div class="landing-grid">
+
   <div class="landing-cell home-cell" data-page="index.html" data-label="HOME"></div>
-  <div class="landing-cell work-cell" data-page="drawings.html" data-label="MY WORK"></div>
-  <div class="landing-cell about-cell" data-page="about.html" data-label="ABOUT ME"></div>
-  <div class="landing-cell contact-cell" data-page="contact.html" data-label="CONTACTS"></div>
-</div>
-<div class="page-content">
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const cells = document.querySelectorAll('.landing-cell');
-    const path = window.location.pathname.toLowerCase();
-    let activeCell = cells[0];
-    if (path.includes('drawings')) activeCell = document.querySelector('.work-cell');
-    else if (path.includes('about')) activeCell = document.querySelector('.about-cell');
-    else if (path.includes('contact')) activeCell = document.querySelector('.contact-cell');
-    activeCell.classList.add('active');
-    const pageContent = document.querySelector('.page-content');
-    if (pageContent) activeCell.appendChild(pageContent);
-    cells.forEach(cell => {
-      cell.addEventListener('click', function() {
-        const page = this.dataset.page;
-        cells.forEach(c => c.classList.remove('active'));
-        this.classList.add('active');
-        setTimeout(() => { window.location.href = page; }, 300);
-      });
-    });
-  });
-</script>
 
-  <div class="gallery-wall" id="gallery">
-
-    <!-- A5 portrait -->
-    <div class="drawing-piece" data-collection="house">
-      <img src="img/T12.png" alt="A5 Portrait"
-           class="drawing-img"
-           style="width: calc(14.8 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-  <h3>No.227 </h3>
-  <div class="meta-medium">2021 – Pen on Card</div>
-  <div class="meta-size">148 x 210mm </div>
-</div>
-</div>
-
-
-    
-    <!-- A3 Landscape -->
-    <div class="drawing-piece" data-collection="Wonderland">
-      <img src="img/T5.png" alt="A3 Landscape"
-           class="drawing-img"
-           style="width: calc(42 * var(--cm)); height: calc(29.7 * var(--cm));">
-      <div class="drawing-meta">
-  <h3>No.248 </h3>
-  <div class="meta-medium">2021 – Pen on paper</div>
-  <div class="meta-size">420 x 297mm </div>
-</div>
-</div>
-
-    <!-- A4 Landscape -->
-    <div class="drawing-piece" data-collection="house">
-      <img src="img/T7.png" alt="A4 Landscape"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-  <h3>No.174 </h3>
-  <div class="meta-medium">2020 – Pen on paper</div>
-  <div class="meta-size">297 x 210mm </div>
- </div>
-</div>
-
-    <!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="Throw">
-      <img src="img/t17.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-  <h3>No.385 </h3>
-  <div class="meta-medium">2024 – Pen on paper</div>
-  <div class="meta-size">210 x 297mm </div>
- </div>
-</div>
-
-<!-- A3 Landscape -->
-    <div class="drawing-piece" data-collection="Wonderland">
-      <img src="img/T6.png" alt="A3 Landscape"
-           class="drawing-img"
-           style="width: calc(42 * var(--cm)); height: calc(29.7 * var(--cm));">
-      <div class="drawing-meta">
-  <h3>No.195 </h3>
-  <div class="meta-medium">2020 – Pen on paper</div>
-  <div class="meta-size">420 x 297mm </div>
- </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="house">
-      <img src="img/T10.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-  <h3>No.089 </h3>
-  <div class="meta-medium">2018 – Pen on paper</div>
-  <div class="meta-size">210 x 297mm </div>
- </div>
-</div>
-
-    <!-- A3 Portrait -->
-    <div class="drawing-piece" data-collection="dragon">
-      <img src="img/T2.png" alt="A3 Portrait"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(42 * var(--cm));">
-      <div class="drawing-meta">
-  <h3>No.158 </h3>
-  <div class="meta-medium">2020 – Pen & air brush on paper</div>
-  <div class="meta-size">297 x 420mm </div>
- </div>
-</div>
-
-    <!-- A4 Landscape -->
-    <div class="drawing-piece" data-collection="CANOE">
-      <img src="img/t56.png" alt="A4 Landscape"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-  <h3>No.133 </h3>
-  <div class="meta-medium">2019 – Pen on paper</div>
-  <div class="meta-size">297 x 210mm </div>
- </div>
-</div>
-
-<!-- A3 Landscape -->
-    <div class="drawing-piece" data-collection="Wonderland">
-      <img src="img/t62.png" alt="A3 Landscape"
-           class="drawing-img"
-           style="width: calc(42 * var(--cm)); height: calc(29.7 * var(--cm));">
-      <div class="drawing-meta">
-  <h3>No.421 </h3>
-  <div class="meta-medium">2025 – Pen on paper</div>
-  <div class="meta-size">420 x 297mm </div>
- </div>
-</div>
-
-    <!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="Throw">
-      <img src="img/T9.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-  <h3>No.384 </h3>
-  <div class="meta-medium">2024 – Pen on paper</div>
-  <div class="meta-size">210 x 297mm </div>
- </div>
-</div>
-
-    <!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="house">
-      <img src="img/T8.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-  <h3>No.092 </h3>
-  <div class="meta-medium">2018 – Pen on paper</div>
-  <div class="meta-size">210 x 297mm </div>
- </div>
-</div>
-
-    <!-- A4 Landscape -->
-<div class="drawing-piece" data-collection="house">
-  <img src="img/T13.png" alt="A4 Landscape"
-       class="drawing-img"
-       style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
-  <div class="drawing-meta">
-    <h3>No.141</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">297 x 210mm</div>
-  </div>
-</div>
-
-<!-- A3 Landscape -->
-<div class="drawing-piece" data-collection="Wonderland">
-  <img src="img/T1.png" alt="A3 Landscape"
-       class="drawing-img"
-       style="width: calc(42 * var(--cm)); height: calc(29.7 * var(--cm));">
-  <div class="drawing-meta">
-    <h3>No.271</h3>
-    <div class="meta-medium">2022 – Pen on paper</div>
-    <div class="meta-size">420 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Landscape -->
-    <div class="drawing-piece" data-collection="house">
-      <img src="img/t58.png" alt="A4 Landscape"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.143</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">297 x 210mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-<div class="drawing-piece" data-collection="animals">
-  <img src="img/T11.png" alt="A4 Portrait"
-       class="drawing-img"
-       style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-  <div class="drawing-meta">
-    <h3>No.353</h3>
-    <div class="meta-medium">2024 – Pen & stamp on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-<div class="drawing-piece" data-collection="animals">
-  <img src="img/t19.png" alt="A4 Portrait"
-       class="drawing-img"
-       style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-  <div class="drawing-meta">
-    <h3>No.395</h3>
-    <div class="meta-medium">2024 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="house">
-      <img src="img/t116.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.144</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A3 Landscape -->
-<div class="drawing-piece" data-collection="animals">
-  <img src="img/T4.png" alt="A3 Landscape"
-       class="drawing-img"
-       style="width: calc(42 * var(--cm)); height: calc(29.7 * var(--cm));">
-  <div class="drawing-meta">
-    <h3>No.236</h3>
-    <div class="meta-medium">2021 – Pen on paper</div>
-    <div class="meta-size">420 x 297mm</div>
-  </div>
-</div>
-
-
-    <!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="CANOE">
-      <img src="img/t55.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.132</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-     <!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="stairs">
-      <img src="img/t51.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.101</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-
-
-     <!-- A4 Landscape -->
-    <div class="drawing-piece" data-collection="animals">
-      <img src="img/t41.png" alt="A4 Landscape"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.323</h3>
-    <div class="meta-medium">2023 – Pen on paper</div>
-    <div class="meta-size">297 x 210mm</div>
-  </div>
-</div>
-
-    <!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="house">
-      <img src="img/t16.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.142</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-
-<!-- Additional project thumbnails (clickable links to project pages) -->
-<a href="projects/project1.html" class="project-thumb drawing-piece" data-collection="project">
-  <img src="../img/F1.jpg" alt="Project 1" class="drawing-img">
-  <div class="drawing-meta">
-    <h3>PROJECT — FROM FOREST TO FRAMEWORK</h3>
-    <div class="meta-date">2024</div>
-    <div class="meta-location">Project overview</div>
-  </div>
-</a>
-
-
-
-
-     <!-- A3 Landscape -->
-    <div class="drawing-piece">
-      <img src="img/T3.png" alt="A3 Landscape"
-           class="drawing-img"
-           style="width: calc(42 * var(--cm)); height: calc(29.7 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.355</h3>
-    <div class="meta-medium">2024 – Pen on paper</div>
-    <div class="meta-size">420 x 297mm</div>
-  </div>
-</div>
-
-
- 
-    <div class="drawing-piece">
-      <img src="img/z38.png" alt="E3 long"
-           class="drawing-img"
-           style="width: calc(7 * var(--cm)); height: calc(12.5 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.073</h3>
-    <div class="meta-medium">2018 – Pen on paper</div>
-    <div class="meta-size">70 x 12.5mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t167.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.135</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t150.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.083</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-       <!-- A4 Portrait -->
-     <div class="drawing-piece">
-      <img src="img/t24.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.365</h3>
-    <div class="meta-medium">2024 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
- 
-<!-- A4 Landscape -->
-    <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t104.png" alt="A4 Landscape"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.177</h3>
-    <div class="meta-medium">2020 – Pen on paper</div>
-    <div class="meta-size">297 x 210mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t151.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.105</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t146.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.137</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Landscape -->
-    <div class="drawing-piece" data-collection="house">
-      <img src="img/t107.png" alt="A4 Landscape"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.193</h3>
-    <div class="meta-medium">2020 – Pen on paper</div>
-    <div class="meta-size">297 x 210mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t70.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.179</h3>
-    <div class="meta-medium">2020 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-    
-
-    <!-- A3 Portrait -->
-    <div class="drawing-piece">
-      <img src="img/t15.png" alt="A3 Portrait"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(42 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.190</h3>
-    <div class="meta-medium">2020 – Pen on paper</div>
-    <div class="meta-size">297 x 420mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t140.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.164</h3>
-    <div class="meta-medium">2020 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-
-    <!-- A4 Landscape -->
-    <div class="drawing-piece" data-collection="house">
-      <img src="img/t43.png" alt="A4 Landscape"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.116</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">297 x 210mm</div>
-  </div>
-</div>
-
-<!-- A4 Landscape -->
-    <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t98.png" alt="A4 Landscape"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.307</h3>
-    <div class="meta-medium">2023 – Pen on paper</div>
-    <div class="meta-size">297 x 210mm</div>
-  </div>
-</div>
-
-    <!-- A4 Portrait -->
-     <div class="drawing-piece">
-      <img src="img/t25.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.404</h3>
-    <div class="meta-medium">2024 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t159.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.104</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-    <!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="Throw">
-      <img src="img/t18.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.383</h3>
-    <div class="meta-medium">2024 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- Project 2 thumbnail to scatter the link further down -->
-<a href="projects/project2.html" class="project-thumb drawing-piece" data-collection="project">
-  <img src="img/C1.jpg" alt="Project 2" class="drawing-img">
-  <div class="drawing-meta">
-    <h3>PROJECT — CULTIVATING CREATIVE RESILIENCE</h3>
-    <div class="meta-date">2024</div>
-    <div class="meta-location">HARINGEY</div>
-  </div>
-</a>
-
-<!-- A4 Landscape -->
-    <div class="drawing-piece" data-collection="house">
-      <img src="img/t114.png" alt="A4 Landscape"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.117</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">297 x 210mm</div>
-  </div>
-</div>
-
-<!-- A5 Landscape -->
-    <div class="drawing-piece" data-collection="house">
-      <img src="img/z35.png" alt="A5 Landscape"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(14.8 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.014</h3>
-    <div class="meta-medium">2017 – Pen & water colour on paper</div>
-    <div class="meta-size">210 x 148mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t148.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.112</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="house">
-      <img src="img/t181.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.196</h3>
-    <div class="meta-medium">2020 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-    <!-- A3 Landscape -->
-    <div class="drawing-piece" data-collection="animals">
-      <img src="img/t14.png" alt="A3 Landscape"
-           class="drawing-img"
-           style="width: calc(42 * var(--cm)); height: calc(29.7 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.370</h3>
-    <div class="meta-medium">2024 – Pen on paper</div>
-    <div class="meta-size">420 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Landscape -->
-    <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t156.png" alt="A4 Landscape"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.122</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">297 x 210mm</div>
-  </div>
-</div>
-
-    <!-- A3 Landscape -->
-    <div class="drawing-piece" data-collection="art">
-      <img src="img/t60.png" alt="A3 Landscape"
-           class="drawing-img"
-           style="width: calc(42 * var(--cm)); height: calc(29.7 * var(--cm));">
-           <div class="drawing-meta"></div>
-      <div class="drawing-meta">
-    <h3>No.023</h3>
-    <div class="meta-medium">2017 – Pencil on paper</div>
-    <div class="meta-size">420 x 297mm</div>
-  </div>
-</div>
-
-    <div class="drawing-piece">
-      <img src="img/z37.png" alt="E3 long"
-           class="drawing-img"
-           style="width: calc(7 * var(--cm)); height: calc(12.5 * var(--cm));">
-          <div class="drawing-meta">
-    <h3>No.043</h3>
-    <div class="meta-medium">2017 – Pencil on paper</div>
-    <div class="meta-size">70 x 125mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t71.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.211</h3>
-    <div class="meta-medium">2021 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Landscape -->
-    <div class="drawing-piece">
-      <img src="img/t73.png" alt="A4 Landscape"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.363</h3>
-    <div class="meta-medium">2024 – Pen on paper</div>
-    <div class="meta-size">297 x 210mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t149.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.113</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
- 
-<!-- A4 Portrait -->
-     <div class="drawing-piece">
-      <img src="img/t64.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.308</h3>
-    <div class="meta-medium">2023 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- duplicate of project 1 thumbnail to scatter the link further down -->
-<a href="projects/project1.html" class="project-thumb drawing-piece" data-collection="project">
-  <img src="../img/F2.jpg" alt="Project 1" class="drawing-img">
-  <div class="drawing-meta">
-    <h3>PROJECT — FROM FOREST TO FRAMEWORK</h3>
-    <div class="meta-date">2024</div>
-    <div class="meta-location">Project overview</div>
-  </div>
-</a>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="stairs">
-      <img src="img/t179.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.144</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
- <!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t68.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.115</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t158.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.106</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-    <div class="drawing-piece">
-      <img src="img/z40.png" alt="E5 landscape"
-           class="drawing-img"
-           style="width: calc(10 * var(--cm)); height: calc(8.5 * var(--cm));">
-    <div class="drawing-meta">
-    <h3>No.011</h3>
-    <div class="meta-medium">2017 – Pencil on paper</div>
-    <div class="meta-size">100 x 85mm</div>
-  </div>
-</div>
-
-    
-
-<!-- A4 Landscape -->
-    <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t101.png" alt="A4 Landscape"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.169</h3>
-    <div class="meta-medium">2020 – Pen on paper</div>
-    <div class="meta-size">297 x 210mm</div>
-  </div>
-</div>
-
-
-
-<!-- A5 Portrait -->
-<div class="drawing-piece" data-collection="animals">
-  <img src="img/t137.png" alt="A5 Portrait"
-       class="drawing-img"
-       style="width: calc(14.8 * var(--cm)); height: calc(21 * var(--cm));">
-  <div class="drawing-meta">
-    <h3>No.413</h3>
-    <div class="meta-medium">2025 – Pen on cardboard</div>
-    <div class="meta-size">148 x 210mm</div>
-  </div>
-</div>
-
-    <!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="stairs">
-      <img src="img/t119.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.102</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Landscape -->
-    <div class="drawing-piece" data-collection="house">
-      <img src="img/t130.png" alt="A4 Landscape"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.098</h3>
-    <div class="meta-medium">2018 – Pen on paper</div>
-    <div class="meta-size">297 x 210mm</div>
-  </div>
-</div>
-
-<!-- A3 Portrait -->
-    <div class="drawing-piece" data-collection="art">
-      <img src="img/t123.png" alt="A3 Portrait"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(42 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.027</h3>
-    <div class="meta-medium">2017 – Pen on paper</div>
-    <div class="meta-size">297 x 420mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="Throw">
-      <img src="img/t66.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.382</h3>
-    <div class="meta-medium">2024 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Landscape -->
-    <div class="drawing-piece" data-collection="house">
-      <img src="img/t131.png" alt="A4 Landscape"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.154</h3>
-    <div class="meta-medium">2020 – Pen on paper</div>
-    <div class="meta-size">297 x 210mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t176.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.094</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="stairs">
-      <img src="img/t50.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.103</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="house">
-      <img src="img/t182.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.197</h3>
-    <div class="meta-medium">2020 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-
-    <!-- A4 Landscape -->
-    <div class="drawing-piece" data-collection="CANOE">
-      <img src="img/t57.png" alt="A4 Landscape"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.131</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">297 x 210mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="dragon">
-      <img src="img/t90.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.205</h3>
-    <div class="meta-medium">2021 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-   
-    <!-- A4 Landscape -->
-    <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t100.png" alt="A4 Landscape"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.168</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">297 x 210mm</div>
-  </div>
-</div>
-
-<!-- A5 Landscape -->
-<div class="drawing-piece" data-collection="sketch book">
-  <img src="img/t136.png " alt="A5 Landscape"
-       class="drawing-img"
-       style="width: calc(21 * var(--cm)); height: calc(14.8 * var(--cm));">
-  <div class="drawing-meta">
-    <h3>No.240</h3>
-    <div class="meta-medium">2021 – Pen on paper</div>
-    <div class="meta-size">210 x 148mm</div>
-  </div>
-</div>
-
-<div class="drawing-piece" data-collection="stairs">
-      <img src="img/t75.png" alt="A5 Landscape"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(14.8 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.129</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 148mm</div>
-  </div>
-</div>
-
-    <!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t21.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.181</h3>
-    <div class="meta-medium">2020 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Landscape -->
-    <div class="drawing-piece">
-      <img src="img/t84.png" alt="A4 Landscape"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.114</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">297 x 210mm</div>
-  </div>
-</div>
-
-    <!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t161.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.124</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t138.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.180</h3>
-    <div class="meta-medium">2020 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t69.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.118</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Landscape -->
-    <div class="drawing-piece" data-collection="house">
-      <img src="img/t59.png" alt="A4 Landscape"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.145</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">297 x 210mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="house">
-      <img src="img/t118.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.070</h3>
-    <div class="meta-medium">2018 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A3 Landscape -->
-    <div class="drawing-piece">
-      <img src="img/t86.png" alt="A3 Landscape"
-           class="drawing-img"
-           style="width: calc(42 * var(--cm)); height: calc(29.7 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.409</h3>
-    <div class="meta-medium">2025 – Pen on paper</div>
-    <div class="meta-size">420 x 297mm</div>
-  </div>
-</div>
-
-  
-    <!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="house">
-      <img src="img/t54.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.146</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t172.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.126</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-
-
- <!-- A3 Portrait -->
-    <div class="drawing-piece" data-collection="art">
-      <img src="img/t88.png" alt="A3 Portrait"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(42 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.024</h3>
-    <div class="meta-medium">2017 – Pencil on paper</div>
-    <div class="meta-size">297 x 420mm</div>
-  </div>
-</div>
-
-<div class="drawing-piece" data-collection="CANOE">
-      <img src="img/t78.png" alt="E6 Portrait"
-           class="drawing-img"
-           style="width: calc(9 * var(--cm)); height: calc(14 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.134</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">90 x 140mm</div>
-  </div>
-</div>
-
-
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t139.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.123</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t145.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.110</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-
-    <!-- A4 Landscape -->
-    <div class="drawing-piece" data-collection="house">
-      <img src="img/t46.png" alt="A4 Landscape"
-           class="drawing-img"
-           style="width: calc(29.7 * var(--cm)); height: calc(21 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.107</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">297 x 210mm</div>
-  </div>
-</div>
-
-    <!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="house">
-      <img src="img/t20.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.091</h3>
-    <div class="meta-medium">2018 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t154.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.076</h3>
-    <div class="meta-medium">2018 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-    <!-- A3 Landscape -->
-    <div class="drawing-piece">
-      <img src="img/t48.png" alt="A3 Landscape"
-           class="drawing-img"
-           style="width: calc(42 * var(--cm)); height: calc(29.7 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.284</h3>
-    <div class="meta-medium">2022 – Pen on paper</div>
-    <div class="meta-size">420 x 297mm</div>
-  </div>
-</div>
-
-
-<div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t94.png" alt="A5 Landscape"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(14.8 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.151</h3>
-    <div class="meta-medium">2020 – Pen on paper</div>
-    <div class="meta-size">210 x 148mm</div>
-  </div>
-</div>
-
-
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t160.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.081</h3>
-    <div class="meta-medium">2018 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-
-
-    <div class="drawing-piece" data-collection="house">
-      <img src="img/z31.png" alt="E1 Landscape"
-           class="drawing-img"
-           style="width: calc(14.5 * var(--cm)); height: calc(12 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.057</h3>
-    <div class="meta-medium">2018 – Pen on paper</div>
-    <div class="meta-size">145 x 120mm</div>
-  </div>
-</div>
-
-    <!-- A3 Landscape -->
-    <div class="drawing-piece" data-collection="art">
-      <img src="img/t52.png" alt="A3 Landscape"
-           class="drawing-img"
-           style="width: calc(42 * var(--cm)); height: calc(29.7 * var(--cm));">
-      <div class="drawing-meta">
-    <h3>No.025</h3>
-    <div class="meta-medium">2017 – water colour on paper</div>
-    <div class="meta-size">420 x 297mm</div>
-  </div>
-</div>
-
-<!-- A4 Portrait -->
-     <div class="drawing-piece" data-collection="sketch book">
-      <img src="img/t173.png" alt="A4 Portrait"
-           class="drawing-img"
-           style="width: calc(21 * var(--cm)); height: calc(29.7 * var(--cm));">
-       <div class="drawing-meta">
-    <h3>No.125</h3>
-    <div class="meta-medium">2019 – Pen on paper</div>
-    <div class="meta-size">210 x 297mm</div>
-  </div>
-</div>
-
-
-
-  </div>
-
-  <!-- Expanded Detail Panel -->
-  <div id="expandedPanel" class="expanded-panel">
-    <div class="expanded-content">
-      <!-- Tab Navigation + Window Controls -->
-      <div class="expanded-tabs">
-        <div class="tabs-left">
-          <button class="tab-btn tab-image first-tab active" data-tab="image" id="tabImage">IMAGE</button>
-          <button class="tab-btn tab-readmore mid-tab" data-tab="readmore" id="tabReadMore">READ MORE</button>
-          <button class="tab-btn tab-category mid-tab" data-tab="category" id="tabCategory"></button>
-        </div>
-        <div class="window-controls">
-          <button class="win-btn win-min" id="minBtn" aria-label="Minimize">–</button>
-          <button class="win-btn win-imageonly" id="imageOnlyBtn" aria-label="Image-only">□</button>
-          <button class="win-btn win-close" id="closeBtn" aria-label="Close">×</button>
-        </div>
+  <div class="landing-cell work-cell active" data-page="drawings.html" data-label="MY WORK">
+
+    <!-- Toolbar: absolute bottom of work-cell -->
+    <div class="toolbar" id="toolbar">
+      <div class="toolbar-group">
+        <span class="toolbar-label">Sort</span>
+        <button class="tool-btn sort-btn" data-type="year"        data-state="none">Year</button>
+        <button class="tool-btn sort-btn" data-type="size"        data-state="none">Size</button>
+        <button class="tool-btn sort-btn" data-type="orientation" data-state="none">Orientation</button>
+        <button class="tool-btn sort-btn" data-type="medium"      data-state="none">Medium</button>
       </div>
-      
-      <div class="expanded-image-container" id="imageContainer">
-        <img id="expandedImage" src="" alt="" class="expanded-image">
-      </div>
-
-      <div class="expanded-readmore-container" id="readmoreContainer" style="display: none;">
-        <div id="expandedReadMore" class="expanded-readmore"></div>
-      </div>
-
-      <div class="expanded-category-container" id="categoryContainer" style="display: none;">
-        <div id="expandedCategoryGallery" class="expanded-category-gallery"></div>
-      </div>
-      
-      <!-- Bottom inverted section: details + navigation -->
-      <div class="expanded-bottom">
-        <div class="expanded-details">
-          <div id="expandedMeta" class="expanded-meta"></div>
-
-          <!-- Additional details (collapsed by default) -->
-          <div id="expandedDescription" class="expanded-description">
-            <p id="expandedDescriptionText"></p>
-            <a id="expandedLink" href="" class="see-more-link">See More</a>
-          </div>
-        </div>
-
-        <!-- Navigation controls placed below text -->
-        <div class="expanded-nav">
-          <button class="nav-btn prev-btn" id="prevBtn" aria-label="Previous">◀ PREVIOUS</button>
-          <div class="nav-separator"></div>
-          <button class="nav-btn next-btn" id="nextBtn" aria-label="Next">NEXT ▶</button>
-        </div>
+      <div class="toolbar-divider"></div>
+      <div class="toolbar-group">
+        <span class="toolbar-label">Filter</span>
+        <button class="tool-btn filter-btn active" data-value="all">All</button>
+        <button class="tool-btn filter-btn" data-value="art">Art</button>
+        <button class="tool-btn filter-btn" data-value="animals">Animals</button>
+        <button class="tool-btn filter-btn" data-value="CANOE">Canoe</button>
+        <button class="tool-btn filter-btn" data-value="house">House</button>
+        <button class="tool-btn filter-btn" data-value="sketch book">Sketchbook</button>
+        <button class="tool-btn filter-btn" data-value="Wonderland">Wonderland</button>
+        <button class="tool-btn filter-btn" data-value="dragon">Dragon</button>
+        <button class="tool-btn filter-btn" data-value="Throw">Throw</button>
+        <button class="tool-btn filter-btn" data-value="stairs">Stairs</button>
+        <button class="tool-btn filter-btn" data-value="project">Projects</button>
       </div>
     </div>
-  </div>
 
-</main>
+    <!-- Expand panel: absolute inside work-cell, clipped by cell overflow:hidden -->
+    <div class="expand-overlay" id="expandOverlay">
+      <div class="expand-img-side">
+        <div class="expand-counter" id="expandCount"></div>
+        <div class="expand-img-wrap">
+          <button class="expand-chevron left" id="expandPrev">&#8249;</button>
+          <img id="expandImg" src="" alt="">
+          <button class="expand-chevron right" id="expandNext">&#8250;</button>
+        </div>
+      </div>
+      <div class="expand-info-side">
+        <div class="expand-info-header">
+          <span class="expand-info-title" id="expandTitle"></span>
+          <button class="expand-close-btn" id="expandClose">✕</button>
+        </div>
+        <div class="expand-scroll" id="expandRows"></div>
+      </div>
+    </div>
+
+    <!-- Back to top: absolute inside work-cell -->
+    <button id="backToTop" title="Back to top" aria-label="Back to top">
+      <svg viewBox="0 0 34 30" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="17,2 33,28 1,28"/>
+      </svg>
+    </button>
+
+    <div class="page-content">
+
+      <div class="gallery-wall" id="gallery">
+
+        <div class="drawing-piece" data-collection="house"><img src="img/T12.png" alt="No.227" class="drawing-img" style="width:calc(14.8*var(--cm));height:calc(21*var(--cm));"><div class="drawing-meta"><h3>No.227</h3><div class="meta-medium">2021 – Pen on Card</div><div class="meta-size">148×210mm</div></div></div>
+        <div class="drawing-piece" data-collection="Wonderland"><img src="img/T5.png" alt="No.248" class="drawing-img" style="width:calc(42*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.248</h3><div class="meta-medium">2021 – Pen on paper</div><div class="meta-size">420×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="house"><img src="img/T7.png" alt="No.174" class="drawing-img" style="width:calc(29.7*var(--cm));height:calc(21*var(--cm));"><div class="drawing-meta"><h3>No.174</h3><div class="meta-medium">2020 – Pen on paper</div><div class="meta-size">297×210mm</div></div></div>
+        <div class="drawing-piece" data-collection="Throw"><img src="img/t17.png" alt="No.385" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.385</h3><div class="meta-medium">2024 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="Wonderland"><img src="img/T6.png" alt="No.195" class="drawing-img" style="width:calc(42*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.195</h3><div class="meta-medium">2020 – Pen on paper</div><div class="meta-size">420×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="house"><img src="img/T10.png" alt="No.089" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.089</h3><div class="meta-medium">2018 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="dragon"><img src="img/T2.png" alt="No.158" class="drawing-img" style="width:calc(29.7*var(--cm));height:calc(42*var(--cm));"><div class="drawing-meta"><h3>No.158</h3><div class="meta-medium">2020 – Pen &amp; air brush on paper</div><div class="meta-size">297×420mm</div></div></div>
+        <div class="drawing-piece" data-collection="CANOE"><img src="img/t56.png" alt="No.133" class="drawing-img" style="width:calc(29.7*var(--cm));height:calc(21*var(--cm));"><div class="drawing-meta"><h3>No.133</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">297×210mm</div></div></div>
+        <div class="drawing-piece" data-collection="Wonderland"><img src="img/t62.png" alt="No.421" class="drawing-img" style="width:calc(42*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.421</h3><div class="meta-medium">2025 – Pen on paper</div><div class="meta-size">420×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="Throw"><img src="img/T9.png" alt="No.384" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.384</h3><div class="meta-medium">2024 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="house"><img src="img/T8.png" alt="No.092" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.092</h3><div class="meta-medium">2018 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="house"><img src="img/T13.png" alt="No.141" class="drawing-img" style="width:calc(29.7*var(--cm));height:calc(21*var(--cm));"><div class="drawing-meta"><h3>No.141</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">297×210mm</div></div></div>
+        <div class="drawing-piece" data-collection="Wonderland"><img src="img/T1.png" alt="No.271" class="drawing-img" style="width:calc(42*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.271</h3><div class="meta-medium">2022 – Pen on paper</div><div class="meta-size">420×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="house"><img src="img/t58.png" alt="No.143" class="drawing-img" style="width:calc(29.7*var(--cm));height:calc(21*var(--cm));"><div class="drawing-meta"><h3>No.143</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">297×210mm</div></div></div>
+        <div class="drawing-piece" data-collection="animals"><img src="img/T11.png" alt="No.353" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.353</h3><div class="meta-medium">2024 – Pen &amp; stamp on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="animals"><img src="img/t19.png" alt="No.395" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.395</h3><div class="meta-medium">2024 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="house"><img src="img/t116.png" alt="No.144" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.144</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="animals"><img src="img/T4.png" alt="No.236" class="drawing-img" style="width:calc(42*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.236</h3><div class="meta-medium">2021 – Pen on paper</div><div class="meta-size">420×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="CANOE"><img src="img/t55.png" alt="No.132" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.132</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="stairs"><img src="img/t51.png" alt="No.101" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.101</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="animals"><img src="img/t41.png" alt="No.323" class="drawing-img" style="width:calc(29.7*var(--cm));height:calc(21*var(--cm));"><div class="drawing-meta"><h3>No.323</h3><div class="meta-medium">2023 – Pen on paper</div><div class="meta-size">297×210mm</div></div></div>
+        <div class="drawing-piece" data-collection="house"><img src="img/t16.png" alt="No.142" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.142</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+
+        <a href="projects/project1.html" class="project-thumb drawing-piece" data-collection="project"><div class="project-thumb-inner"><img src="img/F1.jpg" alt="From Forest to Framework" class="drawing-img" style="width:calc(42*var(--cm));height:calc(29.7*var(--cm));"><div class="project-thumb-label"><h3>From Forest to Framework</h3><p>2024</p><span class="project-thumb-tag">Project</span></div></div></a>
+
+        <div class="drawing-piece"><img src="img/T3.png" alt="No.355" class="drawing-img" style="width:calc(42*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.355</h3><div class="meta-medium">2024 – Pen on paper</div><div class="meta-size">420×297mm</div></div></div>
+        <div class="drawing-piece"><img src="img/z38.png" alt="No.073" class="drawing-img" style="width:calc(7*var(--cm));height:calc(12.5*var(--cm));"><div class="drawing-meta"><h3>No.073</h3><div class="meta-medium">2018 – Pen on paper</div><div class="meta-size">70×125mm</div></div></div>
+        <div class="drawing-piece" data-collection="sketch book"><img src="img/t167.png" alt="No.135" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.135</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="sketch book"><img src="img/t150.png" alt="No.083" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.083</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece"><img src="img/t24.png" alt="No.365" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.365</h3><div class="meta-medium">2024 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="sketch book"><img src="img/t104.png" alt="No.177" class="drawing-img" style="width:calc(29.7*var(--cm));height:calc(21*var(--cm));"><div class="drawing-meta"><h3>No.177</h3><div class="meta-medium">2020 – Pen on paper</div><div class="meta-size">297×210mm</div></div></div>
+        <div class="drawing-piece" data-collection="sketch book"><img src="img/t151.png" alt="No.105" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.105</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="sketch book"><img src="img/t146.png" alt="No.137" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.137</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="house"><img src="img/t107.png" alt="No.193" class="drawing-img" style="width:calc(29.7*var(--cm));height:calc(21*var(--cm));"><div class="drawing-meta"><h3>No.193</h3><div class="meta-medium">2020 – Pen on paper</div><div class="meta-size">297×210mm</div></div></div>
+        <div class="drawing-piece" data-collection="sketch book"><img src="img/t70.png" alt="No.179" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.179</h3><div class="meta-medium">2020 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece"><img src="img/t15.png" alt="No.190" class="drawing-img" style="width:calc(29.7*var(--cm));height:calc(42*var(--cm));"><div class="drawing-meta"><h3>No.190</h3><div class="meta-medium">2020 – Pen on paper</div><div class="meta-size">297×420mm</div></div></div>
+        <div class="drawing-piece" data-collection="sketch book"><img src="img/t140.png" alt="No.164" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.164</h3><div class="meta-medium">2020 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="house"><img src="img/t43.png" alt="No.116" class="drawing-img" style="width:calc(29.7*var(--cm));height:calc(21*var(--cm));"><div class="drawing-meta"><h3>No.116</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">297×210mm</div></div></div>
+        <div class="drawing-piece" data-collection="sketch book"><img src="img/t98.png" alt="No.307" class="drawing-img" style="width:calc(29.7*var(--cm));height:calc(21*var(--cm));"><div class="drawing-meta"><h3>No.307</h3><div class="meta-medium">2023 – Pen on paper</div><div class="meta-size">297×210mm</div></div></div>
+        <div class="drawing-piece"><img src="img/t25.png" alt="No.404" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.404</h3><div class="meta-medium">2024 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="sketch book"><img src="img/t159.png" alt="No.104" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.104</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="Throw"><img src="img/t18.png" alt="No.383" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.383</h3><div class="meta-medium">2024 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+
+        <a href="projects/project2.html" class="project-thumb drawing-piece" data-collection="project"><div class="project-thumb-inner"><img src="img/C1.jpg" alt="Cultivating Creative Resilience" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="project-thumb-label"><h3>Cultivating Creative Resilience</h3><p>2024 · Haringey</p><span class="project-thumb-tag">Project</span></div></div></a>
+
+        <div class="drawing-piece" data-collection="house"><img src="img/t114.png" alt="No.117" class="drawing-img" style="width:calc(29.7*var(--cm));height:calc(21*var(--cm));"><div class="drawing-meta"><h3>No.117</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">297×210mm</div></div></div>
+        <div class="drawing-piece" data-collection="house"><img src="img/z35.png" alt="No.014" class="drawing-img" style="width:calc(21*var(--cm));height:calc(14.8*var(--cm));"><div class="drawing-meta"><h3>No.014</h3><div class="meta-medium">2017 – Pen &amp; watercolour on paper</div><div class="meta-size">210×148mm</div></div></div>
+        <div class="drawing-piece" data-collection="sketch book"><img src="img/t148.png" alt="No.112" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.112</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="house"><img src="img/t181.png" alt="No.196" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.196</h3><div class="meta-medium">2020 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="animals"><img src="img/t14.png" alt="No.370" class="drawing-img" style="width:calc(42*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.370</h3><div class="meta-medium">2024 – Pen on paper</div><div class="meta-size">420×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="sketch book"><img src="img/t156.png" alt="No.122" class="drawing-img" style="width:calc(29.7*var(--cm));height:calc(21*var(--cm));"><div class="drawing-meta"><h3>No.122</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">297×210mm</div></div></div>
+        <div class="drawing-piece" data-collection="art"><img src="img/t60.png" alt="No.023" class="drawing-img" style="width:calc(42*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.023</h3><div class="meta-medium">2017 – Pencil on paper</div><div class="meta-size">420×297mm</div></div></div>
+        <div class="drawing-piece"><img src="img/z37.png" alt="No.043" class="drawing-img" style="width:calc(7*var(--cm));height:calc(12.5*var(--cm));"><div class="drawing-meta"><h3>No.043</h3><div class="meta-medium">2017 – Pencil on paper</div><div class="meta-size">70×125mm</div></div></div>
+        <div class="drawing-piece" data-collection="sketch book"><img src="img/t71.png" alt="No.211" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.211</h3><div class="meta-medium">2021 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece"><img src="img/t73.png" alt="No.363" class="drawing-img" style="width:calc(29.7*var(--cm));height:calc(21*var(--cm));"><div class="drawing-meta"><h3>No.363</h3><div class="meta-medium">2024 – Pen on paper</div><div class="meta-size">297×210mm</div></div></div>
+        <div class="drawing-piece" data-collection="sketch book"><img src="img/t149.png" alt="No.113" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.113</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece"><img src="img/t64.png" alt="No.308" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.308</h3><div class="meta-medium">2023 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+
+        <a href="projects/project1.html" class="project-thumb drawing-piece" data-collection="project"><div class="project-thumb-inner"><img src="img/F2.jpg" alt="From Forest to Framework" class="drawing-img" style="width:calc(42*var(--cm));height:calc(29.7*var(--cm));"><div class="project-thumb-label"><h3>From Forest to Framework</h3><p>2024</p><span class="project-thumb-tag">Project</span></div></div></a>
+
+        <div class="drawing-piece" data-collection="stairs"><img src="img/t179.png" alt="No.144" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.144</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="sketch book"><img src="img/t68.png" alt="No.115" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.115</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="sketch book"><img src="img/t158.png" alt="No.106" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.106</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece"><img src="img/z40.png" alt="No.011" class="drawing-img" style="width:calc(10*var(--cm));height:calc(8.5*var(--cm));"><div class="drawing-meta"><h3>No.011</h3><div class="meta-medium">2017 – Pencil on paper</div><div class="meta-size">100×85mm</div></div></div>
+        <div class="drawing-piece" data-collection="sketch book"><img src="img/t101.png" alt="No.169" class="drawing-img" style="width:calc(29.7*var(--cm));height:calc(21*var(--cm));"><div class="drawing-meta"><h3>No.169</h3><div class="meta-medium">2020 – Pen on paper</div><div class="meta-size">297×210mm</div></div></div>
+        <div class="drawing-piece" data-collection="animals"><img src="img/t137.png" alt="No.413" class="drawing-img" style="width:calc(14.8*var(--cm));height:calc(21*var(--cm));"><div class="drawing-meta"><h3>No.413</h3><div class="meta-medium">2025 – Pen on cardboard</div><div class="meta-size">148×210mm</div></div></div>
+        <div class="drawing-piece" data-collection="stairs"><img src="img/t119.png" alt="No.102" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.102</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="house"><img src="img/t130.png" alt="No.098" class="drawing-img" style="width:calc(29.7*var(--cm));height:calc(21*var(--cm));"><div class="drawing-meta"><h3>No.098</h3><div class="meta-medium">2018 – Pen on paper</div><div class="meta-size">297×210mm</div></div></div>
+        <div class="drawing-piece" data-collection="art"><img src="img/t123.png" alt="No.027" class="drawing-img" style="width:calc(29.7*var(--cm));height:calc(42*var(--cm));"><div class="drawing-meta"><h3>No.027</h3><div class="meta-medium">2017 – Pen on paper</div><div class="meta-size">297×420mm</div></div></div>
+        <div class="drawing-piece" data-collection="Throw"><img src="img/t66.png" alt="No.382" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.382</h3><div class="meta-medium">2024 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="house"><img src="img/t131.png" alt="No.154" class="drawing-img" style="width:calc(29.7*var(--cm));height:calc(21*var(--cm));"><div class="drawing-meta"><h3>No.154</h3><div class="meta-medium">2020 – Pen on paper</div><div class="meta-size">297×210mm</div></div></div>
+        <div class="drawing-piece" data-collection="sketch book"><img src="img/t176.png" alt="No.094" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.094</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="stairs"><img src="img/t50.png" alt="No.103" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.103</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="house"><img src="img/t182.png" alt="No.197" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.197</h3><div class="meta-medium">2020 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="CANOE"><img src="img/t57.png" alt="No.131" class="drawing-img" style="width:calc(29.7*var(--cm));height:calc(21*var(--cm));"><div class="drawing-meta"><h3>No.131</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">297×210mm</div></div></div>
+        <div class="drawing-piece" data-collection="dragon"><img src="img/t90.png" alt="No.205" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.205</h3><div class="meta-medium">2021 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="sketch book"><img src="img/t100.png" alt="No.168" class="drawing-img" style="width:calc(29.7*var(--cm));height:calc(21*var(--cm));"><div class="drawing-meta"><h3>No.168</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">297×210mm</div></div></div>
+        <div class="drawing-piece" data-collection="sketch book"><img src="img/t136.png" alt="No.240" class="drawing-img" style="width:calc(21*var(--cm));height:calc(14.8*var(--cm));"><div class="drawing-meta"><h3>No.240</h3><div class="meta-medium">2021 – Pen on paper</div><div class="meta-size">210×148mm</div></div></div>
+        <div class="drawing-piece" data-collection="stairs"><img src="img/t75.png" alt="No.129" class="drawing-img" style="width:calc(21*var(--cm));height:calc(14.8*var(--cm));"><div class="drawing-meta"><h3>No.129</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">210×148mm</div></div></div>
+        <div class="drawing-piece" data-collection="sketch book"><img src="img/t21.png" alt="No.181" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.181</h3><div class="meta-medium">2020 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece"><img src="img/t84.png" alt="No.114" class="drawing-img" style="width:calc(29.7*var(--cm));height:calc(21*var(--cm));"><div class="drawing-meta"><h3>No.114</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">297×210mm</div></div></div>
+        <div class="drawing-piece" data-collection="sketch book"><img src="img/t161.png" alt="No.124" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.124</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="sketch book"><img src="img/t138.png" alt="No.180" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.180</h3><div class="meta-medium">2020 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="sketch book"><img src="img/t69.png" alt="No.118" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.118</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="house"><img src="img/t59.png" alt="No.145" class="drawing-img" style="width:calc(29.7*var(--cm));height:calc(21*var(--cm));"><div class="drawing-meta"><h3>No.145</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">297×210mm</div></div></div>
+        <div class="drawing-piece" data-collection="house"><img src="img/t118.png" alt="No.070" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.070</h3><div class="meta-medium">2018 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece"><img src="img/t86.png" alt="No.409" class="drawing-img" style="width:calc(42*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.409</h3><div class="meta-medium">2025 – Pen on paper</div><div class="meta-size">420×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="house"><img src="img/t54.png" alt="No.146" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.146</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="sketch book"><img src="img/t172.png" alt="No.126" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.126</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="art"><img src="img/t88.png" alt="No.024" class="drawing-img" style="width:calc(29.7*var(--cm));height:calc(42*var(--cm));"><div class="drawing-meta"><h3>No.024</h3><div class="meta-medium">2017 – Pencil on paper</div><div class="meta-size">297×420mm</div></div></div>
+        <div class="drawing-piece" data-collection="CANOE"><img src="img/t78.png" alt="No.134" class="drawing-img" style="width:calc(9*var(--cm));height:calc(14*var(--cm));"><div class="drawing-meta"><h3>No.134</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">90×140mm</div></div></div>
+        <div class="drawing-piece" data-collection="sketch book"><img src="img/t139.png" alt="No.123" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.123</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="sketch book"><img src="img/t145.png" alt="No.110" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.110</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="house"><img src="img/t46.png" alt="No.107" class="drawing-img" style="width:calc(29.7*var(--cm));height:calc(21*var(--cm));"><div class="drawing-meta"><h3>No.107</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">297×210mm</div></div></div>
+        <div class="drawing-piece" data-collection="house"><img src="img/t20.png" alt="No.091" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.091</h3><div class="meta-medium">2018 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="sketch book"><img src="img/t154.png" alt="No.076" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.076</h3><div class="meta-medium">2018 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece"><img src="img/t48.png" alt="No.284" class="drawing-img" style="width:calc(42*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.284</h3><div class="meta-medium">2022 – Pen on paper</div><div class="meta-size">420×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="sketch book"><img src="img/t94.png" alt="No.151" class="drawing-img" style="width:calc(21*var(--cm));height:calc(14.8*var(--cm));"><div class="drawing-meta"><h3>No.151</h3><div class="meta-medium">2020 – Pen on paper</div><div class="meta-size">210×148mm</div></div></div>
+        <div class="drawing-piece" data-collection="sketch book"><img src="img/t160.png" alt="No.081" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.081</h3><div class="meta-medium">2018 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="house"><img src="img/z31.png" alt="No.057" class="drawing-img" style="width:calc(14.5*var(--cm));height:calc(12*var(--cm));"><div class="drawing-meta"><h3>No.057</h3><div class="meta-medium">2018 – Pen on paper</div><div class="meta-size">145×120mm</div></div></div>
+        <div class="drawing-piece" data-collection="art"><img src="img/t52.png" alt="No.025" class="drawing-img" style="width:calc(42*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.025</h3><div class="meta-medium">2017 – Watercolour on paper</div><div class="meta-size">420×297mm</div></div></div>
+        <div class="drawing-piece" data-collection="sketch book"><img src="img/t173.png" alt="No.125" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.125</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
+
+      </div><!-- /gallery-wall -->
+
+      <footer><p>Alex Valentine Evdokimov — 2025</p></footer>
+
+    </div><!-- /page-content -->
+  </div><!-- /work-cell -->
+
+  <div class="landing-cell about-cell"   data-page="about.html"   data-label="ABOUT ME"></div>
+  <div class="landing-cell contact-cell" data-page="contact.html" data-label="CONTACTS"></div>
+
+</div><!-- /landing-grid -->
 
 
-
-<footer>
-  <p> ALEX VALENTINE EVDOKIMOV 2025</p>
-</footer>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 
 <script>
-  // ========== INTERACTIVE GALLERY FUNCTIONALITY ==========
-  
-  // Gallery item data structure
-  const galleryItems = [];
-  let currentExpandedIndex = -1;
-  let currentVisibleIndices = [];
-  let currentVisiblePosition = -1;
-
-  // Initialize gallery items on page load
-  document.addEventListener('DOMContentLoaded', () => {
-    initializeGalleryItems();
-    applyRandomRotations();
+/* ── Navigation ── */
+function navigateTo(url) {
+  if (!url || url === window.location.pathname.split('/').pop()) return;
+  document.body.classList.add('is-leaving');
+  setTimeout(() => { window.location.href = url; }, 320);
+}
+function initNavCells() {
+  document.querySelectorAll('.landing-cell').forEach(cell => {
+    cell.addEventListener('click', function(e) {
+      if (this.classList.contains('active')) return;
+      e.preventDefault();
+      navigateTo(this.dataset.page);
+    });
   });
+}
 
-  function applyRandomRotations() {
-    const drawingPieces = document.querySelectorAll('.drawing-piece:not(.project-thumb)');
-    drawingPieces.forEach((piece) => {
-      // Apply rotation to about 50% of drawings randomly
-      if (Math.random() > 0.5) {
-        const rotation = (Math.random() - 0.5) * 4; // Random rotation between -2 and +2 degrees
-        piece.style.transform = `rotate(${rotation}deg)`;
+/* ── Random rotations ── */
+function applyRandomRotations() {
+  document.querySelectorAll('.drawing-piece:not(.project-thumb)').forEach(p => {
+    if (Math.random() > 0.5) p.style.transform = `rotate(${(Math.random()-0.5)*4}deg)`;
+  });
+}
+
+/* ── Sort ── */
+function initSorting() {
+  const all = Array.from(document.querySelectorAll('.drawing-piece')).map((el,i) => {
+    const med  = el.querySelector('.meta-medium')?.innerText.trim() || '';
+    const size = el.querySelector('.meta-size')?.innerText.trim()   || '';
+    const ym   = med.match(/\d{4}/);
+    const year = ym ? parseInt(ym[0]) : 0;
+    const medium = med.replace(ym?ym[0]:'','').replace(/[–-]/,'').trim();
+    let w=0,h=0; const sm = size.match(/(\d+)\s*[x×]\s*(\d+)/i);
+    if (sm) { w=parseInt(sm[1]); h=parseInt(sm[2]); }
+    return {element:el, year, medium, width:w, height:h,
+            orientation: w>=h?'landscape':'portrait', originalIndex:i};
+  });
+  document.querySelectorAll('.sort-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const type = btn.dataset.type;
+      let state = btn.dataset.state||'none';
+      document.querySelectorAll('.sort-btn').forEach(b=>{b.dataset.state='none';b.classList.remove('active');});
+      state = state==='none'?'desc':state==='desc'?'asc':'none';
+      btn.dataset.state = state;
+      btn.classList.toggle('active', state!=='none');
+      let s=[...all];
+      if      (state==='none')        s.sort((a,b)=>a.originalIndex-b.originalIndex);
+      else if (type==='year')         s.sort((a,b)=>state==='asc'?a.year-b.year:b.year-a.year);
+      else if (type==='size')         s.sort((a,b)=>state==='asc'?a.width*a.height-b.width*b.height:b.width*b.height-a.width*a.height);
+      else if (type==='orientation')  s.sort((a,b)=>state==='asc'?a.orientation.localeCompare(b.orientation):b.orientation.localeCompare(a.orientation));
+      else if (type==='medium')       s.sort((a,b)=>state==='asc'?a.medium.localeCompare(b.medium):b.medium.localeCompare(a.medium));
+      const g=document.getElementById('gallery');
+      s.forEach(item=>g.appendChild(item.element));
+    });
+  });
+}
+
+/* ── Filter (toggle to cancel) ── */
+function initFilters() {
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const wasActive = btn.classList.contains('active');
+      const isAll     = btn.dataset.value==='all';
+      document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+      if (wasActive && !isAll) {
+        document.querySelector('.filter-btn[data-value="all"]').classList.add('active');
+        document.querySelectorAll('.drawing-piece').forEach(p=>p.style.display='');
+      } else {
+        btn.classList.add('active');
+        const val=btn.dataset.value;
+        document.querySelectorAll('.drawing-piece').forEach(p=>{
+          p.style.display=(val==='all'||p.dataset.collection===val)?'':'none';
+        });
       }
     });
+  });
+}
+
+/* ── Back to top ── */
+function initBackToTop() {
+  const sc = document.querySelector('.work-cell .page-content');
+  const btn = document.getElementById('backToTop');
+  if (!sc||!btn) return;
+  sc.addEventListener('scroll', ()=>{ btn.style.display = sc.scrollTop>400?'flex':'none'; });
+  btn.addEventListener('click', ()=>sc.scrollTo({top:0,behavior:'smooth'}));
+}
+
+/* ── Expand panel ── */
+function initExpand() {
+  const overlay   = document.getElementById('expandOverlay');
+  const expandImg = document.getElementById('expandImg');
+  const titleEl   = document.getElementById('expandTitle');
+  const rowsEl    = document.getElementById('expandRows');
+  const countEl   = document.getElementById('expandCount');
+  const closeBtn  = document.getElementById('expandClose');
+  const prevBtn   = document.getElementById('expandPrev');
+  const nextBtn   = document.getElementById('expandNext');
+  if (!overlay) return;
+
+  let pieces=[], idx=0;
+
+  function visiblePieces() {
+    return Array.from(document.querySelectorAll(
+      '#gallery .drawing-piece:not(.project-thumb)'
+    )).filter(p => p.style.display !== 'none');
   }
 
-  function initializeGalleryItems() {
-    const pieces = document.querySelectorAll('.drawing-piece:not(.project-thumb)');
-    
-    pieces.forEach((element, index) => {
-      const img = element.querySelector('img');
-      const title = element.querySelector('h3')?.innerText.trim() || 'Untitled';
-      const metaMedium = element.querySelector('.meta-medium')?.innerText.trim() || '';
-      const metaSize = element.querySelector('.meta-size')?.innerText.trim() || '';
-      const collection = element.dataset.collection || '';
-      
-      galleryItems.push({
-        element: element,
-        index: index,
-        imageSrc: img.src,
-        imageAlt: img.alt,
-        title: title,
-        medium: metaMedium,
-        size: metaSize,
-        collection: collection
-      });
+  function renderPanel(piece) {
+    if (!piece) return;
+    const pi   = piece.querySelector('.drawing-img');
+    const meta = piece.querySelector('.drawing-meta');
+    expandImg.src = pi?.src || '';
+    expandImg.alt = pi?.alt || '';
 
-      // Add click listener to expand
-      element.addEventListener('click', (e) => {
-        e.preventDefault();
-        expandItem(index);
-      });
-    });
-  }
+    const medRaw  = meta?.querySelector('.meta-medium')?.innerText.trim() || '';
+    const sizeRaw = meta?.querySelector('.meta-size')?.innerText.trim()   || '';
+    const title   = meta?.querySelector('h3')?.innerText.trim()           || pi?.alt || '—';
+    const coll    = piece.dataset.collection || '';
+    const ym      = medRaw.match(/\d{4}/);
+    const year    = ym ? parseInt(ym[0]) : 0;
+    const tech    = medRaw.replace(/\d{4}\s*[–-]\s*/,'').trim() || '—';
+    const sm      = sizeRaw.match(/(\d+)\s*[×x]\s*(\d+)/i);
+    const w = sm?parseInt(sm[1]):0, h = sm?parseInt(sm[2]):0;
+    const orient  = w&&h ? (w>=h?'Landscape':'Portrait') : '';
 
-  function expandItem(index) {
-    // set current expanded index
-    currentExpandedIndex = index;
-    const item = galleryItems[index];
+    titleEl.textContent = title;              /* No.227 — small black */
+    countEl.textContent = `${idx+1} / ${pieces.length}`;  /* 14 / 78 — large red */
+    prevBtn.disabled = (idx===0);
+    nextBtn.disabled = (idx===pieces.length-1);
 
-    // Update expanded panel content (image)
-    document.getElementById('expandedImage').src = item.imageSrc;
-    document.getElementById('expandedImage').alt = item.imageAlt;
+    /* ── DOT-MATRIX CHART DATA ──
+       Each row is a fixed attribute with fixed columns.
+       The active value gets a filled square ■.
+       Column widths are consistent across all drawings.
+    */
 
-    // Update category tab with collection name
-    const categoryTab = document.getElementById('tabCategory');
-    categoryTab.textContent = item.collection.toUpperCase();
-    categoryTab.dataset.collection = item.collection;
+    // Year row: decade marks 2015–2025
+    const yearCols = [2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025];
 
-    // Update category gallery
-    updateCategoryGallery(item.collection);
+    // Format row: standard paper sizes
+    const fmtCols = ['A5','A4','A3','A2','Other'];
+    const fmtKey = (() => {
+      if (!w||!h) return 'Other';
+      const larger = Math.max(w,h), smaller = Math.min(w,h);
+      if (larger<=150) return 'A5';
+      if (larger<=210||smaller<=148) return 'A5';
+      if (larger<=297&&smaller<=210) return 'A4';
+      if (larger<=420&&smaller<=297) return 'A3';
+      if (larger<=594&&smaller<=420) return 'A2';
+      return 'Other';
+    })();
 
-    // Show image tab by default
-    showTab('image');
+    // Orientation row
+    const orientCols = ['Portrait','Landscape','Square'];
+    const orientKey  = w&&h ? (w===h?'Square':w>=h?'Landscape':'Portrait') : '';
 
-    // Replace the static "IMAGE" tab label with the image title
-    const imageTabBtn = document.getElementById('tabImage');
-    if (imageTabBtn) imageTabBtn.textContent = item.title;
+    // Medium row (simplified)
+    const medCols = ['Pen','Pencil','Watercolour','Mixed','Other'];
+    const medKey = (() => {
+      const t = tech.toLowerCase();
+      if (t.includes('pen') && t.includes('watercolour')) return 'Mixed';
+      if (t.includes('pen') && (t.includes('air')||t.includes('stamp'))) return 'Mixed';
+      if (t.includes('pen')) return 'Pen';
+      if (t.includes('pencil')) return 'Pencil';
+      if (t.includes('watercolour')) return 'Watercolour';
+      return 'Mixed';
+    })();
 
-    // Extract date/year and medium separately for the meta row
-    let year = '';
-    let mediumOnly = '';
-    if (item.medium) {
-      const yearMatch = item.medium.match(/(\d{4})/);
-      year = yearMatch ? yearMatch[0] : '';
-      mediumOnly = item.medium.replace(year, '').replace(/–|-/, '').trim();
+    // Series row
+    const seriesCols = ['house','animals','Wonderland','CANOE','dragon','stairs','art','Throw','sketch book'];
+    const seriesKey  = coll;
+
+    function chartRow(label, cols, activeKey) {
+      const heads = cols.map(c => `<div class="echart-cell${c===activeKey?' active':''}">
+        ${c===activeKey?'<div class="echart-dot"></div>':''}
+      </div>`).join('');
+      return `<div class="echart-row">
+        <span class="echart-row-label">${label}</span>
+        ${heads}
+      </div>`;
     }
 
-    // Build metadata row: 4 columns
-    const nameText = item.title || '';
-    const sizeText = item.size || '';
-    const metaHTML = `
-      <span class="meta-name">${nameText}</span>
-      <span class="meta-year">${year}</span>
-      <span class="meta-medium">${mediumOnly}</span>
-      <span class="meta-size">${sizeText}</span>
+    function chartHeader(cols) {
+      const heads = cols.map(c=>`<div class="echart-col-head"><span>${c}</span></div>`).join('');
+      return `<div class="echart-header">
+        <div class="echart-row-label-col"></div>
+        ${heads}
+      </div>`;
+    }
+
+    /* ── Series description accordion ── */
+    const notes = {
+      'house'     : 'A long-running series studying the built environment — rooftops, facades, thresholds, and the quiet geometry of domestic structures observed across cities and neighbourhoods.',
+      'Wonderland': 'Large-format A3 panoramic works. Dense imagined landscapes where constructed and organic forms interweave — cities growing from forests, towers dissolving into foliage.',
+      'animals'   : 'Studies of fauna in various moods: stillness, movement, pattern. Drawn from life and memory, exploring texture and the particular weight of living forms.',
+      'CANOE'     : 'Field drawings made during and after canoe expeditions — water surfaces, riverbanks, reflections, the hush of open water. A record of journeys taken slowly.',
+      'dragon'    : 'Imagined creature anatomies. Large-scale studies in pen and airbrush exploring scale, musculature, and the plausibility of mythological bodies.',
+      'stairs'    : 'A spatial obsession — staircases as pure perspective exercises, repeated forms, ascending rhythms. Architecture as abstract pattern.',
+      'art'       : 'Works outside the named series: pencil studies, watercolour experiments, and pieces that resist easy categorisation.',
+      'Throw'     : 'Fast, gestural drawings completed in one sitting. The body leading the pen. Looseness as method.',
+      'sketch book': 'Pages lifted from working sketchbooks — observations, studies, unfinished thoughts, and ideas still in motion.',
+    };
+    const noteText = notes[coll] || 'A work from the archive.';
+
+    /* ── Similar works ── */
+    const similar = Array.from(document.querySelectorAll(
+      `#gallery .drawing-piece:not(.project-thumb)[data-collection="${coll}"]`
+    )).filter(p=>p!==piece).slice(0,12);
+    const allVis = visiblePieces();
+
+    let similarHtml = '';
+    if (similar.length) {
+      const thumbs = similar.map(p=>{
+        const si=allVis.indexOf(p);
+        return `<button class="esimilar-thumb" data-si="${si}"><img src="${p.querySelector('.drawing-img')?.src||''}" alt=""></button>`;
+      }).join('');
+      similarHtml = `<div class="esimilar-wrapper">
+        <div class="esimilar-head"><span>From the same series — ${coll}</span></div>
+        <div class="esimilar-strip">${thumbs}</div>
+      </div>`;
+    }
+
+    rowsEl.innerHTML = `
+      <!-- Dot-matrix chart: Year -->
+      <div class="echart-section">
+        ${chartHeader(yearCols)}
+        ${chartRow('Year', yearCols, year)}
+      </div>
+      <!-- Format chart -->
+      <div class="echart-section">
+        ${chartHeader(fmtCols)}
+        ${chartRow('Format', fmtCols, fmtKey)}
+      </div>
+      <!-- Orientation chart -->
+      <div class="echart-section">
+        ${chartHeader(orientCols)}
+        ${chartRow('Orient', orientCols, orientKey)}
+      </div>
+      <!-- Medium chart -->
+      <div class="echart-section">
+        ${chartHeader(medCols)}
+        ${chartRow('Medium', medCols, medKey)}
+      </div>
+      <!-- Exact format as plain row -->
+      <div class="egrid-row">
+        <span class="egrid-label">Dimensions</span>
+        <span class="egrid-val">${sizeRaw||'—'}</span>
+      </div>
+      <!-- Info accordion -->
+      <div class="eaccordion-row" id="eaccordion">
+        <button class="eaccordion-trigger" id="eaccordionBtn">
+          <span class="eaccordion-trigger-label">Info</span>
+          <span class="eaccordion-trigger-title">About this series</span>
+          <span class="eaccordion-arrow">▲</span>
+        </button>
+        <div class="eaccordion-body">${noteText}</div>
+      </div>
+      <!-- Similar works pinned to bottom -->
+      ${similarHtml}
     `;
-    document.getElementById('expandedMeta').innerHTML = metaHTML;
 
-    // Compute currently visible items (respecting filters)
-    currentVisibleIndices = galleryItems
-      .map((g, i) => ({ i, el: g.element }))
-      .filter(obj => window.getComputedStyle(obj.el).display !== 'none')
-      .map(obj => obj.i);
+    /* Wire accordion */
+    const acc = rowsEl.querySelector('#eaccordion');
+    rowsEl.querySelector('#eaccordionBtn')?.addEventListener('click', () => {
+      acc.classList.toggle('open');
+    });
 
-    currentVisiblePosition = currentVisibleIndices.indexOf(index);
-
-    // Update navigation buttons
-    updateNavButtons();
-
-    // Ensure panel sits flush under the real header and uses remaining viewport height
-    const panel = document.getElementById('expandedPanel');
-    adjustPanelPosition(panel);
-
-    // Show the panel
-    panel.classList.add('active');
-    document.body.classList.add('gallery-expanded');
-  }
-
-  function updateCategoryGallery(collection) {
-    const categoryItems = galleryItems.filter(item => item.collection === collection);
-    const gallery = document.getElementById('expandedCategoryGallery');
-    gallery.innerHTML = '';
-
-    categoryItems.forEach((item) => {
-      const img = document.createElement('img');
-      img.src = item.imageSrc;
-      img.alt = item.imageAlt;
-      img.style.cursor = 'pointer';
-      img.addEventListener('click', () => expandItem(item.index));
-      gallery.appendChild(img);
+    /* Wire similar thumbs */
+    rowsEl.querySelectorAll('.esimilar-thumb').forEach(th=>{
+      th.addEventListener('click',()=>{
+        const si=parseInt(th.dataset.si);
+        if (si>=0&&si<pieces.length){idx=si;renderPanel(pieces[idx]);}
+      });
     });
   }
 
-  function showTab(tabName) {
-    // Hide all containers
-    document.getElementById('imageContainer').style.display = 'none';
-    document.getElementById('readmoreContainer').style.display = 'none';
-    document.getElementById('categoryContainer').style.display = 'none';
-
-    // Remove active class from all tabs
-    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-
-    // Show selected tab
-    if (tabName === 'image') {
-      document.getElementById('imageContainer').style.display = 'flex';
-      document.getElementById('tabImage').classList.add('active');
-    } else if (tabName === 'readmore') {
-      document.getElementById('readmoreContainer').style.display = 'block';
-      document.getElementById('tabReadMore').classList.add('active');
-    } else if (tabName === 'category') {
-      document.getElementById('categoryContainer').style.display = 'block';
-      document.getElementById('tabCategory').classList.add('active');
-    }
-  }
-
-  function updateNavButtons() {
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    // If we have a filtered list, use its bounds
-    if (currentVisibleIndices && currentVisibleIndices.length > 0 && currentVisiblePosition !== -1) {
-      prevBtn.disabled = currentVisiblePosition <= 0;
-      nextBtn.disabled = currentVisiblePosition >= currentVisibleIndices.length - 1;
-    } else {
-      // Disable previous if at start
-      prevBtn.disabled = currentExpandedIndex <= 0;
-      // Disable next if at end
-      nextBtn.disabled = currentExpandedIndex >= galleryItems.length - 1;
-    }
+  function openPanel(piece) {
+    pieces = visiblePieces();
+    idx = pieces.indexOf(piece);
+    if (idx<0) idx=0;
+    renderPanel(pieces[idx]);
+    overlay.style.display='flex';
   }
 
   function closePanel() {
-    const panel = document.getElementById('expandedPanel');
-    panel.classList.remove('active');
-    panel.classList.remove('image-only');
-    // clear any inline dimensions applied when opening
-    panel.style.top = '';
-    panel.style.height = '';
-    const img = panel.querySelector('.expanded-image');
-    if (img) img.style.maxHeight = '';
-    document.body.classList.remove('gallery-expanded');
-    currentExpandedIndex = -1;
+    overlay.style.display='none';
   }
 
-  // Adjust expanded panel position and height to sit directly below the header
-  function adjustPanelPosition(panel) {
-    const header = document.querySelector('header');
-    const headerHeight = header ? Math.ceil(header.getBoundingClientRect().height) : 0;
-    panel.style.top = headerHeight + 'px';
-    panel.style.height = `calc(100vh - ${headerHeight}px)`;
-  }
-
-  // Recompute panel placement on resize while open
-  window.addEventListener('resize', () => {
-    const panel = document.getElementById('expandedPanel');
-    if (panel && panel.classList.contains('active')) {
-      adjustPanelPosition(panel);
-    }
+  document.getElementById('gallery').addEventListener('click', e=>{
+    const p=e.target.closest('.drawing-piece:not(.project-thumb)');
+    if (p){e.preventDefault();openPanel(p);}
   });
 
-  function navigateTo(index) {
-    if (index >= 0 && index < galleryItems.length) {
-      expandItem(index);
-      // Scroll the gallery to show the item (on smaller screens)
-      const item = galleryItems[index];
-      item.element.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-  }
+  prevBtn.addEventListener('click',()=>{if(idx>0){idx--;renderPanel(pieces[idx]);}});
+  nextBtn.addEventListener('click',()=>{if(idx<pieces.length-1){idx++;renderPanel(pieces[idx]);}});
+  closeBtn.addEventListener('click',closePanel);
 
-  // Close button
-  document.getElementById('closeBtn').addEventListener('click', closePanel);
-
-  // Tab buttons
-  document.getElementById('tabImage').addEventListener('click', () => showTab('image'));
-  document.getElementById('tabReadMore').addEventListener('click', () => showTab('readmore'));
-  document.getElementById('tabCategory').addEventListener('click', () => showTab('category'));
-
-  // Navigation buttons
-  document.getElementById('prevBtn').addEventListener('click', () => {
-    if (currentVisibleIndices && currentVisiblePosition > 0) {
-      const prevIndex = currentVisibleIndices[currentVisiblePosition - 1];
-      navigateTo(prevIndex);
-    } else if (currentExpandedIndex > 0) {
-      navigateTo(currentExpandedIndex - 1);
-    }
+  document.addEventListener('keydown',e=>{
+    if (overlay.style.display!=='flex') return;
+    if (e.key==='Escape') closePanel();
+    if (e.key==='ArrowLeft'  && idx>0)              {idx--;renderPanel(pieces[idx]);}
+    if (e.key==='ArrowRight' && idx<pieces.length-1){idx++;renderPanel(pieces[idx]);}
   });
+}
 
-  document.getElementById('nextBtn').addEventListener('click', () => {
-    if (currentVisibleIndices && currentVisiblePosition < currentVisibleIndices.length - 1) {
-      const nextIndex = currentVisibleIndices[currentVisiblePosition + 1];
-      navigateTo(nextIndex);
-    } else if (currentExpandedIndex < galleryItems.length - 1) {
-      navigateTo(currentExpandedIndex + 1);
-    }
-  });
-
-  // Close when clicking outside the expanded content on tablets/desktop
-  document.getElementById('expandedPanel').addEventListener('click', (e) => {
-    if (e.target.id === 'expandedPanel') {
-      closePanel();
-    }
-  });
-
-  // Window controls
-  document.getElementById('minBtn').addEventListener('click', minimizePanel);
-  // Square button opens a detached floating image window (intermediate mode)
-  document.getElementById('imageOnlyBtn').addEventListener('click', () => {
-    createFloatingFromPanel();
-  });
-
-
-  // Close with Escape key, navigate with arrow keys (respects current filters)
-  document.addEventListener('keydown', (e) => {
-    if (currentExpandedIndex === -1) return;
-
-    if (e.key === 'Escape') {
-      closePanel();
-      return;
-    }
-
-    if (e.key === 'ArrowLeft') {
-      if (currentVisibleIndices && currentVisiblePosition > 0) {
-        navigateTo(currentVisibleIndices[currentVisiblePosition - 1]);
-      } else if (currentExpandedIndex > 0) {
-        navigateTo(currentExpandedIndex - 1);
-      }
-    } else if (e.key === 'ArrowRight') {
-      if (currentVisibleIndices && currentVisiblePosition < currentVisibleIndices.length - 1) {
-        navigateTo(currentVisibleIndices[currentVisiblePosition + 1]);
-      } else if (currentExpandedIndex < galleryItems.length - 1) {
-        navigateTo(currentExpandedIndex + 1);
-      }
-    }
-  });
-
-  // Helper: make an element draggable by given handle (or itself if handle omitted)
-  function makeDraggable(el, handle) {
-    handle = handle || el;
-    let dragging = false;
-    let offsetX = 0, offsetY = 0;
-    handle.addEventListener('mousedown', (e) => {
-      dragging = true;
-      const rect = el.getBoundingClientRect();
-      offsetX = e.clientX - rect.left;
-      offsetY = e.clientY - rect.top;
-      handle.style.cursor = 'grabbing';
-      e.preventDefault();
-    });
-    document.addEventListener('mousemove', (e) => {
-      if (dragging) {
-        el.style.left = (e.clientX - offsetX) + 'px';
-        el.style.top = (e.clientY - offsetY) + 'px';
-        el.style.right = 'auto';
-      }
-    });
-    document.addEventListener('mouseup', () => {
-      dragging = false;
-      handle.style.cursor = 'grab';
-    });
-  }
-
-  // Minimize panel creates a persistent draggable bar
-  function minimizePanel() {
-    if (currentExpandedIndex === -1) return;
-    const item = galleryItems[currentExpandedIndex];
-    const panel = document.getElementById('expandedPanel');
-    const rect = panel.getBoundingClientRect();
-    // add shrink class to animate
-    panel.classList.add('minimized-temp');
-    setTimeout(() => {
-      // after animation, create the bar and close panel
-      const box = document.createElement('div');
-      box.className = 'minimized-window';
-      // store original panel position for restore
-      box.dataset.left = rect.left;
-      box.dataset.top = rect.top;
-      box.dataset.right = panel.style.right || '';
-      box.dataset.index = currentExpandedIndex;
-      // build contents
-      const minusBtn = document.createElement('button');
-      minusBtn.className = 'min-btn';
-      minusBtn.textContent = '–';
-      const squareBtn = document.createElement('button');
-      squareBtn.className = 'min-btn';
-      squareBtn.textContent = '□';
-      const closeBtn = document.createElement('button');
-      closeBtn.className = 'min-btn';
-      closeBtn.textContent = '×';
-      box.appendChild(minusBtn);
-      box.appendChild(squareBtn);
-      box.appendChild(closeBtn);
-      // initial position
-      box.style.left = rect.left + 'px';
-      box.style.top = rect.top + 'px';
-      // make minimized bars use constrained draggable with snapping
-      makeMinimizedDraggable(box);
-      minusBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        box.remove();
-      });
-      squareBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        createFloatingWindow(item, currentExpandedIndex);
-        box.remove();
-      });
-      closeBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        box.remove();
-      });
-      document.body.appendChild(box);
-      panel.classList.remove('minimized-temp');
-      closePanel();
-    }, 300);
-  }
-
-  function restoreFromMinimized(box) {
-    const idx = parseInt(box.dataset.index, 10);
-    if (!isNaN(idx)) {
-      expandItem(idx);
-      const panel = document.getElementById('expandedPanel');
-      // restore previous coordinates if available
-      if (box.dataset.left) {
-        panel.style.left = box.dataset.left + 'px';
-        panel.style.top = box.dataset.top + 'px';
-        panel.style.right = box.dataset.right || '0';
-      }
-    }
-    box.remove();
-  }
-
-  // Toggle image-only mode on the panel
-  let panelDragCleanup = null;
-
-  function toggleImageOnly() {
-    // legacy toggle retained but not used; keep for safety
-    const panel = document.getElementById('expandedPanel');
-    if (!panel) return;
-    panel.classList.toggle('image-only');
-    showTab('image');
-  }
-
-  // Create a detached floating window from the currently expanded panel
-  function createFloatingFromPanel() {
-    if (currentExpandedIndex === -1) return;
-    const item = galleryItems[currentExpandedIndex];
-    // get thumbnail size as guideline
-    const thumbRect = item.element.getBoundingClientRect();
-    // close split panel
-    closePanel();
-    // create floating window with reference size
-    createFloatingWindow(item, currentExpandedIndex, thumbRect);
-  }
-
-  function createFloatingWindow(item, index, referenceRect) {
-    const header = document.querySelector('header');
-    const headerHeight = header ? Math.ceil(header.getBoundingClientRect().height) : 0;
-    const win = document.createElement('div');
-    win.className = 'floating-window';
-    win.dataset.index = index;
-    // if a thumbnail rect is provided, use it to set an initial size
-    if (referenceRect) {
-      win.style.width = referenceRect.width + 'px';
-      // height will be determined by aspect-ratio later
-    }
-
-    const bar = document.createElement('div');
-    bar.className = 'floating-handle drag-handle';
-    const hole = document.createElement('span');
-    hole.className = 'control-hole';
-    const btns = document.createElement('div');
-    btns.className = 'control-buttons';
-    const min = document.createElement('button'); min.className = 'win-btn win-min'; min.textContent = '–';
-    const square = document.createElement('button'); square.className = 'win-btn win-imageonly'; square.textContent = '□';
-    const close = document.createElement('button'); close.className = 'win-btn win-close'; close.textContent = '×';
-    btns.appendChild(min); btns.appendChild(square); btns.appendChild(close);
-    bar.appendChild(hole); bar.appendChild(btns);
-
-    const imgWrap = document.createElement('div');
-    imgWrap.className = 'floating-image-wrap';
-    const img = document.createElement('img');
-    img.src = item.imageSrc;
-    img.alt = item.imageAlt || item.title || '';
-    img.className = 'floating-image';
-    imgWrap.appendChild(img);
-    // once loaded, size the window to the image's natural scale (clamped to viewport)
-    img.addEventListener('load', () => {
-      const naturalW = img.naturalWidth;
-      const naturalH = img.naturalHeight;
-      // enforce aspect ratio on window for proportional scaling
-      win.style.aspectRatio = naturalW + '/' + naturalH;
-      const pad = 20; // allow some space for padding/bar
-      const availW = window.innerWidth * 0.8;
-      const availH = window.innerHeight * 0.8;
-      if (!referenceRect) {
-        // use natural size if no reference given
-        const desiredW = Math.min(naturalW + pad, availW);
-        const desiredH = Math.min(naturalH + bar.offsetHeight + pad, availH);
-        win.style.width = desiredW + 'px';
-        win.style.height = desiredH + 'px';
-      } else {
-        // if referenceRect exists, we already set width; ensure it doesn't exceed avail
-        const refW = Math.min(referenceRect.width, availW);
-        win.style.width = refW + 'px';
-      }
-    });
-
-    win.appendChild(bar);
-    win.appendChild(imgWrap);
-    document.body.appendChild(win);
-
-    // position window centered-ish
-    win.style.left = Math.min(80, window.innerWidth * 0.3) + 'px';
-    win.style.top = (headerHeight + 40) + 'px';
-
-    // make draggable via handle
-    const cleanup = makeDraggable(win, bar);
-
-    // handlers
-    min.addEventListener('click', (e) => { e.stopPropagation(); minimizeFloatingWindow(win, item); });
-    close.addEventListener('click', (e) => { e.stopPropagation(); win.remove(); cleanup && cleanup(); });
-    square.addEventListener('click', (e) => { e.stopPropagation(); // restore to split-screen
-      const idx = parseInt(win.dataset.index, 10);
-      if (!isNaN(idx)) expandItem(idx);
-      win.remove(); cleanup && cleanup();
-    });
-
-    return win;
-  }
-
-  function minimizeFloatingWindow(win, item) {
-    const rect = win.getBoundingClientRect();
-    const box = document.createElement('div');
-    box.className = 'minimized-window';
-    box.dataset.index = win.dataset.index || '';
-    const minusBtn = document.createElement('button'); minusBtn.className = 'min-btn'; minusBtn.textContent = '–';
-    const squareBtn = document.createElement('button'); squareBtn.className = 'min-btn'; squareBtn.textContent = '□';
-    const closeBtn = document.createElement('button'); closeBtn.className = 'min-btn'; closeBtn.textContent = '×';
-    box.appendChild(minusBtn); box.appendChild(squareBtn); box.appendChild(closeBtn);
-    box.style.left = Math.max(10, Math.min(rect.left, window.innerWidth - 200)) + 'px';
-    // ensure within header-bottom..viewport-bottom
-    const header = document.querySelector('header');
-    const headerHeight = header ? Math.ceil(header.getBoundingClientRect().height) : 0;
-    const topPos = Math.max(headerHeight + 8, Math.min(rect.top, window.innerHeight - 40));
-    box.style.top = topPos + 'px';
-    document.body.appendChild(box);
-    // remove window
-    win.remove();
-
-    makeMinimizedDraggable(box);
-
-    minusBtn.addEventListener('click', (e) => { e.stopPropagation(); box.remove(); alignMinimizedStacks(); });
-    squareBtn.addEventListener('click', (e) => { e.stopPropagation(); createFloatingWindow(item, parseInt(box.dataset.index,10)); box.remove(); alignMinimizedStacks(); });
-    closeBtn.addEventListener('click', (e) => { e.stopPropagation(); box.remove(); alignMinimizedStacks(); });
-
-    alignMinimizedStacks();
-  }
-
-  function makeMinimizedDraggable(el) {
-    let dragging = false; let offsetX = 0; let offsetY = 0;
-    const header = document.querySelector('header');
-    const headerHeight = header ? Math.ceil(header.getBoundingClientRect().height) : 0;
-    const onMouseDown = (e) => {
-      dragging = true;
-      const rect = el.getBoundingClientRect();
-      offsetX = e.clientX - rect.left; offsetY = e.clientY - rect.top;
-      el.style.cursor = 'grabbing';
-      e.preventDefault();
-    };
-    el.addEventListener('mousedown', onMouseDown);
-    const onMouseMove = (e) => {
-      if (!dragging) return;
-      const newX = e.clientX - offsetX; const newY = e.clientY - offsetY;
-      const minX = 6; const maxX = window.innerWidth - el.offsetWidth - 6;
-      const minY = headerHeight + 6; const maxY = window.innerHeight - el.offsetHeight - 6;
-      el.style.left = Math.max(minX, Math.min(newX, maxX)) + 'px';
-      el.style.top = Math.max(minY, Math.min(newY, maxY)) + 'px';
-    };
-    const onMouseUp = () => {
-      if (!dragging) return;
-      dragging = false; el.style.cursor = 'grab'; snapMinimizedBars(el);
-    };
-    document.addEventListener('mousemove', onMouseMove);
-    document.addEventListener('mouseup', onMouseUp);
-    // return cleanup
-    return () => {
-      el.removeEventListener('mousedown', onMouseDown);
-      document.removeEventListener('mousemove', onMouseMove);
-      document.removeEventListener('mouseup', onMouseUp);
-    };
-  }
-
-  function snapMinimizedBars(el) {
-    const bars = Array.from(document.querySelectorAll('.minimized-window')).filter(b => b !== el);
-    const rect = el.getBoundingClientRect();
-    for (const b of bars) {
-      const r = b.getBoundingClientRect();
-      const horizOverlap = rect.left < r.right && rect.right > r.left;
-      const vertDist = Math.abs(rect.top - r.top);
-      if (horizOverlap && vertDist < 80) {
-        // snap below
-        el.style.left = r.left + 'px';
-        el.style.top = (r.top + b.offsetHeight + 8) + 'px';
-        break;
-      }
-    }
-    alignMinimizedStacks();
-  }
-
-  function alignMinimizedStacks() {
-    const bars = Array.from(document.querySelectorAll('.minimized-window'));
-    // group by approximate left value
-    const groups = [];
-    bars.forEach(b => {
-      const left = Math.round(parseFloat(b.style.left || b.getBoundingClientRect().left));
-      const g = groups.find(gr => Math.abs(gr.left - left) < 24);
-      if (g) g.items.push(b); else groups.push({ left, items: [b] });
-    });
-    groups.forEach(gr => {
-      gr.items.sort((a,b) => parseFloat(a.style.top || a.getBoundingClientRect().top) - parseFloat(b.style.top || b.getBoundingClientRect().top));
-      const startTop = parseFloat(gr.items[0].style.top || gr.items[0].getBoundingClientRect().top);
-      gr.items.forEach((b,i) => b.style.top = (startTop + i * (b.offsetHeight + 8)) + 'px');
-    });
-  }
-
-  // Close with Escape key, navigate with arrow keys (respects current filters)
-  document.addEventListener('keydown', (e) => {
-    if (currentExpandedIndex === -1) return;
-
-    if (e.key === 'Escape') {
-      closePanel();
-      return;
-    }
-
-    if (e.key === 'ArrowLeft') {
-      if (currentVisibleIndices && currentVisiblePosition > 0) {
-        navigateTo(currentVisibleIndices[currentVisiblePosition - 1]);
-      } else if (currentExpandedIndex > 0) {
-        navigateTo(currentExpandedIndex - 1);
-      }
-    } else if (e.key === 'ArrowRight') {
-      if (currentVisibleIndices && currentVisiblePosition < currentVisibleIndices.length - 1) {
-        navigateTo(currentVisibleIndices[currentVisiblePosition + 1]);
-      } else if (currentExpandedIndex < galleryItems.length - 1) {
-        navigateTo(currentExpandedIndex + 1);
-      }
-    }
-  });
-</script>
-
-<script>
-  const path = window.location.pathname.toLowerCase();
-
-  if (path.includes("index")) {
-    document.getElementById("home-link").classList.add("active");
-  } else if (path.includes("projects") || path.includes("drawings") || path.includes("works")) {
-    // mark Works active for either project detail pages or drawings
-    const worksLink = document.getElementById("works-link");
-    if (worksLink) worksLink.classList.add("active");
-  } else if (path.includes("about")) {
-    document.getElementById("about-link").classList.add("active");
-  } else if (path.includes("contact")) {
-    document.getElementById("contact-link").classList.add("active");
-  }
-</script>
-
-<script>
-const allDrawings = Array.from(document.querySelectorAll('.drawing-piece')).map((el, index) => {
-  const img = el.querySelector('img');
-  const title = el.querySelector('h3')?.innerText.trim() || '';
-  const metaMedium = el.querySelector('.meta-medium')?.innerText.trim() || '';
-  const metaSize = el.querySelector('.meta-size')?.innerText.trim() || '';
-
-  // Extract year from metaMedium like "2024 – Pen on paper"
-  const yearMatch = metaMedium.match(/\d{4}/);
-  const year = yearMatch ? parseInt(yearMatch[0], 10) : 0;
-  // Extract medium by removing year and dash
-  const medium = metaMedium.replace(yearMatch ? yearMatch[0] : '', '').replace(/–|-/, '').trim();
-
-  // Extract width and height from metaSize, expected like "420 x 297mm"
-  let width = 0, height = 0;
-  const sizeMatch = metaSize.match(/(\d+)\s*x\s*(\d+)/i);
-  if (sizeMatch) {
-    width = parseInt(sizeMatch[1], 10) / 10;  // convert mm to cm
-    height = parseInt(sizeMatch[2], 10) / 10; // convert mm to cm
-  }
-
-  const orientation = width >= height ? 'landscape' : 'portrait';
-
-  return {
-    element: el,
-    title,
-    year,
-    medium,
-    size: metaSize,
-    width,
-    height,
-    orientation,
-    originalIndex: index
-  };
+/* ── Boot ── */
+document.addEventListener('DOMContentLoaded',()=>{
+  initNavCells();
+  applyRandomRotations();
+  initSorting();
+  initFilters();
+  initBackToTop();
+  initExpand();
 });
-
-function capitalize(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
-document.querySelectorAll('.sort-btn').forEach(button => {
-  button.addEventListener('click', () => {
-    let state = button.dataset.state || 'none';
-    const type = button.dataset.type;
-
-    // Reset other buttons
-    document.querySelectorAll('.sort-btn').forEach(btn => {
-      if (btn !== button) {
-        btn.dataset.state = 'none';
-        btn.classList.remove('active');
-        btn.innerText = capitalize(btn.dataset.type);
-      }
-    });
-
-   // Custom toggle logic to always show both asc and desc options in sequence for size/year:
-if (state === 'none') {
-  // On first click for year or size, start with descending (newest/largest first)
-  if (type === 'year' || type === 'size' || type === 'orientation'|| type === 'medium') {
-    state = 'desc';
-  } else {
-    state = 'asc'; // others start ascending
-  }
-} else if (state === 'desc') {
-  // second click: toggle to ascending (oldest/smallest first)
-  state = 'asc';
-} else {
-  // third click: reset to none (original order)
-  state = 'none';
-}
-
-    button.dataset.state = state;
-    button.classList.toggle('active', state !== 'none');
-
-    let sorted = [...allDrawings];
-
-    if (state === 'none') {
-      // Restore original order
-      sorted.sort((a, b) => a.originalIndex - b.originalIndex);
-      button.innerText = capitalize(type);
-    } else {
-      if (type === 'year') {
-        sorted.sort((a, b) => state === 'asc' ? a.year - b.year : b.year - a.year);
-      } else if (type === 'size') {
-        sorted.sort((a, b) => {
-          const areaA = a.width * a.height;
-          const areaB = b.width * b.height;
-          return state === 'asc' ? areaA - areaB : areaB - areaA;
-        });
-      } else if (type === 'orientation') {
-        sorted.sort((a, b) => {
-          const comp = a.orientation.localeCompare(b.orientation);
-          return state === 'asc' ? comp : -comp;
-        });
-      } else if (type === 'medium') {
-        sorted.sort((a, b) => {
-          const comp = a.medium.localeCompare(b.medium);
-          return state === 'asc' ? comp : -comp;
-        });
-      }
-
-      button.innerText = `${capitalize(type)} ${state === 'asc' ? '▲' : '▼'}`;
-    }
-
-    renderSortedDrawings(sorted);
-  });
-});
-
-function renderSortedDrawings(sorted) {
-  const container = document.querySelector('.gallery-wall');  // Make sure this matches your gallery container class!
-  container.innerHTML = '';  // Clear existing content
-  sorted.forEach(item => container.appendChild(item.element));
-}
 </script>
 
-<script>
-  // Draggable functionality for floating control box with movement constraints
-  const controlBox = document.getElementById('controlBox');
-  const dragHandle = document.getElementById('dragHandle');
-  const gallery = document.querySelector('.gallery-wall');
-  
-  let isDragging = false;
-  let offsetX = 0;
-  let offsetY = 0;
-
-  // Start dragging ONLY from the drag handle
-  dragHandle.addEventListener('mousedown', (e) => {
-    e.preventDefault();
-    isDragging = true;
-    const rect = controlBox.getBoundingClientRect();
-    offsetX = e.clientX - rect.left;
-    offsetY = e.clientY - rect.top;
-    dragHandle.style.cursor = 'grabbing';
-  });
-
-  // Handle dragging with boundary constraints
-  document.addEventListener('mousemove', (e) => {
-    if (isDragging && gallery) {
-      const newX = e.clientX - offsetX;
-      const newY = e.clientY - offsetY;
-      
-      // Get gallery bounds
-      const galleryRect = gallery.getBoundingClientRect();
-      const headerHeight = 110; // approximate header + navigation height
-      
-      // Calculate constraints
-      const minX = 10; // 10px margin from left edge
-      const maxX = window.innerWidth - controlBox.offsetWidth - 10; // 10px margin from right edge
-      const minY = headerHeight + 10; // Below header with 10px margin
-      const maxY = window.innerHeight - controlBox.offsetHeight - 10; // 10px margin from bottom
-      
-      // Constrain movement
-      const constrainedX = Math.max(minX, Math.min(newX, maxX));
-      const constrainedY = Math.max(minY, Math.min(newY, maxY));
-      
-      controlBox.style.right = 'auto';
-      controlBox.style.bottom = 'auto';
-      controlBox.style.left = constrainedX + 'px';
-      controlBox.style.top = constrainedY + 'px';
-    }
-  });
-
-  // Stop dragging
-  document.addEventListener('mouseup', () => {
-    isDragging = false;
-    dragHandle.style.cursor = 'grab';
-  });
-</script>
-
-<button id="backToTop" title="Back to top">&#x203A;</button>
-
-<script>
-  const backToTop = document.getElementById("backToTop");
-
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 300) {
-      backToTop.style.display = "block";
-    } else {
-      backToTop.style.display = "none";
-    }
-  });
-
-  backToTop.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-</script>
-
-<script>
-
-  
-  document.getElementById('collectionSelect').addEventListener('change', function () {
-    const selected = this.value;
-    const drawings = document.querySelectorAll('.drawing-piece');
-
-    drawings.forEach(drawing => {
-      const collection = drawing.dataset.collection;
-
-      if (selected === "all" || collection === selected) {
-        drawing.style.display = "";
-      } else {
-        drawing.style.display = "none";
-      }
-    });
-    // If a panel is open, recompute visible indices and update nav
-    if (document.body.classList.contains('gallery-expanded')) {
-      currentVisibleIndices = galleryItems
-        .map((g, i) => ({ i, el: g.element }))
-        .filter(obj => window.getComputedStyle(obj.el).display !== 'none')
-        .map(obj => obj.i);
-      currentVisiblePosition = currentVisibleIndices.indexOf(currentExpandedIndex);
-      updateNavButtons();
-    }
-  });
-</script>
-
-
-<script>
-  // Draggable functionality for floating control box
-  const controlBox = document.getElementById('controlBox');
-  const closeBtn = document.querySelector('.control-box-close');
-  const header = document.querySelector('.control-box-header');
-  
-  let isDragging = false;
-  let offsetX = 0;
-  let offsetY = 0;
-
-  // Start dragging from header
-  header.addEventListener('mousedown', (e) => {
-    isDragging = true;
-    const rect = controlBox.getBoundingClientRect();
-    offsetX = e.clientX - rect.left;
-    offsetY = e.clientY - rect.top;
-    controlBox.style.cursor = 'grabbing';
-  });
-
-  // Handle dragging
-  document.addEventListener('mousemove', (e) => {
-    if (isDragging) {
-      const newX = e.clientX - offsetX;
-      const newY = e.clientY - offsetY;
-      
-      // Constrain to viewport
-      const maxX = window.innerWidth - controlBox.offsetWidth;
-      const maxY = window.innerHeight - controlBox.offsetHeight;
-      
-      controlBox.style.right = 'auto';
-      controlBox.style.bottom = 'auto';
-      controlBox.style.left = Math.max(0, Math.min(newX, maxX)) + 'px';
-      controlBox.style.top = Math.max(0, Math.min(newY, maxY)) + 'px';
-    }
-  });
-
-  // Stop dragging
-  document.addEventListener('mouseup', () => {
-    isDragging = false;
-    controlBox.style.cursor = 'grab';
-  });
-
-  // control box remains static; no collapse/restore needed
-  // dragging behavior already handled above
-
-
-</div> <!-- .page-content -->
 </body>
 </html>

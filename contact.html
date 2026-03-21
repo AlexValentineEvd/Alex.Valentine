@@ -59,33 +59,31 @@
     else if (path.includes('contact')) activeCell = document.querySelector('.contact-cell');
     activeCell.classList.add('active');
     if (landingName) landingName.style.display = activeCell.classList.contains('home-cell') ? 'block' : 'none';
+    const pageContent = document.querySelector('.page-content');
+    if (pageContent) pageContent.classList.add('centered');
+    if (pageContent) pageContent.style.opacity = '1';
     cells.forEach(cell => {
       cell.addEventListener('click', function() {
         const page = this.dataset.page;
-        cells.forEach(c => c.classList.remove('active'));
-        this.classList.add('active');
-        if (landingName) landingName.style.display = this.classList.contains('home-cell') ? 'block' : 'none';
-        setTimeout(() => { window.location.href = page; }, 500);
-      });
-    });
-  });
-</script>  document.addEventListener('DOMContentLoaded', function() {
-    const cells = document.querySelectorAll('.landing-cell');
-    const landingName = document.querySelector('.landing-name');
-    const path = window.location.pathname.toLowerCase();
-    let activeCell = cells[0];
-    if (path.includes('drawings')) activeCell = document.querySelector('.work-cell');
-    else if (path.includes('about')) activeCell = document.querySelector('.about-cell');
-    else if (path.includes('contact')) activeCell = document.querySelector('.contact-cell');
-    activeCell.classList.add('active');
-    if (landingName) landingName.style.display = activeCell.classList.contains('home-cell') ? 'block' : 'none';
-    cells.forEach(cell => {
-      cell.addEventListener('click', function() {
-        const page = this.dataset.page;
-        cells.forEach(c => c.classList.remove('active'));
-        this.classList.add('active');
-        if (landingName) landingName.style.display = this.classList.contains('home-cell') ? 'block' : 'none';
-        setTimeout(() => { window.location.href = page; }, 500);
+        const pageContent = document.querySelector('.page-content');
+        if (pageContent) {
+          const currentActive = document.querySelector('.landing-cell.active');
+          const currentIndex = currentActive ? Array.from(cells).indexOf(currentActive) : 0;
+          const clickedIndex = Array.from(cells).indexOf(this);
+          if (clickedIndex > currentIndex) {
+            pageContent.classList.add('sliding-right');
+          } else if (clickedIndex < currentIndex) {
+            pageContent.classList.add('sliding-left');
+          } else {
+            pageContent.classList.add('fading');
+          }
+        }
+        setTimeout(() => {
+          cells.forEach(c => c.classList.remove('active'));
+          this.classList.add('active');
+          if (landingName) landingName.style.display = this.classList.contains('home-cell') ? 'block' : 'none';
+          setTimeout(() => { window.location.href = page; }, 1000);
+        }, 300);
       });
     });
   });
