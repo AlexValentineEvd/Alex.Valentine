@@ -1,258 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Project Title</title>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
-<link rel="stylesheet" href="../styles.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HBJP6CFGNQ"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HBJP6CFGNQ');</script>
+  <meta charset="UTF-8">
+  <title>From Forest to Framework — Alex Valentine Evdokimov</title>
+  <link rel="stylesheet" href="../styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    .project-page-inner { padding: 0 0 80px 0; }
 
+    /* Header */
+    .project-header-row { display:flex; align-items:stretch; border-bottom:1px solid #000; min-height:52px; }
+    .project-back-btn { width:44px; display:flex; align-items:center; justify-content:center; border-right:1px solid #000; background:none; border-top:none; border-bottom:none; border-left:none; cursor:pointer; text-decoration:none; color:#000; transition:background .15s,color .15s; flex-shrink:0; }
+    .project-back-btn:hover { background:#000; color:#fff; }
+    .project-back-btn svg { stroke:currentColor; }
+    .project-title-cell { flex:1; padding:0 20px; display:flex; align-items:center; gap:14px; }
+    .project-title-cell h1 { margin:0; font-size:.72rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#000; }
+    .project-tag { font-size:.42rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:#fff; background:#000; padding:3px 8px; white-space:nowrap; }
+    .project-nav-cell { display:flex; align-items:stretch; border-left:1px solid #000; }
+    .project-nav-btn { width:44px; display:flex; align-items:center; justify-content:center; background:none; border:none; border-right:1px solid #000; cursor:pointer; text-decoration:none; color:#000; transition:background .15s,color .15s; }
+    .project-nav-btn:last-child { border-right:none; }
+    .project-nav-btn:hover { background:#000; color:#fff; }
+    .project-nav-btn svg { stroke:currentColor; }
 
+    /* Meta */
+    .project-meta-row { display:flex; align-items:stretch; border-bottom:1px solid #000; min-height:30px; }
+    .project-meta-label { flex:0 0 80px; padding:0 10px; font-size:.37rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:rgba(0,0,0,.35); display:flex; align-items:center; border-right:1px solid #000; }
+    .project-meta-val { flex:1; padding:0 12px; font-size:.6rem; color:rgba(0,0,0,.7); display:flex; align-items:center; }
+
+    /* Description accordion */
+    .project-desc-section { border-bottom:1px solid #000; }
+    .project-desc-trigger { display:flex; align-items:stretch; height:36px; cursor:pointer; background:none; border:none; width:100%; padding:0; font-family:'Outfit',sans-serif; transition:background .12s; }
+    .project-desc-trigger:hover { background:rgba(0,0,0,.03); }
+    .project-desc-label { flex:0 0 80px; padding:0 10px; font-size:.37rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:rgba(0,0,0,.35); display:flex; align-items:center; border-right:1px solid #000; }
+    .project-desc-title { flex:1; padding:0 12px; font-size:.56rem; font-weight:500; color:rgba(0,0,0,.55); display:flex; align-items:center; }
+    .project-desc-arrow { width:36px; display:flex; align-items:center; justify-content:center; font-size:.44rem; color:rgba(0,0,0,.35); border-left:1px solid #000; transition:transform .2s; }
+    .project-desc-section.open .project-desc-arrow { transform:rotate(180deg); }
+    .project-desc-body {
+      display:none; padding:24px 32px 28px;
+      font-size:.68rem; line-height:1.9; color:rgba(0,0,0,.62);
+      border-top:1px solid rgba(0,0,0,.06);
+      column-count:2; column-gap:48px;
+    }
+    .project-desc-body p { margin:0 0 1.1em; break-inside:avoid; }
+    .project-desc-body p:last-child { margin-bottom:0; }
+    .project-desc-section.open .project-desc-body { display:block; }
+
+    /* Image masonry grid */
+    .project-img-grid { columns:3; column-gap:0; }
+    .project-img-cell {
+      break-inside:avoid; display:block; position:relative;
+      overflow:hidden; cursor:pointer;
+      border-bottom:1px solid rgba(0,0,0,.1);
+      border-right:1px solid rgba(0,0,0,.1);
+      background:#f5f5f5;
+    }
+    .project-img-cell img { display:block; width:100%; height:auto; transition:opacity .2s; }
+    .project-img-cell:hover img { opacity:.82; }
+    .project-img-caption {
+      position:absolute; bottom:0; left:0; right:0;
+      background:rgba(0,0,0,.7); padding:7px 10px;
+      font-size:.38rem; letter-spacing:.06em; color:rgba(255,255,255,.85);
+      transform:translateY(100%); transition:transform .18s ease;
+    }
+    .project-img-cell:hover .project-img-caption { transform:translateY(0); }
+
+    /* Custom lightbox */
+    .plb-overlay {
+      display:none; position:fixed; inset:0; background:#000;
+      z-index:9000; flex-direction:row;
+    }
+    .plb-overlay.open { display:flex; }
+    .plb-img-side {
+      flex:1; display:flex; align-items:center; justify-content:center;
+      padding:48px 24px 48px 48px; box-sizing:border-box; position:relative; min-width:0;
+    }
+    .plb-img-side img { max-width:100%; max-height:100%; object-fit:contain; display:block; }
+    .plb-prev, .plb-next {
+      position:absolute; top:50%; transform:translateY(-50%);
+      background:none; border:none; cursor:pointer;
+      color:rgba(255,255,255,.4); font-size:2rem; font-weight:200;
+      padding:20px 10px; transition:color .15s; font-family:'Outfit',sans-serif; z-index:2;
+    }
+    .plb-prev { left:6px; } .plb-next { right:6px; }
+    .plb-prev:hover, .plb-next:hover { color:#fff; }
+    .plb-prev:disabled, .plb-next:disabled { opacity:.15; cursor:default; }
+    .plb-info-side {
+      flex:0 0 220px; border-left:1px solid rgba(255,255,255,.08);
+      display:flex; flex-direction:column; background:#0a0a0a; color:#fff;
+    }
+    .plb-close-row { display:flex; align-items:center; justify-content:flex-end; height:44px; border-bottom:1px solid rgba(255,255,255,.08); flex-shrink:0; }
+    .plb-close { width:44px; height:44px; display:flex; align-items:center; justify-content:center; background:none; border:none; cursor:pointer; color:rgba(255,255,255,.4); font-size:.9rem; font-family:'Outfit',sans-serif; transition:background .15s,color .15s; }
+    .plb-close:hover { background:rgba(255,255,255,.08); color:#fff; }
+    .plb-counter { padding:18px 16px 6px; font-size:.36rem; letter-spacing:.18em; color:rgba(255,255,255,.25); text-transform:uppercase; flex-shrink:0; }
+    .plb-caption { padding:8px 16px 16px; font-size:.65rem; line-height:1.6; color:rgba(255,255,255,.82); flex-shrink:0; border-bottom:1px solid rgba(255,255,255,.07); }
+    .plb-meta { flex:1; overflow-y:auto; }
+    .plb-meta-row { display:flex; border-bottom:1px solid rgba(255,255,255,.05); min-height:28px; }
+    .plb-meta-label { flex:0 0 64px; padding:0 8px; font-size:.33rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.2); display:flex; align-items:center; border-right:1px solid rgba(255,255,255,.05); }
+    .plb-meta-val { flex:1; padding:0 10px; font-size:.54rem; color:rgba(255,255,255,.5); display:flex; align-items:center; }
+  </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <h1 class="logo"><a href="../index.html">ALEX VALENTINE EVDOKIMOV</a></h1>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="../index.html">HOME</a></li>
-          <li><a href="../drawings.html">WORK</a></li>
-          <li><a href="../about.html">ABOUT</a></li>
-          <li><a href="../contact.html">CONTACTS</a></li>
-        </ul>
-      </nav>
+
+<div class="landing-grid">
+  <div class="landing-cell home-cell" data-page="../index.html" data-label="HOME"></div>
+
+  <div class="landing-cell work-cell active" data-page="../drawings.html" data-label="MY WORK">
+    <div class="page-content">
+      <div class="project-page-inner">
+
+        <div class="project-header-row">
+          <a href="../drawings.html" class="project-back-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </a>
+          <div class="project-title-cell">
+            <h1>From Forest to Framework</h1>
+            <span class="project-tag">Project</span>
+          </div>
+          <div class="project-nav-cell">
+            <a href="project14.html" class="project-nav-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <a href="project2.html"  class="project-nav-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+          </div>
+        </div>
+
+        <div class="project-meta-row"><span class="project-meta-label">Year</span><span class="project-meta-val">2024–25</span></div>
+        <div class="project-meta-row"><span class="project-meta-label">Diploma</span><span class="project-meta-val">Year 5 — Diploma 13</span></div>
+        <div class="project-meta-row"><span class="project-meta-label">Location</span><span class="project-meta-val">Fairfields, Thetford, Norfolk, UK</span></div>
+        <div class="project-meta-row"><span class="project-meta-label">Theme</span><span class="project-meta-val">Timber · Continuous Cover Forestry · Retrofit Housing</span></div>
+
+        <div class="project-desc-section" id="descSection">
+          <button class="project-desc-trigger" id="descTrigger">
+            <span class="project-desc-label">Text</span>
+            <span class="project-desc-title">Project description</span>
+            <span class="project-desc-arrow">▲</span>
+          </button>
+          <div class="project-desc-body">
+            <p>In this project I explore the localized application and distribution of timber from Continuous Cover Forestry to retrofit houses in Thetford town. Historically, the materials that built our homes have been local, visible and recognizable; today we live in homes disconnected from their material origin. My aim is to re-establish this connection, through Thetford Forest — an example of a plantation taking steps towards mixed species stands — and Thetford town, a typical post-war English settlement in close proximity.</p>
+            <p>In the early 19th century, London was a city on the rise. This period, fuelled by the Industrial Revolution, brought an explosion of urban growth and housing demand. The terraced house was born — a design tailored to meet the needs of London's growing middle class. The coal hole became a metaphor for spatial and social hierarchies; the separation between source and comfort mirrored in the construction of homes, where occupiers remain unaware of the origin of materials that make the home.</p>
+            <p>The Industrial Revolution marked a turning point for forestry. Monoculture plantations were designed to maximise efficiency but came with significant environmental costs. Today, Continuous Cover Forestry (CCF) maintains a continuous canopy, allows natural regeneration, and evolves into a multi-layered, multi-generational system. Trees grown under CCF develop irregular forms: knots, forks, tapered stems, curved grain — unusable by automated sawmill systems, yet structurally optimised. Every branch, curve and fork is a rational response to wind, light and gravity.</p>
+            <p>I look at bringing the forest back into the house. Through the frequent remodelling of homes at Fairfield I see vast opportunity for on-site interventions: a broken banister replaced with a juvenile trunk; a window sill from a curved offcut that becomes a seat or desk; a wall opening aided by a tree fork shaped around the ceiling beam. Homes can be materially and structurally shaped by the forest — and in turn, create a demand for timber that supports the expansion of CCF in Thetford.</p>
+          </div>
+        </div>
+
+        <div class="project-img-grid" id="projectImgGrid">
+          <div class="project-img-cell" data-caption="Overview drawing" data-idx="0"><img src="../img/F10.jpg" alt="Overview drawing" loading="lazy"><span class="project-img-caption">Overview drawing</span></div>
+          <div class="project-img-cell" data-caption="Materials of a Regency house" data-idx="1"><img src="../img/f14.jpg" alt="Materials of a Regency house" loading="lazy"><span class="project-img-caption">Materials of a Regency house</span></div>
+          <div class="project-img-cell" data-caption="Anatomy of a London townhouse" data-idx="2"><img src="../img/f12.png" alt="Anatomy of a London townhouse" loading="lazy"><span class="project-img-caption">Anatomy of a London townhouse</span></div>
+          <div class="project-img-cell" data-caption="Thetford Forest" data-idx="3"><img src="../img/F11.jpg" alt="Thetford Forest" loading="lazy"><span class="project-img-caption">Thetford Forest</span></div>
+          <div class="project-img-cell" data-caption="Continuous cover forestry" data-idx="4"><img src="../img/f13.jpg" alt="Continuous cover forestry" loading="lazy"><span class="project-img-caption">Continuous cover forestry</span></div>
+          <div class="project-img-cell" data-caption="Forest plantation" data-idx="5"><img src="../img/F9.jpg" alt="Forest plantation" loading="lazy"><span class="project-img-caption">Forest plantation</span></div>
+          <div class="project-img-cell" data-caption="Thetford town — Fairfields section" data-idx="6"><img src="../img/F4.jpg" alt="Fairfields house section" loading="lazy"><span class="project-img-caption">Thetford town — Fairfields section</span></div>
+          <div class="project-img-cell" data-caption="Site under construction" data-idx="7"><img src="../img/F1.jpg" alt="Site under construction" loading="lazy"><span class="project-img-caption">Site under construction</span></div>
+          <div class="project-img-cell" data-caption="On site" data-idx="8"><img src="../img/F3.jpg" alt="On site" loading="lazy"><span class="project-img-caption">On site</span></div>
+          <div class="project-img-cell" data-caption="Tree fork — ceiling beam intervention" data-idx="9"><img src="../img/F6.jpg" alt="Tree fork" loading="lazy"><span class="project-img-caption">Tree fork — ceiling beam</span></div>
+          <div class="project-img-cell" data-caption="Curved timber window sill" data-idx="10"><img src="../img/F8.jpg" alt="Curved timber window sill" loading="lazy"><span class="project-img-caption">Curved timber window sill</span></div>
+          <div class="project-img-cell" data-caption="Juvenile trunk banister post" data-idx="11"><img src="../img/F7.jpg" alt="Juvenile trunk banister" loading="lazy"><span class="project-img-caption">Juvenile trunk banister post</span></div>
+          <div class="project-img-cell" data-caption="Tree fork detail" data-idx="12"><img src="../img/F2.jpg" alt="Tree fork detail" loading="lazy"><span class="project-img-caption">Tree fork detail</span></div>
+        </div>
+
+      </div>
     </div>
-    <div class="header-divider"></div>
-  </header>
+  </div>
 
-  
-
-  <main class="project-container">
-
-    <a href="javascript:history.back()" class="back-button" aria-label="Go back">
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-    <polyline points="15 18 9 12 15 6" />
-  </svg>
-</a>
-
-  <div class="project-info">
-    <h2>FROM FOREST TO FRAMEWORK</h2>
-
-    <p>Fith year: Diploma 13 thickness 2024-25. Fairfields, Thetford town, Norfolk, United Kingdom</p>
-
-    <p><strong>Description:</strong></p>
-
-    <!-- Short description preview -->
-    <p class="project-description short">
-      In this project I explore the localized application and distribution of
-timber from Continuous cover forestry to retrofit houses in Thetford
-town. Historically, the materials that built our homes have been local,
-visible and recognizable; today we live in homes disconnected from
-their material origin. My aim to is to re-establish this connection,
-through Thetford forest- an example of a plantation taking steps towards
-mixed species stands, and Thetford town, a town in close proximity;
-a typical post war English settlement.
-    </p>
-
-    <!-- Full description hidden initially -->
-<div class="project-description full">
-<p>In this project I explore the localized application and distribution of
-timber from Continuous cover forestry to retrofit houses in Thetford
-town. Historically, the materials that built our homes have been local,
-visible and recognizable; today we live in homes disconnected from
-their material origin. My aim to is to re-establish this connection,
-through Thetford forest- an example of a plantation taking steps towards
-mixed species stands, and Thetford town, a town in close proximity;
-a typical post war English settlement.</p>
-<p>
-In the early 19th century, London was a city on the rise. Growing into
-one of the largest cities in the world, at the Centre of an expanding
-British Empire. This period, fuelled by the Industrial Revolution
-brought an explosion of urban growth and housing demand. As new
-homes appeared to accommodate the surge of people moving into the
-city the terraced house was born—a design tailored to meet the needs
-of London’s growing middle class.</p>
-<p>
-An example of this historical disconnection can be observed through
-the coal hole, an opening in the pavement that allowed coal delivery
-directly into underground bunkers. This practical design facilitated the
-heating of homes during a time when coal was the primary energy
-source. The coal enters through a hatch, connecting to basements that
-housed kitchens, fireplaces, and servant quarters— the essential elements
-that made these homes liveable. The coal hole has become
-a metaphor for spatial and social hierarchies, as the multiple
-layers in play represent spaces of function and class separation,
-whilst also exploring hidden labour and material flows.
-This object, which has since become obsolete in its function, a
-historical machine that hides the mechanics of comfort; discreetly
-separates the messy delivery process from the affluent homeowners,
-who benefit from it without direct involvement. This separation
-between source and comfort is also mirrored in the construction of
-homes, in which we as the occupiers are unaware of the origin and
-complexities of materials that make the home, as such this globalized
-material network further separates and subsequently ‘hides’.</p>
-<p>
-This idea of distance of separation prompts a deeper investigation into
-the materials within these homes. How far did each component travel
-to become part of the building? What journeys did they undertake? By
-deconstructing a typical Regency house, I trace the origins of its
-materials—timber, brick, stone, and coal— and the journeys
-they undertook to become part of the home revealing
-not only the physical distances between us and
-our built environment but also the social and
-ecological implications of material extraction
-and consumption.</p>
-<p>The Industrial Revolution marked a turning point for forestry, the introduction of steam-powered machinery and sawmills
-revolutionized timber production. Plantations, typically consisting of fast-growing species like pine, were designed
-to maximize efficiency. By planting a single species in uniform rows, foresters could streamline harvesting and processing. This approach
-was further reinforced by economic incentives, as monocultures allowed for easier management, higher productivity,
-and greater profitability compared to diverse, natural forests. However, monoculture plantations come with significant
-environmental costs.</p>
-<p>Today, the focus is shifting toward sustainable practices like continuous cover forestry (CCF), which prioritizes biodiversity
-and resilience. This gentler forest management technique focuses on maintaining a continuous tree canopy. The
-process is designed to mimic natural forest processes, allowing natural regeneration without the need for clear-cutting
-or replanting. Over time, the forest evolves into a multi-layered, multi-generational system. This mixed-species
-competition alongside natural regeneration allows the trees to develop irregular forms.</p>
-<p>Plantations are grown for straight, fast, uniform timber, these are cut on site to
-standard sizes. So when I say irregular, this can be defined as consisting- Heavy
-knots, forks, heavily tapered, curved stem, spiral grain, reaction wood, bark inclusion
-and Crooks. This goes in hand with sawmills definition of irregular or unusable
-timber, these mentioned irregularities behind the wood creates challenges for the
-automated standard systems of sawing to process. Trees always grow for strength
-and balance, growing in a structurally rational response to forces, So every branch,
-every, curve every fork is a structural rational response to forces such as wind, light
-and gravity. this means their imperfections are optimized for strength and balance
-in their natural context. I look at bringing the forest back into the house. The site i
-have chosen within Thetford town is housing at Fairfield. I look at how I can incorporate
-‘irregular timber’ to retrofit these homes. I observe the frequent remodeling
-of these sites, from altering layouts to building extension. Through this I see the
-vast opportunity for both small and large on site interventions ; A broken banister
-post replaced with a juvenile trunk, breaking the regular repetition. A window sill,
-made from a thick, curved timber offcut extends into the room — becoming a seat,
-a shelf, or a desk. An opening of an internal wall, aided by a tree fork cut to shape
-around the ceiling beam. So the project explores a construction methodology rooted
-in the principles of Continuous Cover Forestry (CCF). Homes can be materially and
-structurally shaped by the forest, and in turn, a demand for timber that supports
-the expansion of CCF in Thetford. So really to summarise , the industrial view is
-that its unusable, problematic, however the material reality is that the irregularities
-are created through structural evolution, my view is that its expressive structural,
-beautiful and full of potential.</p>
-    
+  <div class="landing-cell about-cell"   data-page="../about.html"   data-label="ABOUT ME"></div>
+  <div class="landing-cell contact-cell" data-page="../contact.html" data-label="CONTACTS"></div>
 </div>
 
-<button class="read-more-btn">Read More</button>
+<!-- Custom lightbox: image left, info right, black bg -->
+<div class="plb-overlay" id="plbOverlay">
+  <div class="plb-img-side">
+    <button class="plb-prev" id="plbPrev">&#8249;</button>
+    <img id="plbImg" src="" alt="">
+    <button class="plb-next" id="plbNext">&#8250;</button>
+  </div>
+  <div class="plb-info-side">
+    <div class="plb-close-row"><button class="plb-close" id="plbClose">✕</button></div>
+    <div class="plb-counter" id="plbCounter"></div>
+    <div class="plb-caption" id="plbCaption"></div>
+    <div class="plb-meta">
+      <div class="plb-meta-row"><span class="plb-meta-label">Project</span><span class="plb-meta-val">From Forest to Framework</span></div>
+      <div class="plb-meta-row"><span class="plb-meta-label">Year</span><span class="plb-meta-val">2024–25</span></div>
+      <div class="plb-meta-row"><span class="plb-meta-label">Location</span><span class="plb-meta-val">Thetford, Norfolk</span></div>
+      <div class="plb-meta-row"><span class="plb-meta-label">Diploma</span><span class="plb-meta-val">Year 5 — Diploma 13</span></div>
+    </div>
+  </div>
 </div>
-
-<div class="project-images">
-  <a href="../img/F10.jpg" class="glightbox" data-gallery="project1-gallery" data-title="A3 Portrait">
-    <img src="../img/F10.jpg" class="project-img a3-portrait" alt="A3 Portrait">
-  </a>
-  <a href="../img/f14.jpg" class="glightbox" data-gallery="project1-gallery" data-title="Materials of a Regency house">
-    <img src="../img/f14.jpg" class="project-img a3-landscape" alt="A3 Landscape">
-  </a>
-  <a href="../img/f12.png" class="glightbox" data-gallery="project1-gallery" data-title="Anatomy of a london town house- book">
-    <img src="../img/f12.png" class="project-img a4-landscape" alt="A4 Landscape">
-  </a>
-</div>
-
-<div class="project-images">
-  <a href="../img/F11.jpg" class="glightbox" data-gallery="project1-gallery" data-title="Thetford forest">
-    <img src="../img/F11.jpg" class="project-img square" alt="square">
-  </a>
-  <a href="../img/f13.jpg" class="glightbox" data-gallery="project1-gallery" data-title="Continuous cover forestry">
-    <img src="../img/f13.jpg" class="project-img a4-landscape" alt="A4 Landscape">
-  </a>
-  <a href="../img/F9.jpg" class="glightbox" data-gallery="project1-gallery" data-title="Forest plantation">
-    <img src="../img/F9.jpg" class="project-img a3-landscape" alt="A3 Landscape">
-  </a>
-</div>
-
-
-<div class="project-images">
-  <a href="../img/F4.jpg" class="glightbox" data-gallery="project1-gallery" data-title="Thetford town, fairfields house section">
-    <img src="../img/F4.jpg" class="project-img a3-landscape" alt="A3 Landscape">
-  </a>
-  <a href="../img/F1.jpg" class="glightbox" data-gallery="project1-gallery" data-title="Site under construction">
-    <img src="../img/F1.jpg" class="project-img a3-portrait" alt="A3 Portrait">
-  </a>
-  <a href="../img/F3.jpg" class="glightbox" data-gallery="project1-gallery" data-title="On site">
-    <img src="../img/F3.jpg" class="project-img square" alt="square">
-  </a>
-</div>
-
-<div class="project-images">
-  <a href="../img/F6.jpg" class="glightbox" data-gallery="project1-gallery" data-title="An opening of an internal wall, aided by a tree fork cut to shape around the ceiling beam">
-    <img src="../img/F6.jpg" class="project-img a4-portrait" alt="A4 Portrait">
-  </a>
-  <a href="../img/F8.jpg" class="glightbox" data-gallery="project1-gallery" data-title="Window sill, made from a thick, curved timber offcut">
-    <img src="../img/F8.jpg" class="project-img a4-portrait" alt="A4 Portrait">
-  </a>
-  <a href="../img/F7.jpg" class="glightbox" data-gallery="project1-gallery" data-title="A broken banister post replaced with a juvenile trunk">
-    <img src="../img/F7.jpg" class="project-img a4-portrait" alt="A4 Portrait">
-  </a>
-</div>
-
-<div class="project-images">
-  <a href="../img/F2.jpg" class="glightbox" data-gallery="project1-gallery" data-title="Tree fork">
-    <img src="../img/F2.jpg" class="project-img square" alt="square">
-  </a>
-</div>
-
-</main>
-
-  <footer>
-    <p>ALEX VALENTINE EVDOKIMOV 2025</p>
-  </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
-  <script>
-    
-
-    // Read More toggle logic
-    const readMoreBtn = document.querySelector('.read-more-btn');
-    const shortDesc = document.querySelector('.project-description.short');
-    const fullDesc = document.querySelector('.project-description.full');
-
-    readMoreBtn.addEventListener('click', () => {
-      if (fullDesc.style.display === 'block') {
-        fullDesc.style.display = 'none';
-        shortDesc.style.display = 'block';
-        readMoreBtn.textContent = 'Read More';
-      } else {
-        fullDesc.style.display = 'block';
-        shortDesc.style.display = 'none';
-        readMoreBtn.textContent = 'Read Less';
-      }
-    });
-  </script>
-
-  <!-- Left Arrow -->
-  <a href="project14.html" class="project-nav left" aria-label="Previous project">
-    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="15 18 9 12 15 6" />
-    </svg>
-  </a>
-
-  <!-- Right Arrow -->
-  <a href="project2.html" class="project-nav right" aria-label="Next project">
-    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="9 18 15 12 9 6" />
-    </svg>
-  </a>
 
 <script>
-  const lightbox = GLightbox({ selector: '.glightbox' });
-
-  document.addEventListener('keydown', function (e) {
-    // Only navigate projects if GLightbox is NOT open
-    if (!document.body.classList.contains('glightbox-open')) {
-      if (e.key === 'ArrowLeft') {
-        window.location.href = "project14.html"; // or your previous project
-      } else if (e.key === 'ArrowRight') {
-        window.location.href = "project2.html"; // or your next project
-      }
-    }
+function navigateTo(url) {
+  if (!url) return;
+  document.body.classList.add('is-leaving');
+  requestAnimationFrame(() => { setTimeout(() => { window.location.href = url; }, 220); });
+}
+document.querySelectorAll('.landing-cell').forEach(cell => {
+  cell.addEventListener('click', function(e) {
+    if (this.classList.contains('active')) return;
+    e.preventDefault(); navigateTo(this.dataset.page);
   });
+});
+
+document.getElementById('descTrigger')?.addEventListener('click', () => {
+  document.getElementById('descSection').classList.toggle('open');
+});
+
+/* Lightbox */
+const overlay  = document.getElementById('plbOverlay');
+const plbImg   = document.getElementById('plbImg');
+const plbPrev  = document.getElementById('plbPrev');
+const plbNext  = document.getElementById('plbNext');
+const plbClose = document.getElementById('plbClose');
+const plbCount = document.getElementById('plbCounter');
+const plbCap   = document.getElementById('plbCaption');
+const cells    = Array.from(document.querySelectorAll('.project-img-cell'));
+let cur = 0;
+
+function openLB(i) { cur=i; show(); overlay.classList.add('open'); document.body.style.overflow='hidden'; }
+function closeLB()  { overlay.classList.remove('open'); document.body.style.overflow=''; }
+function show() {
+  const c=cells[cur], img=c.querySelector('img');
+  plbImg.src=img.src; plbImg.alt=img.alt;
+  plbCap.textContent=c.dataset.caption||img.alt;
+  plbCount.textContent=`${cur+1}  /  ${cells.length}`;
+  plbPrev.disabled=(cur===0); plbNext.disabled=(cur===cells.length-1);
+}
+
+cells.forEach((c,i) => c.addEventListener('click', () => openLB(i)));
+plbClose.addEventListener('click', closeLB);
+plbPrev.addEventListener('click',  () => { if(cur>0){cur--;show();} });
+plbNext.addEventListener('click',  () => { if(cur<cells.length-1){cur++;show();} });
+overlay.addEventListener('click',  e => { if(e.target===overlay) closeLB(); });
+
+document.addEventListener('keydown', e => {
+  if (overlay.classList.contains('open')) {
+    if (e.key==='Escape') closeLB();
+    if (e.key==='ArrowLeft')  plbPrev.click();
+    if (e.key==='ArrowRight') plbNext.click();
+    return;
+  }
+  if (e.key==='ArrowLeft')  navigateTo('project14.html');
+  if (e.key==='ArrowRight') navigateTo('project2.html');
+  if (e.key==='Escape')     navigateTo('../drawings.html');
+});
 </script>
 </body>
 </html>

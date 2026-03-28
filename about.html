@@ -1,181 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HBJP6CFGNQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-HBJP6CFGNQ');
-</script>
-
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HBJP6CFGNQ"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HBJP6CFGNQ');</script>
   <meta charset="UTF-8">
-  <title>ABOUT ME</title>
+  <title>About — Alex Valentine Evdokimov</title>
   <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    /* ── About page styles ── */
+    .about-inner { padding: 0 0 80px 0; }
+
+    /* Page header */
+    .about-page-header {
+      display: flex; align-items: stretch;
+      border-bottom: 1px solid #000; min-height: 52px;
+    }
+    .about-page-title {
+      flex: 1; padding: 0 20px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .about-page-title h1 {
+      margin: 0; font-size: .72rem; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase; color: #000;
+    }
+
+    /* Bio row — portrait + text side by side */
+    .about-bio-row {
+      display: flex; align-items: stretch;
+      border-bottom: 1px solid #000;
+    }
+    .about-portrait {
+      flex: 0 0 180px; border-right: 1px solid #000;
+      overflow: hidden;
+    }
+    .about-portrait img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: top;
+      display: block;
+    }
+    .about-bio-text {
+      flex: 1; padding: 24px 28px;
+      font-size: .7rem; line-height: 1.85;
+      color: rgba(0,0,0,.65);
+    }
+    .about-bio-text p { margin: 0 0 1em; }
+    .about-bio-text p:last-child { margin-bottom: 0; }
+
+    /* Section header rows */
+    .about-section-header {
+      display: flex; align-items: stretch;
+      border-bottom: 1px solid #000; height: 36px;
+      background: #000;
+    }
+    .about-section-header span {
+      padding: 0 16px;
+      font-size: .42rem; font-weight: 700;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: #fff; display: flex; align-items: center;
+    }
+
+    /* Entry rows — used for experience + education */
+    .about-entry {
+      display: flex; align-items: stretch;
+      border-bottom: 1px solid #000;
+    }
+    .about-entry-date {
+      flex: 0 0 110px; padding: 14px 12px;
+      font-size: .37rem; font-weight: 700;
+      letter-spacing: .1em; color: rgba(0,0,0,.3);
+      border-right: 1px solid #000;
+      display: flex; align-items: flex-start;
+      white-space: nowrap;
+    }
+    .about-entry-body {
+      flex: 1; padding: 14px 18px;
+    }
+    .about-entry-title {
+      font-size: .62rem; font-weight: 600;
+      color: #000; letter-spacing: .02em;
+      margin-bottom: 5px;
+    }
+    .about-entry-sub {
+      font-size: .37rem; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: rgba(0,0,0,.35); margin-bottom: 8px;
+    }
+    .about-entry-desc {
+      font-size: .62rem; line-height: 1.75;
+      color: rgba(0,0,0,.58);
+    }
+
+    /* Skills / info row */
+    .about-skills-row {
+      display: flex; align-items: stretch;
+      border-bottom: 1px solid #000; flex-wrap: wrap;
+    }
+    .about-skill-cell {
+      flex: 1; min-width: 140px;
+      padding: 10px 14px;
+      border-right: 1px solid #000;
+      font-size: .58rem; color: rgba(0,0,0,.6);
+    }
+    .about-skill-cell:last-child { border-right: none; }
+    .about-skill-label {
+      font-size: .33rem; font-weight: 700;
+      letter-spacing: .15em; text-transform: uppercase;
+      color: rgba(0,0,0,.3); display: block; margin-bottom: 5px;
+    }
+  </style>
 </head>
 <body>
-<!-- navigation columns common to all pages -->
-<div class="landing-name">ALEX VALENTINE EVDOKIMOV</div>
 
 <div class="landing-grid">
-
-  <div class="landing-cell home-cell" data-page="index.html" data-label="HOME"></div>
-
-  <div class="landing-cell work-cell" data-page="drawings.html" data-label="MY WORK"></div>
+  <div class="landing-cell home-cell"  data-page="index.html"    data-label="HOME"></div>
+  <div class="landing-cell work-cell"  data-page="drawings.html" data-label="MY WORK"></div>
 
   <div class="landing-cell about-cell active" data-page="about.html" data-label="ABOUT ME">
-
     <div class="page-content">
+      <div class="about-inner">
 
-      <main>
+        <!-- Page header -->
+        <div class="about-page-header">
+          <div class="about-page-title">
+            <h1>Alex Valentine Evdokimov</h1>
+          </div>
+        </div>
 
-        <div class="about-container">
+        <!-- Bio + portrait -->
+        <div class="about-bio-row">
+          <div class="about-portrait">
+            <img src="img/IMG_7043.JPG" alt="Alex Valentine Evdokimov">
+          </div>
+          <div class="about-bio-text">
+            <p>Alex Valentine Evdokimov is a London-based designer focused on cultural architecture and public infrastructure that prioritise user experience, materiality, and long-term adaptability.</p>
+            <p>Having recently graduated from the Architectural Association, he has gained experience at Spencer Fung Architects and currently works at Mossessian Architecture, alongside freelance cultural collaborations.</p>
+            <p>He co-founded Hysteresis, an independent practice focused on enabling collaboration between young artists and designers — developing architectural and strategic interventions to redirect cultural and economic flows back into overlooked regions.</p>
+            <p>Alex aspires to create thoughtful, tactile, and participatory environments that foster human connections. He is excited to explore phenomenology, materiality, and emotion in design.</p>
+          </div>
+        </div>
 
-          <div class="about-text">
-            <h2>About Me</h2>
-    
-     
-      <p>
-        Alex Valentine Evdokimov is a London-based designer focused on cultural Architecture and public infrastructure that prioritise user experience, materiality, and long-term adaptability. Having recently graduated from the Architectural Association, he has gained experience at Spencer Fung Architects and currently works at Mossessian Architecture, alongside freelance cultural collaborations. He co-founded Hysteresis, an independent practice focused on enabling collaboration between young artists and designers: developing architectural and strategic interventions to redirect cultural and economic flows back into overlooked regions. 
-         </p>
-  <p>
-Alex aspires to create thoughtful, tactile, and participatory environments that foster human connections. He is excited to explore phenomenology, materiality, and emotion in design. 
-</p>
-  <p>
-    
+        <!-- Skills strip -->
+        <div class="about-skills-row">
+          <div class="about-skill-cell"><span class="about-skill-label">Based</span>London, UK</div>
+          <div class="about-skill-cell"><span class="about-skill-label">Qualification</span>MArch ARB / RIBA Part 2</div>
+          <div class="about-skill-cell"><span class="about-skill-label">Practice</span>Mossessian Architecture</div>
+          <div class="about-skill-cell"><span class="about-skill-label">Co-founded</span>Hysteresis</div>
+          <div class="about-skill-cell"><span class="about-skill-label">School</span>Architectural Association</div>
+        </div>
 
+        <!-- Experience -->
+        <div class="about-section-header"><span>Experience</span></div>
 
-      <h2>Experience</h2>
-      <p>
+        <div class="about-entry">
+          <span class="about-entry-date">2025 — Present</span>
+          <div class="about-entry-body">
+            <div class="about-entry-title">Mossessian Architecture</div>
+            <div class="about-entry-sub">Part II Architectural Assistant</div>
+            <div class="about-entry-desc">Currently working as a Part II Architectural Assistant on high-end residential projects.</div>
+          </div>
+        </div>
 
-        <strong>- 2025 - Present Mosesseian Architecture - Part II Architectural Assistant.</strong> 
-      </p>
-         <p>
-Currently working as a Part II Architectural Assistant at Mosessessian Architecture working on high end residential projects.      </p>
-       <p>
+        <div class="about-entry">
+          <span class="about-entry-date">2025</span>
+          <div class="about-entry-body">
+            <div class="about-entry-title">The Emotionalist</div>
+            <div class="about-entry-sub">Contributor</div>
+            <div class="about-entry-desc">The Emotionalists bring together work from across different fields to strengthen debate, create new links between like-minded practitioners, and support contributors to grow the reach of Emotionalism.</div>
+          </div>
+        </div>
 
-        <strong>- 2025 - The Emotionalist</strong> 
-      </p>
-         <p>
- the emotionalists bring together work from across different fields to strengthen and enrich debate, create new links between like-minded practitioners and support contributors to grow the reach of the Emotionalism.       <p>
+        <div class="about-entry">
+          <span class="about-entry-date">2024 — 2025</span>
+          <div class="about-entry-body">
+            <div class="about-entry-title">Architectural Association — Print Centre</div>
+            <div class="about-entry-sub">Print Centre Assistant</div>
+            <div class="about-entry-desc">Assisted students and staff with print production and troubleshooting. Developed hands-on understanding of layout, scale, and presentation in physical formats, and of the transition from digital to printed media.</div>
+          </div>
+        </div>
 
-    <strong>- 2024 - 2025 Architectural Association - Print centre assistant.</strong> 
-      </p>
-         <p>
-Worked part-time in the university’s print centre, assisting students and staff with print production and troubleshooting. Gained hands-on experience with print equipment and materials, developing an understanding of layout, scale, and presentation in physical formats. Regularly engaged with peers’ work, strengthening my awareness of graphic communication and the transition from digital to printed media.
-      </p>
-       <p>
-    <strong>- 2023 - 2024 Freelance Architect.</strong>
-    
-      </p>
-         <p>
-Anglo-Belarusian society loft conversion: Appointed to transform a derelict loft into a library and exhibition space. Measured and drafted accurate plans and sections from scratch, eventually being used by the construction team. Acted as a consultant throughout, offering spatial advice while acknowledging structural limitations. Produced visualisations to support funding applications and promote the project.      </p>
-     </p>
-     <p>
-    <strong>- 2023 - 2023 Spencer Fung Architects - Part I Architectural Assistant. </strong>
-      </p>
-         <p>
-Developed spa designs for a hotel project in Australia at Stage 3, producing detailed plans and visuals in response to evolving client feedback. Translated hand-drawn furniture sketches into buildable 2D/3D models for the ‘Twig’ collection. Supported preparation for the Ralph Pucci Gallery exhibition.      </p>
-       <p>
-    <strong>- 2020 - 2025 Latvian Embassy.</strong>
-      </p>
-         <p>
-Provided language support during appointments, ensuring clients clearly understood official documentation and procedures. Acted as a liaison between embassy staff and Latvian-speaking clients, maintaining professionalism and confidentiality at all times.     </p>
-</p>
-<p>
-    <strong>- 2018 - 2018 Spheron Architects - Shadow placement. </strong>
-      </p>
-         <p>
-Gained early insight into the workings of a practice during a project deadline phase. Observed meetings, site dynamics, and team workflow.      </p>
-       <p>
-    <strong>-2018 - 2018 Construction - Residential construction assistant.</strong>
-      </p>
-         <p>
-Assisted a local builder on a house extension project, working full-time on site. Gained hands-on experience in foundation pouring, pipe installation, and general construction work. Developed a practical understanding of building processes, site coordination, and material use.     </p>
+        <div class="about-entry">
+          <span class="about-entry-date">2023 — 2024</span>
+          <div class="about-entry-body">
+            <div class="about-entry-title">Freelance Architect</div>
+            <div class="about-entry-sub">Anglo-Belarusian Society — Loft Conversion</div>
+            <div class="about-entry-desc">Appointed to transform a derelict loft into a library and exhibition space. Measured and drafted accurate plans and sections from scratch for use by the construction team. Acted as consultant throughout, offering spatial advice while acknowledging structural limitations. Produced visualisations to support funding applications.</div>
+          </div>
+        </div>
 
-<h2>Education</h2>
-      <p>
-    <strong>- 2018 - 2019 Architectural Association School of Architecture foundation course</strong> 
-      </p>
-         <p>
-foundation</p>
-       <p>
-    <strong>- 2019 - 2022 Architectural Association School of Architecture - Intermediate Programme</strong>
-      </p>
-         <p>
-BA(Hons) ARB / RIBA Part 1 -Scholarship recipient    </p>
-<p>
-    <strong>- 2023 - 2025 Architectural Association School of Architecture - Dimploma Programme</strong>
-      </p>
-         <p>
-MArch ARB / RIBA Part 2 - Scholarship recipient  </p>
+        <div class="about-entry">
+          <span class="about-entry-date">2023</span>
+          <div class="about-entry-body">
+            <div class="about-entry-title">Spencer Fung Architects</div>
+            <div class="about-entry-sub">Part I Architectural Assistant</div>
+            <div class="about-entry-desc">Developed spa designs for a hotel project in Australia at Stage 3, producing detailed plans and visuals in response to evolving client feedback. Translated hand-drawn furniture sketches into buildable 2D/3D models for the 'Twig' collection. Supported preparation for the Ralph Pucci Gallery exhibition.</div>
+          </div>
+        </div>
 
-</div>
+        <div class="about-entry">
+          <span class="about-entry-date">2020 — 2025</span>
+          <div class="about-entry-body">
+            <div class="about-entry-title">Latvian Embassy</div>
+            <div class="about-entry-sub">Language Support</div>
+            <div class="about-entry-desc">Provided language support during appointments, ensuring clients clearly understood official documentation and procedures. Acted as liaison between embassy staff and Latvian-speaking clients, maintaining professionalism and confidentiality at all times.</div>
+          </div>
+        </div>
 
+        <div class="about-entry">
+          <span class="about-entry-date">2018</span>
+          <div class="about-entry-body">
+            <div class="about-entry-title">Spheron Architects</div>
+            <div class="about-entry-sub">Shadow Placement</div>
+            <div class="about-entry-desc">Gained early insight into the workings of a practice during a project deadline phase. Observed meetings, site dynamics, and team workflow.</div>
+          </div>
+        </div>
 
-    <div class="about-image">
-      <img src="img/IMG_7043.JPG" alt="Alex Valentine Evdokimov">
-    </div>
-  </div>
+        <div class="about-entry">
+          <span class="about-entry-date">2018</span>
+          <div class="about-entry-body">
+            <div class="about-entry-title">Residential Construction</div>
+            <div class="about-entry-sub">Construction Assistant</div>
+            <div class="about-entry-desc">Assisted a local builder on a house extension project, working full-time on site. Gained hands-on experience in foundation pouring, pipe installation, and general construction. Developed a practical understanding of building processes, site coordination, and material use.</div>
+          </div>
+        </div>
 
-  </main>
+        <!-- Education -->
+        <div class="about-section-header"><span>Education</span></div>
 
-      <footer>
-        <p>ALEX VALENTINE EVDOKIMOV 2025</p>
-      </footer>
+        <div class="about-entry">
+          <span class="about-entry-date">2023 — 2025</span>
+          <div class="about-entry-body">
+            <div class="about-entry-title">Architectural Association School of Architecture</div>
+            <div class="about-entry-sub">Diploma Programme — MArch ARB / RIBA Part 2</div>
+            <div class="about-entry-desc">Scholarship recipient.</div>
+          </div>
+        </div>
 
-    </div> <!-- page-content -->
+        <div class="about-entry">
+          <span class="about-entry-date">2019 — 2022</span>
+          <div class="about-entry-body">
+            <div class="about-entry-title">Architectural Association School of Architecture</div>
+            <div class="about-entry-sub">Intermediate Programme — BA(Hons) ARB / RIBA Part 1</div>
+            <div class="about-entry-desc">Scholarship recipient.</div>
+          </div>
+        </div>
 
-  </div> <!-- about-cell -->
+        <div class="about-entry">
+          <span class="about-entry-date">2018 — 2019</span>
+          <div class="about-entry-body">
+            <div class="about-entry-title">Architectural Association School of Architecture</div>
+            <div class="about-entry-sub">Foundation Course</div>
+            <div class="about-entry-desc"></div>
+          </div>
+        </div>
+
+      </div><!-- /about-inner -->
+
+      <footer><p>Alex Valentine Evdokimov — 2025</p></footer>
+    </div><!-- /page-content -->
+  </div><!-- /about-cell -->
 
   <div class="landing-cell contact-cell" data-page="contact.html" data-label="CONTACTS"></div>
-
-</div> <!-- landing-grid -->
+</div><!-- /landing-grid -->
 
 <script>
-  
-document.addEventListener('DOMContentLoaded', function () {
-
-  const cells = document.querySelectorAll('.landing-cell');
-  const landingName = document.querySelector('.landing-name');
-  const path = window.location.pathname.toLowerCase();
-
-  let activeCell = cells[0];
-
-  if (path.includes('drawings')) activeCell = document.querySelector('.work-cell');
-  else if (path.includes('about')) activeCell = document.querySelector('.about-cell');
-  else if (path.includes('contact')) activeCell = document.querySelector('.contact-cell');
-
-  activeCell.classList.add('active');
-
-  if (landingName) {
-    landingName.style.display = activeCell.classList.contains('home-cell') ? 'block' : 'none';
-  }
-
-  cells.forEach(cell => {
-
-    cell.addEventListener('click', function () {
-
-      const page = this.dataset.page;
-
-      if (!page) return;
-
-      cells.forEach(c => c.classList.remove('active'));
-      this.classList.add('active');
-
-      setTimeout(() => {
-        window.location.href = page;
-      }, 600); // matches CSS column animation
-
-    });
-
+function navigateTo(url) {
+  if (!url || url === window.location.pathname.split('/').pop()) return;
+  document.body.classList.add('is-leaving');
+  requestAnimationFrame(() => { setTimeout(() => { window.location.href = url; }, 220); });
+}
+document.querySelectorAll('.landing-cell').forEach(cell => {
+  cell.addEventListener('click', function(e) {
+    if (this.classList.contains('active')) return;
+    e.preventDefault(); navigateTo(this.dataset.page);
   });
-
 });
 </script>
+
 </body>
 </html>

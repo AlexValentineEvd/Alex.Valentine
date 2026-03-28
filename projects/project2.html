@@ -1,212 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HBJP6CFGNQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-HBJP6CFGNQ');
-</script>
-
-  <meta charset="UTF-8" />
-  <title>Cultivating Creative Resilience</title>
-  <link rel="stylesheet" href="../styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HBJP6CFGNQ"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HBJP6CFGNQ');</script>
+  <meta charset="UTF-8">
+  <title>Cultivating Creative Resilience — Alex Valentine Evdokimov</title>
+  <link rel="stylesheet" href="../styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    .lightboxOverlay {
-      background: rgba(255, 255, 255, 0.6) !important;
-      backdrop-filter: blur(4px);
-      transition: background 0.3s ease-in-out;
-    }
+    .project-page-inner { padding: 0 0 80px 0; }
+    .project-header-row { display:flex; align-items:stretch; border-bottom:1px solid #000; min-height:52px; }
+    .project-back-btn { width:44px; display:flex; align-items:center; justify-content:center; border-right:1px solid #000; background:none; border-top:none; border-bottom:none; border-left:none; cursor:pointer; text-decoration:none; color:#000; transition:background .15s,color .15s; flex-shrink:0; }
+    .project-back-btn:hover { background:#000; color:#fff; }
+    .project-back-btn svg { stroke:currentColor; }
+    .project-title-cell { flex:1; padding:0 20px; display:flex; align-items:center; gap:14px; }
+    .project-title-cell h1 { margin:0; font-size:.72rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#000; }
+    .project-tag { font-size:.42rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:#fff; background:#000; padding:3px 8px; white-space:nowrap; }
+    .project-nav-cell { display:flex; align-items:stretch; border-left:1px solid #000; }
+    .project-nav-btn { width:44px; display:flex; align-items:center; justify-content:center; background:none; border:none; border-right:1px solid #000; cursor:pointer; text-decoration:none; color:#000; transition:background .15s,color .15s; }
+    .project-nav-btn:last-child { border-right:none; }
+    .project-nav-btn:hover { background:#000; color:#fff; }
+    .project-nav-btn svg { stroke:currentColor; }
+    .project-meta-row { display:flex; align-items:stretch; border-bottom:1px solid #000; min-height:30px; }
+    .project-meta-label { flex:0 0 80px; padding:0 10px; font-size:.37rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:rgba(0,0,0,.35); display:flex; align-items:center; border-right:1px solid #000; }
+    .project-meta-val { flex:1; padding:0 12px; font-size:.6rem; color:rgba(0,0,0,.7); display:flex; align-items:center; }
+    .project-desc-section { border-bottom:1px solid #000; }
+    .project-desc-trigger { display:flex; align-items:stretch; height:36px; cursor:pointer; background:none; border:none; width:100%; padding:0; font-family:'Outfit',sans-serif; transition:background .12s; }
+    .project-desc-trigger:hover { background:rgba(0,0,0,.03); }
+    .project-desc-label { flex:0 0 80px; padding:0 10px; font-size:.37rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:rgba(0,0,0,.35); display:flex; align-items:center; border-right:1px solid #000; }
+    .project-desc-title { flex:1; padding:0 12px; font-size:.56rem; font-weight:500; color:rgba(0,0,0,.55); display:flex; align-items:center; }
+    .project-desc-arrow { width:36px; display:flex; align-items:center; justify-content:center; font-size:.44rem; color:rgba(0,0,0,.35); border-left:1px solid #000; transition:transform .2s; }
+    .project-desc-section.open .project-desc-arrow { transform:rotate(180deg); }
+    .project-desc-body { display:none; padding:24px 32px 28px; font-size:.68rem; line-height:1.9; color:rgba(0,0,0,.62); border-top:1px solid rgba(0,0,0,.06); column-count:2; column-gap:48px; }
+    .project-desc-body p { margin:0 0 1.1em; break-inside:avoid; }
+    .project-desc-body p:last-child { margin-bottom:0; }
+    .project-desc-section.open .project-desc-body { display:block; }
+    .project-img-grid { columns:3; column-gap:0; }
+    .project-img-cell { break-inside:avoid; display:block; position:relative; overflow:hidden; cursor:pointer; border-bottom:1px solid rgba(0,0,0,.1); border-right:1px solid rgba(0,0,0,.1); background:#f5f5f5; }
+    .project-img-cell img { display:block; width:100%; height:auto; transition:opacity .2s; }
+    .project-img-cell:hover img { opacity:.82; }
+    .project-img-caption { position:absolute; bottom:0; left:0; right:0; background:rgba(0,0,0,.7); padding:7px 10px; font-size:.38rem; letter-spacing:.06em; color:rgba(255,255,255,.85); transform:translateY(100%); transition:transform .18s ease; }
+    .project-img-cell:hover .project-img-caption { transform:translateY(0); }
+    .plb-overlay { display:none; position:fixed; inset:0; background:#000; z-index:9000; flex-direction:row; }
+    .plb-overlay.open { display:flex; }
+    .plb-img-side { flex:1; display:flex; align-items:center; justify-content:center; padding:48px 24px 48px 48px; box-sizing:border-box; position:relative; min-width:0; }
+    .plb-img-side img { max-width:100%; max-height:100%; object-fit:contain; display:block; }
+    .plb-prev, .plb-next { position:absolute; top:50%; transform:translateY(-50%); background:none; border:none; cursor:pointer; color:rgba(255,255,255,.4); font-size:2rem; font-weight:200; padding:20px 10px; transition:color .15s; font-family:'Outfit',sans-serif; z-index:2; }
+    .plb-prev { left:6px; } .plb-next { right:6px; }
+    .plb-prev:hover, .plb-next:hover { color:#fff; }
+    .plb-prev:disabled, .plb-next:disabled { opacity:.15; cursor:default; }
+    .plb-info-side { flex:0 0 220px; border-left:1px solid rgba(255,255,255,.08); display:flex; flex-direction:column; background:#0a0a0a; color:#fff; }
+    .plb-close-row { display:flex; align-items:center; justify-content:flex-end; height:44px; border-bottom:1px solid rgba(255,255,255,.08); flex-shrink:0; }
+    .plb-close { width:44px; height:44px; display:flex; align-items:center; justify-content:center; background:none; border:none; cursor:pointer; color:rgba(255,255,255,.4); font-size:.9rem; font-family:'Outfit',sans-serif; transition:background .15s,color .15s; }
+    .plb-close:hover { background:rgba(255,255,255,.08); color:#fff; }
+    .plb-counter { padding:18px 16px 6px; font-size:.36rem; letter-spacing:.18em; color:rgba(255,255,255,.25); text-transform:uppercase; flex-shrink:0; }
+    .plb-caption { padding:8px 16px 16px; font-size:.65rem; line-height:1.6; color:rgba(255,255,255,.82); flex-shrink:0; border-bottom:1px solid rgba(255,255,255,.07); }
+    .plb-meta { flex:1; overflow-y:auto; }
+    .plb-meta-row { display:flex; border-bottom:1px solid rgba(255,255,255,.05); min-height:28px; }
+    .plb-meta-label { flex:0 0 64px; padding:0 8px; font-size:.33rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.2); display:flex; align-items:center; border-right:1px solid rgba(255,255,255,.05); }
+    .plb-meta-val { flex:1; padding:0 10px; font-size:.54rem; color:rgba(255,255,255,.5); display:flex; align-items:center; }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <h1 class="logo"><a href="../index.html">ALEX VALENTINE EVDOKIMOV</a></h1>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="../index.html">HOME</a></li>
-          <li><a href="../drawings.html">WORK</a></li>
-          <li><a href="../about.html">ABOUT</a></li>
-          <li><a href="../contact.html">CONTACTS</a></li>
-        </ul>
-      </nav>
-    </div>
-    <div class="header-divider"></div>
-  </header>
 
- <a href="javascript:history.back()" class="back-button" aria-label="Go back">
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-    <polyline points="15 18 9 12 15 6" />
-  </svg>
-</a>
+<div class="landing-grid">
+  <div class="landing-cell home-cell" data-page="../index.html" data-label="HOME"></div>
 
-  <main class="project-container">
-    <div class="project-info">
-      <h2>CULTIVATING CREATIVE RESILIENCE</h2>
-      <p>Forth year, Diploma 9 Free house 2023-24. Haringey, London, United Kingdom</p>
+  <div class="landing-cell work-cell active" data-page="../drawings.html" data-label="MY WORK">
+    <div class="page-content">
+      <div class="project-page-inner">
 
-      <p><strong>Description:</strong></p>
+        <div class="project-header-row">
+          <a href="../drawings.html" class="project-back-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </a>
+          <div class="project-title-cell">
+            <h1>Cultivating Creative Resilience</h1>
+            <span class="project-tag">Project</span>
+          </div>
+          <div class="project-nav-cell">
+            <a href="project1.html" class="project-nav-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <a href="project3.html" class="project-nav-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+          </div>
+        </div>
 
-      <!-- Short preview -->
-      <p class="project-description short">
-        London is in the midst of a housing crisis characterized by high rents, limited
-space, and unaffordable new builds. Many find themselves priced out and struggling
-to find a place to call home. Located in London in the borough of Haringey
-Is the Harringay warehouse district these warehouses, transformed into living
-and working spaces, transcend conventional living. As more of the warehouses
-became inhabited, like-minded creative individuals were drawn to the sites,
-fostering a community of like-minded people. Concealed from the general public
-and importantly the watchful eyes of the council , the discretion of the needs of
-a determined artistic crowd along with their strong bond to their landlords saw
-a unique evolution collimating to a gradual evolution and establishment of a new
-form of living. Despite the community’s growth, since official building legislation
-was not designed to support unconventional typologies, its procedures cast
-doubt on the warehouse district’s sustainability.
+        <div class="project-meta-row"><span class="project-meta-label">Year</span><span class="project-meta-val">2023–24</span></div>
+        <div class="project-meta-row"><span class="project-meta-label">Diploma</span><span class="project-meta-val">Year 4 — Diploma 9 Free House</span></div>
+        <div class="project-meta-row"><span class="project-meta-label">Location</span><span class="project-meta-val">Harringay Warehouse District, Haringey, London, UK</span></div>
+        <div class="project-meta-row"><span class="project-meta-label">Theme</span><span class="project-meta-val">Live/Work · Creative Community · Adaptive Reuse · Brewery</span></div>
 
-      </p>
+        <div class="project-desc-section" id="descSection">
+          <button class="project-desc-trigger" id="descTrigger">
+            <span class="project-desc-label">Text</span>
+            <span class="project-desc-title">Project description</span>
+            <span class="project-desc-arrow">▲</span>
+          </button>
+          <div class="project-desc-body">
+            <p>London is in the midst of a housing crisis characterised by high rents, limited space, and unaffordable new builds. Many find themselves priced out and struggling to find a place to call home. Located in the borough of Haringey is the Harringay Warehouse District — these warehouses, transformed into living and working spaces, transcend conventional living. As more warehouses became inhabited, like-minded creative individuals were drawn to the sites, fostering a community of like-minded people.</p>
+            <p>Concealed from the general public and the watchful eyes of the council, the discretion of the needs of a determined artistic crowd alongside their strong bond to their landlords saw a unique evolution — a gradual establishment of a new form of living. Despite the community's growth, official building legislation was not designed to support unconventional typologies, casting doubt on the warehouse district's sustainability.</p>
+            <p>Large communal areas allow for exhibitions, performances, and workshops, providing opportunities to exhibit work and engage with the broader community. Private bedrooms — larger than standard and free to customisation — are adjacent to large communal spaces occupying half the warehouse, providing areas where work and leisure coexist. Today the site is home to over 1,000 visionaries: architects, tattoo artists, theatre performers, rave organisers, and a variety of less conventional creatives. Rollover contracts ensure residents are never tied to lengthy fixed tenancies, while the space encourages a range of startups and grassroots businesses.</p>
+            <p>One intervention involves the introduction of a brewery and nightclub. Leveraging the productive potential of these spaces generates revenue and subsidises housing costs. Beer is produced and sold on site at a small scale, carried out by the live-in tenants, generating a stable passive income that leaves sufficient time for their own creative endeavours. The process from creation to production makes full use of the existing skills available on site.</p>
+          </div>
+        </div>
 
-      <!-- Full description -->
-      <div class="project-description full">
-        <p>London is in the midst of a housing crisis characterized by high rents, limited
-space, and unaffordable new builds. Many find themselves priced out and struggling
-to find a place to call home. Located in London in the borough of Haringey
-Is the Harringay warehouse district these warehouses, transformed into living
-and working spaces, transcend conventional living. As more of the warehouses
-became inhabited, like-minded creative individuals were drawn to the sites,
-fostering a community of like-minded people. Concealed from the general public
-and importantly the watchful eyes of the council , the discretion of the needs of
-a determined artistic crowd along with their strong bond to their landlords saw
-a unique evolution collimating to a gradual evolution and establishment of a new
-form of living. Despite the community’s growth, since official building legislation
-was not designed to support unconventional typologies, its procedures cast
-doubt on the warehouse district’s sustainability.</p>
-        <p>Large communal areas allow for events like exhibitions, performances, and
-workshops, providing opportunities to exhibit work and engage with the broader
-community. Local interactions enhance the area’s cultural vibrancy and builds
-a sense of shared connection and solidarity between residents and neighbours,
-offering benefits to the community as well as the value of the local area. Private
-bedrooms larger than standard size free to customization are adjacent to large
-communal spaces occupying half the warehouse, this space provides an area for
-both work and leisure to coexist. Today the site is home to over 1000 visionary’s,
-many offering a unique skill set and profession within a creative industry, from
-architects, to tattoo artists, theatre performers and rave organisers as well as
-a variety of less conventional creatives. Rollover contracts ensure residents
-area never tied down to lengthy fixed tenancies, so the warehouse is constantly
-marked by a dynamic mix of new and long-standing tenants, the space offers the
-residents to establish their own practices, encouraging a range of startups and
-grassroot businesses to establish themselves, as seen with the various cafes,
-recording and art studios.</p>
-        <p>One example of this intervention with the use of existing professions is a brewery
-and nightclub, in a continuation of residential living with the addition of a brewery
-and nightclub, spaces will leverage the productive potential of these spaces to
-generate revenue and subsidize housing costs. The rationale behind the decision
-to introduce this specific typology came after research into the economic feasibility.
-As well as careful consideration of the grassroots preferences of the existing
-community of creatives. Food manufacturing is steadily increasing and as such is
-in constant need of warehouses to facilitate the market’s expansion:notably beer
-brewing, has seen a particular increase in take up. Beer is both produced and sold
-on site, at a small scale as such does not require the outsourcing of monitoring and
-producing to external employees, The entire process is carried out by the live-in
-tenants of the warehouses, at the scale for low labour demand, generating a stable
-passive income meaning they will have sufficient time to work on their own creative
-endeavours. The process from creation of the brewery to production will make use
-of the existing skills available on site.</p>
-        
+        <div class="project-img-grid" id="projectImgGrid">
+          <div class="project-img-cell" data-caption="Axonometric diagram" data-idx="0"><img src="../img/C3.jpg" alt="Axonometric diagram" loading="lazy"><span class="project-img-caption">Axonometric diagram</span></div>
+          <div class="project-img-cell" data-caption="Night view" data-idx="1"><img src="../img/C2.jpg" alt="Night view" loading="lazy"><span class="project-img-caption">Night view</span></div>
+          <div class="project-img-cell" data-caption="Axonometric diagram" data-idx="2"><img src="../img/C6.jpg" alt="Axonometric diagram" loading="lazy"><span class="project-img-caption">Axonometric diagram</span></div>
+          <div class="project-img-cell" data-caption="Event space" data-idx="3"><img src="../img/C7.jpg" alt="Event space" loading="lazy"><span class="project-img-caption">Event space</span></div>
+          <div class="project-img-cell" data-caption="Community gathering" data-idx="4"><img src="../img/C1.jpg" alt="Community gathering" loading="lazy"><span class="project-img-caption">Community gathering</span></div>
+          <div class="project-img-cell" data-caption="Axonometric diagram" data-idx="5"><img src="../img/C5.jpg" alt="Axonometric diagram" loading="lazy"><span class="project-img-caption">Axonometric diagram</span></div>
+          <div class="project-img-cell" data-caption="Section perspective" data-idx="6"><img src="../img/C4.jpg" alt="Section perspective" loading="lazy"><span class="project-img-caption">Section perspective</span></div>
+        </div>
+
       </div>
-
-      <button class="read-more-btn">Read More</button>
     </div>
+  </div>
 
-    <div class="project-images">
-      <a href="../img/C3.jpg" class="glightbox" data-gallery="project2-gallery" data-title="Axonometric Diagram">
-        <img src="../img/C3.jpg" class="project-img a3-portrait" alt="Axonometric Diagram">
-      </a>
-      <a href="../img/C2.jpg" class="glightbox" data-gallery="project2-gallery" data-title="Night View">
-        <img src="../img/C2.jpg" class="project-img a4-landscape" alt="Night View">
-      </a>
-      <a href="../img/C6.jpg" class="glightbox" data-gallery="project2-gallery" data-title="Axonometric Diagram">
-        <img src="../img/C6.jpg" class="project-img a3-landscape" alt="Axonometric Diagram">
-      </a>
+  <div class="landing-cell about-cell"   data-page="../about.html"   data-label="ABOUT ME"></div>
+  <div class="landing-cell contact-cell" data-page="../contact.html" data-label="CONTACTS"></div>
+</div>
+
+<div class="plb-overlay" id="plbOverlay">
+  <div class="plb-img-side">
+    <button class="plb-prev" id="plbPrev">&#8249;</button>
+    <img id="plbImg" src="" alt="">
+    <button class="plb-next" id="plbNext">&#8250;</button>
+  </div>
+  <div class="plb-info-side">
+    <div class="plb-close-row"><button class="plb-close" id="plbClose">✕</button></div>
+    <div class="plb-counter" id="plbCounter"></div>
+    <div class="plb-caption" id="plbCaption"></div>
+    <div class="plb-meta">
+      <div class="plb-meta-row"><span class="plb-meta-label">Project</span><span class="plb-meta-val">Cultivating Creative Resilience</span></div>
+      <div class="plb-meta-row"><span class="plb-meta-label">Year</span><span class="plb-meta-val">2023–24</span></div>
+      <div class="plb-meta-row"><span class="plb-meta-label">Location</span><span class="plb-meta-val">Haringey, London</span></div>
+      <div class="plb-meta-row"><span class="plb-meta-label">Diploma</span><span class="plb-meta-val">Year 4 — Diploma 9</span></div>
     </div>
-
-    <div class="project-images">
-      <a href="../img/C7.jpg" class="glightbox" data-gallery="project2-gallery" data-title="Event Space">
-        <img src="../img/C7.jpg" class="project-img a3-landscape" alt="Event Space">
-      </a>
-      <a href="../img/C1.jpg" class="glightbox" data-gallery="project2-gallery" data-title="Community Gathering">
-        <img src="../img/C1.jpg" class="project-img a3-portrait" alt="Community Gathering">
-      </a>
-      <a href="../img/C5.jpg" class="glightbox" data-gallery="project2-gallery" data-title="Axonometric Diagram">
-        <img src="../img/C5.jpg" class="project-img a3-portrait" alt="Axonometric Diagram">
-      </a>
-    </div>
-
-    <div class="project-images">
-      <a href="../img/C4.jpg" class="glightbox" data-gallery="project2-gallery" data-title="Section Perspective">
-        <img src="../img/C4.jpg" class="project-img a4-portrait" alt="Section Perspective">
-      </a>
-    </div>
-  </main>
-
-  <footer>
-    <p>ALEX VALENTINE EVDOKIMOV 2025</p>
-  </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
-  <script>
-    
-
-    const readMoreBtn = document.querySelector('.read-more-btn');
-    const shortDesc = document.querySelector('.project-description.short');
-    const fullDesc = document.querySelector('.project-description.full');
-
-    readMoreBtn.addEventListener('click', () => {
-      if (fullDesc.style.display === 'block') {
-        fullDesc.style.display = 'none';
-        shortDesc.style.display = 'block';
-        readMoreBtn.textContent = 'Read More';
-      } else {
-        fullDesc.style.display = 'block';
-        shortDesc.style.display = 'none';
-        readMoreBtn.textContent = 'Read Less';
-      }
-    });
-  </script>
-
-  <!-- Left Arrow -->
-  <a href="project1.html" class="project-nav left" aria-label="Previous project">
-    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="15 18 9 12 15 6" />
-    </svg>
-  </a>
-
-  <!-- Right Arrow -->
-  <a href="project3.html" class="project-nav right" aria-label="Next project">
-    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="9 18 15 12 9 6" />
-    </svg>
-  </a>
+  </div>
+</div>
 
 <script>
-  const lightbox = GLightbox({ selector: '.glightbox' });
-
-  document.addEventListener('keydown', function (e) {
-    // Only navigate projects if GLightbox is NOT open
-    if (!document.body.classList.contains('glightbox-open')) {
-      if (e.key === 'ArrowLeft') {
-        window.location.href = "project1.html"; // or your previous project
-      } else if (e.key === 'ArrowRight') {
-        window.location.href = "project3.html"; // or your next project
-      }
-    }
+function navigateTo(url) {
+  if (!url) return;
+  document.body.classList.add('is-leaving');
+  requestAnimationFrame(() => { setTimeout(() => { window.location.href = url; }, 220); });
+}
+document.querySelectorAll('.landing-cell').forEach(cell => {
+  cell.addEventListener('click', function(e) {
+    if (this.classList.contains('active')) return;
+    e.preventDefault(); navigateTo(this.dataset.page);
   });
+});
+document.getElementById('descTrigger')?.addEventListener('click', () => {
+  document.getElementById('descSection').classList.toggle('open');
+});
+const overlay=document.getElementById('plbOverlay'),plbImg=document.getElementById('plbImg'),plbPrev=document.getElementById('plbPrev'),plbNext=document.getElementById('plbNext'),plbClose=document.getElementById('plbClose'),plbCount=document.getElementById('plbCounter'),plbCap=document.getElementById('plbCaption');
+const cells=Array.from(document.querySelectorAll('.project-img-cell'));
+let cur=0;
+function openLB(i){cur=i;show();overlay.classList.add('open');document.body.style.overflow='hidden';}
+function closeLB(){overlay.classList.remove('open');document.body.style.overflow='';}
+function show(){const c=cells[cur],img=c.querySelector('img');plbImg.src=img.src;plbImg.alt=img.alt;plbCap.textContent=c.dataset.caption||img.alt;plbCount.textContent=`${cur+1}  /  ${cells.length}`;plbPrev.disabled=(cur===0);plbNext.disabled=(cur===cells.length-1);}
+cells.forEach((c,i)=>c.addEventListener('click',()=>openLB(i)));
+plbClose.addEventListener('click',closeLB);
+plbPrev.addEventListener('click',()=>{if(cur>0){cur--;show();}});
+plbNext.addEventListener('click',()=>{if(cur<cells.length-1){cur++;show();}});
+overlay.addEventListener('click',e=>{if(e.target===overlay)closeLB();});
+document.addEventListener('keydown',e=>{
+  if(overlay.classList.contains('open')){if(e.key==='Escape')closeLB();if(e.key==='ArrowLeft')plbPrev.click();if(e.key==='ArrowRight')plbNext.click();return;}
+  if(e.key==='ArrowLeft')navigateTo('project1.html');if(e.key==='ArrowRight')navigateTo('project3.html');if(e.key==='Escape')navigateTo('../drawings.html');
+});
 </script>
 </body>
 </html>

@@ -45,6 +45,8 @@
         <button class="tool-btn filter-btn" data-value="stairs">Stairs</button>
         <button class="tool-btn filter-btn" data-value="project">Projects</button>
       </div>
+      <div class="toolbar-divider"></div>
+      <button class="tool-btn grid-btn" id="gridViewBtn">⊞ Grid</button>
     </div>
 
     <!-- Expand panel: absolute inside work-cell, clipped by cell overflow:hidden -->
@@ -100,7 +102,7 @@
         <div class="drawing-piece" data-collection="animals"><img src="img/t41.png" alt="No.323" class="drawing-img" style="width:calc(29.7*var(--cm));height:calc(21*var(--cm));"><div class="drawing-meta"><h3>No.323</h3><div class="meta-medium">2023 – Pen on paper</div><div class="meta-size">297×210mm</div></div></div>
         <div class="drawing-piece" data-collection="house"><img src="img/t16.png" alt="No.142" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.142</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
 
-        <a href="projects/project1.html" class="project-thumb drawing-piece" data-collection="project"><div class="project-thumb-inner"><img src="img/F1.jpg" alt="From Forest to Framework" class="drawing-img" style="width:calc(42*var(--cm));height:calc(29.7*var(--cm));"><div class="project-thumb-label"><h3>From Forest to Framework</h3><p>2024</p><span class="project-thumb-tag">Project</span></div></div></a>
+        <a href="projects/project1.html" class="project-thumb drawing-piece" data-collection="project"><div class="project-thumb-inner"><img src="img/F1.jpg" alt="From Forest to Framework" class="drawing-img" style="width:calc(29.7*var(--cm));height:calc(42*var(--cm));"><div class="project-thumb-label"><h3>From Forest to Framework</h3><p>2024</p><span class="project-thumb-tag">Project</span></div></div></a>
 
         <div class="drawing-piece"><img src="img/T3.png" alt="No.355" class="drawing-img" style="width:calc(42*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.355</h3><div class="meta-medium">2024 – Pen on paper</div><div class="meta-size">420×297mm</div></div></div>
         <div class="drawing-piece"><img src="img/z38.png" alt="No.073" class="drawing-img" style="width:calc(7*var(--cm));height:calc(12.5*var(--cm));"><div class="drawing-meta"><h3>No.073</h3><div class="meta-medium">2018 – Pen on paper</div><div class="meta-size">70×125mm</div></div></div>
@@ -135,7 +137,7 @@
         <div class="drawing-piece" data-collection="sketch book"><img src="img/t149.png" alt="No.113" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.113</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
         <div class="drawing-piece"><img src="img/t64.png" alt="No.308" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.308</h3><div class="meta-medium">2023 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
 
-        <a href="projects/project1.html" class="project-thumb drawing-piece" data-collection="project"><div class="project-thumb-inner"><img src="img/F2.jpg" alt="From Forest to Framework" class="drawing-img" style="width:calc(42*var(--cm));height:calc(29.7*var(--cm));"><div class="project-thumb-label"><h3>From Forest to Framework</h3><p>2024</p><span class="project-thumb-tag">Project</span></div></div></a>
+        <a href="projects/project1.html" class="project-thumb drawing-piece" data-collection="project"><div class="project-thumb-inner"><img src="img/F2.jpg" alt="From Forest to Framework" class="drawing-img" style="width:calc(29.7*var(--cm));height:calc(29.7*var(--cm));"><div class="project-thumb-label"><h3>From Forest to Framework</h3><p>2024</p><span class="project-thumb-tag">Project</span></div></div></a>
 
         <div class="drawing-piece" data-collection="stairs"><img src="img/t179.png" alt="No.144" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.144</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
         <div class="drawing-piece" data-collection="sketch book"><img src="img/t68.png" alt="No.115" class="drawing-img" style="width:calc(21*var(--cm));height:calc(29.7*var(--cm));"><div class="drawing-meta"><h3>No.115</h3><div class="meta-medium">2019 – Pen on paper</div><div class="meta-size">210×297mm</div></div></div>
@@ -199,7 +201,10 @@
 function navigateTo(url) {
   if (!url || url === window.location.pathname.split('/').pop()) return;
   document.body.classList.add('is-leaving');
-  setTimeout(() => { window.location.href = url; }, 320);
+  /* Wait one frame for transition to apply, then navigate after 220ms */
+  requestAnimationFrame(() => {
+    setTimeout(() => { window.location.href = url; }, 220);
+  });
 }
 function initNavCells() {
   document.querySelectorAll('.landing-cell').forEach(cell => {
@@ -319,74 +324,100 @@ function initExpand() {
     const tech    = medRaw.replace(/\d{4}\s*[–-]\s*/,'').trim() || '—';
     const sm      = sizeRaw.match(/(\d+)\s*[×x]\s*(\d+)/i);
     const w = sm?parseInt(sm[1]):0, h = sm?parseInt(sm[2]):0;
-    const orient  = w&&h ? (w>=h?'Landscape':'Portrait') : '';
+    const orient  = w&&h ? (w===h?'Square':w>h?'Landscape':'Portrait') : '—';
 
-    titleEl.textContent = title;              /* No.227 — small black */
-    countEl.textContent = `${idx+1} / ${pieces.length}`;  /* 14 / 78 — large red */
+    titleEl.textContent = title;
+    countEl.textContent = `${idx+1} / ${pieces.length}`;
     prevBtn.disabled = (idx===0);
     nextBtn.disabled = (idx===pieces.length-1);
 
-    /* ── DOT-MATRIX CHART DATA ──
-       Each row is a fixed attribute with fixed columns.
-       The active value gets a filled square ■.
-       Column widths are consistent across all drawings.
-    */
+    /* ── Year timeline bar (reference 1: Gantt style) ── */
+    const Y_MIN = 2015, Y_MAX = 2025, Y_SPAN = Y_MAX - Y_MIN;
+    const yearPct = year ? Math.max(0, Math.min(100, ((year - Y_MIN) / Y_SPAN) * 100)) : null;
+    const tickYears = [2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025];
+    const ticks = tickYears.map(y => {
+      const pct = ((y - Y_MIN) / Y_SPAN) * 100;
+      const lbl = (y % 5 === 0) ? `<span class="einfo-year-tick-label">${y}</span>` : '';
+      return `<div class="einfo-year-tick" style="left:${pct}%;position:absolute;transform:translateX(-50%);bottom:0;display:flex;flex-direction:column;align-items:center;gap:3px;">
+        <div class="einfo-year-tick-line"></div>${lbl}
+      </div>`;
+    }).join('');
+    const bar = yearPct !== null
+      ? `<div class="einfo-year-bar" style="left:calc(${yearPct}% - 1px);width:clamp(8px,2.5%,18px);"></div>`
+      : '';
+    const yearSection = `
+      <div class="einfo-year-section">
+        <div class="einfo-year-label">Year — ${year||'Unknown'}</div>
+        <div class="einfo-year-track" style="position:relative;height:28px;">
+          ${ticks}${bar}
+        </div>
+      </div>`;
 
-    // Year row: decade marks 2015–2025
-    const yearCols = [2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025];
+    /* ── Helper: dot grid row (reference 2: scatter dot) ── */
+    function dotRow(label, cols, activeKey) {
+      const cells = cols.map(c => {
+        const isActive = (c == activeKey);
+        return `<div class="einfo-grid-cell">
+          ${isActive ? '<div class="einfo-grid-dot"></div>' : ''}
+          <span class="einfo-grid-cell-label">${c}</span>
+        </div>`;
+      }).join('');
+      return `<div class="einfo-grid-row">
+        <span class="einfo-grid-label">${label}</span>
+        <div class="einfo-grid-cells">${cells}</div>
+      </div>`;
+    }
 
-    // Format row: standard paper sizes
-    const fmtCols = ['A5','A4','A3','A2','Other'];
+    /* Format classification */
     const fmtKey = (() => {
       if (!w||!h) return 'Other';
-      const larger = Math.max(w,h), smaller = Math.min(w,h);
-      if (larger<=150) return 'A5';
-      if (larger<=210||smaller<=148) return 'A5';
-      if (larger<=297&&smaller<=210) return 'A4';
-      if (larger<=420&&smaller<=297) return 'A3';
-      if (larger<=594&&smaller<=420) return 'A2';
-      return 'Other';
+      const lg = Math.max(w,h), sm2 = Math.min(w,h);
+      if (lg<=150||sm2<=105) return 'A6';
+      if (lg<=210||sm2<=148) return 'A5';
+      if (lg<=297&&sm2<=210) return 'A4';
+      if (lg<=420&&sm2<=297) return 'A3';
+      return 'A2+';
     })();
 
-    // Orientation row
-    const orientCols = ['Portrait','Landscape','Square'];
-    const orientKey  = w&&h ? (w===h?'Square':w>=h?'Landscape':'Portrait') : '';
-
-    // Medium row (simplified)
-    const medCols = ['Pen','Pencil','Watercolour','Mixed','Other'];
+    /* Medium classification */
     const medKey = (() => {
       const t = tech.toLowerCase();
-      if (t.includes('pen') && t.includes('watercolour')) return 'Mixed';
-      if (t.includes('pen') && (t.includes('air')||t.includes('stamp'))) return 'Mixed';
-      if (t.includes('pen')) return 'Pen';
-      if (t.includes('pencil')) return 'Pencil';
-      if (t.includes('watercolour')) return 'Watercolour';
+      if (t.includes('pen')&&(t.includes('watercolour')||t.includes('air')||t.includes('stamp'))) return 'Mixed';
+      if (t.includes('pen'))        return 'Pen';
+      if (t.includes('pencil'))     return 'Pencil';
+      if (t.includes('watercolour'))return 'Watercolour';
       return 'Mixed';
     })();
 
-    // Series row
-    const seriesCols = ['house','animals','Wonderland','CANOE','dragon','stairs','art','Throw','sketch book'];
-    const seriesKey  = coll;
-
-    function chartRow(label, cols, activeKey) {
-      const heads = cols.map(c => `<div class="echart-cell${c===activeKey?' active':''}">
-        ${c===activeKey?'<div class="echart-dot"></div>':''}
-      </div>`).join('');
-      return `<div class="echart-row">
-        <span class="echart-row-label">${label}</span>
-        ${heads}
+    const gridSection = `
+      <div class="einfo-grid-section">
+        ${dotRow('Format',  ['A6','A5','A4','A3','A2+'],                      fmtKey)}
+        ${dotRow('Orient',  ['Portrait','Landscape','Square'],                 orient)}
+        ${dotRow('Medium',  ['Pen','Pencil','Watercolour','Mixed'],            medKey)}
       </div>`;
-    }
 
-    function chartHeader(cols) {
-      const heads = cols.map(c=>`<div class="echart-col-head"><span>${c}</span></div>`).join('');
-      return `<div class="echart-header">
-        <div class="echart-row-label-col"></div>
-        ${heads}
+    /* Dimensions plain row */
+    const dimsRow = `
+      <div class="einfo-plain-row">
+        <span class="einfo-plain-label">Size</span>
+        <span class="einfo-plain-val">${sizeRaw||'—'}</span>
       </div>`;
-    }
 
-    /* ── Series description accordion ── */
+    /* Series plain row */
+    const seriesRow = coll ? `
+      <div class="einfo-plain-row">
+        <span class="einfo-plain-label">Series</span>
+        <span class="einfo-plain-val">${coll}</span>
+      </div>` : '';
+
+    /* Medium plain row */
+    const medRow = `
+      <div class="einfo-plain-row">
+        <span class="einfo-plain-label">Medium</span>
+        <span class="einfo-plain-val">${tech}</span>
+      </div>`;
+
+    /* Accordion */
     const notes = {
       'house'     : 'A long-running series studying the built environment — rooftops, facades, thresholds, and the quiet geometry of domestic structures observed across cities and neighbourhoods.',
       'Wonderland': 'Large-format A3 panoramic works. Dense imagined landscapes where constructed and organic forms interweave — cities growing from forests, towers dissolving into foliage.',
@@ -399,18 +430,28 @@ function initExpand() {
       'sketch book': 'Pages lifted from working sketchbooks — observations, studies, unfinished thoughts, and ideas still in motion.',
     };
     const noteText = notes[coll] || 'A work from the archive.';
+    const accordion = `
+      <div class="eaccordion-row" id="eaccordion">
+        <button class="eaccordion-trigger" id="eaccordionBtn">
+          <span class="eaccordion-trigger-label">Note</span>
+          <span class="eaccordion-trigger-title">About this series</span>
+          <span class="eaccordion-arrow">▲</span>
+        </button>
+        <div class="eaccordion-body">${noteText}</div>
+      </div>`;
 
-    /* ── Similar works ── */
+    /* Similar works */
     const similar = Array.from(document.querySelectorAll(
       `#gallery .drawing-piece:not(.project-thumb)[data-collection="${coll}"]`
     )).filter(p=>p!==piece).slice(0,12);
     const allVis = visiblePieces();
-
     let similarHtml = '';
     if (similar.length) {
-      const thumbs = similar.map(p=>{
-        const si=allVis.indexOf(p);
-        return `<button class="esimilar-thumb" data-si="${si}"><img src="${p.querySelector('.drawing-img')?.src||''}" alt=""></button>`;
+      const thumbs = similar.map(p => {
+        const si = allVis.indexOf(p);
+        return `<button class="esimilar-thumb" data-si="${si}">
+          <img src="${p.querySelector('.drawing-img')?.src||''}" alt="">
+        </button>`;
       }).join('');
       similarHtml = `<div class="esimilar-wrapper">
         <div class="esimilar-head"><span>From the same series — ${coll}</span></div>
@@ -418,44 +459,7 @@ function initExpand() {
       </div>`;
     }
 
-    rowsEl.innerHTML = `
-      <!-- Dot-matrix chart: Year -->
-      <div class="echart-section">
-        ${chartHeader(yearCols)}
-        ${chartRow('Year', yearCols, year)}
-      </div>
-      <!-- Format chart -->
-      <div class="echart-section">
-        ${chartHeader(fmtCols)}
-        ${chartRow('Format', fmtCols, fmtKey)}
-      </div>
-      <!-- Orientation chart -->
-      <div class="echart-section">
-        ${chartHeader(orientCols)}
-        ${chartRow('Orient', orientCols, orientKey)}
-      </div>
-      <!-- Medium chart -->
-      <div class="echart-section">
-        ${chartHeader(medCols)}
-        ${chartRow('Medium', medCols, medKey)}
-      </div>
-      <!-- Exact format as plain row -->
-      <div class="egrid-row">
-        <span class="egrid-label">Dimensions</span>
-        <span class="egrid-val">${sizeRaw||'—'}</span>
-      </div>
-      <!-- Info accordion -->
-      <div class="eaccordion-row" id="eaccordion">
-        <button class="eaccordion-trigger" id="eaccordionBtn">
-          <span class="eaccordion-trigger-label">Info</span>
-          <span class="eaccordion-trigger-title">About this series</span>
-          <span class="eaccordion-arrow">▲</span>
-        </button>
-        <div class="eaccordion-body">${noteText}</div>
-      </div>
-      <!-- Similar works pinned to bottom -->
-      ${similarHtml}
-    `;
+    rowsEl.innerHTML = yearSection + gridSection + dimsRow + seriesRow + medRow + accordion + similarHtml;
 
     /* Wire accordion */
     const acc = rowsEl.querySelector('#eaccordion');
@@ -464,15 +468,22 @@ function initExpand() {
     });
 
     /* Wire similar thumbs */
-    rowsEl.querySelectorAll('.esimilar-thumb').forEach(th=>{
-      th.addEventListener('click',()=>{
-        const si=parseInt(th.dataset.si);
-        if (si>=0&&si<pieces.length){idx=si;renderPanel(pieces[idx]);}
+    rowsEl.querySelectorAll('.esimilar-thumb').forEach(th => {
+      th.addEventListener('click', () => {
+        const si = parseInt(th.dataset.si);
+        if (si >= 0 && si < pieces.length) { idx = si; renderPanel(pieces[idx]); }
       });
     });
   }
 
+  /* Track whether grid was active when panel was opened */
+  let gridWasActive = false;
+
   function openPanel(piece) {
+    /* Remember if grid is currently showing */
+    const gallery = document.getElementById('gallery');
+    gridWasActive = gallery?.classList.contains('gallery-grid-mode') || false;
+
     pieces = visiblePieces();
     idx = pieces.indexOf(piece);
     if (idx<0) idx=0;
@@ -482,6 +493,12 @@ function initExpand() {
 
   function closePanel() {
     overlay.style.display='none';
+    /* Re-enter grid view if it was active before */
+    if (gridWasActive) {
+      /* Dispatch a custom event that initGridView listens for */
+      document.dispatchEvent(new CustomEvent('restoreGrid'));
+      gridWasActive = false;
+    }
   }
 
   document.getElementById('gallery').addEventListener('click', e=>{
@@ -501,7 +518,105 @@ function initExpand() {
   });
 }
 
-/* ── Boot ── */
+/* ── Grid overview toggle ── */
+/* ── Grid overview: calendar sorted by drawing number ── */
+function initGridView() {
+  const btn     = document.getElementById('gridViewBtn');
+  const gallery = document.getElementById('gallery');
+  if (!btn || !gallery) return;
+
+  let gridMode = false;
+  let injectedCells = []; /* track injected grid-cell divs for cleanup */
+
+  /* Extract drawing number from alt text e.g. "No.227" → 227 */
+  function drawingNum(piece) {
+    const alt = piece.querySelector('.drawing-img')?.alt || '';
+    const m = alt.match(/No\.(\d+)/i);
+    return m ? parseInt(m[1]) : null;
+  }
+
+  function enterGrid() {
+    gridMode = true;
+    btn.classList.add('active');
+    btn.textContent = '⊞ Exit Grid';
+
+    /* Collect all non-project pieces that have a number */
+    const pieces = Array.from(gallery.querySelectorAll(
+      '.drawing-piece:not(.project-thumb)'
+    ));
+    const numbered = pieces
+      .map(p => ({ p, n: drawingNum(p) }))
+      .filter(x => x.n !== null)
+      .sort((a, b) => a.n - b.n);
+
+    if (numbered.length === 0) return;
+
+    const minN = numbered[0].n;
+    const maxN = numbered[numbered.length - 1].n;
+
+    /* Build a map: number → piece */
+    const numMap = {};
+    numbered.forEach(x => { numMap[x.n] = x.p; });
+
+    /* Switch gallery to grid display */
+    gallery.classList.add('gallery-grid-mode');
+
+    /* Inject one grid-cell per slot from minN to maxN */
+    injectedCells = [];
+    for (let n = minN; n <= maxN; n++) {
+      const cell = document.createElement('div');
+      const piece = numMap[n];
+
+      if (piece) {
+        const imgSrc = piece.querySelector('.drawing-img')?.src || '';
+        cell.className = 'grid-cell grid-real';
+        cell.dataset.num = n;
+        cell.innerHTML = `
+          <div class="grid-cell-num">No.${n}</div>
+          <div class="grid-cell-img"><img src="${imgSrc}" alt="No.${n}" loading="lazy"></div>
+        `;
+        /* Click → exit grid + open expand */
+        cell.addEventListener('click', () => {
+          exitGrid();
+          /* Trigger the expand panel via the piece's click */
+          piece.click();
+        });
+      } else {
+        cell.className = 'grid-cell grid-empty';
+        cell.innerHTML = `<div class="grid-cell-num">No.${n}</div>`;
+      }
+
+      gallery.appendChild(cell);
+      injectedCells.push(cell);
+    }
+
+    /* Scroll to top */
+    const pc = document.querySelector('.work-cell .page-content');
+    if (pc) pc.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function exitGrid() {
+    gridMode = false;
+    btn.classList.remove('active');
+    btn.textContent = '⊞ Grid';
+    gallery.classList.remove('gallery-grid-mode');
+    /* Remove injected cells */
+    injectedCells.forEach(c => c.remove());
+    injectedCells = [];
+  }
+
+  btn.addEventListener('click', e => {
+    e.stopPropagation();
+    gridMode ? exitGrid() : enterGrid();
+  });
+
+  /* Re-enter grid after closing expand panel */
+  document.addEventListener('restoreGrid', () => {
+    if (!gridMode) enterGrid();
+  });
+}
+
+
 document.addEventListener('DOMContentLoaded',()=>{
   initNavCells();
   applyRandomRotations();
@@ -509,6 +624,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   initFilters();
   initBackToTop();
   initExpand();
+  initGridView();
 });
 </script>
 

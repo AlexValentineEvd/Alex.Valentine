@@ -12,7 +12,11 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  animation: pageFadeIn 0.45s ease forwards;
+  /* Start invisible, fade in — GPU layer via transform prevents repaint flicker */
+  opacity: 0;
+  will-change: opacity;
+  transform: translateZ(0);
+  animation: pageFadeIn 0.3s ease forwards;
 }
 
 @keyframes pageFadeIn {
@@ -20,8 +24,11 @@ body {
   to   { opacity: 1; }
 }
 
+/* is-leaving: JS adds this class, then navigates after 220ms */
 body.is-leaving {
-  animation: pageFadeOut 0.3s ease forwards;
+  animation: none !important;
+  transition: opacity 0.22s ease !important;
+  opacity: 0 !important;
 }
 
 @keyframes pageFadeOut {
@@ -250,8 +257,10 @@ nav a { text-decoration: none; color: inherit; }
   height: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
   transition: color 0.15s, background 0.15s;
   line-height: 1;
+  text-align: center;
 }
 
 .tool-btn:hover {
@@ -275,6 +284,107 @@ nav a { text-decoration: none; color: inherit; }
 
 /* remove the ↑ ↓ arrows — handled purely by font-weight/bg */
 .sort-arrow { display: none; }
+
+/* Grid view toggle button — sits at right end of toolbar */
+.tool-btn.grid-btn {
+  margin-left: auto;
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-right: none;
+  padding: 0 16px;
+  letter-spacing: 0.1em;
+}
+
+/* ── GRID OVERVIEW MODE ──
+   Calendar-style: fixed square cells ordered by drawing number.
+   Empty slots where no drawing exists for that number.
+   Numbers shown above, image fills square, clean 1px grid lines.
+*/
+.gallery-wall.gallery-grid-mode {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 120px);
+  gap: 0;
+  padding: 0;
+  align-items: stretch;
+  justify-content: start;
+  border-left: 1px solid rgba(0,0,0,0.12);
+  border-top: 1px solid rgba(0,0,0,0.12);
+}
+
+/* Every cell (real or empty placeholder) */
+.gallery-grid-mode .grid-cell {
+  width: 120px;
+  height: 120px;
+  border-right: 1px solid rgba(0,0,0,0.12);
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #fff;
+}
+
+/* Empty slot */
+.gallery-grid-mode .grid-cell.grid-empty {
+  background: #fff;
+  cursor: default;
+}
+
+/* Real drawing cell */
+.gallery-grid-mode .grid-cell.grid-real {
+  cursor: pointer;
+}
+.gallery-grid-mode .grid-cell.grid-real:hover {
+  background: #f8f8f8;
+}
+
+/* Number label — top of cell */
+.gallery-grid-mode .grid-cell-num {
+  height: 18px;
+  display: flex;
+  align-items: center;
+  padding: 0 6px;
+  font-size: 0.3rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(0,0,0,0.35);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  flex-shrink: 0;
+  background: #fff;
+}
+
+.gallery-grid-mode .grid-cell.grid-real:hover .grid-cell-num {
+  color: rgba(0,0,0,0.7);
+}
+
+/* Image fills remainder of cell as square */
+.gallery-grid-mode .grid-cell-img {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 4px;
+  box-sizing: border-box;
+}
+
+.gallery-grid-mode .grid-cell-img img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  filter: none;
+  transition: opacity 0.12s;
+}
+
+.gallery-grid-mode .grid-cell.grid-real:hover .grid-cell-img img {
+  opacity: 0.75;
+}
+
+/* Hide normal drawing pieces — replaced by grid-cell divs */
+.gallery-grid-mode > .drawing-piece { display: none !important; }
+
+/* Hide in normal mode */
+.drawing-piece .grid-number { display: none; }
 
 
 /* ========== GALLERY ========== */
@@ -433,14 +543,15 @@ nav a { text-decoration: none; color: inherit; }
   display: none;
   align-items: center;
   justify-content: center;
-  width: 15px;
-  height: 15px;
+  width: 22px;
+  height: 20px;
   cursor: pointer;
   border: none;
   background: transparent;
   padding: 0;
   transition: transform 0.15s, opacity 0.15s;
- }
+  opacity: 0.7;
+}
 
 #backToTop:hover {
   transform: translateY(-2px);
@@ -455,7 +566,7 @@ nav a { text-decoration: none; color: inherit; }
 }
 
 #backToTop svg polygon {
-  fill: #000000;
+  fill: #fff;
   stroke: #000;
   stroke-width: 1.5;
   stroke-linejoin: miter;
@@ -754,7 +865,7 @@ footer p {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  font-size: 1.25rem;
+  font-size: 1.6rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   color: #c00;
@@ -789,7 +900,7 @@ footer p {
   background: none;
   border: none;
   cursor: pointer;
-  width: 60px;
+  width: 36px;
   height: 60px;
   display: flex;
   align-items: center;
@@ -799,7 +910,7 @@ footer p {
   line-height: 1;
   z-index: 10;
   transition: opacity 0.15s;
-  opacity: 1;
+  opacity: 0.55;
   font-family: 'Outfit', sans-serif;
   font-weight: 200;
   padding: 0;
@@ -870,134 +981,188 @@ footer p {
   padding-bottom: var(--toolbar-h);
 }
 
-/* ── DOT-MATRIX CHART ──
-   One continuous grid — no section wrappers, no backgrounds.
-   Pure lines. All cells equal width. Circle marker in active cell.
-   Inspired by adjacency matrices and Olympic schedule grids.
-*/
-.echart-section {
+/* ══════════════════════════════════════
+   INFO PANEL — DATA VIS REDESIGN
+   Inspired by Gantt timeline + dot-grid references.
+   Year = horizontal timeline bar.
+   Attributes = dot positioned in a proportional column grid.
+   One continuous vertical layout, pure lines, no boxes.
+══════════════════════════════════════ */
+
+/* ── Top section: year timeline bar ── */
+.einfo-year-section {
   flex-shrink: 0;
-  /* no extra border between sections — grid reads as one */
-}
-
-/* chart header row — column labels rotated */
-.echart-header {
-  display: flex;
-  flex-direction: row;
   border-bottom: 1px solid #000;
-  height: 60px;
-  border-top: 1px solid #000;
+  padding: 18px 16px 14px;
 }
 
-.echart-row-label-col {
-  flex: 0 0 64px;
-  border-right: 1px solid #000;
-  /* no background — clean */
-}
-
-.echart-col-head {
-  flex: 1;
-  border-right: 1px solid #000;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding-bottom: 7px;
-  overflow: hidden;
-}
-
-.echart-col-head:last-child { border-right: none; }
-
-.echart-col-head span {
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  font-size: 0.36rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+.einfo-year-label {
+  font-size: 0.38rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(0,0,0,0.5);
+  color: rgba(0,0,0,0.35);
+  margin-bottom: 10px;
+}
+
+.einfo-year-track {
+  position: relative;
+  height: 28px;
+}
+
+/* tick marks + labels */
+.einfo-year-axis {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.einfo-year-tick {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.einfo-year-tick-line {
+  width: 1px;
+  height: 8px;
+  background: rgba(0,0,0,0.2);
+}
+
+.einfo-year-tick-label {
+  font-size: 0.33rem;
+  color: rgba(0,0,0,0.35);
+  letter-spacing: 0;
   white-space: nowrap;
-  overflow: hidden;
-  max-height: 54px;
 }
 
-/* chart data row */
-.echart-row {
+/* The filled bar marking the year */
+.einfo-year-bar {
+  position: absolute;
+  top: 4px;
+  height: 10px;
+  background: #000;
+  /* left/width set by JS */
+}
+
+/* ── Attribute grid rows ──
+   Each row: label + proportional dot grid.
+   Dots positioned as scatter points.
+*/
+.einfo-grid-section {
+  flex-shrink: 0;
+}
+
+.einfo-grid-row {
   display: flex;
   flex-direction: row;
+  align-items: stretch;
   border-bottom: 1px solid #000;
-  height: 30px;
-  flex-shrink: 0;
+  height: 36px;
 }
 
-.echart-row-label {
-  flex: 0 0 64px;
-  padding: 0 8px;
-  font-size: 0.37rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(0,0,0,0.45);
+.einfo-grid-label {
+  flex: 0 0 80px;
+  padding: 0 10px;
   display: flex;
   align-items: center;
+  font-size: 0.37rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.35);
   border-right: 1px solid #000;
-  /* no background */
   flex-shrink: 0;
 }
 
-.echart-cell {
+.einfo-grid-cells {
   flex: 1;
-  border-right: 1px solid #000;
+  display: flex;
+  flex-direction: row;
+}
+
+.einfo-grid-cell {
+  flex: 1;
+  border-right: 1px solid rgba(0,0,0,0.1);
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
-.echart-cell:last-child { border-right: none; }
+.einfo-grid-cell:last-child { border-right: none; }
 
-/* circle marker — like the adjacency matrix references */
-.echart-dot {
+/* column label inside cell (bottom of cell) */
+.einfo-grid-cell-label {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.3rem;
+  color: rgba(0,0,0,0.3);
+  white-space: nowrap;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* active cell: filled square, reference 2 style */
+.einfo-grid-dot {
   width: 10px;
   height: 10px;
   background: #000;
-  border-radius: 50%;   /* circle not square */
   flex-shrink: 0;
+  /* positioned centrally, slightly above cell-label */
+  margin-bottom: 10px;
 }
 
-/* ── Simple grid rows — same grid language as chart ── */
-.egrid-row {
+/* ── Dimensions plain text row ── */
+.einfo-plain-row {
   display: flex;
-  flex-direction: row;
+  align-items: stretch;
   border-bottom: 1px solid #000;
-  height: 30px;
+  height: 32px;
   flex-shrink: 0;
 }
 
-.egrid-label {
-  flex: 0 0 64px;
-  padding: 0 8px;
-  font-size: 0.37rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(0,0,0,0.45);
-  display: flex;
-  align-items: center;
-  border-right: 1px solid #000;
-  /* no background */
-  flex-shrink: 0;
-}
-
-.egrid-val {
-  flex: 1;
+.einfo-plain-label {
+  flex: 0 0 80px;
   padding: 0 10px;
-  font-size: 0.62rem;
-  color: #000;
   display: flex;
   align-items: center;
-  letter-spacing: 0.02em;
+  font-size: 0.37rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.35);
+  border-right: 1px solid #000;
+  flex-shrink: 0;
 }
 
-/* ── INFO accordion ── */
+.einfo-plain-val {
+  flex: 1;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  font-size: 0.65rem;
+  color: #000;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Series / medium text row ── */
+.einfo-text-row {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid #000;
+  min-height: 32px;
+  flex-shrink: 0;
+}
+
+/* ── Info accordion ── */
 .eaccordion-row {
   border-bottom: 1px solid #000;
   flex-shrink: 0;
@@ -1006,51 +1171,49 @@ footer p {
 .eaccordion-trigger {
   display: flex;
   align-items: stretch;
-  height: 30px;
+  height: 32px;
   cursor: pointer;
   background: none;
   border: none;
   width: 100%;
   padding: 0;
   font-family: 'Outfit', sans-serif;
-  transition: background 0.15s;
+  transition: background 0.12s;
 }
 
 .eaccordion-trigger:hover { background: rgba(0,0,0,0.03); }
 
 .eaccordion-trigger-label {
-  flex: 0 0 64px;
-  padding: 0 8px;
+  flex: 0 0 80px;
+  padding: 0 10px;
   font-size: 0.37rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  font-weight: 700;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(0,0,0,0.45);
+  color: rgba(0,0,0,0.35);
   display: flex;
   align-items: center;
   border-right: 1px solid #000;
-  /* no background */
 }
 
 .eaccordion-trigger-title {
   flex: 1;
-  padding: 0 10px;
+  padding: 0 12px;
   font-size: 0.56rem;
-  font-weight: 600;
-  color: rgba(0,0,0,0.6);
+  font-weight: 500;
+  color: rgba(0,0,0,0.55);
   display: flex;
   align-items: center;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
 .eaccordion-arrow {
-  width: 30px;
+  width: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.48rem;
-  color: rgba(0,0,0,0.4);
+  font-size: 0.44rem;
+  color: rgba(0,0,0,0.35);
   border-left: 1px solid #000;
   transition: transform 0.2s;
   flex-shrink: 0;
@@ -1060,12 +1223,12 @@ footer p {
 
 .eaccordion-body {
   display: none;
-  padding: 10px 12px 12px;
-  border-top: 1px solid rgba(0,0,0,0.08);
+  padding: 12px 14px 14px;
   font-size: 0.62rem;
-  line-height: 1.75;
-  color: rgba(0,0,0,0.62);
+  line-height: 1.8;
+  color: rgba(0,0,0,0.58);
   font-style: italic;
+  border-top: 1px solid rgba(0,0,0,0.06);
 }
 
 .eaccordion-row.open .eaccordion-body { display: block; }
@@ -1080,17 +1243,17 @@ footer p {
 .esimilar-head {
   display: flex;
   align-items: center;
-  height: 22px;
-  padding: 0 9px;
+  height: 24px;
+  padding: 0 10px;
   border-bottom: 1px solid #000;
 }
 
 .esimilar-head span {
-  font-size: 0.4rem;
+  font-size: 0.37rem;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(0,0,0,0.32);
+  color: rgba(0,0,0,0.3);
 }
 
 .esimilar-strip {
@@ -1117,7 +1280,7 @@ footer p {
   border-bottom: none;
   transition: background 0.13s;
 }
-.esimilar-thumb:hover { background: #e0e0e0; }
+.esimilar-thumb:hover { background: #eee; }
 .esimilar-thumb img {
   max-width: 100%;
   max-height: 100%;
@@ -1126,6 +1289,24 @@ footer p {
   padding: 5px;
   box-sizing: border-box;
 }
+
+/* Keep old classes that may still appear — silent fallback */
+.echart-section, .echart-table { flex-shrink: 0; }
+.egrid-row {
+  display: flex; border-bottom: 1px solid #000;
+  height: 28px; flex-shrink: 0;
+}
+.egrid-label {
+  flex: 0 0 80px; padding: 0 10px; font-size: 0.37rem; font-weight: 700;
+  letter-spacing: 0.15em; text-transform: uppercase; color: rgba(0,0,0,0.35);
+  display: flex; align-items: center; border-right: 1px solid #000; flex-shrink: 0;
+}
+.egrid-val {
+  flex: 1; padding: 0 12px; font-size: 0.62rem; color: #000;
+  display: flex; align-items: center;
+}
+
+
 
 
 
@@ -1147,21 +1328,1763 @@ footer p {
 }
 
 @media (max-width: 768px) {
-  :root { --cm: 6px; }
+  :root {
+    --cm: 6px;
+    --toolbar-h: 44px;
+  }
+
+  /* ══════════════════════════════════════
+     NAVIGATION — columns become horizontal rows
+     Same logic: one active row expands (flex:12),
+     others collapse to a thin strip showing label.
+  ══════════════════════════════════════ */
+  .landing-grid {
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .landing-cell {
+    min-width: unset;
+    min-height: 40px;
+    border-right: none;
+    border-bottom: 1px solid #000;
+    transition: flex 0.7s cubic-bezier(.77, 0, .18, 1);
+  }
+
+  .landing-cell:last-child {
+    border-bottom: none;
+  }
+
+  .landing-cell.active      { flex: 12; }
+  .landing-cell:not(.active){ flex: 0 0 40px; }
+
+  /* Label: horizontal, left-aligned in thin row strip */
+  .landing-cell::before {
+    top: 50%;
+    left: 14px;
+    writing-mode: horizontal-tb;
+    transform: translateY(-50%);
+    letter-spacing: 0.3em;
+    font-size: 0.6rem;
+  }
+
+  /* ══════════════════════════════════════
+     PAGE CONTENT
+  ══════════════════════════════════════ */
+  .page-content {
+    transform: translateY(20px);
+    padding: 0 0 var(--toolbar-h) 0;
+  }
+
+  .landing-cell.active .page-content {
+    transform: translateY(0);
+  }
+
+  .work-cell .page-content {
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  /* ══════════════════════════════════════
+     GALLERY
+  ══════════════════════════════════════ */
+  .gallery-wall {
+    padding: 16px 12px 20px;
+    gap: 20px 10px;
+    align-items: flex-end;
+  }
+
+  .drawing-img {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .project-thumb .drawing-img {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  /* ══════════════════════════════════════
+     TOOLBAR — scrollable, full width of active row
+  ══════════════════════════════════════ */
+  .toolbar {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* ══════════════════════════════════════
+     EXPAND PANEL — vertical stack on mobile:
+     image large on top, info scrolls below.
+     Triggered only when expanded (display:flex).
+  ══════════════════════════════════════ */
+  .expand-overlay {
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* on phone: cover full height of active row,
+       toolbar stays below */
+    bottom: var(--toolbar-h);
+  }
+
+  /* Image side: tall but not full screen — leaves room to see info exists */
+  .expand-img-side {
+    flex: 0 0 auto;
+    min-height: 50vw;
+    max-height: 60vh;
+    border-right: none;
+    border-bottom: 1px solid #000;
+    position: relative;
+  }
+
+  .expand-img-wrap {
+    padding: 24px 48px;
+  }
+
+  /* Chevrons: slightly smaller but still visible */
+  .expand-chevron {
+    font-size: 1.8rem;
+    width: 32px;
+    height: 50px;
+  }
+
+  /* Counter: smaller */
+  .expand-counter {
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  /* Info side: takes remaining space, naturally scrollable */
+  .expand-info-side {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+    /* ensure it's tall enough to read without scrolling for basic info */
+    min-height: 30vh;
+  }
+
+  /* Header: taller for touch */
+  .expand-info-header {
+    height: 48px;
+  }
+
+  .expand-close-btn {
+    width: 48px;
+    height: 48px;
+  }
+
+  /* Chart rows: taller for finger-friendliness */
+  .echart-header { height: 70px; }
+  .echart-row    { height: 36px; }
+  .egrid-row     { height: 36px; }
+  .eaccordion-trigger { height: 36px; }
+  .eaccordion-trigger-label,
+  .eaccordion-trigger-title { height: 36px; }
+
+  /* Similar strip: taller thumbs on mobile */
+  .esimilar-thumb {
+    width: 72px;
+    height: 72px;
+  }
 }
 
-@media (max-width: 600px) {
-  .project-grid { grid-template-columns: 1fr; }
-  .name-panel   { padding: 34px 14px; height: 100vh; }
-  .full-name    { font-size: clamp(1.5rem, 7vw, 2.8rem); line-height: 1.05; }
-  .image-panel  { width: 100%; margin-left: 0; }
-  .image-slide  { height: calc(100vh - 130px); background-position: center top; }
-  .gallery-wall { padding: 16px 8px 40px; gap: 20px 12px; }
-  .drawing-img  { width: 100% !important; height: auto !important; }
-  .project-thumb .drawing-img { width: 100% !important; height: auto !important; max-width: 95vw; }
-  .toolbar { overflow-x: auto; }
+/* ══════════════════════════════════════
+   VERY SMALL PHONES (< 480px)
+   Tighten gallery further, reduce cm scale
+══════════════════════════════════════ *//* ========== BASE ========== */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
-@media (max-width: 500px) {
-  .project-grid { grid-template-columns: 1fr; }
+body {
+  font-family: 'Outfit', sans-serif;
+  background: #000;
+  color: #000;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* Start invisible, fade in — GPU layer via transform prevents repaint flicker */
+  opacity: 0;
+  will-change: opacity;
+  transform: translateZ(0);
+  animation: pageFadeIn 0.3s ease forwards;
+}
+
+@keyframes pageFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* is-leaving: JS adds this class, then navigates after 220ms */
+body.is-leaving {
+  animation: none !important;
+  transition: opacity 0.22s ease !important;
+  opacity: 0 !important;
+}
+
+@keyframes pageFadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+:root {
+  --cm: 10px;
+  --toolbar-h: 36px;   /* height of the bottom toolbar strip */
+}
+
+
+/* ========== HEADER (other pages only) ========== */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #000;
+  z-index: 1000;
+}
+
+header .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 40px;
+  max-width: 100vw;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 60px;
+  box-sizing: border-box;
+}
+
+nav a { text-decoration: none; color: inherit; }
+.logo { display: none; }
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0;
+  margin: 0; padding: 0;
+  width: 100%;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover  { color: #666; }
+.nav-links a.active { color: white; font-weight: 700; }
+
+
+/* ========== COLUMN NAVIGATION ========== */
+.landing-grid {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+}
+
+.landing-cell {
+  position: relative;
+  flex: 1;
+  min-width: 25px;
+  background: white;
+  border-right: 1px solid black;
+  overflow: hidden;
+  cursor: pointer;
+  transition: flex 0.8s cubic-bezier(.77, 0, .18, 1);
+}
+
+.landing-cell:last-child { border-right: none; }
+.landing-cell.active      { flex: 12; cursor: default; }
+.landing-cell:not(.active){ flex: 0.35; }
+
+.landing-cell::before {
+  content: attr(data-label);
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  font-weight: 700;
+  font-size: 0.8rem;
+  writing-mode: vertical-rl;
+  transform: translateX(-50%) rotate(180deg);
+  letter-spacing: 0.5em;
+  pointer-events: none;
+  transition: color 0.2s;
+}
+
+.landing-cell:not(.active):hover { background: black; }
+.landing-cell:not(.active):hover::before { color: white; }
+
+
+/* ========== PAGE CONTENT ========== */
+.page-content {
+  position: absolute;
+  inset: 0;
+  /* bottom padding makes room for the toolbar strip */
+  padding: 0 0 var(--toolbar-h) 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.5s cubic-bezier(.4,0,.2,1),
+              transform 0.5s cubic-bezier(.4,0,.2,1);
+  contain: layout style;
+}
+
+.landing-cell.active .page-content {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.work-cell .page-content {
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+/* ── BLACK scrollbar, no arrows, flush against right column border ── */
+.work-cell .page-content::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.work-cell .page-content::-webkit-scrollbar-track {
+  background: transparent;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.work-cell .page-content::-webkit-scrollbar-thumb {
+  background: #000;
+  border-radius: 0;
+  border: none;
+  min-height: 20px;
+}
+.work-cell .page-content::-webkit-scrollbar-thumb:hover { background: #000; }
+.work-cell .page-content::-webkit-scrollbar-button { display: none; height: 0; width: 0; }
+.work-cell .page-content::-webkit-scrollbar-corner { background: transparent; }
+
+.work-cell .page-content {
+  scrollbar-color: #000 transparent;
+  scrollbar-width: thin;
+}
+
+
+/* ========== BOTTOM TOOLBAR ========== */
+/*
+  position:absolute inside .work-cell — naturally clipped by the cell.
+  Column borders always show on top. No JS positioning needed.
+*/
+.toolbar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--toolbar-h);
+  z-index: 200;
+  background: #fff;
+  border-top: 1px solid #000;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  overflow: hidden;
+  width: auto;
+}
+
+/* each group (Sort / Filter) sits side by side */
+.toolbar-group {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+/* section label */
+.toolbar-label {
+  font-size: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.35);
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  user-select: none;
+  border-right: 1px solid rgba(0,0,0,0.15);
+}
+
+/* vertical divider between Sort group and Filter group */
+.toolbar-divider {
+  width: 1px;
+  height: 100%;
+  background: rgba(0,0,0,0.2);
+  flex-shrink: 0;
+  align-self: stretch;
+}
+
+/* each button */
+.tool-btn {
+  background: #fff;
+  border: none;
+  border-right: 1px solid rgba(0,0,0,0.1);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: rgba(0,0,0,0.6);
+  padding: 0 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s, background 0.15s;
+  line-height: 1;
+  text-align: center;
+}
+
+.tool-btn:hover {
+  color: #fff;
+  background: #000;
+}
+
+.tool-btn.active {
+  color: #fff;
+  font-weight: 600;
+  background: #000;
+  border-right: 1px solid rgba(255,255,255,0.15);
+}
+
+.filter-btn.active {
+  color: #fff;
+  font-weight: 600;
+  background: #000;
+  border-right: 1px solid rgba(255,255,255,0.15);
+}
+
+/* remove the ↑ ↓ arrows — handled purely by font-weight/bg */
+.sort-arrow { display: none; }
+
+/* Grid view toggle button — sits at right end of toolbar */
+.tool-btn.grid-btn {
+  margin-left: auto;
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-right: none;
+  padding: 0 16px;
+  letter-spacing: 0.1em;
+}
+
+/* ── GRID OVERVIEW MODE ──
+   Calendar-style: fixed square cells ordered by drawing number.
+   Empty slots where no drawing exists for that number.
+   Numbers shown above, image fills square, clean 1px grid lines.
+*/
+.gallery-wall.gallery-grid-mode {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 120px);
+  gap: 0;
+  padding: 0;
+  align-items: stretch;
+  justify-content: start;
+  border-left: 1px solid rgba(0,0,0,0.12);
+  border-top: 1px solid rgba(0,0,0,0.12);
+}
+
+/* Every cell (real or empty placeholder) */
+.gallery-grid-mode .grid-cell {
+  width: 120px;
+  height: 120px;
+  border-right: 1px solid rgba(0,0,0,0.12);
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #fff;
+}
+
+/* Empty slot */
+.gallery-grid-mode .grid-cell.grid-empty {
+  background: #fff;
+  cursor: default;
+}
+
+/* Real drawing cell */
+.gallery-grid-mode .grid-cell.grid-real {
+  cursor: pointer;
+}
+.gallery-grid-mode .grid-cell.grid-real:hover {
+  background: #f8f8f8;
+}
+
+/* Number label — top of cell */
+.gallery-grid-mode .grid-cell-num {
+  height: 18px;
+  display: flex;
+  align-items: center;
+  padding: 0 6px;
+  font-size: 0.3rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(0,0,0,0.35);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  flex-shrink: 0;
+  background: #fff;
+}
+
+.gallery-grid-mode .grid-cell.grid-real:hover .grid-cell-num {
+  color: rgba(0,0,0,0.7);
+}
+
+/* Image fills remainder of cell as square */
+.gallery-grid-mode .grid-cell-img {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 4px;
+  box-sizing: border-box;
+}
+
+.gallery-grid-mode .grid-cell-img img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  filter: none;
+  transition: opacity 0.12s;
+}
+
+.gallery-grid-mode .grid-cell.grid-real:hover .grid-cell-img img {
+  opacity: 0.75;
+}
+
+/* Hide normal drawing pieces — replaced by grid-cell divs */
+.gallery-grid-mode > .drawing-piece { display: none !important; }
+
+/* Hide in normal mode */
+.drawing-piece .grid-number { display: none; }
+
+
+/* ========== GALLERY ========== */
+.gallery-wall {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 32px 24px;
+  padding: 36px 40px 40px 40px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+
+/* ========== DRAWING PIECES ========== */
+.drawing-piece {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  transition: opacity 0.2s ease;
+  flex-shrink: 0;
+}
+
+.drawing-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  image-rendering: auto;
+  filter: drop-shadow(0 3px 10px rgba(0,0,0,0.12));
+  transition: transform 0.2s ease;
+}
+
+.drawing-piece:not(.project-thumb):hover .drawing-img {
+  transform: scale(1.02);
+}
+
+.drawing-piece:not(.project-thumb) .drawing-meta {
+  display: none !important;
+}
+
+
+/* ========== PROJECT THUMBNAILS — table/grid aesthetic ========== */
+/*
+  Hard black borders like a table cell.
+  Label row below image separated by a 1px black line.
+  Title + year + "Project" tag in a clean row.
+  Hover: offset shadow shifts the card (kept).
+  No rounded corners anywhere.
+*/
+.project-thumb {
+  text-decoration: none;
+  color: inherit;
+  flex-shrink: 0;
+  transform: none !important;
+  background: #fff;
+  display: inline-flex;
+  flex-direction: column;
+  border: 1px solid #000;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.project-thumb:hover {
+  box-shadow: 5px 5px 0 #000;
+  transform: translate(-3px, -3px) !important;
+}
+
+.project-thumb-inner {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.project-thumb .drawing-img {
+  display: block;
+  width: 100%;
+  filter: none;
+  transition: opacity 0.2s;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.project-thumb:hover .drawing-img {
+  opacity: 0.9;
+}
+
+/* label row — table cell style */
+.project-thumb-label {
+  padding: 0;
+  background: #fff;
+  border-top: 1px solid #000;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  min-height: 36px;
+}
+
+/* title cell */
+.project-thumb-label h3 {
+  flex: 1;
+  margin: 0;
+  padding: 8px 10px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  color: #000;
+  text-transform: uppercase;
+  border-right: 1px solid #000;
+  display: flex;
+  align-items: center;
+}
+
+/* year cell */
+.project-thumb-label p {
+  margin: 0;
+  padding: 0 10px;
+  font-size: 0.58rem;
+  color: rgba(0,0,0,0.5);
+  letter-spacing: 0.06em;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  border-right: 1px solid #000;
+}
+
+/* project tag cell */
+.project-thumb-tag {
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  font-size: 0.48rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #fff;
+  background: #000;
+  white-space: nowrap;
+}
+
+.project-thumb .drawing-meta {
+  display: none !important;
+}
+
+
+/* ========== BACK TO TOP — inside active cell, bottom-right corner ========== */
+#backToTop {
+  position: absolute;
+  bottom: calc(var(--toolbar-h) + 8px);
+  right: 10px;
+  z-index: 150;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 20px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  padding: 0;
+  transition: transform 0.15s, opacity 0.15s;
+  opacity: 0.7;
+}
+
+#backToTop:hover {
+  transform: translateY(-2px);
+  opacity: 1;
+}
+
+#backToTop svg {
+  width: 22px;
+  height: 20px;
+  display: block;
+  overflow: visible;
+}
+
+#backToTop svg polygon {
+  fill: #fff;
+  stroke: #000;
+  stroke-width: 1.5;
+  stroke-linejoin: miter;
+  transition: fill 0.15s, stroke 0.15s;
+}
+
+#backToTop:hover svg polygon {
+  fill: #000;
+  stroke: #000;
+}
+
+
+/* ========== HOME NAME ========== */
+.home-name {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  z-index: 2000;
+  font-weight: 700;
+  font-size: clamp(2rem, 6vw, 5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: opacity 0.4s ease;
+}
+
+.home-name span { display: block; }
+body:not(.home-page) .home-name { display: none; }
+
+
+/* ========== HERO / SLIDESHOW ========== */
+.hero-section, .slideshow {
+  position: relative; width: 100%; height: 100vh; overflow: hidden;
+}
+
+.slide {
+  position: relative; width: 100%; height: 100vh;
+  background-size: cover; background-position: center;
+}
+
+
+/* ========== SPLIT SCREEN (homepage) ========== */
+.split-screen-wrapper {
+  display: block; width: 100%; position: relative;
+  margin-top: -110px; padding-top: 110px;
+}
+
+.name-panel {
+  position: fixed; left: 0; top: 0; width: 50%; height: 100vh;
+  background-color: #000; display: flex; justify-content: right; align-items: right;
+  z-index: 10; padding-top: 110px; box-sizing: border-box;
+}
+
+.name-content {
+  text-align: right; display: flex; justify-content: flex-end;
+  padding-right: 40px; width: 100%; transform: translateY(20vh);
+}
+
+.full-name {
+  font-weight: 700; font-size: clamp(3rem, 8vw, 8rem);
+  line-height: 1.1; margin: 0; padding: 0; letter-spacing: -0.02em;
+}
+
+.name-line { display: block; }
+
+.image-panel {
+  position: relative; width: 50%; height: auto;
+  overflow: visible; display: block; margin-left: 50%;
+}
+
+body.home-page {
+  padding-top: 0; scroll-snap-type: y mandatory;
+}
+
+.image-slide {
+  height: calc(100vh - 110px); background-size: cover;
+  background-position: center; background-repeat: no-repeat; scroll-snap-align: start;
+}
+
+
+/* ========== HERO ========== */
+.hero { text-align: center; padding: 150px 20px; }
+.hero h2 { font-size: 3rem; margin-bottom: 10px; }
+.hero p  { font-size: 1.25rem; color: #666; }
+
+
+/* ========== HOME PREVIEW CARDS ========== */
+.home-preview-row {
+  display: flex; justify-content: center; align-items: stretch;
+  gap: 32px; margin: 280px auto 70px; max-width: 1200px;
+}
+
+.preview-box {
+  flex: 1 1 0; width: 100%; height: 220px; text-align: center; z-index: 10;
+  background: #fff; padding: 0.7em 1em 0.8em;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10), 0 1px 4px rgba(0,0,0,0.07);
+  box-sizing: border-box; display: flex; flex-direction: column;
+  align-items: center; justify-content: flex-start;
+}
+
+.preview-box h2 {
+  font-size: 1.15rem; margin: 0.2em 0 0.3em; font-weight: 600;
+  letter-spacing: 0.02em; color: #000;
+}
+
+.preview-box h2::after {
+  content: ''; display: block; margin: 0.35em auto 0;
+  width: 38px; height: 2.5px; background: rgba(0,0,0,0.65);
+}
+
+.preview-box p  { font-size: 0.9rem; color: #333; line-height: 1.6; margin-top: 0.5em; }
+.preview-box a  { color: #3a5ad7; text-decoration: none; font-weight: 500; }
+.preview-box a:hover { color: #222; text-decoration: underline; }
+
+
+/* ========== PROJECT GRID ========== */
+.project-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 2px; padding: 40px 20px; max-width: 1200px; margin: 0 auto;
+}
+
+.project-card {
+  position: relative; width: 100%; padding-top: 100%;
+  overflow: hidden; display: block; text-decoration: none;
+}
+
+.project-card img { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; transition:opacity 0.3s; }
+.overlay-black { position:absolute; inset:0; background:black; opacity:0; transition:opacity 0.3s; z-index:1; }
+.overlay-text  { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:white; font-weight:bold; font-size:1.2rem; opacity:0; transition:opacity 0.3s; text-align:center; z-index:2; }
+.project-card:hover .overlay-black { opacity: 1; }
+.project-card:hover .overlay-text  { opacity: 1; }
+
+
+/* ========== PROJECT DETAIL ========== */
+.project-detail-page { max-width: 2000px; margin: 40px auto; padding: 0 20px; }
+
+.project-container {
+  max-width: 1200px; margin: 0 auto; padding: 40px 20px;
+  box-sizing: border-box; position: relative;
+}
+
+.project-info { margin-bottom: 40px; color: #333; max-width: 1000px; }
+.project-info p  { font-size: 0.8rem; line-height: 1.6; margin-bottom: 1rem; }
+.project-info h2 { font-size: 1.5rem; margin-bottom: 1rem; }
+
+.project-description.short { display: block; line-height: 1.6; margin-bottom: 0.5rem; }
+.project-description.full  { display: none;  line-height: 1.6; margin-bottom: 0.5rem; }
+
+.read-more-btn {
+  background: none; border: none; color: #000; cursor: pointer;
+  font-family: inherit; font-size: 0.8rem; padding: 0; text-decoration: underline; font-weight: 400;
+}
+
+.project-images {
+  display: flex; flex-wrap: wrap; gap: 32px;
+  justify-content: center; align-items: center;
+  width: 100%; max-width: 1400px; margin: 40px auto; padding: 0 20px;
+}
+
+.project-images a { display: block; }
+
+.project-img {
+  display: block; max-width: 100%;
+  border: 1px solid #000;
+  transition: transform 0.2s;
+}
+
+.project-img:hover { transform: scale(1.03); z-index: 2; }
+
+.project-img.a3-portrait  { width: calc(29.7*var(--cm)); height: calc(42*var(--cm)); }
+.project-img.a4-landscape { width: calc(29.7*var(--cm)); height: calc(21*var(--cm)); }
+.project-img.a3-landscape { width: calc(42*var(--cm));   height: calc(29.7*var(--cm)); }
+.project-img.a4-portrait  { width: calc(21*var(--cm));   height: calc(29.7*var(--cm)); }
+.project-img.square       { width: calc(29.7*var(--cm)); height: calc(29.7*var(--cm)); }
+.project-img.stretch      { width: calc(72*var(--cm));   height: calc(21*var(--cm)); }
+
+.project-nav {
+  position: fixed; top: 50%; transform: translateY(-50%);
+  font-size: 3rem; font-weight: 900; color: black; text-decoration: none;
+  z-index: 2000; padding: 0 10px; user-select: none; transition: transform 0.2s;
+}
+
+.project-nav.left  { left: 20px; }
+.project-nav.right { right: 20px; }
+.project-nav:hover { transform: translateY(-50%) scale(1.1); }
+
+
+/* ========== BACK BUTTON (project pages) ========== */
+.back-button {
+  position: fixed; top: 110px; left: 8px; width: 48px; height: 48px;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 2000; background: none; border: none; cursor: pointer;
+  transition: transform 0.2s; font-size: 1.5rem; color: #000; text-decoration: none;
+}
+
+.back-button:hover { transform: scale(1.08); }
+.back-button svg   { display: block; width: 28px; height: 28px; stroke: #000; }
+
+
+/* ========== ABOUT ========== */
+.about-section { padding: 80px 20px; background-color: #fff; }
+
+.about-container {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  max-width: 1200px; margin: 0 auto; gap: 40px; flex-wrap: wrap;
+}
+
+.about-text { flex: 2 1 400px; min-width: 300px; max-width: 700px; }
+.about-text h2 { font-size: 1.5rem; margin-bottom: 20px; }
+.about-text p  { font-size: 0.8rem; line-height: 1.6; color: #333; }
+
+.about-image {
+  flex: 1 1 300px; min-width: 220px; max-width: 400px;
+  text-align: right; position: sticky; top: 120px;
+  align-self: flex-start; z-index: 1;
+}
+
+.about-image img { max-width: 100%; height: auto; }
+
+
+/* ========== CONTACT ========== */
+.contact-page {
+  padding: 80px 20px; max-width: 1200px;
+  margin: 0 auto; display: flex; justify-content: flex-start;
+}
+
+.contact-container h2 { font-size: 1.5rem; margin-bottom: 10px; color: #333; }
+.contact-container p  { font-size: 0.8rem; line-height: 1.6; color: #333; }
+.contact-info p       { margin-bottom: 12px; }
+.contact-info a       { color: #000; text-decoration: underline; }
+
+
+/* ========== MISC ========== */
+main, .about-section, .contact-page { padding-top: 20px; }
+.projects-page { padding-top: 35px !important; }
+
+.under-construction-overlay {
+  position: absolute; inset: 0; background: rgba(255,255,255,0.85); z-index: 99;
+  display: flex; align-items: center; justify-content: center; pointer-events: none;
+}
+
+.under-construction-message { text-align: center; padding: 2rem 3rem; color: #222; pointer-events: auto; }
+.lightbox { transition: all 0.3s ease-in-out; }
+
+
+/* ========== FOOTER ========== */
+footer {
+  text-align: center;
+  padding: 1.5em 0;
+  background: #fff;
+  margin-top: auto;
+  border-top: 1px solid #000;
+}
+
+footer p {
+  font-size: 0.6rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(0,0,0,0.3); margin: 0;
+}
+
+
+/* ========== EXPAND PANEL ========== */
+/*
+  position:absolute inside .work-cell — naturally clipped by the cell's
+  overflow:hidden, so column borders always show on top.
+  No z-index tricks needed. Toolbar is also absolute inside work-cell,
+  so expand overlay stops at bottom: var(--toolbar-h).
+*/
+.expand-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;      /* toolbar (z:200) sits above this (z:100) naturally */
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: #fff;
+  display: none;
+  flex-direction: row;
+}
+
+/* ── Left: image side ── */
+.expand-img-side {
+  flex: 0 0 50%;
+  border-right: 1px solid #000;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  position: relative;
+}
+
+/* image counter — large position number centred above image */
+.expand-counter {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #c00;
+  font-family: 'Outfit', sans-serif;
+  /* no border-bottom — counter floats freely above image */
+}
+
+.expand-img-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 52px;   /* horizontal padding makes room for chevrons */
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+}
+
+.expand-img-wrap img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 3px 14px rgba(0,0,0,0.12));
+}
+
+/* red chevron nav — pure symbol, no box */
+.expand-chevron {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 36px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c00;
+  font-size: 2.2rem;
+  line-height: 1;
+  z-index: 10;
+  transition: opacity 0.15s;
+  opacity: 0.55;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 200;
+  padding: 0;
+}
+
+.expand-chevron:hover    { opacity: 1; }
+.expand-chevron:disabled { opacity: 0.12; cursor: default; }
+.expand-chevron.left  { left: 4px; }
+.expand-chevron.right { right: 4px; }
+
+/* ── Right: info side ── */
+.expand-info-side {
+  flex: 0 0 50%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #fff;
+}
+
+/* header: drawing number small + black, close button */
+.expand-info-header {
+  display: flex;
+  align-items: stretch;
+  height: 56px;           /* matches counter height on left */
+  flex-shrink: 0;
+  /* no border-bottom — clean open header */
+}
+
+.expand-info-title {
+  flex: 1;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.45);
+}
+
+.expand-close-btn {
+  width: 44px;
+  height: 56px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  border-left: 1px solid #000;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: #000;
+  font-family: 'Outfit', sans-serif;
+  transition: background 0.15s, color 0.15s;
+}
+.expand-close-btn:hover { background: #000; color: #fff; }
+
+/* scrollable middle section — stops above toolbar */
+.expand-scroll {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  scrollbar-width: thin;
+  scrollbar-color: #000 transparent;
+  min-height: 0;
+  padding-bottom: var(--toolbar-h);
+}
+
+/* ══════════════════════════════════════
+   INFO PANEL — DATA VIS REDESIGN
+   Inspired by Gantt timeline + dot-grid references.
+   Year = horizontal timeline bar.
+   Attributes = dot positioned in a proportional column grid.
+   One continuous vertical layout, pure lines, no boxes.
+══════════════════════════════════════ */
+
+/* ── Top section: year timeline bar ── */
+.einfo-year-section {
+  flex-shrink: 0;
+  border-bottom: 1px solid #000;
+  padding: 18px 16px 14px;
+}
+
+.einfo-year-label {
+  font-size: 0.38rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.35);
+  margin-bottom: 10px;
+}
+
+.einfo-year-track {
+  position: relative;
+  height: 28px;
+}
+
+/* tick marks + labels */
+.einfo-year-axis {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.einfo-year-tick {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.einfo-year-tick-line {
+  width: 1px;
+  height: 8px;
+  background: rgba(0,0,0,0.2);
+}
+
+.einfo-year-tick-label {
+  font-size: 0.33rem;
+  color: rgba(0,0,0,0.35);
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+/* The filled bar marking the year */
+.einfo-year-bar {
+  position: absolute;
+  top: 4px;
+  height: 10px;
+  background: #000;
+  /* left/width set by JS */
+}
+
+/* ── Attribute grid rows ──
+   Each row: label + proportional dot grid.
+   Dots positioned as scatter points.
+*/
+.einfo-grid-section {
+  flex-shrink: 0;
+}
+
+.einfo-grid-row {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  border-bottom: 1px solid #000;
+  height: 36px;
+}
+
+.einfo-grid-label {
+  flex: 0 0 80px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  font-size: 0.37rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.35);
+  border-right: 1px solid #000;
+  flex-shrink: 0;
+}
+
+.einfo-grid-cells {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.einfo-grid-cell {
+  flex: 1;
+  border-right: 1px solid rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.einfo-grid-cell:last-child { border-right: none; }
+
+/* column label inside cell (bottom of cell) */
+.einfo-grid-cell-label {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.3rem;
+  color: rgba(0,0,0,0.3);
+  white-space: nowrap;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* active cell: filled square, reference 2 style */
+.einfo-grid-dot {
+  width: 10px;
+  height: 10px;
+  background: #000;
+  flex-shrink: 0;
+  /* positioned centrally, slightly above cell-label */
+  margin-bottom: 10px;
+}
+
+/* ── Dimensions plain text row ── */
+.einfo-plain-row {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid #000;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.einfo-plain-label {
+  flex: 0 0 80px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  font-size: 0.37rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.35);
+  border-right: 1px solid #000;
+  flex-shrink: 0;
+}
+
+.einfo-plain-val {
+  flex: 1;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  font-size: 0.65rem;
+  color: #000;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Series / medium text row ── */
+.einfo-text-row {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid #000;
+  min-height: 32px;
+  flex-shrink: 0;
+}
+
+/* ── Info accordion ── */
+.eaccordion-row {
+  border-bottom: 1px solid #000;
+  flex-shrink: 0;
+}
+
+.eaccordion-trigger {
+  display: flex;
+  align-items: stretch;
+  height: 32px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  width: 100%;
+  padding: 0;
+  font-family: 'Outfit', sans-serif;
+  transition: background 0.12s;
+}
+
+.eaccordion-trigger:hover { background: rgba(0,0,0,0.03); }
+
+.eaccordion-trigger-label {
+  flex: 0 0 80px;
+  padding: 0 10px;
+  font-size: 0.37rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.35);
+  display: flex;
+  align-items: center;
+  border-right: 1px solid #000;
+}
+
+.eaccordion-trigger-title {
+  flex: 1;
+  padding: 0 12px;
+  font-size: 0.56rem;
+  font-weight: 500;
+  color: rgba(0,0,0,0.55);
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.03em;
+}
+
+.eaccordion-arrow {
+  width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.44rem;
+  color: rgba(0,0,0,0.35);
+  border-left: 1px solid #000;
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.eaccordion-row.open .eaccordion-arrow { transform: rotate(180deg); }
+
+.eaccordion-body {
+  display: none;
+  padding: 12px 14px 14px;
+  font-size: 0.62rem;
+  line-height: 1.8;
+  color: rgba(0,0,0,0.58);
+  font-style: italic;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+.eaccordion-row.open .eaccordion-body { display: block; }
+
+/* ── Similar works — pinned to bottom ── */
+.esimilar-wrapper {
+  margin-top: auto;
+  flex-shrink: 0;
+  border-top: 1px solid #000;
+}
+
+.esimilar-head {
+  display: flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 10px;
+  border-bottom: 1px solid #000;
+}
+
+.esimilar-head span {
+  font-size: 0.37rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.3);
+}
+
+.esimilar-strip {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.esimilar-strip::-webkit-scrollbar { display: none; }
+
+.esimilar-thumb {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-right: 1px solid #000;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  border-top: none;
+  border-left: none;
+  border-bottom: none;
+  transition: background 0.13s;
+}
+.esimilar-thumb:hover { background: #eee; }
+.esimilar-thumb img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+/* Keep old classes that may still appear — silent fallback */
+.echart-section, .echart-table { flex-shrink: 0; }
+.egrid-row {
+  display: flex; border-bottom: 1px solid #000;
+  height: 28px; flex-shrink: 0;
+}
+.egrid-label {
+  flex: 0 0 80px; padding: 0 10px; font-size: 0.37rem; font-weight: 700;
+  letter-spacing: 0.15em; text-transform: uppercase; color: rgba(0,0,0,0.35);
+  display: flex; align-items: center; border-right: 1px solid #000; flex-shrink: 0;
+}
+.egrid-val {
+  flex: 1; padding: 0 12px; font-size: 0.62rem; color: #000;
+  display: flex; align-items: center;
+}
+
+
+
+
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1200px) {
+  .project-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .project-grid { grid-template-columns: repeat(2, 1fr); }
+  .name-panel { position: static; width: 100%; height: auto; padding: 48px 18px; display: flex; align-items: center; justify-content: center; background-color: #000; }
+  .name-content { text-align: center; justify-content: center; padding-right: 0; transform: none; }
+  .image-panel  { position: relative; width: 100%; height: auto; margin-left: 0; }
+  .image-slide  { height: calc(100vh - 160px); }
+  .full-name    { font-size: clamp(2rem, 6vw, 4rem); }
+  .home-preview-row { flex-direction: column; align-items: center; gap: 24px; margin: 600px auto 60px; }
+  .preview-box  { width: 100%; height: auto; max-width: 95vw; }
+  .gallery-wall { padding: 24px 20px 40px; }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --cm: 6px;
+    --toolbar-h: 44px;
+    --strip-h: 44px;   /* height of each collapsed nav strip */
+  }
+
+  /* ══════════════════════════════════════
+     NAVIGATION — desktop columns → mobile rows
+     Rows spread across full width at top/bottom.
+     Active row expands to fill remaining space.
+     Label text centred in strip (not left-aligned).
+  ══════════════════════════════════════ */
+  .landing-grid {
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .landing-cell {
+    min-width: unset;
+    min-height: var(--strip-h);
+    border-right: none;
+    border-bottom: 1px solid #000;
+    transition: flex 0.7s cubic-bezier(.77, 0, .18, 1);
+  }
+
+  .landing-cell:last-child { border-bottom: none; }
+  .landing-cell.active      { flex: 12; }
+  .landing-cell:not(.active){ flex: 0 0 var(--strip-h); }
+
+  /* Label: horizontal, centred across the strip */
+  .landing-cell::before {
+    top: 50%;
+    left: 50%;
+    writing-mode: horizontal-tb;
+    transform: translate(-50%, -50%);
+    letter-spacing: 0.35em;
+    font-size: 0.58rem;
+  }
+
+  /* Active cell label hidden (content fills it) */
+  .landing-cell.active::before { opacity: 0; }
+
+  /* Inactive cell hover */
+  .landing-cell:not(.active):hover { background: #000; }
+  .landing-cell:not(.active):hover::before { color: #fff; }
+
+  /* ── Page content transitions: slide vertically not horizontally ── */
+  .page-content {
+    transform: translateY(18px);
+    padding: 0 0 var(--toolbar-h) 0;
+  }
+
+  .landing-cell.active .page-content {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .work-cell .page-content {
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  /* ══════════════════════════════════════
+     GALLERY — tighter on mobile
+  ══════════════════════════════════════ */
+  .gallery-wall {
+    padding: 16px 12px 20px;
+    gap: 20px 10px;
+    align-items: flex-end;
+  }
+
+  .drawing-img {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .project-thumb .drawing-img {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  /* ══════════════════════════════════════
+     TOOLBAR — scrollable horizontally, full row width
+  ══════════════════════════════════════ */
+  .toolbar {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .toolbar::-webkit-scrollbar { display: none; }
+
+  /* ══════════════════════════════════════
+     EXPAND PANEL — horizontal split:
+     image top half, info bottom half.
+     Same concept as desktop left/right but rotated 90°.
+  ══════════════════════════════════════ */
+  .expand-overlay {
+    flex-direction: column;   /* stack top/bottom */
+    overflow: hidden;
+    bottom: var(--toolbar-h);
+  }
+
+  /* Image occupies top portion — fixed height */
+  .expand-img-side {
+    flex: 0 0 52%;            /* top 52% of screen */
+    border-right: none;
+    border-bottom: 1px solid #000;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    position: relative;
+  }
+
+  /* Counter: smaller on mobile */
+  .expand-counter {
+    height: 36px;
+    font-size: 1.1rem;
+  }
+
+  .expand-img-wrap {
+    padding: 16px 44px;
+    flex: 1;
+    min-height: 0;
+  }
+
+  /* Chevrons smaller but still visible */
+  .expand-chevron {
+    font-size: 1.6rem;
+    width: 30px;
+    height: 44px;
+  }
+
+  /* Info occupies bottom portion — scrollable */
+  .expand-info-side {
+    flex: 0 0 48%;            /* bottom 48% */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    min-height: 0;
+  }
+
+  /* Header row height on mobile */
+  .expand-info-header {
+    height: 44px;
+  }
+
+  .expand-close-btn {
+    width: 44px;
+    height: 44px;
+  }
+
+  /* Chart/grid rows: taller for touch targets */
+  .echart-header          { height: 64px; }
+  .echart-row             { height: 34px; }
+  .egrid-row              { height: 34px; }
+  .eaccordion-trigger     { height: 34px; }
+  .einfo-grid-row         { height: 40px; }
+  .einfo-plain-row        { height: 36px; }
+  .eaccordion-trigger-label,
+  .eaccordion-trigger-title { height: 34px; }
+
+  /* Similar strip: larger touch targets */
+  .esimilar-thumb { width: 70px; height: 70px; }
+
+  /* ══════════════════════════════════════
+     PROJECT PAGE — adapt for mobile
+  ══════════════════════════════════════ */
+
+  /* Description: single column on mobile */
+  .project-desc-body {
+    column-count: 1 !important;
+    padding: 18px 20px 22px !important;
+  }
+
+  /* Image masonry: 2 columns on mobile */
+  .project-img-grid {
+    columns: 2 !important;
+  }
+
+  /* Custom lightbox: stack vertically on mobile */
+  .plb-overlay { flex-direction: column !important; }
+
+  .plb-img-side {
+    flex: 0 0 55% !important;
+    padding: 24px 40px 16px !important;
+  }
+
+  .plb-info-side {
+    flex: 1 !important;
+    border-left: none !important;
+    border-top: 1px solid rgba(255,255,255,0.08) !important;
+    flex-direction: row !important; /* caption left, meta right */
+    overflow: hidden;
+  }
+
+  /* On mobile lightbox: caption on left, meta rows on right */
+  .plb-info-side > .plb-close-row { 
+    position: absolute;
+    top: 8px; right: 8px;
+    border: none !important;
+    height: auto !important;
+    z-index: 2;
+  }
+
+  .plb-caption {
+    flex: 1;
+    border-bottom: none !important;
+    padding: 12px !important;
+    font-size: 0.58rem !important;
+    overflow-y: auto;
+  }
+
+  .plb-meta { flex: 0 0 40%; border-left: 1px solid rgba(255,255,255,0.08); }
+  .plb-counter { display: none; }
+
+  /* Grid overview: smaller cells on mobile */
+  .gallery-wall.gallery-grid-mode {
+    grid-template-columns: repeat(auto-fill, 90px) !important;
+  }
+  .gallery-grid-mode .grid-cell {
+    width: 90px !important;
+    height: 90px !important;
+  }
+}
+
+/* ══════════════════════════════════════
+   VERY SMALL PHONES (< 480px)
+══════════════════════════════════════ */
+@media (max-width: 480px) {
+  :root { --cm: 5px; --strip-h: 40px; }
+
+  .gallery-wall {
+    padding: 10px 8px 16px;
+    gap: 16px 8px;
+  }
+
+  .landing-cell::before { font-size: 0.5rem; letter-spacing: 0.25em; }
+
+  .expand-img-side   { flex: 0 0 50% !important; }
+  .expand-info-side  { flex: 0 0 50% !important; }
+
+  .project-img-grid  { columns: 1 !important; }
+
+  .gallery-wall.gallery-grid-mode {
+    grid-template-columns: repeat(auto-fill, 80px) !important;
+  }
+  .gallery-grid-mode .grid-cell {
+    width: 80px !important;
+    height: 80px !important;
+  }
+}
+@media (max-width: 480px) {
+  :root { --cm: 5px; }
+
+  .gallery-wall {
+    padding: 10px 8px 16px;
+    gap: 16px 8px;
+  }
+
+  .landing-cell:not(.active) { flex: 0 0 36px; }
+  .landing-cell::before { font-size: 0.55rem; }
+
+  .expand-img-side {
+    min-height: 44vw;
+    max-height: 52vh;
+  }
 }
