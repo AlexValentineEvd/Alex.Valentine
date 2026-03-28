@@ -1330,97 +1330,144 @@ footer p {
 @media (max-width: 768px) {
   :root {
     --cm: 6px;
-    --toolbar-h: 48px;
-    --strip-h: 48px;
+    --toolbar-h: 44px;
+    --strip-h: 36px;   /* thinner nav strips */
   }
 
   /* ══════════════════════════════════════
-     FONT SCALING — roughly 2× throughout
-     so all text is comfortably readable on phone
+     FONT SCALING — ~2× throughout for phone readability
   ══════════════════════════════════════ */
-  body { font-size: 16px; }   /* reset base so rem scales up */
-
-  /* Nav strip labels */
-  .landing-cell::before { font-size: 0.75rem; }
-
-  /* Toolbar */
-  .toolbar-label { font-size: 0.65rem; }
-  .tool-btn      { font-size: 0.85rem; padding: 0 16px; }
-
-  /* Gallery drawing meta (hidden normally, just in case) */
-  .drawing-piece .grid-number { font-size: 0.55rem; }
-
-  /* Expand panel — info side */
-  .expand-counter        { font-size: 1.4rem; }
-  .expand-info-title     { font-size: 0.85rem; }
-  .expand-close-btn      { font-size: 1.1rem; }
-  .einfo-year-label      { font-size: 0.6rem; }
-  .einfo-year-tick-label { font-size: 0.55rem; }
-  .einfo-grid-label      { font-size: 0.6rem; }
-  .einfo-grid-cell-label { font-size: 0.52rem; }
-  .einfo-plain-label     { font-size: 0.6rem; }
-  .einfo-plain-val       { font-size: 0.9rem; }
-  .eaccordion-trigger-label { font-size: 0.6rem; }
-  .eaccordion-trigger-title { font-size: 0.85rem; }
-  .eaccordion-body       { font-size: 0.88rem; }
-  .esimilar-head span    { font-size: 0.62rem; }
-
-  /* Grid number labels */
+  .landing-cell::before    { font-size: 0.75rem !important; }
+  .toolbar-label           { font-size: 0.65rem; }
+  .tool-btn                { font-size: 0.85rem; padding: 0 16px; }
+  .expand-counter          { font-size: 1.2rem; }
+  .expand-info-title       { font-size: 0.85rem; }
+  .einfo-year-label        { font-size: 0.6rem; }
+  .einfo-year-tick-label   { font-size: 0.52rem; }
+  .einfo-grid-label        { font-size: 0.62rem; }
+  .einfo-grid-cell-label   { font-size: 0.52rem; }
+  .einfo-plain-label       { font-size: 0.62rem; }
+  .einfo-plain-val         { font-size: 0.9rem; }
+  .eaccordion-trigger-label{ font-size: 0.62rem; }
+  .eaccordion-trigger-title{ font-size: 0.85rem; }
+  .eaccordion-body         { font-size: 0.88rem; line-height: 1.75; }
+  .esimilar-head span      { font-size: 0.62rem; }
   .gallery-grid-mode .grid-cell-num { font-size: 0.52rem; }
 
   /* ══════════════════════════════════════
-     NAVIGATION — desktop columns → mobile rows
+     NAVIGATION
+     Desktop: 4 vertical columns side-by-side
+     Mobile:  4 horizontal rows stacked top-to-bottom
+
+     All 4 strips are ALWAYS visible.
+     Inactive = 48px tall strip with centred label.
+     Active   = expands to fill remaining space.
+     Tapping inactive navigates (same as desktop).
   ══════════════════════════════════════ */
   .landing-grid {
     flex-direction: column;
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
   }
 
+  /* Every cell becomes a horizontal row */
   .landing-cell {
     min-width: unset;
-    min-height: var(--strip-h);
+    width: 100%;
     border-right: none;
     border-bottom: 1px solid #000;
-    transition: flex 0.7s cubic-bezier(.77, 0, .18, 1);
+    transition: flex 0.65s cubic-bezier(.77, 0, .18, 1);
+    overflow: hidden;
   }
 
   .landing-cell:last-child { border-bottom: none; }
-  .landing-cell.active       { flex: 12; }
-  .landing-cell:not(.active) { flex: 0 0 var(--strip-h); }
 
-  /* Label: horizontal, centred in strip */
+  /* Active row: fills all remaining space */
+  .landing-cell.active {
+    flex: 1 1 0;          /* grow to fill available space */
+    min-height: 0;
+    cursor: default;
+  }
+
+  /* Inactive rows: fixed 48px strip, always visible */
+  .landing-cell:not(.active) {
+    flex: 0 0 var(--strip-h);
+    min-height: var(--strip-h);
+  }
+
+  /* Label: horizontal text, centred in strip */
   .landing-cell::before {
     top: 50%;
     left: 50%;
     writing-mode: horizontal-tb;
     transform: translate(-50%, -50%);
     letter-spacing: 0.3em;
+    /* font-size set above */
   }
 
-  .landing-cell.active::before { opacity: 0; pointer-events: none; }
+  /* Active cell: label hidden — content takes over */
+  .landing-cell.active::before {
+    opacity: 0;
+    pointer-events: none;
+  }
 
-  /* ── Page content: slide down not sideways ── */
+  /* ── Page content: fade+slide down instead of sideways ── */
   .page-content {
-    transform: translateY(18px);
+    transform: translateY(16px);
     padding: 0 0 var(--toolbar-h) 0;
+    transition: opacity 0.45s ease, transform 0.45s ease;
   }
+
   .landing-cell.active .page-content {
     opacity: 1;
     transform: translateY(0);
   }
-  .work-cell .page-content { height: 100%; box-sizing: border-box; }
+
+  .work-cell .page-content {
+    height: 100%;
+    box-sizing: border-box;
+  }
 
   /* ══════════════════════════════════════
-     GALLERY
+     GALLERY — grid layout on mobile, multiple images per row
+     Images scale to fit cell, same mixed-size feel as desktop
+     but at phone proportions.
   ══════════════════════════════════════ */
   .gallery-wall {
-    padding: 16px 12px 20px;
-    gap: 20px 10px;
-    align-items: flex-end;
+    /* Switch from flex to a fixed-column grid */
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px 8px;
+    padding: 12px 10px 20px;
+    align-items: end;
+    justify-content: unset;
   }
-  .drawing-img            { width: 100% !important; height: auto !important; }
-  .project-thumb .drawing-img { width: 100% !important; height: auto !important; }
+
+  /* Each drawing piece fills its grid cell */
+  .drawing-piece {
+    width: 100%;
+    flex-shrink: unset;
+  }
+
+  /* Images scale to fit their cell — no more 100% viewport width */
+  .drawing-img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 28vw;          /* keeps images small — 3 per row look good */
+    object-fit: contain;
+  }
+
+  /* Project thumbs slightly wider — span 2 columns */
+  .project-thumb {
+    grid-column: span 2;
+  }
+  .project-thumb .drawing-img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 40vw;
+    object-fit: cover;
+  }
 
   /* ══════════════════════════════════════
      TOOLBAR — always visible, scrollable
@@ -1434,7 +1481,9 @@ footer p {
   .toolbar::-webkit-scrollbar { display: none; }
 
   /* ══════════════════════════════════════
-     EXPAND PANEL — top/bottom split
+     EXPAND PANEL
+     Desktop: left (image) | right (info)
+     Mobile:  top  (image) | bottom (info)
   ══════════════════════════════════════ */
   .expand-overlay {
     flex-direction: column;
@@ -1442,6 +1491,7 @@ footer p {
     bottom: var(--toolbar-h);
   }
 
+  /* Image: top half */
   .expand-img-side {
     flex: 0 0 50%;
     border-right: none;
@@ -1452,10 +1502,11 @@ footer p {
     position: relative;
   }
 
-  .expand-counter   { height: 44px; font-size: 1.2rem; }
-  .expand-img-wrap  { padding: 12px 48px; flex: 1; min-height: 0; }
-  .expand-chevron   { font-size: 1.8rem; width: 36px; height: 50px; }
+  .expand-counter  { height: 40px; }
+  .expand-img-wrap { padding: 10px 48px; flex: 1; min-height: 0; }
+  .expand-chevron  { font-size: 1.8rem; width: 36px; height: 48px; }
 
+  /* Info: bottom half, scrollable */
   .expand-info-side {
     flex: 0 0 50%;
     overflow-y: auto;
@@ -1466,55 +1517,116 @@ footer p {
   .expand-info-header { height: 48px; }
   .expand-close-btn   { width: 48px; height: 48px; }
 
-  /* Taller touch rows */
+  /* Taller rows for touch */
   .echart-header       { height: 70px; }
   .echart-row          { height: 40px; }
   .egrid-row           { height: 40px; }
   .einfo-grid-row      { height: 44px; }
   .einfo-plain-row     { height: 40px; }
   .eaccordion-trigger  { height: 40px; }
+  .esimilar-thumb      { width: 72px; height: 72px; }
 
-  .esimilar-thumb { width: 72px; height: 72px; }
+  /* ══════════════════════════════════════
+     ABOUT PAGE — bio splits horizontally on mobile
+     (portrait top, text below — not side by side)
+  ══════════════════════════════════════ */
+  .about-bio-row {
+    flex-direction: column !important;
+  }
+
+  .about-portrait {
+    flex: 0 0 200px !important;   /* fixed height portrait strip */
+    border-right: none !important;
+    border-bottom: 1px solid #000;
+    width: 100%;
+  }
+
+  .about-portrait img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  .about-bio-text {
+    padding: 18px 20px !important;
+    font-size: 0.82rem !important;
+  }
+
+  /* Skills strip: wrap on mobile */
+  .about-skills-row {
+    flex-wrap: wrap !important;
+  }
+
+  .about-skill-cell {
+    font-size: 0.72rem !important;
+    min-width: 50% !important;
+    box-sizing: border-box;
+  }
+
+  /* About entry text */
+  .about-entry-date  { font-size: 0.72rem !important; }
+  .about-entry-title { font-size: 0.82rem !important; }
+  .about-entry-sub   { font-size: 0.72rem !important; }
+  .about-entry-desc  { font-size: 0.72rem !important; }
 
   /* ══════════════════════════════════════
      PROJECT PAGE
   ══════════════════════════════════════ */
-  .project-desc-body  { column-count: 1 !important; padding: 20px !important; font-size: 0.9rem !important; }
-  .project-img-grid   { columns: 2 !important; }
-  .plb-overlay        { flex-direction: column !important; }
-  .plb-img-side       { flex: 0 0 55% !important; padding: 20px 48px 16px !important; }
-  .plb-info-side      { flex: 1 !important; border-left: none !important; border-top: 1px solid rgba(255,255,255,.1) !important; overflow-y: auto; }
-  .plb-caption        { font-size: 0.82rem !important; }
-  .plb-meta-val       { font-size: 0.78rem !important; }
+  .project-title-cell h1   { font-size: 0.88rem !important; }
+  .project-meta-label      { font-size: 0.6rem !important; }
+  .project-meta-val        { font-size: 0.78rem !important; }
+  .project-desc-body       { column-count: 1 !important; padding: 18px 20px !important; font-size: 0.82rem !important; line-height: 1.75 !important; }
+  .project-img-grid        { columns: 2 !important; }
 
-  /* Grid overview — smaller cells */
+  /* Lightbox: image top, info below */
+  .plb-overlay      { flex-direction: column !important; }
+  .plb-img-side     { flex: 0 0 58% !important; padding: 20px 48px 14px !important; }
+  .plb-info-side    { flex: 1 !important; border-left: none !important; border-top: 1px solid rgba(255,255,255,.1) !important; overflow-y: auto; }
+  .plb-caption      { font-size: 0.8rem !important; }
+  .plb-meta-label   { font-size: 0.55rem !important; }
+  .plb-meta-val     { font-size: 0.75rem !important; }
+
+  /* ── Home page: name centred in the active cell on mobile ── */
+  .home-name {
+    position: absolute;   /* sits inside the active home-cell */
+    bottom: auto;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    text-align: center;
+    font-size: clamp(1.8rem, 10vw, 3.5rem);
+    letter-spacing: -0.01em;
+  }
+
+  /* Grid overview */
   .gallery-wall.gallery-grid-mode      { grid-template-columns: repeat(auto-fill, 90px) !important; }
   .gallery-grid-mode .grid-cell        { width: 90px !important; height: 90px !important; }
 }
 
 /* ══════════════════════════════════════
-   VERY SMALL PHONES (< 480px)
+   VERY SMALL PHONES (≤ 480px)
 ══════════════════════════════════════ */
 @media (max-width: 480px) {
-  :root { --cm: 5px; --strip-h: 40px; }
+  :root { --cm: 5px; --strip-h: 32px; --toolbar-h: 40px; }
 
   .gallery-wall {
-    padding: 10px 8px 16px;
-    gap: 16px 8px;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px 6px;
+    padding: 8px 8px 16px;
   }
 
-  .landing-cell::before { font-size: 0.5rem; letter-spacing: 0.25em; }
+  .drawing-img { max-height: 38vw !important; }
+  .project-thumb { grid-column: span 2; }
 
-  .expand-img-side   { flex: 0 0 50% !important; }
-  .expand-info-side  { flex: 0 0 50% !important; }
+  .landing-cell::before { font-size: 0.58rem !important; letter-spacing: 0.2em !important; }
+
+  .expand-img-side   { flex: 0 0 48% !important; }
+  .expand-info-side  { flex: 0 0 52% !important; }
 
   .project-img-grid  { columns: 1 !important; }
 
-  .gallery-wall.gallery-grid-mode {
-    grid-template-columns: repeat(auto-fill, 80px) !important;
-  }
-  .gallery-grid-mode .grid-cell {
-    width: 80px !important;
-    height: 80px !important;
-  }
+  .gallery-wall.gallery-grid-mode { grid-template-columns: repeat(auto-fill, 80px) !important; }
+  .gallery-grid-mode .grid-cell   { width: 80px !important; height: 80px !important; }
 }

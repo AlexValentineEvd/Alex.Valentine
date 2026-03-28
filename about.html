@@ -48,6 +48,13 @@
     .about-bio-text p { margin: 0 0 1em; }
     .about-bio-text p:last-child { margin-bottom: 0; }
 
+    @media (max-width: 768px) {
+      .about-bio-row    { flex-direction: column; }
+      .about-portrait   { flex: 0 0 200px; border-right: none; border-bottom: 1px solid #000; width: 100%; }
+      .about-portrait img { height: 200px; object-fit: cover; object-position: top; }
+      .about-bio-text   { padding: 18px 20px; font-size: 0.82rem; }
+    }
+
     /* Section header rows */
     .about-section-header {
       display: flex; align-items: stretch;
