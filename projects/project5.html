@@ -1,144 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HBJP6CFGNQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-HBJP6CFGNQ');
-</script>
-
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HBJP6CFGNQ"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HBJP6CFGNQ');</script>
   <meta charset="UTF-8">
-  <title>Project Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portraits — Alex Valentine Evdokimov</title>
   <link rel="stylesheet" href="../styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
-
   <style>
-    .lightboxOverlay {
-      background: rgba(255, 255, 255, 0.6) !important;
-      backdrop-filter: blur(4px);
-      transition: background 0.3s ease-in-out;
+    .project-page-inner{padding:0 0 80px 0;}
+    .project-header-row{display:flex;align-items:stretch;border-bottom:1px solid rgba(0,0,0,.12);min-height:48px;}
+    .project-back-btn{width:40px;display:flex;align-items:center;justify-content:center;border-right:1px solid rgba(0,0,0,.1);background:none;border-top:none;border-bottom:none;border-left:none;cursor:pointer;text-decoration:none;color:rgba(0,0,0,.5);transition:background .15s,color .15s;flex-shrink:0;}
+    .project-back-btn:hover{background:#000;color:#fff;}
+    .project-back-btn svg{stroke:currentColor;}
+    .project-title-cell{flex:1;padding:0 20px;display:flex;align-items:center;gap:12px;}
+    .project-title-cell h1{margin:0;font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#000;}
+    .project-tag{font-size:.38rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(0,0,0,.4);white-space:nowrap;}
+    .project-nav-cell{display:flex;align-items:stretch;border-left:1px solid rgba(0,0,0,.1);}
+    .project-nav-btn{width:40px;display:flex;align-items:center;justify-content:center;background:none;border:none;border-right:1px solid rgba(0,0,0,.1);cursor:pointer;text-decoration:none;color:rgba(0,0,0,.4);transition:background .15s,color .15s;}
+    .project-nav-btn:last-child{border-right:none;}
+    .project-nav-btn:hover{background:#000;color:#fff;}
+    .project-nav-btn svg{stroke:currentColor;}
+    .project-meta-row{display:flex;align-items:center;min-height:28px;border-bottom:1px solid rgba(0,0,0,.06);}
+    .project-meta-label{flex:0 0 72px;padding:0 16px 0 20px;font-size:.35rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(0,0,0,.28);}
+    .project-meta-val{flex:1;padding:0 12px;font-size:.58rem;color:rgba(0,0,0,.6);}
+    .project-desc-section{border-bottom:1px solid rgba(0,0,0,.08);}
+    .project-desc-trigger{display:flex;align-items:center;height:36px;cursor:pointer;background:none;border:none;width:100%;padding:0 20px;font-family:'Outfit',sans-serif;transition:background .12s;gap:12px;}
+    .project-desc-trigger:hover{background:rgba(0,0,0,.02);}
+    .project-desc-label{font-size:.35rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(0,0,0,.28);flex-shrink:0;}
+    .project-desc-title{flex:1;font-size:.52rem;font-weight:400;color:rgba(0,0,0,.45);}
+    .project-desc-arrow{font-size:.4rem;color:rgba(0,0,0,.25);transition:transform .2s;flex-shrink:0;}
+    .project-desc-section.open .project-desc-arrow{transform:rotate(180deg);}
+    .project-desc-body{display:none;padding:24px 32px 28px;font-size:.68rem;line-height:1.9;color:rgba(0,0,0,.62);border-top:1px solid rgba(0,0,0,.05);column-count:2;column-gap:48px;}
+    .project-desc-body p{margin:0 0 1.1em;break-inside:avoid;}
+    .project-desc-body p:last-child{margin-bottom:0;}
+    .project-desc-section.open .project-desc-body{display:block;}
+    .project-img-grid{columns:3;column-gap:16px;padding:20px;background:#fff;}
+    .project-img-cell{break-inside:avoid;display:block;position:relative;overflow:hidden;cursor:pointer;margin-bottom:16px;background:#f8f8f8;}
+    .project-img-cell img{display:block;width:100%;height:auto;transition:opacity .2s;}
+    .project-img-cell:hover img{opacity:.82;}
+    .project-img-caption{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.65);padding:7px 10px;font-size:.38rem;letter-spacing:.06em;color:rgba(255,255,255,.85);transform:translateY(100%);transition:transform .18s ease;}
+    .project-img-cell:hover .project-img-caption{transform:translateY(0);}
+    .plb-overlay{display:none;position:fixed;inset:0;background:#000;z-index:9000;flex-direction:column;}
+    .plb-overlay.open{display:flex;}
+    .plb-img-area{flex:1;display:flex;align-items:center;justify-content:flex-start;padding:40px 48px;box-sizing:border-box;position:relative;min-height:0;}
+    .plb-img-area img{max-height:100%;max-width:100%;object-fit:contain;display:block;}
+    .plb-prev,.plb-next{position:absolute;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:rgba(255,255,255,.3);font-size:2rem;font-weight:200;padding:16px 12px;transition:color .15s;font-family:'Outfit',sans-serif;z-index:2;}
+    .plb-prev{left:6px;}.plb-next{right:6px;}
+    .plb-prev:hover,.plb-next:hover{color:#fff;}
+    .plb-prev:disabled,.plb-next:disabled{opacity:0;cursor:default;}
+    .plb-caption-bar{flex-shrink:0;display:flex;align-items:center;gap:20px;padding:0 20px;height:40px;border-top:1px solid rgba(255,255,255,.07);}
+    .plb-caption-text{font-size:.48rem;letter-spacing:.08em;color:rgba(255,255,255,.5);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .plb-counter-text{font-size:.4rem;letter-spacing:.12em;color:rgba(255,255,255,.2);white-space:nowrap;}
+    .plb-close{width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:none;border:none;border-left:1px solid rgba(255,255,255,.07);cursor:pointer;color:rgba(255,255,255,.35);font-size:.85rem;font-family:'Outfit',sans-serif;transition:color .15s;flex-shrink:0;margin-right:-20px;}
+    .plb-close:hover{color:#fff;}
+    @media(max-width:768px){
+      .project-desc-body{column-count:1 !important;padding:18px 20px !important;font-size:.82rem !important;}
+      .project-img-grid{columns:2 !important;column-gap:10px !important;padding:12px !important;}
+      .project-img-cell{margin-bottom:10px !important;}
+      .project-title-cell h1{font-size:.88rem;}
+      .plb-img-area{padding:20px 40px;justify-content:center;}
     }
-
-    .project-text-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
-
-    .project-images {
-      display: grid;
-      grid-template-columns: repeat(4, auto);
-      gap: 32px;
-      padding: 40px 60px;
-      justify-content: center;
-    }
-
-    .project-img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
+    @media(max-width:480px){.project-img-grid{columns:1 !important;}}
   </style>
 </head>
 <body>
-<header>
-  <div class="container">
-    <nav>
-      <ul class="nav-links">
-        <li><a href="../index.html">HOME</a></li>
-        <li><a href="../drawings.html">WORK</a></li>
-        <li><a href="../about.html">ABOUT</a></li>
-        <li><a href="../contact.html">CONTACTS</a></li>
-      </ul>
-    </nav>
-  </div>
-  <div class="header-divider"></div>
-</header>
 
-<a href="javascript:history.back()" class="back-button" aria-label="Go back">
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-    <polyline points="15 18 9 12 15 6" />
-  </svg>
-</a>
+<div class="landing-grid">
+  <div class="landing-cell home-cell"    data-page="../index.html"    data-label="HOME"></div>
+  <div class="landing-cell work-cell active" data-page="../drawings.html" data-label="MY WORK">
+    <div class="page-content">
+      <div class="project-page-inner">
 
-<main>
-  <!-- TEXT SECTION -->
-  <div class="project-text-container">
-    <div class="project-info">
-      <h2>POTRAITS</h2>
-      <p>2023-24. London, United Kingdom</p>
-      <p><strong>Description:</strong></p>
-      <p>PAGE UNDER CONSTRUCTION</p>
+        <div class="project-header-row">
+          <a href="../drawings.html" class="project-back-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></a>
+          <div class="project-title-cell">
+            <h1>Portraits</h1>
+            <span class="project-tag">Project</span>
+          </div>
+          <div class="project-nav-cell">
+            <a href="project4.html" class="project-nav-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <a href="project6.html" class="project-nav-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+          </div>
+        </div>
+
+        <div class="project-meta-row"><span class="project-meta-label">Year</span><span class="project-meta-val">2023–24</span></div>
+        <div class="project-meta-row"><span class="project-meta-label">Type</span><span class="project-meta-val">Photographic Series</span></div>
+        <div class="project-meta-row"><span class="project-meta-label">Location</span><span class="project-meta-val">London, United Kingdom</span></div>
+        <div class="project-meta-row"><span class="project-meta-label">Status</span><span class="project-meta-val">Under construction</span></div>
+
+
+        <div class="project-desc-section">
+          <div class="project-desc-trigger" style="cursor:default;">
+            <span class="project-desc-label">Status</span>
+            <span class="project-desc-title" style="color:rgba(0,0,0,.3);font-style:italic;">Page under construction — more content coming soon</span>
+          </div>
+        </div>
+
+        <div class="project-img-grid">
+          <div class="project-img-cell" data-caption="Portrait 1" data-idx="0"><img src="../img/Z5.jpg" alt="Portrait 1" loading="lazy"><span class="project-img-caption">Portrait 1</span></div>
+          <div class="project-img-cell" data-caption="Portrait 2" data-idx="1"><img src="../img/Z6.jpg" alt="Portrait 2" loading="lazy"><span class="project-img-caption">Portrait 2</span></div>
+          <div class="project-img-cell" data-caption="Portrait 3" data-idx="2"><img src="../img/Z7.jpg" alt="Portrait 3" loading="lazy"><span class="project-img-caption">Portrait 3</span></div>
+          <div class="project-img-cell" data-caption="Portrait 4" data-idx="3"><img src="../img/Z8.jpg" alt="Portrait 4" loading="lazy"><span class="project-img-caption">Portrait 4</span></div>
+        </div>
+
+      </div>
     </div>
   </div>
+  <div class="landing-cell about-cell"   data-page="../about.html"   data-label="ABOUT ME"></div>
+  <div class="landing-cell contact-cell" data-page="../contact.html" data-label="CONTACTS"></div>
+</div>
 
-  <!-- IMAGE GRID SECTION -->
-  <div class="project-images">
-    <a href="../img/Z5.jpg" class="glightbox" data-gallery="project-gallery" data-title="SITE PLAN">
-      <img src="../img/Z5.jpg" alt="Artwork 1" class="project-img a4-portrait">
-    </a>
-    <a href="../img/Z6.jpg" class="glightbox" data-gallery="project-gallery" data-title="Artwork 2">
-      <img src="../img/Z6.jpg" alt="Artwork 2" class="project-img a4-portrait">
-    </a>
-    <a href="../img/Z7.jpg" class="glightbox" data-gallery="project-gallery" data-title="Artwork 3">
-      <img src="../img/Z7.jpg" alt="Artwork 3" class="project-img a4-portrait">
-    </a>
-    <a href="../img/Z8.jpg" class="glightbox" data-gallery="project-gallery" data-title="Artwork 4">
-      <img src="../img/Z8.jpg" alt="Artwork 4" class="project-img a4-portrait">
-    </a>
+<div class="plb-overlay" id="plbOverlay">
+  <div class="plb-img-area">
+    <button class="plb-prev" id="plbPrev">&#8249;</button>
+    <img id="plbImg" src="" alt="">
+    <button class="plb-next" id="plbNext">&#8250;</button>
   </div>
-
-<div class="under-construction-overlay">
-  <div class="under-construction-message">
-    <h2>Page Under Construction</h2>
-    <p>This page is currently being updated. Please check back soon!</p>
+  <div class="plb-caption-bar">
+    <span class="plb-caption-text" id="plbCaption"></span>
+    <span class="plb-counter-text" id="plbCounter"></span>
+    <button class="plb-close" id="plbClose">✕</button>
   </div>
 </div>
 
-</main>
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
-
-
-<!-- Navigation Arrows -->
-<a href="project4.html" class="project-nav left" aria-label="Previous project">
-  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-    <polyline points="15 18 9 12 15 6" />
-  </svg>
-</a>
-
-<a href="project6.html" class="project-nav right" aria-label="Next project">
-  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-    <polyline points="9 18 15 12 9 6" />
-  </svg>
-</a>
-
 <script>
-  const lightbox = GLightbox({ selector: '.glightbox' });
-
-  document.addEventListener('keydown', function (e) {
-    // Only navigate projects if GLightbox is NOT open
-    if (!document.body.classList.contains('glightbox-open')) {
-      if (e.key === 'ArrowLeft') {
-        window.location.href = "project4.html"; // or your previous project
-      } else if (e.key === 'ArrowRight') {
-        window.location.href = "project6.html"; // or your next project
-      }
-    }
+function navigateTo(url) {
+  if (!url) return;
+  document.body.classList.add('is-leaving');
+  requestAnimationFrame(() => { setTimeout(() => { window.location.href = url; }, 220); });
+}
+document.querySelectorAll('.landing-cell').forEach(cell => {
+  cell.addEventListener('click', function(e) {
+    if (this.classList.contains('active')) return;
+    e.preventDefault(); navigateTo(this.dataset.page);
   });
+});
+document.getElementById('descTrigger')?.addEventListener('click', () => {
+  document.getElementById('descSection').classList.toggle('open');
+});
+const overlay=document.getElementById('plbOverlay'),plbImg=document.getElementById('plbImg'),
+  plbPrev=document.getElementById('plbPrev'),plbNext=document.getElementById('plbNext'),
+  plbClose=document.getElementById('plbClose'),plbCap=document.getElementById('plbCaption'),
+  plbCount=document.getElementById('plbCounter'),
+  cells=Array.from(document.querySelectorAll('.project-img-cell'));
+let cur=0;
+function openLB(i){cur=i;show();overlay.classList.add('open');document.body.style.overflow='hidden';}
+function closeLB(){overlay.classList.remove('open');document.body.style.overflow='';}
+function show(){
+  const c=cells[cur],img=c.querySelector('img');
+  plbImg.src=img.src;plbImg.alt=img.alt;
+  plbCap.textContent=c.dataset.caption||img.alt;
+  plbCount.textContent=`${cur+1} / ${cells.length}`;
+  plbPrev.disabled=(cur===0);plbNext.disabled=(cur===cells.length-1);
+}
+cells.forEach((c,i)=>c.addEventListener('click',()=>openLB(i)));
+plbClose.addEventListener('click',closeLB);
+plbPrev.addEventListener('click',()=>{if(cur>0){cur--;show();}});
+plbNext.addEventListener('click',()=>{if(cur<cells.length-1){cur++;show();}});
+overlay.addEventListener('click',e=>{if(e.target===overlay)closeLB();});
+document.addEventListener('keydown',e=>{
+  if(overlay.classList.contains('open')){
+    if(e.key==='Escape')closeLB();
+    if(e.key==='ArrowLeft')plbPrev.click();
+    if(e.key==='ArrowRight')plbNext.click();
+    return;
+  }
+  if(e.key==='ArrowLeft')navigateTo('project4.html');
+  if(e.key==='ArrowRight')navigateTo('project6.html');
+  if(e.key==='Escape')navigateTo('../drawings.html');
+});
 </script>
-
-<footer>
-  <p>ALEX VALENTINE EVDOKIMOV 2025</p>
-</footer>
-
 </body>
 </html>

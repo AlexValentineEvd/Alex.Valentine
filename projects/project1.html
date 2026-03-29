@@ -11,97 +11,81 @@
   <style>
     .project-page-inner { padding: 0 0 80px 0; }
 
-    /* Header */
-    .project-header-row { display:flex; align-items:stretch; border-bottom:1px solid #000; min-height:52px; }
-    .project-back-btn { width:44px; display:flex; align-items:center; justify-content:center; border-right:1px solid #000; background:none; border-top:none; border-bottom:none; border-left:none; cursor:pointer; text-decoration:none; color:#000; transition:background .15s,color .15s; flex-shrink:0; }
+    /* ── Header row ── */
+    .project-header-row { display:flex; align-items:stretch; border-bottom:1px solid rgba(0,0,0,.12); min-height:48px; }
+    .project-back-btn { width:40px; display:flex; align-items:center; justify-content:center; border-right:1px solid rgba(0,0,0,.1); background:none; border-top:none; border-bottom:none; border-left:none; cursor:pointer; text-decoration:none; color:rgba(0,0,0,.5); transition:background .15s,color .15s; flex-shrink:0; }
     .project-back-btn:hover { background:#000; color:#fff; }
     .project-back-btn svg { stroke:currentColor; }
-    .project-title-cell { flex:1; padding:0 20px; display:flex; align-items:center; gap:14px; }
-    .project-title-cell h1 { margin:0; font-size:.72rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#000; }
-    .project-tag { font-size:.42rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:#fff; background:#000; padding:3px 8px; white-space:nowrap; }
-    .project-nav-cell { display:flex; align-items:stretch; border-left:1px solid #000; }
-    .project-nav-btn { width:44px; display:flex; align-items:center; justify-content:center; background:none; border:none; border-right:1px solid #000; cursor:pointer; text-decoration:none; color:#000; transition:background .15s,color .15s; }
+    .project-title-cell { flex:1; padding:0 20px; display:flex; align-items:center; gap:12px; }
+    .project-title-cell h1 { margin:0; font-size:.65rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:#000; }
+    .project-tag { font-size:.38rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:rgba(0,0,0,.4); white-space:nowrap; }
+    .project-nav-cell { display:flex; align-items:stretch; border-left:1px solid rgba(0,0,0,.1); }
+    .project-nav-btn { width:40px; display:flex; align-items:center; justify-content:center; background:none; border:none; border-right:1px solid rgba(0,0,0,.1); cursor:pointer; text-decoration:none; color:rgba(0,0,0,.4); transition:background .15s,color .15s; }
     .project-nav-btn:last-child { border-right:none; }
     .project-nav-btn:hover { background:#000; color:#fff; }
     .project-nav-btn svg { stroke:currentColor; }
 
-    /* Meta */
-    .project-meta-row { display:flex; align-items:stretch; border-bottom:1px solid #000; min-height:30px; }
-    .project-meta-label { flex:0 0 80px; padding:0 10px; font-size:.37rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:rgba(0,0,0,.35); display:flex; align-items:center; border-right:1px solid #000; }
-    .project-meta-val { flex:1; padding:0 12px; font-size:.6rem; color:rgba(0,0,0,.7); display:flex; align-items:center; }
+    /* ── Meta rows — minimal, no heavy borders ── */
+    .project-meta-row { display:flex; align-items:center; min-height:28px; border-bottom:1px solid rgba(0,0,0,.06); }
+    .project-meta-label { flex:0 0 72px; padding:0 16px 0 20px; font-size:.35rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:rgba(0,0,0,.28); }
+    .project-meta-val { flex:1; padding:0 12px; font-size:.58rem; color:rgba(0,0,0,.6); }
 
-    /* Description accordion */
-    .project-desc-section { border-bottom:1px solid #000; }
-    .project-desc-trigger { display:flex; align-items:stretch; height:36px; cursor:pointer; background:none; border:none; width:100%; padding:0; font-family:'Outfit',sans-serif; transition:background .12s; }
-    .project-desc-trigger:hover { background:rgba(0,0,0,.03); }
-    .project-desc-label { flex:0 0 80px; padding:0 10px; font-size:.37rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:rgba(0,0,0,.35); display:flex; align-items:center; border-right:1px solid #000; }
-    .project-desc-title { flex:1; padding:0 12px; font-size:.56rem; font-weight:500; color:rgba(0,0,0,.55); display:flex; align-items:center; }
-    .project-desc-arrow { width:36px; display:flex; align-items:center; justify-content:center; font-size:.44rem; color:rgba(0,0,0,.35); border-left:1px solid #000; transition:transform .2s; }
+    /* ── Description accordion ── */
+    .project-desc-section { border-bottom:1px solid rgba(0,0,0,.08); }
+    .project-desc-trigger { display:flex; align-items:center; height:36px; cursor:pointer; background:none; border:none; width:100%; padding:0 20px; font-family:'Outfit',sans-serif; transition:background .12s; gap:12px; }
+    .project-desc-trigger:hover { background:rgba(0,0,0,.02); }
+    .project-desc-label { font-size:.35rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:rgba(0,0,0,.28); flex-shrink:0; }
+    .project-desc-title { flex:1; font-size:.52rem; font-weight:400; color:rgba(0,0,0,.45); }
+    .project-desc-arrow { font-size:.4rem; color:rgba(0,0,0,.25); transition:transform .2s; flex-shrink:0; }
     .project-desc-section.open .project-desc-arrow { transform:rotate(180deg); }
-    .project-desc-body {
-      display:none; padding:24px 32px 28px;
-      font-size:.68rem; line-height:1.9; color:rgba(0,0,0,.62);
-      border-top:1px solid rgba(0,0,0,.06);
-      column-count:2; column-gap:48px;
-    }
+    .project-desc-body { display:none; padding:24px 32px 28px; font-size:.68rem; line-height:1.9; color:rgba(0,0,0,.62); border-top:1px solid rgba(0,0,0,.05); column-count:2; column-gap:48px; }
     .project-desc-body p { margin:0 0 1.1em; break-inside:avoid; }
     .project-desc-body p:last-child { margin-bottom:0; }
     .project-desc-section.open .project-desc-body { display:block; }
 
-    /* Image masonry grid */
-    .project-img-grid { columns:3; column-gap:0; }
+    /* ── Image grid — spaced masonry, images breathe ── */
+    .project-img-grid { columns:3; column-gap:16px; padding:20px; background:#fff; }
     .project-img-cell {
       break-inside:avoid; display:block; position:relative;
-      overflow:hidden; cursor:pointer;
-      border-bottom:1px solid rgba(0,0,0,.1);
-      border-right:1px solid rgba(0,0,0,.1);
-      background:#f5f5f5;
+      overflow:hidden; cursor:pointer; margin-bottom:16px;
+      background:#f8f8f8;
     }
     .project-img-cell img { display:block; width:100%; height:auto; transition:opacity .2s; }
     .project-img-cell:hover img { opacity:.82; }
     .project-img-caption {
       position:absolute; bottom:0; left:0; right:0;
-      background:rgba(0,0,0,.7); padding:7px 10px;
+      background:rgba(0,0,0,.65); padding:7px 10px;
       font-size:.38rem; letter-spacing:.06em; color:rgba(255,255,255,.85);
       transform:translateY(100%); transition:transform .18s ease;
     }
     .project-img-cell:hover .project-img-caption { transform:translateY(0); }
 
-    /* Custom lightbox */
-    .plb-overlay {
-      display:none; position:fixed; inset:0; background:#000;
-      z-index:9000; flex-direction:row;
+    /* ── Lightbox: image left-aligned, caption bottom ── */
+    .plb-overlay{display:none;position:fixed;inset:0;background:#000;z-index:9000;flex-direction:column;}
+    .plb-overlay.open{display:flex;}
+    .plb-img-area{flex:1;display:flex;align-items:center;justify-content:flex-start;padding:40px 48px;box-sizing:border-box;position:relative;min-height:0;}
+    .plb-img-area img{max-height:100%;max-width:100%;object-fit:contain;display:block;}
+    .plb-prev,.plb-next{position:absolute;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:rgba(255,255,255,.3);font-size:2rem;font-weight:200;padding:16px 12px;transition:color .15s;font-family:'Outfit',sans-serif;z-index:2;}
+    .plb-prev{left:6px;} .plb-next{right:6px;}
+    .plb-prev:hover,.plb-next:hover{color:#fff;}
+    .plb-prev:disabled,.plb-next:disabled{opacity:0;cursor:default;}
+    .plb-caption-bar{flex-shrink:0;display:flex;align-items:center;gap:20px;padding:0 20px;height:40px;border-top:1px solid rgba(255,255,255,.07);}
+    .plb-caption-text{font-size:.48rem;letter-spacing:.08em;color:rgba(255,255,255,.5);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .plb-counter-text{font-size:.4rem;letter-spacing:.12em;color:rgba(255,255,255,.2);white-space:nowrap;}
+    .plb-close{width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:none;border:none;border-left:1px solid rgba(255,255,255,.07);cursor:pointer;color:rgba(255,255,255,.35);font-size:.85rem;font-family:'Outfit',sans-serif;transition:color .15s;flex-shrink:0;margin-right:-20px;}
+    .plb-close:hover{color:#fff;}
+
+    @media(max-width:768px){
+      .project-desc-body{column-count:1 !important;padding:18px 20px !important;font-size:.82rem !important;}
+      .project-img-grid{columns:2 !important;column-gap:10px !important;padding:12px !important;}
+      .project-img-cell{margin-bottom:10px !important;}
+      .project-title-cell h1{font-size:.88rem;}
+      .project-meta-label{font-size:.55rem;}
+      .project-meta-val{font-size:.75rem;}
+      .plb-img-area{padding:20px 40px;justify-content:center;}
     }
-    .plb-overlay.open { display:flex; }
-    .plb-img-side {
-      flex:1; display:flex; align-items:center; justify-content:center;
-      padding:48px 24px 48px 48px; box-sizing:border-box; position:relative; min-width:0;
-    }
-    .plb-img-side img { max-width:100%; max-height:100%; object-fit:contain; display:block; }
-    .plb-prev, .plb-next {
-      position:absolute; top:50%; transform:translateY(-50%);
-      background:none; border:none; cursor:pointer;
-      color:rgba(255,255,255,.4); font-size:2rem; font-weight:200;
-      padding:20px 10px; transition:color .15s; font-family:'Outfit',sans-serif; z-index:2;
-    }
-    .plb-prev { left:6px; } .plb-next { right:6px; }
-    .plb-prev:hover, .plb-next:hover { color:#fff; }
-    .plb-prev:disabled, .plb-next:disabled { opacity:.15; cursor:default; }
-    .plb-info-side {
-      flex:0 0 220px; border-left:1px solid rgba(255,255,255,.08);
-      display:flex; flex-direction:column; background:#0a0a0a; color:#fff;
-    }
-    .plb-close-row { display:flex; align-items:center; justify-content:flex-end; height:44px; border-bottom:1px solid rgba(255,255,255,.08); flex-shrink:0; }
-    .plb-close { width:44px; height:44px; display:flex; align-items:center; justify-content:center; background:none; border:none; cursor:pointer; color:rgba(255,255,255,.4); font-size:.9rem; font-family:'Outfit',sans-serif; transition:background .15s,color .15s; }
-    .plb-close:hover { background:rgba(255,255,255,.08); color:#fff; }
-    .plb-counter { padding:18px 16px 6px; font-size:.36rem; letter-spacing:.18em; color:rgba(255,255,255,.25); text-transform:uppercase; flex-shrink:0; }
-    .plb-caption { padding:8px 16px 16px; font-size:.65rem; line-height:1.6; color:rgba(255,255,255,.82); flex-shrink:0; border-bottom:1px solid rgba(255,255,255,.07); }
-    .plb-meta { flex:1; overflow-y:auto; }
-    .plb-meta-row { display:flex; border-bottom:1px solid rgba(255,255,255,.05); min-height:28px; }
-    .plb-meta-label { flex:0 0 64px; padding:0 8px; font-size:.33rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.2); display:flex; align-items:center; border-right:1px solid rgba(255,255,255,.05); }
-    .plb-meta-val { flex:1; padding:0 10px; font-size:.54rem; color:rgba(255,255,255,.5); display:flex; align-items:center; }
+    @media(max-width:480px){.project-img-grid{columns:1 !important;}}
   </style>
-</head>
 <body>
 
 <div class="landing-grid">
@@ -168,23 +152,17 @@
   <div class="landing-cell contact-cell" data-page="../contact.html" data-label="CONTACTS"></div>
 </div>
 
-<!-- Custom lightbox: image left, info right, black bg -->
+<!-- Lightbox -->
 <div class="plb-overlay" id="plbOverlay">
-  <div class="plb-img-side">
+  <div class="plb-img-area">
     <button class="plb-prev" id="plbPrev">&#8249;</button>
     <img id="plbImg" src="" alt="">
     <button class="plb-next" id="plbNext">&#8250;</button>
   </div>
-  <div class="plb-info-side">
-    <div class="plb-close-row"><button class="plb-close" id="plbClose">✕</button></div>
-    <div class="plb-counter" id="plbCounter"></div>
-    <div class="plb-caption" id="plbCaption"></div>
-    <div class="plb-meta">
-      <div class="plb-meta-row"><span class="plb-meta-label">Project</span><span class="plb-meta-val">From Forest to Framework</span></div>
-      <div class="plb-meta-row"><span class="plb-meta-label">Year</span><span class="plb-meta-val">2024–25</span></div>
-      <div class="plb-meta-row"><span class="plb-meta-label">Location</span><span class="plb-meta-val">Thetford, Norfolk</span></div>
-      <div class="plb-meta-row"><span class="plb-meta-label">Diploma</span><span class="plb-meta-val">Year 5 — Diploma 13</span></div>
-    </div>
+  <div class="plb-caption-bar">
+    <span class="plb-caption-text" id="plbCaption"></span>
+    <span class="plb-counter-text" id="plbCounter"></span>
+    <button class="plb-close" id="plbClose">✕</button>
   </div>
 </div>
 
@@ -222,7 +200,7 @@ function show() {
   const c=cells[cur], img=c.querySelector('img');
   plbImg.src=img.src; plbImg.alt=img.alt;
   plbCap.textContent=c.dataset.caption||img.alt;
-  plbCount.textContent=`${cur+1}  /  ${cells.length}`;
+  plbCount.textContent=`${cur+1} / ${cells.length}`;
   plbPrev.disabled=(cur===0); plbNext.disabled=(cur===cells.length-1);
 }
 

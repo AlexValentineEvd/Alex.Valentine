@@ -1,132 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HBJP6CFGNQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-HBJP6CFGNQ');
-</script>
-
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HBJP6CFGNQ"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HBJP6CFGNQ');</script>
   <meta charset="UTF-8">
-  <title>Belarusian Library — Project 3</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Belarusian Library — Alex Valentine Evdokimov</title>
   <link rel="stylesheet" href="../styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
-  <style>
-    .lightboxOverlay {
-      background: rgba(255, 255, 255, 0.6) !important;
-      backdrop-filter: blur(4px);
-      transition: background 0.3s ease-in-out;
+    <style>
+    .project-page-inner{padding:0 0 80px 0;}
+    /* Header */
+    .project-header-row{display:flex;align-items:stretch;border-bottom:1px solid rgba(0,0,0,.12);min-height:48px;}
+    .project-back-btn{width:40px;display:flex;align-items:center;justify-content:center;border-right:1px solid rgba(0,0,0,.1);background:none;border-top:none;border-bottom:none;border-left:none;cursor:pointer;text-decoration:none;color:rgba(0,0,0,.5);transition:background .15s,color .15s;flex-shrink:0;}
+    .project-back-btn:hover{background:#000;color:#fff;}
+    .project-back-btn svg{stroke:currentColor;}
+    .project-title-cell{flex:1;padding:0 20px;display:flex;align-items:center;gap:12px;}
+    .project-title-cell h1{margin:0;font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#000;}
+    .project-tag{font-size:.38rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(0,0,0,.4);white-space:nowrap;}
+    .project-nav-cell{display:flex;align-items:stretch;border-left:1px solid rgba(0,0,0,.1);}
+    .project-nav-btn{width:40px;display:flex;align-items:center;justify-content:center;background:none;border:none;border-right:1px solid rgba(0,0,0,.1);cursor:pointer;text-decoration:none;color:rgba(0,0,0,.4);transition:background .15s,color .15s;}
+    .project-nav-btn:last-child{border-right:none;}
+    .project-nav-btn:hover{background:#000;color:#fff;}
+    .project-nav-btn svg{stroke:currentColor;}
+    /* Meta */
+    .project-meta-row{display:flex;align-items:center;min-height:28px;border-bottom:1px solid rgba(0,0,0,.06);}
+    .project-meta-label{flex:0 0 72px;padding:0 16px 0 20px;font-size:.35rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(0,0,0,.28);}
+    .project-meta-val{flex:1;padding:0 12px;font-size:.58rem;color:rgba(0,0,0,.6);}
+    /* Description */
+    .project-desc-section{border-bottom:1px solid rgba(0,0,0,.08);}
+    .project-desc-trigger{display:flex;align-items:center;height:36px;cursor:pointer;background:none;border:none;width:100%;padding:0 20px;font-family:'Outfit',sans-serif;transition:background .12s;gap:12px;}
+    .project-desc-trigger:hover{background:rgba(0,0,0,.02);}
+    .project-desc-label{font-size:.35rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(0,0,0,.28);flex-shrink:0;}
+    .project-desc-title{flex:1;font-size:.52rem;font-weight:400;color:rgba(0,0,0,.45);}
+    .project-desc-arrow{font-size:.4rem;color:rgba(0,0,0,.25);transition:transform .2s;flex-shrink:0;}
+    .project-desc-section.open .project-desc-arrow{transform:rotate(180deg);}
+    .project-desc-body{display:none;padding:24px 32px 28px;font-size:.68rem;line-height:1.9;color:rgba(0,0,0,.62);border-top:1px solid rgba(0,0,0,.05);column-count:2;column-gap:48px;}
+    .project-desc-body p{margin:0 0 1.1em;break-inside:avoid;}
+    .project-desc-body p:last-child{margin-bottom:0;}
+    .project-desc-section.open .project-desc-body{display:block;}
+    /* Image grid */
+    .project-img-grid{columns:3;column-gap:16px;padding:20px;background:#fff;}
+    .project-img-cell{break-inside:avoid;display:block;position:relative;overflow:hidden;cursor:pointer;margin-bottom:16px;background:#f8f8f8;}
+    .project-img-cell img{display:block;width:100%;height:auto;transition:opacity .2s;}
+    .project-img-cell:hover img{opacity:.82;}
+    .project-img-caption{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.65);padding:7px 10px;font-size:.38rem;letter-spacing:.06em;color:rgba(255,255,255,.85);transform:translateY(100%);transition:transform .18s ease;}
+    .project-img-cell:hover .project-img-caption{transform:translateY(0);}
+    /* Lightbox */
+    .plb-overlay{display:none;position:fixed;inset:0;background:#000;z-index:9000;flex-direction:column;}
+    .plb-overlay.open{display:flex;}
+    .plb-img-area{flex:1;display:flex;align-items:center;justify-content:flex-start;padding:40px 48px;box-sizing:border-box;position:relative;min-height:0;}
+    .plb-img-area img{max-height:100%;max-width:100%;object-fit:contain;display:block;}
+    .plb-prev,.plb-next{position:absolute;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:rgba(255,255,255,.3);font-size:2rem;font-weight:200;padding:16px 12px;transition:color .15s;font-family:'Outfit',sans-serif;z-index:2;}
+    .plb-prev{left:6px;}.plb-next{right:6px;}
+    .plb-prev:hover,.plb-next:hover{color:#fff;}
+    .plb-prev:disabled,.plb-next:disabled{opacity:0;cursor:default;}
+    .plb-caption-bar{flex-shrink:0;display:flex;align-items:center;gap:20px;padding:0 20px;height:40px;border-top:1px solid rgba(255,255,255,.07);}
+    .plb-caption-text{font-size:.48rem;letter-spacing:.08em;color:rgba(255,255,255,.5);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .plb-counter-text{font-size:.4rem;letter-spacing:.12em;color:rgba(255,255,255,.2);white-space:nowrap;}
+    .plb-close{width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:none;border:none;border-left:1px solid rgba(255,255,255,.07);cursor:pointer;color:rgba(255,255,255,.35);font-size:.85rem;font-family:'Outfit',sans-serif;transition:color .15s;flex-shrink:0;margin-right:-20px;}
+    .plb-close:hover{color:#fff;}
+    @media(max-width:768px){
+      .project-desc-body{column-count:1 !important;padding:18px 20px !important;font-size:.82rem !important;}
+      .project-img-grid{columns:2 !important;column-gap:10px !important;padding:12px !important;}
+      .project-img-cell{margin-bottom:10px !important;}
+      .project-title-cell h1{font-size:.88rem;}
+      .project-meta-label{font-size:.55rem;}
+      .project-meta-val{font-size:.75rem;}
+      .plb-img-area{padding:20px 40px;justify-content:center;}
     }
+    @media(max-width:480px){.project-img-grid{columns:1 !important;}}
   </style>
 </head>
 <body>
 
-<header>
-  <div class="container">
-    <nav>
-      <ul class="nav-links">
-        <li><a href="../index.html">HOME</a></li>
-        <li><a href="../drawings.html">WORK</a></li>
-        <li><a href="../about.html">ABOUT</a></li>
-        <li><a href="../contact.html">CONTACTS</a></li>
-      </ul>
-    </nav>
+<div class="landing-grid">
+  <div class="landing-cell home-cell"    data-page="../index.html"    data-label="HOME"></div>
+
+  <div class="landing-cell work-cell active" data-page="../drawings.html" data-label="MY WORK">
+    <div class="page-content">
+      <div class="project-page-inner">
+
+        <!-- Header -->
+        <div class="project-header-row">
+          <a href="../drawings.html" class="project-back-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </a>
+          <div class="project-title-cell">
+            <h1>Belarusian Library</h1>
+            <span class="project-tag">Project</span>
+          </div>
+          <div class="project-nav-cell">
+            <a href="project2.html" class="project-nav-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <a href="project4.html" class="project-nav-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+          </div>
+        </div>
+
+        <!-- Meta -->
+        <div class="project-meta-row"><span class="project-meta-label">Year</span><span class="project-meta-val">2023–24</span></div>
+        <div class="project-meta-row"><span class="project-meta-label">Type</span><span class="project-meta-val">Loft Renovation — Consultant & Advisor</span></div>
+        <div class="project-meta-row"><span class="project-meta-label">Client</span><span class="project-meta-val">Anglo-Belarusian Society</span></div>
+        <div class="project-meta-row"><span class="project-meta-label">Location</span><span class="project-meta-val">Woodside Park, London, United Kingdom</span></div>
+
+        <!-- Description -->
+        <div class="project-desc-section" id="descSection">
+          <button class="project-desc-trigger" id="descTrigger">
+            <span class="project-desc-label">Text</span>
+            <span class="project-desc-title">Project description</span>
+            <span class="project-desc-arrow">▲</span>
+          </button>
+          <div class="project-desc-body">
+            <p>In north London, in the borough of Barnet, is the Church of St Cyril of Turau & All the Patron Saints of the Belarusian People. Opposite stands the Francis Skaryna Belarusian Library & Museum. These spaces serve as the main gathering locations for the Anglo-Belarusian Society — the oldest Belarus-related organisation in the United Kingdom.</p>
+            <p>Rich with artefacts and books relating to Belarusian history, the organisation sought a new way to showcase these historical objects. I was invited to join the project as a consultant and advisor. The attic of the library was chosen for renovation; the project is currently in its construction phase.</p>
+            <p>The brief required sensitive spatial thinking: how to transform a derelict loft into a functioning library and exhibition space that respects the weight of the collection held below. Measured and drafted accurate plans and sections from scratch, produced visualisations to support funding applications, and acted as consultant throughout — offering spatial advice while acknowledging structural limitations.</p>
+          </div>
+        </div>
+
+        <!-- Images -->
+        <div class="project-img-grid">
+          <div class="project-img-cell" data-caption="Site plan" data-idx="0"><img src="../img/B1.jpg" alt="Site plan" loading="lazy"><span class="project-img-caption">Site plan</span></div>
+          <div class="project-img-cell" data-caption="Interior visualisation" data-idx="1"><img src="../img/B4.jpg" alt="Interior visualisation" loading="lazy"><span class="project-img-caption">Interior visualisation</span></div>
+          <div class="project-img-cell" data-caption="Library interior sketch" data-idx="2"><img src="../img/B2.jpg" alt="Library interior sketch" loading="lazy"><span class="project-img-caption">Library interior sketch</span></div>
+          <div class="project-img-cell" data-caption="Interior visualisation 2" data-idx="3"><img src="../img/B5.jpg" alt="Interior visualisation 2" loading="lazy"><span class="project-img-caption">Interior visualisation 2</span></div>
+          <div class="project-img-cell" data-caption="Model photograph" data-idx="4"><img src="../img/B6.jpg" alt="Model photograph" loading="lazy"><span class="project-img-caption">Model photograph</span></div>
+          <div class="project-img-cell" data-caption="Material detail" data-idx="5"><img src="../img/B7.jpg" alt="Material detail" loading="lazy"><span class="project-img-caption">Material detail</span></div>
+        </div>
+
+      </div><!-- /project-page-inner -->
+    </div><!-- /page-content -->
+  </div><!-- /work-cell -->
+
+  <div class="landing-cell about-cell"   data-page="../about.html"   data-label="ABOUT ME"></div>
+  <div class="landing-cell contact-cell" data-page="../contact.html" data-label="CONTACTS"></div>
+</div><!-- /landing-grid -->
+
+<!-- Lightbox -->
+<div class="plb-overlay" id="plbOverlay">
+  <div class="plb-img-area">
+    <button class="plb-prev" id="plbPrev">&#8249;</button>
+    <img id="plbImg" src="" alt="">
+    <button class="plb-next" id="plbNext">&#8250;</button>
   </div>
-  <div class="header-divider"></div>
-</header>
-
-<a href="javascript:history.back()" class="back-button" aria-label="Go back">
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-    <polyline points="15 18 9 12 15 6" />
-  </svg>
-</a>
-
-<main class="project-container">
-  <div class="project-sidebar">
-    <div class="project-info">
-      <h2>BELARUSIAN LIBRARY</h2>
-      <p>Loft renovation, The Anglo-Belarusian Society, 2023–24. Woodside Park, London, United Kingdom.</p>
-      
-      <p><strong>Description:</strong></p>
-      <p>
-        In north London, in the borough of Barnet, is the Church of St Cyril of Turau & All the Patron Saints of the Belarusian People. 
-        Opposite stands the Francis Skaryna Belarusian Library & Museum. These spaces serve as the main gathering locations for the 
-        Anglo-Belarusian Society—the oldest Belarus-related organization in the UK. Rich with artifacts and books relating to 
-        Belarusian history, the organization sought a new way to showcase these historical objects. I was invited to join the 
-        project as a consultant and advisor. The attic of the library was chosen for renovation; the project is currently in its 
-        construction phase.
-      </p>
-    </div>
+  <div class="plb-caption-bar">
+    <span class="plb-caption-text" id="plbCaption"></span>
+    <span class="plb-counter-text" id="plbCounter"></span>
+    <button class="plb-close" id="plbClose">✕</button>
   </div>
-
-  <div class="project-images">
-    <a href="../img/B1.jpg" class="glightbox" data-gallery="project-gallery" data-title="Site Plan">
-      <img src="../img/B1.jpg" alt="Site Plan" class="project-img a3-portrait">
-    </a>
-    <a href="../img/B4.jpg" class="glightbox" data-gallery="project-gallery" data-title="Interior Visualization 1">
-      <img src="../img/B4.jpg" alt="Interior visualization 1" class="project-img a4-portrait">
-    </a>
-    <a href="../img/B2.jpg" class="glightbox" data-gallery="project-gallery" data-title="Sketch">
-      <img src="../img/B2.jpg" alt="Sketch of the library interior" class="project-img square">
-    </a>
-  </div>
-
-  <div class="project-images">
-    <a href="../img/B5.jpg" class="glightbox" data-gallery="project-gallery" data-title="Interior Visualization 2">
-      <img src="../img/B5.jpg" alt="Interior visualization 2" class="project-img a4-portrait">
-    </a>
-    <a href="../img/B6.jpg" class="glightbox" data-gallery="project-gallery" data-title="Model Photo">
-      <img src="../img/B6.jpg" alt="Model photo" class="project-img a4-portrait">
-    </a>
-    <a href="../img/B7.jpg" class="glightbox" data-gallery="project-gallery" data-title="Material Detail">
-      <img src="../img/B7.jpg" alt="Material detail" class="project-img a4-landscape">
-    </a>
-  </div>
-
- 
-</main>
-
-<footer>
-  <p>ALEX VALENTINE EVDOKIMOV 2025</p>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
-
-
-
-<!-- Navigation Arrows -->
-<a href="project2.html" class="project-nav left" aria-label="Previous project">
-  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-    <polyline points="15 18 9 12 15 6" />
-  </svg>
-</a>
-
-<a href="project4.html" class="project-nav right" aria-label="Next project">
-  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-    <polyline points="9 18 15 12 9 6" />
-  </svg>
-</a>
+</div>
 
 <script>
-  const lightbox = GLightbox({ selector: '.glightbox' });
-
-  document.addEventListener('keydown', function (e) {
-    // Only navigate projects if GLightbox is NOT open
-    if (!document.body.classList.contains('glightbox-open')) {
-      if (e.key === 'ArrowLeft') {
-        window.location.href = "project2.html"; // or your previous project
-      } else if (e.key === 'ArrowRight') {
-        window.location.href = "project4.html"; // or your next project
-      }
-    }
+function navigateTo(url) {
+  if (!url) return;
+  document.body.classList.add('is-leaving');
+  requestAnimationFrame(() => { setTimeout(() => { window.location.href = url; }, 220); });
+}
+document.querySelectorAll('.landing-cell').forEach(cell => {
+  cell.addEventListener('click', function(e) {
+    if (this.classList.contains('active')) return;
+    e.preventDefault(); navigateTo(this.dataset.page);
   });
-</script>
+});
 
+document.getElementById('descTrigger')?.addEventListener('click', () => {
+  document.getElementById('descSection').classList.toggle('open');
+});
+
+/* Lightbox */
+const overlay  = document.getElementById('plbOverlay');
+const plbImg   = document.getElementById('plbImg');
+const plbPrev  = document.getElementById('plbPrev');
+const plbNext  = document.getElementById('plbNext');
+const plbClose = document.getElementById('plbClose');
+const plbCap   = document.getElementById('plbCaption');
+const plbCount = document.getElementById('plbCounter');
+const cells    = Array.from(document.querySelectorAll('.project-img-cell'));
+let cur = 0;
+
+function openLB(i) { cur=i; show(); overlay.classList.add('open'); document.body.style.overflow='hidden'; }
+function closeLB()  { overlay.classList.remove('open'); document.body.style.overflow=''; }
+function show() {
+  const c=cells[cur], img=c.querySelector('img');
+  plbImg.src=img.src; plbImg.alt=img.alt;
+  plbCap.textContent=c.dataset.caption||img.alt;
+  plbCount.textContent=`${cur+1} / ${cells.length}`;
+  plbPrev.disabled=(cur===0); plbNext.disabled=(cur===cells.length-1);
+}
+
+cells.forEach((c,i) => c.addEventListener('click', () => openLB(i)));
+plbClose.addEventListener('click', closeLB);
+plbPrev.addEventListener('click',  () => { if(cur>0){cur--;show();} });
+plbNext.addEventListener('click',  () => { if(cur<cells.length-1){cur++;show();} });
+overlay.addEventListener('click',  e => { if(e.target===overlay) closeLB(); });
+
+document.addEventListener('keydown', e => {
+  if (overlay.classList.contains('open')) {
+    if (e.key==='Escape')      closeLB();
+    if (e.key==='ArrowLeft')   plbPrev.click();
+    if (e.key==='ArrowRight')  plbNext.click();
+    return;
+  }
+  if (e.key==='ArrowLeft')  navigateTo('project2.html');
+  if (e.key==='ArrowRight') navigateTo('project4.html');
+  if (e.key==='Escape')     navigateTo('../drawings.html');
+});
+</script>
 </body>
 </html>
